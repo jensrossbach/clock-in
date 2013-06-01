@@ -145,6 +145,12 @@
   <data name="lblBreak.Text" xml:space="preserve">
     <value>Pause:</value>
   </data>
+  <data name="cbxAutoLaunch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 17</value>
+  </data>
+  <data name="cbxAutoLaunch.Text" xml:space="preserve">
+    <value>Programm mit &amp;Windows starten</value>
+  </data>
   <data name="cbxLowPowerIsStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>255, 17</value>
   </data>

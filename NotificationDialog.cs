@@ -45,6 +45,8 @@ namespace ClockIn
                 SoundPlayer player = new SoundPlayer(Properties.Settings.Default.SoundFile);
                 player.Play();
             }
+
+            BringToFront();
         }
 
         private void NotificationDialog_FormClosed(object sender, FormClosedEventArgs e)

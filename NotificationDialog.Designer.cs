@@ -50,10 +50,10 @@
             // 
             this.imgNotificationIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgNotificationIcons.ImageStream")));
             this.imgNotificationIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgNotificationIcons.Images.SetKeyName(0, "StillWorking");
-            this.imgNotificationIcons.Images.SetKeyName(1, "RegularTimeReached");
-            this.imgNotificationIcons.Images.SetKeyName(2, "MaxTimeApproaching");
-            this.imgNotificationIcons.Images.SetKeyName(3, "MaxTimeReached");
+            this.imgNotificationIcons.Images.SetKeyName(0, "Confused");
+            this.imgNotificationIcons.Images.SetKeyName(1, "BigSmile");
+            this.imgNotificationIcons.Images.SetKeyName(2, "Ooooh");
+            this.imgNotificationIcons.Images.SetKeyName(3, "Sad");
             // 
             // lblText
             // 

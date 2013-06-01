@@ -1,0 +1,23 @@
+ClockIn
+written 2012 by Jens Rossbach
+Copyright (C) 2012 Jens Rossbach, All Rights Reserved
+
+Version History
+===============
+
+
+v0.2.4614.31929 (2012-08-19)
+----------------------------
+
+Fixed:   Sporadic exception when timer interval became 0
+Fixed:   Main window and notification popup sometimes opening in background
+Fixed:   Image quality of smiley icons
+Changed: Changes of start time and break duration now update displays and timers not before leaving controls
+Added:   Remaining working time can now be displayed additionally to elapsed working time (toggle between both by clicking on time value)
+Added:   Leave time now displayed below working time
+Added:   Possibility to let application automatically start together with Windows
+
+
+v0.1.4431.35506 (2012-03-29)
+----------------------------
+First version

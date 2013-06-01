@@ -8,6 +8,12 @@ namespace ClockIn
 {
     public partial class MainWindow : Form
     {
+        private enum WorkingTimeDisplay
+        {
+            ElapsedTime,
+            RemainingTime
+        }
+
         public MainWindow()
         {
             exit = false;
@@ -16,6 +22,7 @@ namespace ClockIn
             wtTimer.Tick += new EventHandler(wtTimer_Tick);
 
             Program.TimeMgr.WorkingTimeUpdated += new EventHandler(TimeMgr_WorkingTimeUpdated);
+            Program.TimeMgr.LeaveTimeUpdated += new EventHandler(TimeMgr_LeaveTimeUpdated);
 
             InitializeComponent();
         }
@@ -24,19 +31,20 @@ namespace ClockIn
         {
             wtTimer.Stop();
 
-            TimeSpan workingTime = Program.TimeMgr.getCurrentWorkingTime();
+            TimeManager.WorkingLevel level;
+            TimeSpan elapsedTime = Program.TimeMgr.getCurrentElapsedWorkingTime(out level);
 
-            if (workingTime.TotalMinutes > (int)(Properties.Settings.Default.MaximumWorkingTime * 60))
+            if (elapsedTime.TotalMinutes > (int)(Properties.Settings.Default.MaximumWorkingTime * 60))
             {
                 lblWorkingTime.ForeColor = Color.Red;
                 lblIcon.ImageIndex = 3;
             }
-            else if (workingTime.TotalMinutes > (int)((Properties.Settings.Default.MaximumWorkingTime * 60) - Properties.Settings.Default.NotifyAdvance))
+            else if (elapsedTime.TotalMinutes > (int)((Properties.Settings.Default.MaximumWorkingTime * 60) - Properties.Settings.Default.NotifyAdvance))
             {
                 lblWorkingTime.ForeColor = Color.Orange;
                 lblIcon.ImageIndex = 2;
             }
-            else if (workingTime.TotalMinutes > (int)(Properties.Settings.Default.RegularWorkingTime * 60))
+            else if (elapsedTime.TotalMinutes > (int)(Properties.Settings.Default.RegularWorkingTime * 60))
             {
                 lblWorkingTime.ForeColor = Color.DarkGreen;
                 lblIcon.ImageIndex = 1;
@@ -47,10 +55,43 @@ namespace ClockIn
                 lblIcon.ImageIndex = 0;
             }
 
-            lblWorkingTime.Text = workingTime.ToString(@"hh\:mm");
+            WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), Properties.Settings.Default.WorkingTimeDisplay);
+            if (wtd == WorkingTimeDisplay.ElapsedTime)
+            {
+                lblWorkingTimeIcon.ImageIndex = 0;
+                lblWorkingTime.Text = elapsedTime.ToString(@"hh\hmm\m");
+            }
+            else
+            {
+                TimeSpan remainingTime = Program.TimeMgr.getCurrentRemainingWorkingTime();
+                if (remainingTime.Seconds > 0)
+                {
+                    remainingTime = new TimeSpan(remainingTime.Hours, remainingTime.Minutes + 1, 0);
+                }
+
+                lblWorkingTimeIcon.ImageIndex = 1;
+                lblWorkingTime.Text = remainingTime.ToString(@"\-hh\hmm\m");
+            }
 
             wtTimer.Interval = getInterval();
             wtTimer.Start();
+        }
+
+        public void updateLeaveTime()
+        {
+            bool overTime;
+            DateTime leaveTime = Program.TimeMgr.getCurrentLeaveTime(out overTime);
+
+            if (overTime)
+            {
+                lblLeaveTime.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblLeaveTime.ForeColor = Color.Black;
+            }
+
+            lblLeaveTime.Text = leaveTime.ToString(@"HH\:mm");
         }
 
         private int getInterval()
@@ -77,6 +118,7 @@ namespace ClockIn
             if (Visible)
             {
                 updateWorkingTime();
+                updateLeaveTime();
             }
             else
             {
@@ -99,15 +141,37 @@ namespace ClockIn
             Properties.Settings.Default.Save();
         }
 
-        private void dtpArrival_ValueChanged(object sender, EventArgs e)
+        private void dtpArrival_Validated(object sender, EventArgs e)
         {
             Program.TimeMgr.updateArrival(dtpArrival.Value);
             updateWorkingTime();
+            updateLeaveTime();
         }
 
-        private void nmcBreaks_ValueChanged(object sender, EventArgs e)
+        private void nmcBreaks_Validated(object sender, EventArgs e)
         {
+            // workaround because bound property is not updated when number has been entered by keyboard
+            Session.Default.Break = nmcBreaks.Value;
+
             Program.TimeMgr.updateBreaks();
+            updateWorkingTime();
+            updateLeaveTime();
+        }
+
+        private void lblWorkingTime_Click(object sender, EventArgs e)
+        {
+            WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), Properties.Settings.Default.WorkingTimeDisplay);
+
+            if (wtd == WorkingTimeDisplay.ElapsedTime)
+            {
+                wtd = WorkingTimeDisplay.RemainingTime;
+            }
+            else
+            {
+                wtd = WorkingTimeDisplay.ElapsedTime;
+            }
+
+            Properties.Settings.Default.WorkingTimeDisplay = System.Enum.Format(typeof(WorkingTimeDisplay), wtd, "G");
             updateWorkingTime();
         }
 
@@ -125,12 +189,14 @@ namespace ClockIn
         {
             Show();
             WindowState = FormWindowState.Normal;
+            BringToFront();
         }
 
         private void itmRestore_Click(object sender, EventArgs e)
         {
             Show();
             WindowState = FormWindowState.Normal;
+            BringToFront();
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
@@ -160,6 +226,14 @@ namespace ClockIn
             if (Visible)
             {
                 updateWorkingTime();
+            }
+        }
+
+        void TimeMgr_LeaveTimeUpdated(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                updateLeaveTime();
             }
         }
 

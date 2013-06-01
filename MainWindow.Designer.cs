@@ -46,9 +46,15 @@
             this.dtpArrival = new System.Windows.Forms.DateTimePicker();
             this.btnAbout = new System.Windows.Forms.Button();
             this.imgIcons = new System.Windows.Forms.ImageList(this.components);
+            this.lblWorkingTimeIcon = new System.Windows.Forms.Label();
+            this.lblLeaveTimeIcon = new System.Windows.Forms.Label();
+            this.lblLeaveTime = new System.Windows.Forms.Label();
+            this.pnlTimeDisplay = new System.Windows.Forms.Panel();
+            this.imgStates = new System.Windows.Forms.ImageList(this.components);
             this.lblIcon = new System.Windows.Forms.Label();
             this.ctxTrayMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcBreaks)).BeginInit();
+            this.pnlTimeDisplay.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblBegin
@@ -79,6 +85,7 @@
             // 
             resources.ApplyResources(this.lblWorkingTime, "lblWorkingTime");
             this.lblWorkingTime.Name = "lblWorkingTime";
+            this.lblWorkingTime.Click += new System.EventHandler(this.lblWorkingTime_Click);
             // 
             // lblBreaksMin
             // 
@@ -135,7 +142,7 @@
             0});
             this.nmcBreaks.Name = "nmcBreaks";
             this.nmcBreaks.Value = global::ClockIn.Session.Default.Break;
-            this.nmcBreaks.ValueChanged += new System.EventHandler(this.nmcBreaks_ValueChanged);
+            this.nmcBreaks.Validated += new System.EventHandler(this.nmcBreaks_Validated);
             // 
             // dtpArrival
             // 
@@ -145,7 +152,7 @@
             this.dtpArrival.Name = "dtpArrival";
             this.dtpArrival.ShowUpDown = true;
             this.dtpArrival.Value = global::ClockIn.Session.Default.Arrival;
-            this.dtpArrival.ValueChanged += new System.EventHandler(this.dtpArrival_ValueChanged);
+            this.dtpArrival.Validated += new System.EventHandler(this.dtpArrival_Validated);
             // 
             // btnAbout
             // 
@@ -158,15 +165,51 @@
             // 
             this.imgIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgIcons.ImageStream")));
             this.imgIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgIcons.Images.SetKeyName(0, "StillWorking");
-            this.imgIcons.Images.SetKeyName(1, "RegularTimeReached");
-            this.imgIcons.Images.SetKeyName(2, "MaxTimeApproaching");
-            this.imgIcons.Images.SetKeyName(3, "MaxTimeReached");
+            this.imgIcons.Images.SetKeyName(0, "Stopwatch");
+            this.imgIcons.Images.SetKeyName(1, "Timer");
+            this.imgIcons.Images.SetKeyName(2, "Power");
+            // 
+            // lblWorkingTimeIcon
+            // 
+            resources.ApplyResources(this.lblWorkingTimeIcon, "lblWorkingTimeIcon");
+            this.lblWorkingTimeIcon.ImageList = this.imgIcons;
+            this.lblWorkingTimeIcon.Name = "lblWorkingTimeIcon";
+            // 
+            // lblLeaveTimeIcon
+            // 
+            resources.ApplyResources(this.lblLeaveTimeIcon, "lblLeaveTimeIcon");
+            this.lblLeaveTimeIcon.ImageList = this.imgIcons;
+            this.lblLeaveTimeIcon.Name = "lblLeaveTimeIcon";
+            // 
+            // lblLeaveTime
+            // 
+            resources.ApplyResources(this.lblLeaveTime, "lblLeaveTime");
+            this.lblLeaveTime.Name = "lblLeaveTime";
+            // 
+            // pnlTimeDisplay
+            // 
+            this.pnlTimeDisplay.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlTimeDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTimeDisplay.Controls.Add(this.lblWorkingTimeIcon);
+            this.pnlTimeDisplay.Controls.Add(this.lblWorkingTime);
+            this.pnlTimeDisplay.Controls.Add(this.lblLeaveTime);
+            this.pnlTimeDisplay.Controls.Add(this.lblLeaveTimeIcon);
+            resources.ApplyResources(this.pnlTimeDisplay, "pnlTimeDisplay");
+            this.pnlTimeDisplay.Name = "pnlTimeDisplay";
+            // 
+            // imgStates
+            // 
+            this.imgStates.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgStates.ImageStream")));
+            this.imgStates.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgStates.Images.SetKeyName(0, "Confused.png");
+            this.imgStates.Images.SetKeyName(1, "BigSmile.png");
+            this.imgStates.Images.SetKeyName(2, "Ooooh.png");
+            this.imgStates.Images.SetKeyName(3, "Sad.png");
             // 
             // lblIcon
             // 
             resources.ApplyResources(this.lblIcon, "lblIcon");
-            this.lblIcon.ImageList = this.imgIcons;
+            this.lblIcon.ImageList = this.imgStates;
             this.lblIcon.Name = "lblIcon";
             // 
             // MainWindow
@@ -175,15 +218,15 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblIcon);
+            this.Controls.Add(this.pnlTimeDisplay);
             this.Controls.Add(this.dtpArrival);
-            this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.nmcBreaks);
-            this.Controls.Add(this.lblWorkingTime);
             this.Controls.Add(this.lblBreaksMin);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblBreaks);
-            this.Controls.Add(this.btnOptions);
+            this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.lblBegin);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnOptions);
             this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::ClockIn.Properties.Settings.Default, "MainWindowLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Location = global::ClockIn.Properties.Settings.Default.MainWindowLocation;
@@ -198,6 +241,7 @@
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.ctxTrayMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nmcBreaks)).EndInit();
+            this.pnlTimeDisplay.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,6 +265,11 @@
         private System.Windows.Forms.DateTimePicker dtpArrival;
         private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.ImageList imgIcons;
+        private System.Windows.Forms.Label lblWorkingTimeIcon;
+        private System.Windows.Forms.Label lblLeaveTimeIcon;
+        private System.Windows.Forms.Label lblLeaveTime;
+        private System.Windows.Forms.Panel pnlTimeDisplay;
+        private System.Windows.Forms.ImageList imgStates;
         private System.Windows.Forms.Label lblIcon;
 
     }

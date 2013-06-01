@@ -7,6 +7,14 @@ namespace ClockIn
 {
     class TimeManager
     {
+        public enum WorkingLevel
+        {
+            RegularTime,
+            OverTime,
+            ApproachingMaxTime,
+            MaxTimeViolation
+        }
+
         public TimeManager()
         {
             userSettings = Properties.Settings.Default;
@@ -41,7 +49,12 @@ namespace ClockIn
             checkExpiration();
         }
 
-        public TimeSpan getCurrentWorkingTime()
+        public void updateLeaveTime()
+        {
+            onLeaveTimeUpdated(new EventArgs());
+        }
+
+        public TimeSpan getCurrentElapsedWorkingTime(out WorkingLevel level)
         {
             DateTime cur = DateTime.Now;
 
@@ -57,7 +70,53 @@ namespace ClockIn
                 workingTime -= chargeableBreak;
             }
 
+            if (workingTime >= new TimeSpan((int)userSettings.MaximumWorkingTime, 0, 0))
+            {
+                level = WorkingLevel.MaxTimeViolation;
+            }
+            else if (workingTime >= new TimeSpan((int)userSettings.MaximumWorkingTime, -(int)userSettings.NotifyAdvance, 0))
+            {
+                level = WorkingLevel.ApproachingMaxTime;
+            }
+            else if (workingTime >= new TimeSpan((int)userSettings.RegularWorkingTime, 0, 0))
+            {
+                level = WorkingLevel.OverTime;
+            }
+            else
+            {
+                level = WorkingLevel.RegularTime;
+            }
+
             return workingTime;
+        }
+
+        public TimeSpan getCurrentRemainingWorkingTime()
+        {
+            bool overTime;
+            DateTime leaveTime = getCurrentLeaveTime(out overTime);
+            DateTime cur = DateTime.Now;
+
+            if (leaveTime > cur)
+            {
+                return leaveTime - cur;
+            }
+            else
+            {
+                return TimeSpan.Zero;
+            }
+        }
+
+        public DateTime getCurrentLeaveTime(out bool overTime)
+        {
+            overTime = false;
+            DateTime leaveTime = calculateLeaveTime((int)userSettings.RegularWorkingTime);
+            if (leaveTime < DateTime.Now)
+            {
+                leaveTime = calculateLeaveTime((int)userSettings.MaximumWorkingTime);
+                overTime = true;
+            }
+
+            return leaveTime;
         }
 
         private void handleStart()
@@ -112,37 +171,49 @@ namespace ClockIn
 
             if (session.NotifyLevel < 1)
             {
-                notifyTimer.Interval = (int)(calculateWorkingTime((int)userSettings.RegularWorkingTime).Ticks / TimeSpan.TicksPerMillisecond);
-                notifyTimer.Start();
+                int interval = (int)(calculateWorkingTime((int)userSettings.RegularWorkingTime).Ticks / TimeSpan.TicksPerMillisecond);
+                if (interval > 0)
+                {
+                    notifyTimer.Interval = interval;
+                    notifyTimer.Start();
+                }
             }
             else if (session.NotifyLevel < 2)
             {
                 TimeSpan workingTime = calculateWorkingTime((int)userSettings.MaximumWorkingTime) - new TimeSpan(0, (int)userSettings.NotifyAdvance, 0);
-                notifyTimer.Interval = (int)(workingTime.Ticks / TimeSpan.TicksPerMillisecond);
-                notifyTimer.Start();
+                int interval = (int)(workingTime.Ticks / TimeSpan.TicksPerMillisecond);
+                if (interval > 0)
+                {
+                    notifyTimer.Interval = interval;
+                    notifyTimer.Start();
+                }
             }
         }
 
         public void restartMaxTimeTimer(int minutes)
         {
-            session.NotifyLevel = 1;
-            notifyTimer.Interval = minutes * 60 * 1000;
-            notifyTimer.Start();
+            if (minutes > 0)
+            {
+                session.NotifyLevel = 1;
+                notifyTimer.Interval = minutes * 60 * 1000;
+                notifyTimer.Start();
+            }
         }
 
         private void checkExpiration()
         {
-            TimeSpan workingTime = getCurrentWorkingTime();
+            WorkingLevel level;
+            TimeSpan workingTime = getCurrentElapsedWorkingTime(out level);
 
-            if (workingTime >= new TimeSpan((int)userSettings.MaximumWorkingTime, 0, 0))
+            if (level == WorkingLevel.MaxTimeViolation)
             {
                 notifyMaximumTimeLimit(false);
             }
-            else if (workingTime >= new TimeSpan((int)userSettings.MaximumWorkingTime, -(int)userSettings.NotifyAdvance, 0))
+            else if (level == WorkingLevel.ApproachingMaxTime)
             {
                 notifyMaximumTimeLimit(true);
             }
-            else if (workingTime >= new TimeSpan((int)userSettings.RegularWorkingTime, 0, 0))
+            else if (level == WorkingLevel.OverTime)
             {
                 notifyRegularTimeLimit();
             }
@@ -190,36 +261,41 @@ namespace ClockIn
                 if (beginTime.TimeOfDay < userSettings.BreaksBegin.TimeOfDay)
                 {
                     TimeSpan sinceBreaksBegin = endTime.TimeOfDay - userSettings.BreaksBegin.TimeOfDay;
-                    Console.Out.WriteLine("calculateChargeableBreak: bS=" + breakSpan.ToString() + ", sBB=" + sinceBreaksBegin.ToString());
+                    //Console.Out.WriteLine("calculateChargeableBreak: bS=" + breakSpan.ToString() + ", sBB=" + sinceBreaksBegin.ToString());
                     return (sinceBreaksBegin > breakSpan) ? breakSpan : sinceBreaksBegin;
                 }
                 else
                 {
                     TimeSpan tillBreaksEnd = userSettings.BreaksEnd.TimeOfDay - beginTime.TimeOfDay;
-                    Console.Out.WriteLine("calculateChargeableBreak: bS=" + breakSpan.ToString() + ", tBE=" + tillBreaksEnd.ToString());
+                    //Console.Out.WriteLine("calculateChargeableBreak: bS=" + breakSpan.ToString() + ", tBE=" + tillBreaksEnd.ToString());
                     return (tillBreaksEnd > breakSpan) ? breakSpan : tillBreaksEnd;
                 }
             }
         }
 
-        private TimeSpan calculateWorkingTime(int clearWorkingTimeHours)
+        private DateTime calculateLeaveTime(int clearWorkingTimeHours)
         {
             TimeSpan clearWorkingTime = new TimeSpan(clearWorkingTimeHours, 0, 0);
-            DateTime endTime = session.Arrival + clearWorkingTime;
+            DateTime leaveTime = session.Arrival + clearWorkingTime;
             TimeSpan sessionBreak = new TimeSpan(0, (int)session.Break, 0);
 
-            if ((session.Arrival.TimeOfDay < userSettings.BreaksBegin.TimeOfDay) && (endTime.TimeOfDay > userSettings.BreaksBegin.TimeOfDay))
+            if ((session.Arrival.TimeOfDay < userSettings.BreaksBegin.TimeOfDay) && (leaveTime.TimeOfDay > userSettings.BreaksBegin.TimeOfDay))
             {
-                endTime += sessionBreak;
+                leaveTime += sessionBreak;
             }
             else if ((session.Arrival.TimeOfDay >= userSettings.BreaksBegin.TimeOfDay) && (session.Arrival.TimeOfDay < userSettings.BreaksEnd.TimeOfDay))
             {
                 TimeSpan remainingBreak = userSettings.BreaksEnd.TimeOfDay - session.Arrival.TimeOfDay;
-                endTime += (remainingBreak < sessionBreak) ? remainingBreak  : sessionBreak;
+                leaveTime += (remainingBreak < sessionBreak) ? remainingBreak : sessionBreak;
             }
-            Console.Out.WriteLine("calculateWorkingTime: end=" + endTime.ToString() + "(cWTH=" + clearWorkingTimeHours + ")");
+            //Console.Out.WriteLine("calculateLeaveTime: end=" + leaveTime.ToString() + "(cWTH=" + clearWorkingTimeHours + ")");
 
-            return endTime - DateTime.Now;
+            return leaveTime;
+        }
+
+        private TimeSpan calculateWorkingTime(int clearWorkingTimeHours)
+        {
+            return calculateLeaveTime(clearWorkingTimeHours) - DateTime.Now;
         }
 
         private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
@@ -252,7 +328,16 @@ namespace ClockIn
             }
         }
 
+        private void onLeaveTimeUpdated(EventArgs e)
+        {
+            if (LeaveTimeUpdated != null)
+            {
+                LeaveTimeUpdated(this, e);
+            }
+        }
+
         public event EventHandler WorkingTimeUpdated;
+        public event EventHandler LeaveTimeUpdated;
 
         private DateTime startTime;
         private Timer notifyTimer = null;

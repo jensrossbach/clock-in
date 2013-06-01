@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Threading;
+using System.Diagnostics;
 
 
 namespace ClockIn
@@ -18,6 +19,15 @@ namespace ClockIn
 
             if (firstInstance)
             {
+                if (!Properties.Settings.Default.Upgraded)
+                {
+                    Properties.Settings.Default.Upgrade();
+                    Properties.Settings.Default.Upgraded = true;
+                    Properties.Settings.Default.Save();
+
+                    Trace.WriteLine("INFO: Settings upgraded from previous version");
+                } 
+                
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 

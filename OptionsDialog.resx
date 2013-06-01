@@ -274,7 +274,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>272, 397</value>
+    <value>272, 417</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -357,6 +357,33 @@
   <data name="&gt;&gt;lblBreakMin.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="cbxAutoLaunch.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxAutoLaunch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 122</value>
+  </data>
+  <data name="cbxAutoLaunch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 17</value>
+  </data>
+  <data name="cbxAutoLaunch.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="cbxAutoLaunch.Text" xml:space="preserve">
+    <value>&amp;Launch application on Windows startup</value>
+  </data>
+  <data name="&gt;&gt;cbxAutoLaunch.Name" xml:space="preserve">
+    <value>cbxAutoLaunch</value>
+  </data>
+  <data name="&gt;&gt;cbxAutoLaunch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxAutoLaunch.Parent" xml:space="preserve">
+    <value>grpStartup</value>
+  </data>
+  <data name="&gt;&gt;cbxAutoLaunch.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="cbxLowPowerIsStart.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -385,7 +412,7 @@
     <value>grpStartup</value>
   </data>
   <data name="&gt;&gt;cbxLowPowerIsStart.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="rbtQueryStartBehavior.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -415,7 +442,7 @@
     <value>grpStartup</value>
   </data>
   <data name="&gt;&gt;rbtQueryStartBehavior.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="rbtContinueSession.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -445,7 +472,7 @@
     <value>grpStartup</value>
   </data>
   <data name="&gt;&gt;rbtContinueSession.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="rbtNewSession.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -475,13 +502,13 @@
     <value>grpStartup</value>
   </data>
   <data name="&gt;&gt;rbtNewSession.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="grpStartup.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 246</value>
   </data>
   <data name="grpStartup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 127</value>
+    <value>332, 154</value>
   </data>
   <data name="grpStartup.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -964,7 +991,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>359, 432</value>
+    <value>359, 452</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Options</value>
