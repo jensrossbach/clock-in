@@ -11,7 +11,9 @@ namespace ClockIn
         public NotificationDialog()
         {
             InitializeComponent();
+
             Location = new Point((Screen.PrimaryScreen.Bounds.Width - Size.Width) / 2, (Screen.PrimaryScreen.Bounds.Height - Size.Height) / 2);
+            TopMost = Properties.Settings.Default.NotificationAlwaysOnTop;
         }
 
         public void initialize(int iconIndex, string text, bool approaching)
@@ -45,7 +47,10 @@ namespace ClockIn
                 SoundPlayer player = new SoundPlayer(Properties.Settings.Default.SoundFile);
                 player.Play();
             }
+        }
 
+        private void NotificationDialog_Shown(object sender, EventArgs e)
+        {
             BringToFront();
         }
 

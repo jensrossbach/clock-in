@@ -226,6 +226,12 @@
   <data name="lblSoundFile.Text" xml:space="preserve">
     <value>(nichts gewählt)</value>
   </data>
+  <data name="cbxNotifyAlwayOnTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 17</value>
+  </data>
+  <data name="cbxNotifyAlwayOnTop.Text" xml:space="preserve">
+    <value>Benachrichtigungsfenster immer &amp;vorne</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Optionen</value>
   </data>

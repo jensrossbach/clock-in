@@ -94,19 +94,19 @@
             // 
             // icnTrayIcon
             // 
-            this.icnTrayIcon.ContextMenuStrip = this.ctxTrayMenu;
             resources.ApplyResources(this.icnTrayIcon, "icnTrayIcon");
+            this.icnTrayIcon.ContextMenuStrip = this.ctxTrayMenu;
             this.icnTrayIcon.DoubleClick += new System.EventHandler(this.icnTray_DoubleClick);
             // 
             // ctxTrayMenu
             // 
+            resources.ApplyResources(this.ctxTrayMenu, "ctxTrayMenu");
             this.ctxTrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itmRestore,
             this.itmOptions,
             this.toolStripSeparator1,
             this.itmExit});
             this.ctxTrayMenu.Name = "ctxTrayMenu";
-            resources.ApplyResources(this.ctxTrayMenu, "ctxTrayMenu");
             // 
             // itmRestore
             // 
@@ -116,25 +116,25 @@
             // 
             // itmOptions
             // 
-            this.itmOptions.Name = "itmOptions";
             resources.ApplyResources(this.itmOptions, "itmOptions");
+            this.itmOptions.Name = "itmOptions";
             this.itmOptions.Click += new System.EventHandler(this.itmOptions_Click);
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
             // 
             // itmExit
             // 
-            this.itmExit.Name = "itmExit";
             resources.ApplyResources(this.itmExit, "itmExit");
+            this.itmExit.Name = "itmExit";
             this.itmExit.Click += new System.EventHandler(this.itmExit_Click);
             // 
             // nmcBreaks
             // 
-            this.nmcBreaks.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Session.Default, "Break", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.nmcBreaks, "nmcBreaks");
+            this.nmcBreaks.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Session.Default, "Break", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcBreaks.Maximum = new decimal(new int[] {
             180,
             0,
@@ -165,9 +165,9 @@
             // 
             this.imgIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgIcons.ImageStream")));
             this.imgIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgIcons.Images.SetKeyName(0, "Stopwatch");
-            this.imgIcons.Images.SetKeyName(1, "Timer");
-            this.imgIcons.Images.SetKeyName(2, "Power");
+            this.imgIcons.Images.SetKeyName(0, "Stopwatch.png");
+            this.imgIcons.Images.SetKeyName(1, "Timer.png");
+            this.imgIcons.Images.SetKeyName(2, "Power.png");
             // 
             // lblWorkingTimeIcon
             // 
@@ -188,13 +188,13 @@
             // 
             // pnlTimeDisplay
             // 
+            resources.ApplyResources(this.pnlTimeDisplay, "pnlTimeDisplay");
             this.pnlTimeDisplay.BackColor = System.Drawing.SystemColors.Window;
             this.pnlTimeDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlTimeDisplay.Controls.Add(this.lblWorkingTimeIcon);
             this.pnlTimeDisplay.Controls.Add(this.lblWorkingTime);
             this.pnlTimeDisplay.Controls.Add(this.lblLeaveTime);
             this.pnlTimeDisplay.Controls.Add(this.lblLeaveTimeIcon);
-            resources.ApplyResources(this.pnlTimeDisplay, "pnlTimeDisplay");
             this.pnlTimeDisplay.Name = "pnlTimeDisplay";
             // 
             // imgStates

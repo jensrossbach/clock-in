@@ -119,6 +119,7 @@
             this.ShowInTaskbar = false;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NotificationDialog_FormClosed);
             this.Load += new System.EventHandler(this.NotificationDialog_Load);
+            this.Shown += new System.EventHandler(this.NotificationDialog_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.nmcNotifyAgain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
