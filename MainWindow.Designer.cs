@@ -52,6 +52,7 @@
             this.pnlTimeDisplay = new System.Windows.Forms.Panel();
             this.imgStates = new System.Windows.Forms.ImageList(this.components);
             this.lblIcon = new System.Windows.Forms.Label();
+            this.cbxDisplayMaxTime = new System.Windows.Forms.CheckBox();
             this.ctxTrayMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcBreaks)).BeginInit();
             this.pnlTimeDisplay.SuspendLayout();
@@ -61,6 +62,7 @@
             // 
             resources.ApplyResources(this.lblBegin, "lblBegin");
             this.lblBegin.Name = "lblBegin";
+            this.lblBegin.DoubleClick += new System.EventHandler(this.lblBegin_DoubleClick);
             // 
             // lblBreaks
             // 
@@ -94,19 +96,19 @@
             // 
             // icnTrayIcon
             // 
-            resources.ApplyResources(this.icnTrayIcon, "icnTrayIcon");
             this.icnTrayIcon.ContextMenuStrip = this.ctxTrayMenu;
+            resources.ApplyResources(this.icnTrayIcon, "icnTrayIcon");
             this.icnTrayIcon.DoubleClick += new System.EventHandler(this.icnTray_DoubleClick);
             // 
             // ctxTrayMenu
             // 
-            resources.ApplyResources(this.ctxTrayMenu, "ctxTrayMenu");
             this.ctxTrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itmRestore,
             this.itmOptions,
             this.toolStripSeparator1,
             this.itmExit});
             this.ctxTrayMenu.Name = "ctxTrayMenu";
+            resources.ApplyResources(this.ctxTrayMenu, "ctxTrayMenu");
             // 
             // itmRestore
             // 
@@ -116,25 +118,25 @@
             // 
             // itmOptions
             // 
-            resources.ApplyResources(this.itmOptions, "itmOptions");
             this.itmOptions.Name = "itmOptions";
+            resources.ApplyResources(this.itmOptions, "itmOptions");
             this.itmOptions.Click += new System.EventHandler(this.itmOptions_Click);
             // 
             // toolStripSeparator1
             // 
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // itmExit
             // 
-            resources.ApplyResources(this.itmExit, "itmExit");
             this.itmExit.Name = "itmExit";
+            resources.ApplyResources(this.itmExit, "itmExit");
             this.itmExit.Click += new System.EventHandler(this.itmExit_Click);
             // 
             // nmcBreaks
             // 
-            resources.ApplyResources(this.nmcBreaks, "nmcBreaks");
             this.nmcBreaks.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Session.Default, "Break", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.nmcBreaks, "nmcBreaks");
             this.nmcBreaks.Maximum = new decimal(new int[] {
             180,
             0,
@@ -174,27 +176,30 @@
             resources.ApplyResources(this.lblWorkingTimeIcon, "lblWorkingTimeIcon");
             this.lblWorkingTimeIcon.ImageList = this.imgIcons;
             this.lblWorkingTimeIcon.Name = "lblWorkingTimeIcon";
+            this.lblWorkingTimeIcon.Click += new System.EventHandler(this.lblWorkingTimeIcon_Click);
             // 
             // lblLeaveTimeIcon
             // 
             resources.ApplyResources(this.lblLeaveTimeIcon, "lblLeaveTimeIcon");
             this.lblLeaveTimeIcon.ImageList = this.imgIcons;
             this.lblLeaveTimeIcon.Name = "lblLeaveTimeIcon";
+            this.lblLeaveTimeIcon.Click += new System.EventHandler(this.lblLeaveTimeIcon_Click);
             // 
             // lblLeaveTime
             // 
             resources.ApplyResources(this.lblLeaveTime, "lblLeaveTime");
             this.lblLeaveTime.Name = "lblLeaveTime";
+            this.lblLeaveTime.Click += new System.EventHandler(this.lblLeaveTime_Click);
             // 
             // pnlTimeDisplay
             // 
-            resources.ApplyResources(this.pnlTimeDisplay, "pnlTimeDisplay");
             this.pnlTimeDisplay.BackColor = System.Drawing.SystemColors.Window;
             this.pnlTimeDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlTimeDisplay.Controls.Add(this.lblWorkingTimeIcon);
             this.pnlTimeDisplay.Controls.Add(this.lblWorkingTime);
             this.pnlTimeDisplay.Controls.Add(this.lblLeaveTime);
             this.pnlTimeDisplay.Controls.Add(this.lblLeaveTimeIcon);
+            resources.ApplyResources(this.pnlTimeDisplay, "pnlTimeDisplay");
             this.pnlTimeDisplay.Name = "pnlTimeDisplay";
             // 
             // imgStates
@@ -212,11 +217,20 @@
             this.lblIcon.ImageList = this.imgStates;
             this.lblIcon.Name = "lblIcon";
             // 
+            // cbxDisplayMaxTime
+            // 
+            resources.ApplyResources(this.cbxDisplayMaxTime, "cbxDisplayMaxTime");
+            this.cbxDisplayMaxTime.Checked = global::ClockIn.Properties.Settings.Default.DisplayMaximumTime;
+            this.cbxDisplayMaxTime.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::ClockIn.Properties.Settings.Default, "DisplayMaximumTime", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.cbxDisplayMaxTime.Name = "cbxDisplayMaxTime";
+            this.cbxDisplayMaxTime.UseVisualStyleBackColor = true;
+            // 
             // MainWindow
             // 
             this.AcceptButton = this.btnClose;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbxDisplayMaxTime);
             this.Controls.Add(this.lblIcon);
             this.Controls.Add(this.pnlTimeDisplay);
             this.Controls.Add(this.dtpArrival);
@@ -271,6 +285,7 @@
         private System.Windows.Forms.Panel pnlTimeDisplay;
         private System.Windows.Forms.ImageList imgStates;
         private System.Windows.Forms.Label lblIcon;
+        private System.Windows.Forms.CheckBox cbxDisplayMaxTime;
 
     }
 }

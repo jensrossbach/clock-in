@@ -100,9 +100,28 @@ namespace ClockIn
             return ((60 - now.Second) * 1000 - now.Millisecond);
         }
 
+        private void switchWorkingTimeDisplay()
+        {
+            WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), Properties.Settings.Default.WorkingTimeDisplay);
+
+            if (wtd == WorkingTimeDisplay.ElapsedTime)
+            {
+                wtd = WorkingTimeDisplay.RemainingTime;
+            }
+            else
+            {
+                wtd = WorkingTimeDisplay.ElapsedTime;
+            }
+
+            Properties.Settings.Default.WorkingTimeDisplay = System.Enum.Format(typeof(WorkingTimeDisplay), wtd, "G");
+            updateWorkingTime();
+            updateLeaveTime();
+        }
+
         private void MainWindow_Load(object sender, EventArgs e)
         {
             Hide();
+            Properties.Settings.Default.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(Settings_PropertyChanged);
         }
 
         private void MainWindow_Resize(object sender, EventArgs e)
@@ -158,21 +177,40 @@ namespace ClockIn
             updateLeaveTime();
         }
 
+        private void lblWorkingTimeIcon_Click(object sender, EventArgs e)
+        {
+            switchWorkingTimeDisplay();
+        }
+
         private void lblWorkingTime_Click(object sender, EventArgs e)
         {
-            WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), Properties.Settings.Default.WorkingTimeDisplay);
+            switchWorkingTimeDisplay();
+        }
 
-            if (wtd == WorkingTimeDisplay.ElapsedTime)
-            {
-                wtd = WorkingTimeDisplay.RemainingTime;
-            }
-            else
-            {
-                wtd = WorkingTimeDisplay.ElapsedTime;
-            }
-
-            Properties.Settings.Default.WorkingTimeDisplay = System.Enum.Format(typeof(WorkingTimeDisplay), wtd, "G");
+        private void lblLeaveTimeIcon_Click(object sender, EventArgs e)
+        {
             updateWorkingTime();
+            updateLeaveTime();
+        }
+
+        private void lblLeaveTime_Click(object sender, EventArgs e)
+        {
+            updateWorkingTime();
+            updateLeaveTime();
+        }
+
+        private void lblBegin_DoubleClick(object sender, EventArgs e)
+        {
+            Program.TimeMgr.restartSession();
+
+            updateWorkingTime();
+            updateLeaveTime();
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            string text = string.Format(Properties.Resources.AboutText, Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            MessageBox.Show(text, Properties.Resources.AboutCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnOptions_Click(object sender, EventArgs e)
@@ -197,12 +235,6 @@ namespace ClockIn
             Show();
             WindowState = FormWindowState.Normal;
             BringToFront();
-        }
-
-        private void btnAbout_Click(object sender, EventArgs e)
-        {
-            string text = string.Format(Properties.Resources.AboutText, Assembly.GetExecutingAssembly().GetName().Version.ToString());
-            MessageBox.Show(text, Properties.Resources.AboutCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void itmOptions_Click(object sender, EventArgs e)
@@ -233,6 +265,15 @@ namespace ClockIn
         {
             if (Visible)
             {
+                updateLeaveTime();
+            }
+        }
+
+        void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "DisplayMaximumTime")
+            {
+                updateWorkingTime();
                 updateLeaveTime();
             }
         }

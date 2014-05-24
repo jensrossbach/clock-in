@@ -137,7 +137,7 @@
     <value>Minuten vorher</value>
   </data>
   <data name="btnClose.Text" xml:space="preserve">
-    <value>&amp;Schließen</value>
+    <value>Schl&amp;ießen</value>
   </data>
   <data name="lblBreak.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -225,12 +225,6 @@
   </data>
   <data name="lblSoundFile.Text" xml:space="preserve">
     <value>(nichts gewählt)</value>
-  </data>
-  <data name="cbxNotifyAlwayOnTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 17</value>
-  </data>
-  <data name="cbxNotifyAlwayOnTop.Text" xml:space="preserve">
-    <value>Benachrichtigungsfenster immer &amp;vorne</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Optionen</value>

@@ -108,15 +108,24 @@ namespace ClockIn
 
         public DateTime getCurrentLeaveTime(out bool overTime)
         {
-            overTime = false;
             DateTime leaveTime = calculateLeaveTime((int)userSettings.RegularWorkingTime);
-            if (leaveTime < DateTime.Now)
+            overTime = (leaveTime < DateTime.Now);
+
+            if (overTime || Properties.Settings.Default.DisplayMaximumTime)
             {
                 leaveTime = calculateLeaveTime((int)userSettings.MaximumWorkingTime);
-                overTime = true;
             }
 
             return leaveTime;
+        }
+
+        public void restartSession()
+        {
+            session.Arrival = startTime;
+            session.Break = userSettings.Break;
+            session.NotifyLevel = 0;
+
+            setupTimers();
         }
 
         private void handleStart()
@@ -154,15 +163,6 @@ namespace ClockIn
             }
 
             session.Save();
-        }
-
-        private void restartSession()
-        {
-            session.Arrival = startTime;
-            session.Break = userSettings.Break;
-            session.NotifyLevel = 0;
-
-            setupTimers();
         }
 
         private void setupTimers()
