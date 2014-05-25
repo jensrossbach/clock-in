@@ -229,7 +229,7 @@ namespace ClockIn
                 session.NotifyLevel = 1;
 
                 NotificationDialog dlg = new NotificationDialog();
-                dlg.initialize(1, Properties.Resources.RegularTimeLimitReached, false);
+                dlg.initialize(Properties.Resources.BigSmile, Properties.Resources.RegularTimeLimitReached, false);
                 dlg.Show();
             }
         }
@@ -241,7 +241,7 @@ namespace ClockIn
                 session.NotifyLevel = 2;
 
                 NotificationDialog dlg = new NotificationDialog();
-                dlg.initialize(approaching ? 2 : 3, Properties.Resources.MaxmimumTimeLimitReached, approaching);
+                dlg.initialize(approaching ? Properties.Resources.Ooooh : Properties.Resources.Sad, Properties.Resources.MaxmimumTimeLimitReached, approaching);
                 dlg.Show();
             }
         }

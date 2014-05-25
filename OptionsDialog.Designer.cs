@@ -116,12 +116,12 @@
             // 
             // grpStartup
             // 
-            resources.ApplyResources(this.grpStartup, "grpStartup");
             this.grpStartup.Controls.Add(this.cbxAutoLaunch);
             this.grpStartup.Controls.Add(this.cbxLowPowerIsStart);
             this.grpStartup.Controls.Add(this.rbtQueryStartBehavior);
             this.grpStartup.Controls.Add(this.rbtContinueSession);
             this.grpStartup.Controls.Add(this.rbtNewSession);
+            resources.ApplyResources(this.grpStartup, "grpStartup");
             this.grpStartup.Name = "grpStartup";
             this.grpStartup.TabStop = false;
             // 
@@ -178,11 +178,11 @@
             // 
             // grpBreaksPeriod
             // 
-            resources.ApplyResources(this.grpBreaksPeriod, "grpBreaksPeriod");
             this.grpBreaksPeriod.Controls.Add(this.dtpBreaksEnd);
             this.grpBreaksPeriod.Controls.Add(this.lblBreaksEnd);
             this.grpBreaksPeriod.Controls.Add(this.lblBreaksBegin);
             this.grpBreaksPeriod.Controls.Add(this.dtpBreaksBegin);
+            resources.ApplyResources(this.grpBreaksPeriod, "grpBreaksPeriod");
             this.grpBreaksPeriod.Name = "grpBreaksPeriod";
             this.grpBreaksPeriod.TabStop = false;
             // 
@@ -220,9 +220,9 @@
             // 
             // btnSelectSound
             // 
-            resources.ApplyResources(this.btnSelectSound, "btnSelectSound");
             this.btnSelectSound.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", global::ClockIn.Properties.Settings.Default, "PlaySound", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.btnSelectSound.Enabled = global::ClockIn.Properties.Settings.Default.PlaySound;
+            resources.ApplyResources(this.btnSelectSound, "btnSelectSound");
             this.btnSelectSound.Name = "btnSelectSound";
             this.btnSelectSound.UseVisualStyleBackColor = true;
             this.btnSelectSound.Click += new System.EventHandler(this.btnSelectSound_Click);
@@ -238,8 +238,8 @@
             // 
             // nmcNotifyAdvance
             // 
-            resources.ApplyResources(this.nmcNotifyAdvance, "nmcNotifyAdvance");
             this.nmcNotifyAdvance.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "NotifyAdvance", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.nmcNotifyAdvance, "nmcNotifyAdvance");
             this.nmcNotifyAdvance.Maximum = new decimal(new int[] {
             60,
             0,
@@ -268,8 +268,8 @@
             // 
             // nmcBreak
             // 
-            resources.ApplyResources(this.nmcBreak, "nmcBreak");
             this.nmcBreak.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "Break", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.nmcBreak, "nmcBreak");
             this.nmcBreak.Maximum = new decimal(new int[] {
             180,
             0,
@@ -281,7 +281,6 @@
             // 
             // nmcMaxTime
             // 
-            resources.ApplyResources(this.nmcMaxTime, "nmcMaxTime");
             this.nmcMaxTime.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "MaximumWorkingTime", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcMaxTime.DecimalPlaces = 1;
             this.nmcMaxTime.Increment = new decimal(new int[] {
@@ -289,6 +288,7 @@
             0,
             0,
             65536});
+            resources.ApplyResources(this.nmcMaxTime, "nmcMaxTime");
             this.nmcMaxTime.Maximum = new decimal(new int[] {
             24,
             0,
@@ -306,7 +306,6 @@
             // 
             // nmcRegularTime
             // 
-            resources.ApplyResources(this.nmcRegularTime, "nmcRegularTime");
             this.nmcRegularTime.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "RegularWorkingTime", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcRegularTime.DecimalPlaces = 1;
             this.nmcRegularTime.Increment = new decimal(new int[] {
@@ -314,6 +313,7 @@
             0,
             0,
             65536});
+            resources.ApplyResources(this.nmcRegularTime, "nmcRegularTime");
             this.nmcRegularTime.Maximum = new decimal(new int[] {
             24,
             0,
@@ -331,8 +331,8 @@
             // 
             // nmcBreaksDuration
             // 
-            resources.ApplyResources(this.nmcBreaksDuration, "nmcBreaksDuration");
             this.nmcBreaksDuration.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "BreaksDuration", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.nmcBreaksDuration, "nmcBreaksDuration");
             this.nmcBreaksDuration.Maximum = new decimal(new int[] {
             180,
             0,

@@ -4,6 +4,12 @@ Copyright (C) 2012-2014 Jens Rossbach, All Rights Reserved
 Version History
 ===============
 
+v0.4.5258.26173 (2014-05-25)
+----------------------------
+
+Fixed:   Improved icon image resource storage
+
+
 v0.4.5257.38620 (2014-05-24)
 ----------------------------
 

@@ -16,9 +16,9 @@ namespace ClockIn
             TopMost = Properties.Settings.Default.NotificationAlwaysOnTop;
         }
 
-        public void initialize(int iconIndex, string text, bool approaching)
+        public void initialize(Image img, string text, bool approaching)
         {
-            lblIcon.ImageIndex = iconIndex;
+            lblIcon.Image = img;
             lblText.Text = text;
 
             if (approaching)

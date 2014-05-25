@@ -45,12 +45,10 @@
             this.nmcBreaks = new System.Windows.Forms.NumericUpDown();
             this.dtpArrival = new System.Windows.Forms.DateTimePicker();
             this.btnAbout = new System.Windows.Forms.Button();
-            this.imgIcons = new System.Windows.Forms.ImageList(this.components);
             this.lblWorkingTimeIcon = new System.Windows.Forms.Label();
             this.lblLeaveTimeIcon = new System.Windows.Forms.Label();
             this.lblLeaveTime = new System.Windows.Forms.Label();
             this.pnlTimeDisplay = new System.Windows.Forms.Panel();
-            this.imgStates = new System.Windows.Forms.ImageList(this.components);
             this.lblIcon = new System.Windows.Forms.Label();
             this.cbxDisplayMaxTime = new System.Windows.Forms.CheckBox();
             this.ctxTrayMenu.SuspendLayout();
@@ -163,25 +161,15 @@
             this.btnAbout.UseVisualStyleBackColor = true;
             this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
-            // imgIcons
-            // 
-            this.imgIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgIcons.ImageStream")));
-            this.imgIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgIcons.Images.SetKeyName(0, "Stopwatch.png");
-            this.imgIcons.Images.SetKeyName(1, "Timer.png");
-            this.imgIcons.Images.SetKeyName(2, "Power.png");
-            // 
             // lblWorkingTimeIcon
             // 
             resources.ApplyResources(this.lblWorkingTimeIcon, "lblWorkingTimeIcon");
-            this.lblWorkingTimeIcon.ImageList = this.imgIcons;
             this.lblWorkingTimeIcon.Name = "lblWorkingTimeIcon";
             this.lblWorkingTimeIcon.Click += new System.EventHandler(this.lblWorkingTimeIcon_Click);
             // 
             // lblLeaveTimeIcon
             // 
             resources.ApplyResources(this.lblLeaveTimeIcon, "lblLeaveTimeIcon");
-            this.lblLeaveTimeIcon.ImageList = this.imgIcons;
             this.lblLeaveTimeIcon.Name = "lblLeaveTimeIcon";
             this.lblLeaveTimeIcon.Click += new System.EventHandler(this.lblLeaveTimeIcon_Click);
             // 
@@ -202,19 +190,9 @@
             resources.ApplyResources(this.pnlTimeDisplay, "pnlTimeDisplay");
             this.pnlTimeDisplay.Name = "pnlTimeDisplay";
             // 
-            // imgStates
-            // 
-            this.imgStates.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgStates.ImageStream")));
-            this.imgStates.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgStates.Images.SetKeyName(0, "Confused.png");
-            this.imgStates.Images.SetKeyName(1, "BigSmile.png");
-            this.imgStates.Images.SetKeyName(2, "Ooooh.png");
-            this.imgStates.Images.SetKeyName(3, "Sad.png");
-            // 
             // lblIcon
             // 
             resources.ApplyResources(this.lblIcon, "lblIcon");
-            this.lblIcon.ImageList = this.imgStates;
             this.lblIcon.Name = "lblIcon";
             // 
             // cbxDisplayMaxTime
@@ -278,12 +256,10 @@
         private System.Windows.Forms.NumericUpDown nmcBreaks;
         private System.Windows.Forms.DateTimePicker dtpArrival;
         private System.Windows.Forms.Button btnAbout;
-        private System.Windows.Forms.ImageList imgIcons;
         private System.Windows.Forms.Label lblWorkingTimeIcon;
         private System.Windows.Forms.Label lblLeaveTimeIcon;
         private System.Windows.Forms.Label lblLeaveTime;
         private System.Windows.Forms.Panel pnlTimeDisplay;
-        private System.Windows.Forms.ImageList imgStates;
         private System.Windows.Forms.Label lblIcon;
         private System.Windows.Forms.CheckBox cbxDisplayMaxTime;
 

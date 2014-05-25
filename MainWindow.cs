@@ -37,28 +37,28 @@ namespace ClockIn
             if (elapsedTime.TotalMinutes > (int)(Properties.Settings.Default.MaximumWorkingTime * 60))
             {
                 lblWorkingTime.ForeColor = Color.Red;
-                lblIcon.ImageIndex = 3;
+                lblIcon.Image = Properties.Resources.Sad;
             }
             else if (elapsedTime.TotalMinutes > (int)((Properties.Settings.Default.MaximumWorkingTime * 60) - Properties.Settings.Default.NotifyAdvance))
             {
                 lblWorkingTime.ForeColor = Color.Orange;
-                lblIcon.ImageIndex = 2;
+                lblIcon.Image = Properties.Resources.Ooooh;
             }
             else if (elapsedTime.TotalMinutes > (int)(Properties.Settings.Default.RegularWorkingTime * 60))
             {
                 lblWorkingTime.ForeColor = Color.DarkGreen;
-                lblIcon.ImageIndex = 1;
+                lblIcon.Image = Properties.Resources.BigSmile;
             }
             else
             {
                 lblWorkingTime.ForeColor = Color.Black;
-                lblIcon.ImageIndex = 0;
+                lblIcon.Image = Properties.Resources.Confused;
             }
 
             WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), Properties.Settings.Default.WorkingTimeDisplay);
             if (wtd == WorkingTimeDisplay.ElapsedTime)
             {
-                lblWorkingTimeIcon.ImageIndex = 0;
+                lblWorkingTimeIcon.Image = Properties.Resources.Stopwatch;
                 lblWorkingTime.Text = elapsedTime.ToString(@"hh\hmm\m");
             }
             else
@@ -69,7 +69,7 @@ namespace ClockIn
                     remainingTime = new TimeSpan(remainingTime.Hours, remainingTime.Minutes + 1, 0);
                 }
 
-                lblWorkingTimeIcon.ImageIndex = 1;
+                lblWorkingTimeIcon.Image = Properties.Resources.Timer;
                 lblWorkingTime.Text = remainingTime.ToString(@"\-hh\hmm\m");
             }
 
@@ -121,6 +121,8 @@ namespace ClockIn
         private void MainWindow_Load(object sender, EventArgs e)
         {
             Hide();
+
+            lblLeaveTimeIcon.Image = Properties.Resources.Power;
             Properties.Settings.Default.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(Settings_PropertyChanged);
         }
 

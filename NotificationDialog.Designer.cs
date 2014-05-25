@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotificationDialog));
             this.lblIcon = new System.Windows.Forms.Label();
-            this.imgNotificationIcons = new System.Windows.Forms.ImageList(this.components);
             this.lblText = new System.Windows.Forms.Label();
             this.nmcNotifyAgain = new System.Windows.Forms.NumericUpDown();
             this.lblMin = new System.Windows.Forms.Label();
@@ -43,17 +41,7 @@
             // lblIcon
             // 
             resources.ApplyResources(this.lblIcon, "lblIcon");
-            this.lblIcon.ImageList = this.imgNotificationIcons;
             this.lblIcon.Name = "lblIcon";
-            // 
-            // imgNotificationIcons
-            // 
-            this.imgNotificationIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgNotificationIcons.ImageStream")));
-            this.imgNotificationIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgNotificationIcons.Images.SetKeyName(0, "Confused");
-            this.imgNotificationIcons.Images.SetKeyName(1, "BigSmile");
-            this.imgNotificationIcons.Images.SetKeyName(2, "Ooooh");
-            this.imgNotificationIcons.Images.SetKeyName(3, "Sad");
             // 
             // lblText
             // 
@@ -129,7 +117,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblIcon;
-        private System.Windows.Forms.ImageList imgNotificationIcons;
         private System.Windows.Forms.Label lblText;
         private System.Windows.Forms.NumericUpDown nmcNotifyAgain;
         private System.Windows.Forms.Label lblMin;
