@@ -203,7 +203,7 @@ namespace ClockIn
 
         private void lblBegin_DoubleClick(object sender, EventArgs e)
         {
-            Program.TimeMgr.restartSession();
+            Program.TimeMgr.restartSession(true);
 
             updateWorkingTime();
             updateLeaveTime();

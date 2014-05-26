@@ -119,9 +119,9 @@ namespace ClockIn
             return leaveTime;
         }
 
-        public void restartSession()
+        public void restartSession(bool toCurTime)
         {
-            session.Arrival = startTime;
+            session.Arrival = toCurTime ? DateTime.Now : startTime;
             session.Break = userSettings.Break;
             session.NotifyLevel = 0;
 
@@ -134,7 +134,7 @@ namespace ClockIn
             {
                 if (userSettings.NewSessionOnStartup)
                 {
-                    restartSession();
+                    restartSession(false);
                 }
                 else if (userSettings.AskSessionOnStartup)
                 {
@@ -145,7 +145,7 @@ namespace ClockIn
 
                     if (result == DialogResult.No)
                     {
-                        restartSession();
+                        restartSession(false);
                     }
                     else
                     {
@@ -159,7 +159,7 @@ namespace ClockIn
             }
             else
             {
-                restartSession();
+                restartSession(false);
             }
 
             session.Save();

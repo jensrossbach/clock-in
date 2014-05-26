@@ -4,6 +4,12 @@ Copyright (C) 2012-2014 Jens Rossbach, All Rights Reserved
 Version History
 ===============
 
+v0.4.5259.34766 (2014-05-26)
+----------------------------
+
+Fixed:   Manual session reset sets arrival time to application start time
+
+
 v0.4.5258.26173 (2014-05-25)
 ----------------------------
 
