@@ -250,5 +250,17 @@ namespace ClockIn.Properties {
                 this["NotificationAlwaysOnTop"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DisplayMaximumTime {
+            get {
+                return ((bool)(this["DisplayMaximumTime"]));
+            }
+            set {
+                this["DisplayMaximumTime"] = value;
+            }
+        }
     }
 }
