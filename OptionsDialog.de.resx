@@ -226,6 +226,24 @@
   <data name="lblSoundFile.Text" xml:space="preserve">
     <value>(nichts gewählt)</value>
   </data>
+  <data name="cbxNotificationAlwayOnTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 17</value>
+  </data>
+  <data name="cbxNotificationAlwayOnTop.Text" xml:space="preserve">
+    <value>Benachrichtigungsfenster immer &amp;vorne</value>
+  </data>
+  <data name="lblHotkey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 13</value>
+  </data>
+  <data name="lblHotkey.Text" xml:space="preserve">
+    <value>Hot-Key:</value>
+  </data>
+  <data name="txtHotkey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 258</value>
+  </data>
+  <data name="txtHotkey.Text" xml:space="preserve">
+    <value>Kein</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Optionen</value>
   </data>

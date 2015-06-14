@@ -25,6 +25,13 @@ namespace ClockIn
             Program.TimeMgr.LeaveTimeUpdated += new EventHandler(TimeMgr_LeaveTimeUpdated);
 
             InitializeComponent();
+
+            Properties.Settings.Default.PropertyChanged += DefaultSettings_PropertyChanged;
+
+            showMainWinHK = new Hotkey(Properties.Settings.Default.MainWindowHotkey);
+            showMainWinHK.HotkeyPressed += ShowMainWin_HotkeyPressed;
+
+            HotkeyManager.RegisterHotkey(showMainWinHK);
         }
 
         public void updateWorkingTime()
@@ -90,7 +97,7 @@ namespace ClockIn
             {
                 lblLeaveTime.ForeColor = Color.Black;
             }
-
+            
             lblLeaveTime.Text = leaveTime.ToString(@"HH\:mm");
         }
 
@@ -123,7 +130,6 @@ namespace ClockIn
             Hide();
 
             lblLeaveTimeIcon.Image = Properties.Resources.Power;
-            Properties.Settings.Default.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(Settings_PropertyChanged);
         }
 
         private void MainWindow_Resize(object sender, EventArgs e)
@@ -271,16 +277,35 @@ namespace ClockIn
             }
         }
 
-        void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void DefaultSettings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "DisplayMaximumTime")
             {
-                updateWorkingTime();
-                updateLeaveTime();
+                if (Visible)
+                {
+                    updateWorkingTime();
+                    updateLeaveTime();
+                }
+            }
+
+            if (e.PropertyName == "MainWindowHotkey")
+            {
+                showMainWinHK.Key = Properties.Settings.Default.MainWindowHotkey;
+            }
+        }
+
+        private void ShowMainWin_HotkeyPressed(object sender, EventArgs e)
+        {
+            if (!Visible)
+            {
+                Show();
+                WindowState = FormWindowState.Normal;
+                BringToFront();
             }
         }
 
         private bool exit;
-        Timer wtTimer = null;
+        private Timer wtTimer = null;
+        private Hotkey showMainWinHK = null;
     }
 }

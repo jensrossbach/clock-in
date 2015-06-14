@@ -130,6 +130,16 @@ namespace ClockIn
             }
         }
 
+        private void txtHotkey_Enter(object sender, EventArgs e)
+        {
+            HotkeyManager.HotkeysEnabled = false;
+        }
+
+        private void txtHotkey_Leave(object sender, EventArgs e)
+        {
+            HotkeyManager.HotkeysEnabled = true;
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();

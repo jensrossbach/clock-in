@@ -63,6 +63,8 @@
             this.dlgSelectSound = new System.Windows.Forms.OpenFileDialog();
             this.lblSoundFile = new System.Windows.Forms.Label();
             this.cbxNotificationAlwayOnTop = new System.Windows.Forms.CheckBox();
+            this.lblHotkey = new System.Windows.Forms.Label();
+            this.txtHotkey = new ClockIn.HotkeyControl();
             this.grpStartup.SuspendLayout();
             this.grpBreaksPeriod.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcNotifyAdvance)).BeginInit();
@@ -359,11 +361,27 @@
             this.cbxNotificationAlwayOnTop.Name = "cbxNotificationAlwayOnTop";
             this.cbxNotificationAlwayOnTop.UseVisualStyleBackColor = true;
             // 
+            // lblHotkey
+            // 
+            resources.ApplyResources(this.lblHotkey, "lblHotkey");
+            this.lblHotkey.Name = "lblHotkey";
+            // 
+            // txtHotkey
+            // 
+            this.txtHotkey.DataBindings.Add(new System.Windows.Forms.Binding("Hotkey", global::ClockIn.Properties.Settings.Default, "MainWindowHotkey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtHotkey.Hotkey = global::ClockIn.Properties.Settings.Default.MainWindowHotkey;
+            resources.ApplyResources(this.txtHotkey, "txtHotkey");
+            this.txtHotkey.Name = "txtHotkey";
+            this.txtHotkey.Enter += new System.EventHandler(this.txtHotkey_Enter);
+            this.txtHotkey.Leave += new System.EventHandler(this.txtHotkey_Leave);
+            // 
             // OptionsDialog
             // 
             this.AcceptButton = this.btnClose;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtHotkey);
+            this.Controls.Add(this.lblHotkey);
             this.Controls.Add(this.cbxNotificationAlwayOnTop);
             this.Controls.Add(this.lblSoundFile);
             this.Controls.Add(this.grpBreaksPeriod);
@@ -444,5 +462,7 @@
         private System.Windows.Forms.Label lblSoundFile;
         private System.Windows.Forms.CheckBox cbxAutoLaunch;
         private System.Windows.Forms.CheckBox cbxNotificationAlwayOnTop;
+        private System.Windows.Forms.Label lblHotkey;
+        private HotkeyControl txtHotkey;
     }
 }

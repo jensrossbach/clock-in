@@ -32,7 +32,10 @@ namespace ClockIn
                 Application.SetCompatibleTextRenderingDefault(false);
 
                 timeMgr = new TimeManager();
+
+                HotkeyManager.Init();
                 Application.Run(new MainWindow());
+                HotkeyManager.Deinit();
             }
         }
 

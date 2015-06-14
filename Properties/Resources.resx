@@ -137,7 +137,7 @@
 Version {0}
 Working time notification tool
 
-Copyright  © 2012-2014 by Jens Rossbach
+Copyright  © 2012-2015 by Jens Rossbach
 
 Application icon by: FastIcon.com
 http://www.fasticon.com
@@ -175,5 +175,83 @@ http://icons.wbchug.net</value>
   </data>
   <data name="Timer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Icons\Timer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="KeyAlt" xml:space="preserve">
+    <value>Alt</value>
+  </data>
+  <data name="KeyControl" xml:space="preserve">
+    <value>Ctrl</value>
+  </data>
+  <data name="KeyDelete" xml:space="preserve">
+    <value>Del</value>
+  </data>
+  <data name="KeyEnd" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="KeyEnter" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="KeyHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="KeyInsert" xml:space="preserve">
+    <value>Ins</value>
+  </data>
+  <data name="KeyInvalid" xml:space="preserve">
+    <value>Invalid key combination</value>
+  </data>
+  <data name="KeyNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="KeyNumpad" xml:space="preserve">
+    <value>Numpad</value>
+  </data>
+  <data name="KeyPageDown" xml:space="preserve">
+    <value>PgDn</value>
+  </data>
+  <data name="KeyPageUp" xml:space="preserve">
+    <value>PgUp</value>
+  </data>
+  <data name="KeyReturn" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="KeyShift" xml:space="preserve">
+    <value>Shift</value>
+  </data>
+  <data name="KeyCapsLock" xml:space="preserve">
+    <value>Caps lock</value>
+  </data>
+  <data name="KeyDown" xml:space="preserve">
+    <value>Down</value>
+  </data>
+  <data name="KeyEscape" xml:space="preserve">
+    <value>Esc</value>
+  </data>
+  <data name="KeyLeft" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="KeyNumLock" xml:space="preserve">
+    <value>Num lock</value>
+  </data>
+  <data name="KeyPause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="KeyPrint" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="KeyRight" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="KeyScrollLock" xml:space="preserve">
+    <value>Scroll lock</value>
+  </data>
+  <data name="KeyTabulator" xml:space="preserve">
+    <value>Tab</value>
+  </data>
+  <data name="KeyUp" xml:space="preserve">
+    <value>Up</value>
+  </data>
+  <data name="KeyWindows" xml:space="preserve">
+    <value>Win</value>
   </data>
 </root>

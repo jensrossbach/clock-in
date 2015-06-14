@@ -4,6 +4,14 @@ Copyright (C) 2012-2014 Jens Rossbach, All Rights Reserved
 Version History
 ===============
 
+v1.0.5643.24908 (2015-06-14)
+----------------------------
+
+Added:   Support for opening main window through system wide hotkey
+Fixed:   Missing German translation for notification window always on top option
+Fixed:   Wrong tab order in options dialog
+
+
 v0.4.5259.34766 (2014-05-26)
 ----------------------------
 
