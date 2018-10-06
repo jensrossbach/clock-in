@@ -1,8 +1,19 @@
 ClockIn
-Copyright (C) 2012-2014 Jens Rossbach, All Rights Reserved
+Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved
 
 Version History
 ===============
+
+v2.0.6853.21047 (2018-10-06)
+----------------------------
+
+Added:   Possibility to specify individual break/absence periods
+Added:   Button to reset session (replaces double click on start time label)
+Added:   Possibility to specify up to two discounted break periods depending on elapsed
+         working time when starting work after lunch break period ("late shift")
+Changed: Settings dialog split into multiple tabs
+Fixed:   Improved appliance of working time and absence rules
+
 
 v1.0.5643.24908 (2015-06-14)
 ----------------------------
@@ -50,7 +61,8 @@ Fixed:   Sporadic exception when timer interval became 0
 Fixed:   Main window and notification popup sometimes opening in background
 Fixed:   Image quality of smiley icons
 Changed: Changes of start time and break duration now update displays and timers not before leaving controls
-Added:   Remaining working time can now be displayed additionally to elapsed working time (toggle between both by clicking on time value)
+Added:   Remaining working time can now be displayed additionally to elapsed working time
+         (toggle between both by clicking on time value)
 Added:   Leave time now displayed below working time
 Added:   Possibility to let application automatically start together with Windows
 

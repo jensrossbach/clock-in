@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="Arrival" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)">1753-01-01</Value>
-    </Setting>
-    <Setting Name="Break" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">2012-01-01</Value>
     </Setting>
     <Setting Name="NotifyLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Absence" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

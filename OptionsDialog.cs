@@ -1,8 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 
 namespace ClockIn
@@ -22,7 +22,7 @@ namespace ClockIn
             rbtContinueSession.Checked = Properties.Settings.Default.ContinueSessionOnStartup;
             rbtNewSession.Checked = Properties.Settings.Default.NewSessionOnStartup;
             rbtQueryStartBehavior.Checked = Properties.Settings.Default.AskSessionOnStartup;
-            checkAutoLaunch();
+            CheckAutoLaunch();
 
             if (Properties.Settings.Default.SoundFile != "")
             {
@@ -36,12 +36,12 @@ namespace ClockIn
             Properties.Settings.Default.ContinueSessionOnStartup = rbtContinueSession.Checked;
             Properties.Settings.Default.NewSessionOnStartup = rbtNewSession.Checked;
             Properties.Settings.Default.AskSessionOnStartup = rbtQueryStartBehavior.Checked;
-            setAutoLaunch(cbxAutoLaunch.Checked);
+            SetAutoLaunch(cbxAutoLaunch.Checked);
 
             Properties.Settings.Default.Save();
         }
 
-        private void nmcRegularTime_Validating(object sender, CancelEventArgs e)
+        private void NmcRegularTime_Validating(object sender, CancelEventArgs e)
         {
             if ((int)(nmcRegularTime.Value * 60) > (int)(Properties.Settings.Default.MaximumWorkingTime * 60))
             {
@@ -55,13 +55,13 @@ namespace ClockIn
             }
         }
 
-        private void nmcRegularTime_Validated(object sender, EventArgs e)
+        private void NmcRegularTime_Validated(object sender, EventArgs e)
         {
-            Program.TimeMgr.updateWorkingTime();
-            Program.TimeMgr.updateLeaveTime();
+            Program.TimeMgr.UpdateWorkingTime();
+            Program.TimeMgr.UpdateLeaveTime();
         }
 
-        private void nmcMaxTime_Validating(object sender, CancelEventArgs e)
+        private void NmcMaxTime_Validating(object sender, CancelEventArgs e)
         {
             if ((int)(nmcMaxTime.Value * 60) <= (int)(Properties.Settings.Default.RegularWorkingTime * 60))
             {
@@ -75,13 +75,13 @@ namespace ClockIn
             }
         }
 
-        private void nmcMaxTime_Validated(object sender, EventArgs e)
+        private void NmcMaxTime_Validated(object sender, EventArgs e)
         {
-            Program.TimeMgr.updateWorkingTime();
-            Program.TimeMgr.updateLeaveTime();
+            Program.TimeMgr.UpdateWorkingTime();
+            Program.TimeMgr.UpdateLeaveTime();
         }
 
-        private void nmcBreak_Validating(object sender, CancelEventArgs e)
+        private void NmcBreak_Validating(object sender, CancelEventArgs e)
         {
             if ((int)nmcBreak.Value > (int)(Properties.Settings.Default.RegularWorkingTime * 60))
             {
@@ -90,7 +90,7 @@ namespace ClockIn
             }
         }
 
-        private void dtpBreaksBegin_Validating(object sender, CancelEventArgs e)
+        private void DtpBreaksBegin_Validating(object sender, CancelEventArgs e)
         {
             if (dtpBreaksBegin.Value >= Properties.Settings.Default.BreaksEnd)
             {
@@ -99,13 +99,13 @@ namespace ClockIn
             }
         }
 
-        private void dtpBreaksBegin_Validated(object sender, EventArgs e)
+        private void DtpBreaksBegin_Validated(object sender, EventArgs e)
         {
-            Program.TimeMgr.updateWorkingTime();
-            Program.TimeMgr.updateLeaveTime();
+            Program.TimeMgr.UpdateWorkingTime();
+            Program.TimeMgr.UpdateLeaveTime();
         }
 
-        private void dtpBreaksEnd_Validating(object sender, CancelEventArgs e)
+        private void DtpBreaksEnd_Validating(object sender, CancelEventArgs e)
         {
             if (dtpBreaksEnd.Value < Properties.Settings.Default.BreaksBegin)
             {
@@ -114,13 +114,13 @@ namespace ClockIn
             }
         }
 
-        private void dtpBreaksEnd_Validated(object sender, EventArgs e)
+        private void DtpBreaksEnd_Validated(object sender, EventArgs e)
         {
-            Program.TimeMgr.updateWorkingTime();
-            Program.TimeMgr.updateLeaveTime();
+            Program.TimeMgr.UpdateWorkingTime();
+            Program.TimeMgr.UpdateLeaveTime();
         }
 
-        private void btnSelectSound_Click(object sender, EventArgs e)
+        private void BtnSelectSound_Click(object sender, EventArgs e)
         {
             DialogResult res = dlgSelectSound.ShowDialog();
             if (res == DialogResult.OK)
@@ -130,7 +130,7 @@ namespace ClockIn
             }
         }
 
-        private void txtHotkey_Enter(object sender, EventArgs e)
+        private void TxtHotkey_Enter(object sender, EventArgs e)
         {
             HotkeyManager.HotkeysEnabled = false;
         }
@@ -140,12 +140,12 @@ namespace ClockIn
             HotkeyManager.HotkeysEnabled = true;
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void setAutoLaunch(bool enable)
+        private void SetAutoLaunch(bool enable)
         {
             Microsoft.Win32.RegistryKey startupKey;
 
@@ -163,7 +163,7 @@ namespace ClockIn
             }
         }
 
-        private void checkAutoLaunch()
+        private void CheckAutoLaunch()
         {
             Microsoft.Win32.RegistryKey startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(RunKey);
             if (startupKey.GetValue(Assembly.GetExecutingAssembly().GetName().Name) == null)

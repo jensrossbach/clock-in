@@ -124,11 +124,20 @@
   <data name="lblRegularTime.Text" xml:space="preserve">
     <value>Reguläre Arbeitszeit:</value>
   </data>
+  <data name="lblRegularTimeH.Location" type="System.Drawing.Point, System.Drawing">
+    <value>289, 16</value>
+  </data>
   <data name="lblMaxTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 13</value>
   </data>
   <data name="lblMaxTime.Text" xml:space="preserve">
     <value>Maximale Arbeitszeit:</value>
+  </data>
+  <data name="lblMaxTimeH.Location" type="System.Drawing.Point, System.Drawing">
+    <value>289, 44</value>
+  </data>
+  <data name="lblMinBefore.Location" type="System.Drawing.Point, System.Drawing">
+    <value>83, 63</value>
   </data>
   <data name="lblMinBefore.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 13</value>
@@ -136,26 +145,20 @@
   <data name="lblMinBefore.Text" xml:space="preserve">
     <value>Minuten vorher</value>
   </data>
+  <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>264, 446</value>
+  </data>
   <data name="btnClose.Text" xml:space="preserve">
     <value>Schl&amp;ießen</value>
   </data>
-  <data name="lblBreak.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
+  <data name="grpLastSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 16</value>
   </data>
-  <data name="lblBreak.Text" xml:space="preserve">
-    <value>Pause:</value>
+  <data name="grpLastSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 98</value>
   </data>
-  <data name="cbxAutoLaunch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 17</value>
-  </data>
-  <data name="cbxAutoLaunch.Text" xml:space="preserve">
-    <value>Programm mit &amp;Windows starten</value>
-  </data>
-  <data name="cbxLowPowerIsStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 17</value>
-  </data>
-  <data name="cbxLowPowerIsStart.Text" xml:space="preserve">
-    <value>Aufwachen aus R&amp;uhezustand wie Programmstart</value>
+  <data name="grpLastSession.Text" xml:space="preserve">
+    <value>Letzte Sitzung</value>
   </data>
   <data name="rbtQueryStartBehavior.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 17</value>
@@ -175,14 +178,50 @@
   <data name="rbtNewSession.Text" xml:space="preserve">
     <value>Immer &amp;neue Sitzung beginnen</value>
   </data>
-  <data name="grpStartup.Text" xml:space="preserve">
-    <value>Programmstart</value>
+  <data name="cbxAutoLaunch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 153</value>
+  </data>
+  <data name="cbxAutoLaunch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 17</value>
+  </data>
+  <data name="cbxAutoLaunch.Text" xml:space="preserve">
+    <value>Programm mit &amp;Windows starten</value>
+  </data>
+  <data name="cbxLowPowerIsStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 130</value>
+  </data>
+  <data name="cbxLowPowerIsStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 17</value>
+  </data>
+  <data name="cbxLowPowerIsStart.Text" xml:space="preserve">
+    <value>Aufwachen aus R&amp;uhezustand wie Programmstart</value>
   </data>
   <data name="lblBreaks.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 13</value>
   </data>
   <data name="lblBreaks.Text" xml:space="preserve">
     <value>Pausen:</value>
+  </data>
+  <data name="grpBreaksPeriod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 122</value>
+  </data>
+  <data name="grpBreaksPeriod.Text" xml:space="preserve">
+    <value>Mittagspausenzeitraum</value>
+  </data>
+  <data name="lblBreakMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>245, 87</value>
+  </data>
+  <data name="lblBreak.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 13</value>
+  </data>
+  <data name="lblBreak.Text" xml:space="preserve">
+    <value>Anrechenbare Pause:</value>
+  </data>
+  <data name="nmcBreak.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 85</value>
+  </data>
+  <data name="dtpBreaksEnd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 48</value>
   </data>
   <data name="lblBreaksEnd.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 13</value>
@@ -196,11 +235,83 @@
   <data name="lblBreaksBegin.Text" xml:space="preserve">
     <value>von:</value>
   </data>
-  <data name="grpBreaksPeriod.Text" xml:space="preserve">
-    <value>Pausenzeitraum</value>
+  <data name="dtpBreaksBegin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="lblAdder2Min.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 122</value>
+  </data>
+  <data name="lblAdder2Min.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 13</value>
+  </data>
+  <data name="lblAdder2Min.Text" xml:space="preserve">
+    <value>Minuten Pause</value>
+  </data>
+  <data name="nmcAdder2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 120</value>
+  </data>
+  <data name="lblAdder1Min.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 56</value>
+  </data>
+  <data name="lblAdder1Min.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 13</value>
+  </data>
+  <data name="lblAdder1Min.Text" xml:space="preserve">
+    <value>Minuten Pause</value>
+  </data>
+  <data name="lblAdder2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>60, 122</value>
+  </data>
+  <data name="lblAdder2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="lblAdder2.Text" xml:space="preserve">
+    <value>abzüglich:</value>
+  </data>
+  <data name="nmcWorkspan2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 96</value>
+  </data>
+  <data name="lblWorkspan2H.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 98</value>
+  </data>
+  <data name="lblWorkspan2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 13</value>
+  </data>
+  <data name="lblWorkspan2.Text" xml:space="preserve">
+    <value>Bei Arbeit länger als:</value>
+  </data>
+  <data name="lblWorkSpan1H.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 30</value>
+  </data>
+  <data name="lblAdder1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>60, 56</value>
+  </data>
+  <data name="lblAdder1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="lblAdder1.Text" xml:space="preserve">
+    <value>abzüglich:</value>
+  </data>
+  <data name="nmcAdder1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 54</value>
+  </data>
+  <data name="nmcWorkspan1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 28</value>
+  </data>
+  <data name="lblWorkspan1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 13</value>
+  </data>
+  <data name="lblWorkspan1.Text" xml:space="preserve">
+    <value>Bei Arbeit länger als:</value>
+  </data>
+  <data name="btnSelectSound.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 120</value>
   </data>
   <data name="btnSelectSound.Text" xml:space="preserve">
     <value>&amp;Auswählen...</value>
+  </data>
+  <data name="cbxPlaySound.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 97</value>
   </data>
   <data name="cbxPlaySound.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 17</value>
@@ -208,11 +319,20 @@
   <data name="cbxPlaySound.Text" xml:space="preserve">
     <value>&amp;Sound abspielen:</value>
   </data>
+  <data name="nmcNotifyAdvance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 61</value>
+  </data>
+  <data name="cbxNotifyMaxTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 38</value>
+  </data>
   <data name="cbxNotifyMaxTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>295, 17</value>
   </data>
   <data name="cbxNotifyMaxTime.Text" xml:space="preserve">
     <value>Benachrichtigung bei Erreichen der &amp;maximalen Arbeitszeit</value>
+  </data>
+  <data name="cbxNotifyRegularTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 15</value>
   </data>
   <data name="cbxNotifyRegularTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 17</value>
@@ -220,17 +340,29 @@
   <data name="cbxNotifyRegularTime.Text" xml:space="preserve">
     <value>Benachrichtigung bei Erreichen der &amp;regulären Arbeitszeit</value>
   </data>
+  <data name="nmcMaxTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 42</value>
+  </data>
+  <data name="nmcRegularTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 14</value>
+  </data>
   <data name="dlgSelectSound.Filter" xml:space="preserve">
     <value>Wave-Dateien|*.wav</value>
   </data>
   <data name="lblSoundFile.Text" xml:space="preserve">
     <value>(nichts gewählt)</value>
   </data>
+  <data name="cbxNotificationAlwayOnTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 159</value>
+  </data>
   <data name="cbxNotificationAlwayOnTop.Size" type="System.Drawing.Size, System.Drawing">
     <value>206, 17</value>
   </data>
   <data name="cbxNotificationAlwayOnTop.Text" xml:space="preserve">
     <value>Benachrichtigungsfenster immer &amp;vorne</value>
+  </data>
+  <data name="lblHotkey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 186</value>
   </data>
   <data name="lblHotkey.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 13</value>
@@ -239,10 +371,40 @@
     <value>Hot-Key:</value>
   </data>
   <data name="txtHotkey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 258</value>
+    <value>66, 183</value>
   </data>
   <data name="txtHotkey.Text" xml:space="preserve">
     <value>Kein</value>
+  </data>
+  <data name="tbcOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>327, 416</value>
+  </data>
+  <data name="tbpTimePeriods.Size" type="System.Drawing.Size, System.Drawing">
+    <value>319, 390</value>
+  </data>
+  <data name="tbpTimePeriods.Text" xml:space="preserve">
+    <value>Zeiträume</value>
+  </data>
+  <data name="grpOtherPeriod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 160</value>
+  </data>
+  <data name="grpOtherPeriod.Text" xml:space="preserve">
+    <value>Spätschicht</value>
+  </data>
+  <data name="tbpNotifications.Size" type="System.Drawing.Size, System.Drawing">
+    <value>319, 390</value>
+  </data>
+  <data name="tbpNotifications.Text" xml:space="preserve">
+    <value>Benachrichtigungen</value>
+  </data>
+  <data name="tbpAppStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>319, 390</value>
+  </data>
+  <data name="tbpAppStart.Text" xml:space="preserve">
+    <value>Anwendungsstart</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>350, 481</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Optionen</value>

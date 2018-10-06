@@ -36,10 +36,10 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="BreaksBegin" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)">01/01/2012 12:00:00</Value>
+      <Value Profile="(Default)">01/01/2012 11:30:00</Value>
     </Setting>
     <Setting Name="BreaksEnd" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)">01/01/2012 13:30:00</Value>
+      <Value Profile="(Default)">01/01/2012 14:00:00</Value>
     </Setting>
     <Setting Name="MainWindowLocation" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">50, 50</Value>
@@ -64,6 +64,21 @@
     </Setting>
     <Setting Name="MainWindowHotkey" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="AbsenceDialogLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">20, 20</Value>
+    </Setting>
+    <Setting Name="OutsideLunchWorkspan1" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">6</Value>
+    </Setting>
+    <Setting Name="OutsideLunchWorkspan2" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">9</Value>
+    </Setting>
+    <Setting Name="OutsideLunchBreak1" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="OutsideLunchBreak2" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">45</Value>
     </Setting>
   </Settings>
 </SettingsFile>

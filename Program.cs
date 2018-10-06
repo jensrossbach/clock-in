@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Threading;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 
 namespace ClockIn

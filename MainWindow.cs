@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
-using System.Drawing;
 
 
 namespace ClockIn
 {
     public partial class MainWindow : Form
     {
+        private bool exit;
+        private Timer wtTimer = null;
+        private Hotkey showMainWinHK = null;
+
         private enum WorkingTimeDisplay
         {
             ElapsedTime,
@@ -19,10 +23,11 @@ namespace ClockIn
             exit = false;
 
             wtTimer = new Timer();
-            wtTimer.Tick += new EventHandler(wtTimer_Tick);
+            wtTimer.Tick += new EventHandler(WtTimer_Tick);
 
-            Program.TimeMgr.WorkingTimeUpdated += new EventHandler(TimeMgr_WorkingTimeUpdated);
-            Program.TimeMgr.LeaveTimeUpdated += new EventHandler(TimeMgr_LeaveTimeUpdated);
+            Program.TimeMgr.AbsenceUpdated += TimeMgr_AbsenceUpdated;
+            Program.TimeMgr.WorkingTimeUpdated += TimeMgr_WorkingTimeUpdated;
+            Program.TimeMgr.LeaveTimeUpdated += TimeMgr_LeaveTimeUpdated;
 
             InitializeComponent();
 
@@ -34,12 +39,12 @@ namespace ClockIn
             HotkeyManager.RegisterHotkey(showMainWinHK);
         }
 
-        public void updateWorkingTime()
+        public void UpdateWorkingTime()
         {
             wtTimer.Stop();
 
             TimeManager.WorkingLevel level;
-            TimeSpan elapsedTime = Program.TimeMgr.getCurrentElapsedWorkingTime(out level);
+            TimeSpan elapsedTime = Program.TimeMgr.GetCurrentElapsedWorkingTime(out level);
 
             if (elapsedTime.TotalMinutes > (int)(Properties.Settings.Default.MaximumWorkingTime * 60))
             {
@@ -70,7 +75,7 @@ namespace ClockIn
             }
             else
             {
-                TimeSpan remainingTime = Program.TimeMgr.getCurrentRemainingWorkingTime();
+                TimeSpan remainingTime = Program.TimeMgr.GetCurrentRemainingWorkingTime();
                 if (remainingTime.Seconds > 0)
                 {
                     remainingTime = new TimeSpan(remainingTime.Hours, remainingTime.Minutes + 1, 0);
@@ -80,14 +85,14 @@ namespace ClockIn
                 lblWorkingTime.Text = remainingTime.ToString(@"\-hh\hmm\m");
             }
 
-            wtTimer.Interval = getInterval();
+            wtTimer.Interval = GetInterval();
             wtTimer.Start();
         }
 
-        public void updateLeaveTime()
+        public void UpdateLeaveTime()
         {
             bool overTime;
-            DateTime leaveTime = Program.TimeMgr.getCurrentLeaveTime(out overTime);
+            DateTime leaveTime = Program.TimeMgr.GetCurrentLeaveTime(out overTime);
 
             if (overTime)
             {
@@ -101,13 +106,27 @@ namespace ClockIn
             lblLeaveTime.Text = leaveTime.ToString(@"HH\:mm");
         }
 
-        private int getInterval()
+        private void UpdateAbsence()
+        {
+            TimeSpan absence = Program.TimeMgr.TotalAbsence;
+            string absenceText = "";
+
+            if (absence.Hours > 0)
+            {
+                absenceText += Program.TimeMgr.TotalAbsence.Hours.ToString("0") + "h ";
+            }
+
+            absenceText += Program.TimeMgr.TotalAbsence.Minutes.ToString("0") + "m";
+            txtAbsence.Text = absenceText;
+        }
+
+        private int GetInterval()
         {
             DateTime now = DateTime.Now;
             return ((60 - now.Second) * 1000 - now.Millisecond);
         }
 
-        private void switchWorkingTimeDisplay()
+        private void SwitchWorkingTimeDisplay()
         {
             WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), Properties.Settings.Default.WorkingTimeDisplay);
 
@@ -121,8 +140,8 @@ namespace ClockIn
             }
 
             Properties.Settings.Default.WorkingTimeDisplay = System.Enum.Format(typeof(WorkingTimeDisplay), wtd, "G");
-            updateWorkingTime();
-            updateLeaveTime();
+            UpdateWorkingTime();
+            UpdateLeaveTime();
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -144,8 +163,9 @@ namespace ClockIn
         {
             if (Visible)
             {
-                updateWorkingTime();
-                updateLeaveTime();
+                UpdateAbsence();
+                UpdateWorkingTime();
+                UpdateLeaveTime();
             }
             else
             {
@@ -168,104 +188,115 @@ namespace ClockIn
             Properties.Settings.Default.Save();
         }
 
-        private void dtpArrival_Validated(object sender, EventArgs e)
+        private void DtpArrival_Validated(object sender, EventArgs e)
         {
-            Program.TimeMgr.updateArrival(dtpArrival.Value);
-            updateWorkingTime();
-            updateLeaveTime();
+            Program.TimeMgr.UpdateArrival(dtpArrival.Value);
+            UpdateWorkingTime();
+            UpdateLeaveTime();
         }
 
-        private void nmcBreaks_Validated(object sender, EventArgs e)
+        private void LblWorkingTimeIcon_Click(object sender, EventArgs e)
         {
-            // workaround because bound property is not updated when number has been entered by keyboard
-            Session.Default.Break = nmcBreaks.Value;
-
-            Program.TimeMgr.updateBreaks();
-            updateWorkingTime();
-            updateLeaveTime();
+            SwitchWorkingTimeDisplay();
         }
 
-        private void lblWorkingTimeIcon_Click(object sender, EventArgs e)
+        private void LblWorkingTime_Click(object sender, EventArgs e)
         {
-            switchWorkingTimeDisplay();
+            SwitchWorkingTimeDisplay();
         }
 
-        private void lblWorkingTime_Click(object sender, EventArgs e)
+        private void LblLeaveTimeIcon_Click(object sender, EventArgs e)
         {
-            switchWorkingTimeDisplay();
+            UpdateWorkingTime();
+            UpdateLeaveTime();
         }
 
-        private void lblLeaveTimeIcon_Click(object sender, EventArgs e)
+        private void LblLeaveTime_Click(object sender, EventArgs e)
         {
-            updateWorkingTime();
-            updateLeaveTime();
+            UpdateWorkingTime();
+            UpdateLeaveTime();
         }
 
-        private void lblLeaveTime_Click(object sender, EventArgs e)
+        private void BtnResetTime_Click(object sender, EventArgs e)
         {
-            updateWorkingTime();
-            updateLeaveTime();
+            Program.TimeMgr.RestartSession(true);
+
+            UpdateWorkingTime();
+            UpdateLeaveTime();
         }
 
-        private void lblBegin_DoubleClick(object sender, EventArgs e)
+        private void BtnAbsence_Click(object sender, EventArgs e)
         {
-            Program.TimeMgr.restartSession(true);
-
-            updateWorkingTime();
-            updateLeaveTime();
+            new AbsenceDialog().ShowDialog(this);
         }
 
-        private void btnAbout_Click(object sender, EventArgs e)
+        private void BtnAbout_Click(object sender, EventArgs e)
         {
-            string text = string.Format(Properties.Resources.AboutText, Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            object[] attribs = Assembly.GetEntryAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+
+            string copyright = "";
+            if (attribs.Length > 0)
+            {
+                copyright = ((AssemblyCopyrightAttribute)attribs[0]).Copyright;
+            }
+
+            string text = string.Format(Properties.Resources.AboutText, Assembly.GetExecutingAssembly().GetName().Version.ToString(), copyright);
             MessageBox.Show(text, Properties.Resources.AboutCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btnOptions_Click(object sender, EventArgs e)
+        private void BtnOptions_Click(object sender, EventArgs e)
         {
             new OptionsDialog(this).ShowDialog();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             Hide();
         }
 
-        private void icnTray_DoubleClick(object sender, EventArgs e)
+        private void IcnTray_DoubleClick(object sender, EventArgs e)
         {
             Show();
             WindowState = FormWindowState.Normal;
             BringToFront();
         }
 
-        private void itmRestore_Click(object sender, EventArgs e)
+        private void ItmRestore_Click(object sender, EventArgs e)
         {
             Show();
             WindowState = FormWindowState.Normal;
             BringToFront();
         }
 
-        private void itmOptions_Click(object sender, EventArgs e)
+        private void ItmOptions_Click(object sender, EventArgs e)
         {
             new OptionsDialog(this).ShowDialog(this);
         }
 
-        private void itmExit_Click(object sender, EventArgs e)
+        private void ItmExit_Click(object sender, EventArgs e)
         {
             exit = true;
             Close();
         }
 
-        private void wtTimer_Tick(object sender, EventArgs e)
+        private void WtTimer_Tick(object sender, EventArgs e)
         {
-            updateWorkingTime();
+            UpdateWorkingTime();
+        }
+
+        private void TimeMgr_AbsenceUpdated(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                UpdateAbsence();
+            }
         }
 
         void TimeMgr_WorkingTimeUpdated(object sender, EventArgs e)
         {
             if (Visible)
             {
-                updateWorkingTime();
+                UpdateWorkingTime();
             }
         }
 
@@ -273,7 +304,7 @@ namespace ClockIn
         {
             if (Visible)
             {
-                updateLeaveTime();
+                UpdateLeaveTime();
             }
         }
 
@@ -283,8 +314,8 @@ namespace ClockIn
             {
                 if (Visible)
                 {
-                    updateWorkingTime();
-                    updateLeaveTime();
+                    UpdateWorkingTime();
+                    UpdateLeaveTime();
                 }
             }
 
@@ -303,9 +334,5 @@ namespace ClockIn
                 BringToFront();
             }
         }
-
-        private bool exit;
-        private Timer wtTimer = null;
-        private Hotkey showMainWinHK = null;
     }
 }

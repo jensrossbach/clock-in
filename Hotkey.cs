@@ -66,7 +66,7 @@ namespace ClockIn
         {
             if (enabled)
             {
-                onHotkeyPressed(new EventArgs());
+                NotifyHotkeyPressed(new EventArgs());
             }
         }
 
@@ -81,7 +81,7 @@ namespace ClockIn
             return (modifiers | code);
         }
 
-        private void onHotkeyPressed(EventArgs e)
+        private void NotifyHotkeyPressed(EventArgs e)
         {
             if (HotkeyPressed != null)
             {

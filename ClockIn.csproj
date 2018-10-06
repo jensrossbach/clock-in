@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ClockIn</RootNamespace>
     <AssemblyName>ClockIn</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -40,6 +41,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -49,6 +51,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>ClockIn.Program</StartupObject>
@@ -69,6 +72,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbsenceInputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbsenceInputDialog.Designer.cs">
+      <DependentUpon>AbsenceInputDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbsenceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbsenceDialog.Designer.cs">
+      <DependentUpon>AbsenceDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hotkey.cs" />
     <Compile Include="HotkeyControl.cs">
       <SubType>Component</SubType>
@@ -106,7 +121,21 @@
       <DependentUpon>Session.settings</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="TimeGridView.cs" />
     <Compile Include="TimeManager.cs" />
+    <Compile Include="TimePeriod.cs" />
+    <EmbeddedResource Include="AbsenceDialog.de.resx">
+      <DependentUpon>AbsenceDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbsenceInputDialog.de.resx">
+      <DependentUpon>AbsenceInputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbsenceInputDialog.resx">
+      <DependentUpon>AbsenceInputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbsenceDialog.resx">
+      <DependentUpon>AbsenceDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.de.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +170,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\TimePeriod.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

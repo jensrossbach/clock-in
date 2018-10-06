@@ -144,43 +144,43 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblBegin.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
-  <data name="lblBreaks.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblAbsence.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lblBreaks.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblAbsence.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 57</value>
   </data>
-  <data name="lblBreaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 13</value>
+  <data name="lblAbsence.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 13</value>
   </data>
-  <data name="lblBreaks.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblAbsence.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="lblBreaks.Text" xml:space="preserve">
-    <value>Breaks:</value>
+  <data name="lblAbsence.Text" xml:space="preserve">
+    <value>Break/absence:</value>
   </data>
-  <data name="&gt;&gt;lblBreaks.Name" xml:space="preserve">
-    <value>lblBreaks</value>
+  <data name="&gt;&gt;lblAbsence.Name" xml:space="preserve">
+    <value>lblAbsence</value>
   </data>
-  <data name="&gt;&gt;lblBreaks.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblAbsence.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblBreaks.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblAbsence.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;lblBreaks.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;lblAbsence.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="btnOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 167</value>
+    <value>211, 167</value>
   </data>
   <data name="btnOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="btnOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="btnOptions.Text" xml:space="preserve">
     <value>&amp;Options...</value>
@@ -195,16 +195,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnOptions.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>307, 167</value>
+    <value>292, 167</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="btnClose.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="btnClose.Text" xml:space="preserve">
     <value>&amp;Close</value>
@@ -219,7 +219,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="lblWorkingTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 20.25pt</value>
@@ -250,33 +250,6 @@
   </data>
   <data name="&gt;&gt;lblWorkingTime.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="lblBreaksMin.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblBreaksMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 57</value>
-  </data>
-  <data name="lblBreaksMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 13</value>
-  </data>
-  <data name="lblBreaksMin.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblBreaksMin.Text" xml:space="preserve">
-    <value>min.</value>
-  </data>
-  <data name="&gt;&gt;lblBreaksMin.Name" xml:space="preserve">
-    <value>lblBreaksMin</value>
-  </data>
-  <data name="&gt;&gt;lblBreaksMin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblBreaksMin.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblBreaksMin.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <metadata name="icnTrayIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -3025,32 +2998,11 @@
   <data name="icnTrayIcon.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="nmcBreaks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>100, 55</value>
-  </data>
-  <data name="nmcBreaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 20</value>
-  </data>
-  <data name="nmcBreaks.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;nmcBreaks.Name" xml:space="preserve">
-    <value>nmcBreaks</value>
-  </data>
-  <data name="&gt;&gt;nmcBreaks.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nmcBreaks.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;nmcBreaks.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="dtpArrival.CustomFormat" xml:space="preserve">
     <value>HH:mm</value>
   </data>
   <data name="dtpArrival.Location" type="System.Drawing.Point, System.Drawing">
-    <value>100, 20</value>
+    <value>102, 19</value>
   </data>
   <data name="dtpArrival.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 20</value>
@@ -3068,16 +3020,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dtpArrival.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="btnAbout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 167</value>
+    <value>130, 167</value>
   </data>
   <data name="btnAbout.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="btnAbout.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="btnAbout.Text" xml:space="preserve">
     <value>&amp;About...</value>
@@ -3092,7 +3044,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAbout.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="lblWorkingTimeIcon.ImageIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3177,7 +3129,7 @@
     <value>2</value>
   </data>
   <data name="pnlTimeDisplay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 12</value>
+    <value>196, 12</value>
   </data>
   <data name="pnlTimeDisplay.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 80</value>
@@ -3195,7 +3147,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlTimeDisplay.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="lblIcon.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 94</value>
@@ -3204,7 +3156,7 @@
     <value>96, 96</value>
   </data>
   <data name="lblIcon.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;lblIcon.Name" xml:space="preserve">
     <value>lblIcon</value>
@@ -3216,19 +3168,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblIcon.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="cbxDisplayMaxTime.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="cbxDisplayMaxTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 98</value>
+    <value>196, 98</value>
   </data>
   <data name="cbxDisplayMaxTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 17</value>
   </data>
   <data name="cbxDisplayMaxTime.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>5</value>
   </data>
   <data name="cbxDisplayMaxTime.Text" xml:space="preserve">
     <value>Display ma&amp;ximum working time</value>
@@ -3243,6 +3195,84 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbxDisplayMaxTime.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnResetTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 18</value>
+  </data>
+  <data name="btnResetTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="btnResetTime.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <metadata name="ttMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>229, 17</value>
+  </metadata>
+  <data name="btnResetTime.ToolTip" xml:space="preserve">
+    <value>Reset start of work</value>
+  </data>
+  <data name="&gt;&gt;btnResetTime.Name" xml:space="preserve">
+    <value>btnResetTime</value>
+  </data>
+  <data name="&gt;&gt;btnResetTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnResetTime.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnResetTime.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtAbsence.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 54</value>
+  </data>
+  <data name="txtAbsence.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 20</value>
+  </data>
+  <data name="txtAbsence.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtAbsence.Name" xml:space="preserve">
+    <value>txtAbsence</value>
+  </data>
+  <data name="&gt;&gt;txtAbsence.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtAbsence.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtAbsence.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnAbsence.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 6.75pt</value>
+  </data>
+  <data name="btnAbsence.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 53</value>
+  </data>
+  <data name="btnAbsence.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="btnAbsence.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="btnAbsence.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="btnAbsence.ToolTip" xml:space="preserve">
+    <value>Manage absence...</value>
+  </data>
+  <data name="&gt;&gt;btnAbsence.Name" xml:space="preserve">
+    <value>btnAbsence</value>
+  </data>
+  <data name="&gt;&gt;btnAbsence.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAbsence.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnAbsence.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -3252,7 +3282,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>394, 202</value>
+    <value>379, 202</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5988,6 +6018,12 @@
   </data>
   <data name="&gt;&gt;itmExit.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ttMain.Name" xml:space="preserve">
+    <value>ttMain</value>
+  </data>
+  <data name="&gt;&gt;ttMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainWindow</value>

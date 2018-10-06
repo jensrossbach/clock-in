@@ -1,12 +1,25 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
+using System.ComponentModel;
 using Microsoft.Win32;
-
 
 namespace ClockIn
 {
     class TimeManager
     {
+        public event EventHandler AbsenceUpdated;
+        public event EventHandler WorkingTimeUpdated;
+        public event EventHandler LeaveTimeUpdated;
+
+        private DateTime startTime;
+        private Timer notifyTimer = null;
+        private Timer periodicTimer = null;
+        private Properties.Settings userSettings = null;
+        private Session session = null;
+        private BindingList<TimePeriod> absence;
+        private TimeSpan totalAbsence;
+
         public enum WorkingLevel
         {
             RegularTime,
@@ -19,66 +32,115 @@ namespace ClockIn
         {
             userSettings = Properties.Settings.Default;
             session = Session.Default;
+            absence = new BindingList<TimePeriod>();
+            totalAbsence = TimeSpan.Zero;
+
             SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
+            absence.ListChanged += Absence_ListChanged;
+
             notifyTimer = new Timer();
-            notifyTimer.Tick += new EventHandler(rwtTimer_Tick);
+            notifyTimer.Tick += new EventHandler(NotifyTimer_Tick);
+
+            periodicTimer = new Timer();
+            periodicTimer.Tick += new EventHandler(PeriodicTimer_Tick);
+            periodicTimer.Interval = 60000;
 
             // take time snapshot
             startTime = DateTime.Now;
 
-            handleStart();
+            HandleStart();
         }
 
-        public void updateArrival(DateTime time)
+        public BindingList<TimePeriod> Absence
+        {
+            get
+            {
+                return absence;
+            }
+        }
+
+        public TimeSpan TotalAbsence
+        {
+            get
+            {
+                return totalAbsence;
+            }
+        }
+
+        public void UpdateArrival(DateTime time)
         {
             DateTime cur = DateTime.Now;
             session.Arrival = new DateTime(cur.Year, cur.Month, cur.Day, time.Hour, time.Minute, 0);
 
-            checkExpiration();
+            CalculateTotelAbsence();
+            NotifyAbsenceUpdated(new EventArgs());
+
+            CheckExpiration();
             session.Save();
         }
 
-        public void updateBreaks()
+        public void UpdateAbsence()
         {
-            checkExpiration();
-            session.Save();
+            CalculateTotelAbsence();
+            StoreAbsenceInSession();
+
+            NotifyAbsenceUpdated(new EventArgs());
         }
 
-        public void updateWorkingTime()
+        public void UpdateWorkingTime()
         {
-            checkExpiration();
+            CheckExpiration();
         }
 
-        public void updateLeaveTime()
+        public void UpdateLeaveTime()
         {
-            onLeaveTimeUpdated(new EventArgs());
+            NotifyLeaveTimeUpdated(new EventArgs());
         }
 
-        public TimeSpan getCurrentElapsedWorkingTime(out WorkingLevel level)
+        public void ContinueSession()
+        {
+            LoadAbsenceFromSession();
+            CheckExpiration();
+        }
+
+        public void RestartSession(bool toCurTime)
+        {
+            session.Arrival = toCurTime ? DateTime.Now : startTime;
+            session.NotifyLevel = 0;
+            session.Absence = string.Empty;
+
+            absence.Clear();
+
+            CalculateTotelAbsence();
+            NotifyAbsenceUpdated(new EventArgs());
+
+            SetupTimers();
+        }
+
+        public TimeSpan GetCurrentElapsedWorkingTime(out WorkingLevel level)
         {
             DateTime cur = DateTime.Now;
-
             TimeSpan workingTime = cur - session.Arrival;
-            TimeSpan chargeableBreak = calculateChargeableBreak(session.Arrival, cur);
 
-            if (chargeableBreak >= workingTime)
+            if (totalAbsence >= workingTime)
             {
                 workingTime = TimeSpan.Zero;
             }
             else
             {
-                workingTime -= chargeableBreak;
+                workingTime -= totalAbsence;
             }
 
-            if (workingTime >= new TimeSpan((int)userSettings.MaximumWorkingTime, 0, 0))
+            if (workingTime >= TimeSpan.FromHours((double)userSettings.MaximumWorkingTime))
             {
                 level = WorkingLevel.MaxTimeViolation;
             }
-            else if (workingTime >= new TimeSpan((int)userSettings.MaximumWorkingTime, -(int)userSettings.NotifyAdvance, 0))
+            else if (workingTime >= (TimeSpan.FromHours((double)userSettings.MaximumWorkingTime) -
+                                     TimeSpan.FromMinutes((double)userSettings.NotifyAdvance)))
             {
                 level = WorkingLevel.ApproachingMaxTime;
             }
-            else if (workingTime >= new TimeSpan((int)userSettings.RegularWorkingTime, 0, 0))
+            else if (workingTime >= TimeSpan.FromHours((double)userSettings.RegularWorkingTime))
             {
                 level = WorkingLevel.OverTime;
             }
@@ -90,10 +152,10 @@ namespace ClockIn
             return workingTime;
         }
 
-        public TimeSpan getCurrentRemainingWorkingTime()
+        public TimeSpan GetCurrentRemainingWorkingTime()
         {
             bool overTime;
-            DateTime leaveTime = getCurrentLeaveTime(out overTime);
+            DateTime leaveTime = GetCurrentLeaveTime(out overTime);
             DateTime cur = DateTime.Now;
 
             if (leaveTime > cur)
@@ -106,35 +168,26 @@ namespace ClockIn
             }
         }
 
-        public DateTime getCurrentLeaveTime(out bool overTime)
+        public DateTime GetCurrentLeaveTime(out bool overTime)
         {
-            DateTime leaveTime = calculateLeaveTime((int)userSettings.RegularWorkingTime);
+            DateTime leaveTime = CalculateLeaveTime((int)userSettings.RegularWorkingTime);
             overTime = (leaveTime < DateTime.Now);
 
             if (overTime || Properties.Settings.Default.DisplayMaximumTime)
             {
-                leaveTime = calculateLeaveTime((int)userSettings.MaximumWorkingTime);
+                leaveTime = CalculateLeaveTime((int)userSettings.MaximumWorkingTime);
             }
 
             return leaveTime;
         }
 
-        public void restartSession(bool toCurTime)
-        {
-            session.Arrival = toCurTime ? DateTime.Now : startTime;
-            session.Break = userSettings.Break;
-            session.NotifyLevel = 0;
-
-            setupTimers();
-        }
-
-        private void handleStart()
+        private void HandleStart()
         {
             if (session.Arrival.Date == startTime.Date)
             {
                 if (userSettings.NewSessionOnStartup)
                 {
-                    restartSession(false);
+                    RestartSession(false);
                 }
                 else if (userSettings.AskSessionOnStartup)
                 {
@@ -145,33 +198,33 @@ namespace ClockIn
 
                     if (result == DialogResult.No)
                     {
-                        restartSession(false);
+                        RestartSession(false);
                     }
                     else
                     {
-                        checkExpiration();
+                        ContinueSession();
                     }
                 }
                 else
                 {
-                    checkExpiration();
+                    ContinueSession();
                 }
             }
             else
             {
-                restartSession(false);
+                RestartSession(false);
             }
 
             session.Save();
         }
 
-        private void setupTimers()
+        private void SetupTimers()
         {
             notifyTimer.Stop();
 
             if (session.NotifyLevel < 1)
             {
-                int interval = (int)(calculateWorkingTime((int)userSettings.RegularWorkingTime).Ticks / TimeSpan.TicksPerMillisecond);
+                int interval = (int)(CalculateWorkingTime((int)userSettings.RegularWorkingTime).Ticks / TimeSpan.TicksPerMillisecond);
                 if (interval > 0)
                 {
                     notifyTimer.Interval = interval;
@@ -180,7 +233,7 @@ namespace ClockIn
             }
             else if (session.NotifyLevel < 2)
             {
-                TimeSpan workingTime = calculateWorkingTime((int)userSettings.MaximumWorkingTime) - new TimeSpan(0, (int)userSettings.NotifyAdvance, 0);
+                TimeSpan workingTime = CalculateWorkingTime((int)userSettings.MaximumWorkingTime) - new TimeSpan(0, (int)userSettings.NotifyAdvance, 0);
                 int interval = (int)(workingTime.Ticks / TimeSpan.TicksPerMillisecond);
                 if (interval > 0)
                 {
@@ -190,7 +243,7 @@ namespace ClockIn
             }
         }
 
-        public void restartMaxTimeTimer(int minutes)
+        public void RestartMaxTimeTimer(int minutes)
         {
             if (minutes > 0)
             {
@@ -200,148 +253,205 @@ namespace ClockIn
             }
         }
 
-        private void checkExpiration()
+        private void CheckExpiration()
         {
-            WorkingLevel level;
-            TimeSpan workingTime = getCurrentElapsedWorkingTime(out level);
+            TimeSpan workingTime = GetCurrentElapsedWorkingTime(out WorkingLevel level);
 
             if (level == WorkingLevel.MaxTimeViolation)
             {
-                notifyMaximumTimeLimit(false);
+                NotifyMaximumTimeLimit(false);
             }
             else if (level == WorkingLevel.ApproachingMaxTime)
             {
-                notifyMaximumTimeLimit(true);
+                NotifyMaximumTimeLimit(true);
             }
             else if (level == WorkingLevel.OverTime)
             {
-                notifyRegularTimeLimit();
+                NotifyRegularTimeLimit();
             }
 
-            onWorkingTimeUpdated(new EventArgs());
-            setupTimers();
+            NotifyWorkingTimeUpdated(new EventArgs());
+            SetupTimers();
         }
 
-        private void notifyRegularTimeLimit()
+        private void NotifyRegularTimeLimit()
         {
             if (session.NotifyLevel < 1)
             {
                 session.NotifyLevel = 1;
 
                 NotificationDialog dlg = new NotificationDialog();
-                dlg.initialize(Properties.Resources.BigSmile, Properties.Resources.RegularTimeLimitReached, false);
+                dlg.Initialize(Properties.Resources.BigSmile, Properties.Resources.RegularTimeLimitReached, false);
                 dlg.Show();
             }
         }
 
-        private void notifyMaximumTimeLimit(bool approaching)
+        private void NotifyMaximumTimeLimit(bool approaching)
         {
             if (session.NotifyLevel < 2)
             {
                 session.NotifyLevel = 2;
 
                 NotificationDialog dlg = new NotificationDialog();
-                dlg.initialize(approaching ? Properties.Resources.Ooooh : Properties.Resources.Sad, Properties.Resources.MaxmimumTimeLimitReached, approaching);
+                dlg.Initialize(approaching ? Properties.Resources.Ooooh : Properties.Resources.Sad, Properties.Resources.MaxmimumTimeLimitReached, approaching);
                 dlg.Show();
             }
         }
 
-        private TimeSpan calculateChargeableBreak(DateTime beginTime, DateTime endTime)
-        {
-            if ((endTime.TimeOfDay < userSettings.BreaksBegin.TimeOfDay) ||
-                (beginTime.TimeOfDay > userSettings.BreaksEnd.TimeOfDay))
-            {
-                // working time completey before or behind break period
-                return TimeSpan.Zero;
-            }
-            else
-            {
-                TimeSpan breakSpan = new TimeSpan(0, (int)session.Break, 0);
+        private DateTime CalculateLeaveTime(int clearWorkingTimeHours) => session.Arrival + TimeSpan.FromHours(clearWorkingTimeHours) + totalAbsence;
+        private TimeSpan CalculateWorkingTime(int clearWorkingTimeHours) => CalculateLeaveTime(clearWorkingTimeHours) - DateTime.Now;
 
-                if (beginTime.TimeOfDay < userSettings.BreaksBegin.TimeOfDay)
+        private void CalculateTotelAbsence()
+        {
+            DateTime now = DateTime.Now;
+            TimePeriod breakPeriod = new TimePeriod(new DateTime(now.Year, now.Month, now.Day,
+                                                                 userSettings.BreaksBegin.Hour,
+                                                                 userSettings.BreaksBegin.Minute, 0),
+                                                    new DateTime(now.Year, now.Month, now.Day,
+                                                                 userSettings.BreaksEnd.Hour,
+                                                                 userSettings.BreaksEnd.Minute, 0));
+            TimeSpan chargeableAbsence = TimeSpan.Zero;
+            totalAbsence = TimeSpan.Zero;
+
+            foreach (TimePeriod tp in absence)
+            {
+                chargeableAbsence += tp.GetIntersection(breakPeriod);
+                totalAbsence += tp.Duration;
+            }
+
+            if ((session.Arrival.TimeOfDay >= userSettings.BreaksBegin.TimeOfDay) &&
+                (session.Arrival.TimeOfDay <= userSettings.BreaksEnd.TimeOfDay))
+            {
+                TimePeriod tp = new TimePeriod(userSettings.BreaksBegin, session.Arrival);
+                chargeableAbsence += tp.GetIntersection(breakPeriod);
+            }
+
+            TimeSpan breakAdder = TimeSpan.Zero;
+
+            if (session.Arrival.TimeOfDay <= userSettings.BreaksEnd.TimeOfDay)
+            {
+                breakAdder = TimeSpan.FromMinutes((double)userSettings.Break);
+
+                if (chargeableAbsence < breakAdder)
                 {
-                    TimeSpan sinceBreaksBegin = endTime.TimeOfDay - userSettings.BreaksBegin.TimeOfDay;
-                    //Console.Out.WriteLine("calculateChargeableBreak: bS=" + breakSpan.ToString() + ", sBB=" + sinceBreaksBegin.ToString());
-                    return (sinceBreaksBegin > breakSpan) ? breakSpan : sinceBreaksBegin;
+                    breakAdder -= chargeableAbsence;
                 }
                 else
                 {
-                    TimeSpan tillBreaksEnd = userSettings.BreaksEnd.TimeOfDay - beginTime.TimeOfDay;
-                    //Console.Out.WriteLine("calculateChargeableBreak: bS=" + breakSpan.ToString() + ", tBE=" + tillBreaksEnd.ToString());
-                    return (tillBreaksEnd > breakSpan) ? breakSpan : tillBreaksEnd;
+                    breakAdder = TimeSpan.Zero;
                 }
             }
+            else
+            {
+                TimeSpan work = now - session.Arrival;
+                if (work >= totalAbsence)
+                {
+                    work -= totalAbsence;
+                }
+                else
+                {
+                    work = TimeSpan.Zero;
+                }
+
+                periodicTimer.Stop();
+                if (work > TimeSpan.FromHours((double)userSettings.OutsideLunchWorkspan2))
+                {
+                    breakAdder = TimeSpan.FromMinutes((double)userSettings.OutsideLunchBreak2);
+                }
+                else if (work > TimeSpan.FromHours((double)userSettings.OutsideLunchWorkspan1))
+                {
+                    breakAdder = TimeSpan.FromMinutes((double)userSettings.OutsideLunchBreak1);
+                    periodicTimer.Start();
+                }
+                else
+                {
+                    periodicTimer.Start();
+                }
+            }
+
+            totalAbsence += breakAdder;
         }
 
-        private DateTime calculateLeaveTime(int clearWorkingTimeHours)
+        private void StoreAbsenceInSession()
         {
-            TimeSpan clearWorkingTime = new TimeSpan(clearWorkingTimeHours, 0, 0);
-            DateTime leaveTime = session.Arrival + clearWorkingTime;
-            TimeSpan sessionBreak = new TimeSpan(0, (int)session.Break, 0);
+            session.Absence = string.Empty;
 
-            if ((session.Arrival.TimeOfDay < userSettings.BreaksBegin.TimeOfDay) && (leaveTime.TimeOfDay > userSettings.BreaksBegin.TimeOfDay))
+            foreach (TimePeriod tp in absence)
             {
-                leaveTime += sessionBreak;
-            }
-            else if ((session.Arrival.TimeOfDay >= userSettings.BreaksBegin.TimeOfDay) && (session.Arrival.TimeOfDay < userSettings.BreaksEnd.TimeOfDay))
-            {
-                TimeSpan remainingBreak = userSettings.BreaksEnd.TimeOfDay - session.Arrival.TimeOfDay;
-                leaveTime += (remainingBreak < sessionBreak) ? remainingBreak : sessionBreak;
-            }
-            //Console.Out.WriteLine("calculateLeaveTime: end=" + leaveTime.ToString() + "(cWTH=" + clearWorkingTimeHours + ")");
+                if (session.Absence != string.Empty)
+                {
+                    session.Absence += ",";
+                }
 
-            return leaveTime;
+                session.Absence += tp.ToString();
+            }
+
+            session.Save();
         }
 
-        private TimeSpan calculateWorkingTime(int clearWorkingTimeHours)
+        private void LoadAbsenceFromSession()
         {
-            return calculateLeaveTime(clearWorkingTimeHours) - DateTime.Now;
+            if (session.Absence != string.Empty)
+            {
+                string[] tpList = session.Absence.Split(',');
+
+                foreach (string tp in tpList)
+                {
+                    if (tp != string.Empty)
+                    {
+                        absence.Add(new TimePeriod(tp));
+                    }
+                }
+            }
+
+            CalculateTotelAbsence();
+            NotifyAbsenceUpdated(new EventArgs());
         }
 
         private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
         {
+            Trace.WriteLine("Power mode has changed:  MOD " + e.Mode);
+
             if (e.Mode == PowerModes.Resume)
             {
                 startTime = DateTime.Now;
                 if (Properties.Settings.Default.LowPowerIsStart)
                 {
-                    handleStart();
+                    HandleStart();
                 }
                 else
                 {
-                    checkExpiration();
+                    CheckExpiration();
                 }
             }
         }
 
-        private void rwtTimer_Tick(object sender, EventArgs e)
+        private void Absence_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            Trace.WriteLine("Absence list has changed.");
+
+            UpdateAbsence();
+            UpdateWorkingTime();
+            UpdateLeaveTime();
+        }
+
+        private void NotifyTimer_Tick(object sender, EventArgs e)
         {
             notifyTimer.Stop();
-            checkExpiration();
+            CheckExpiration();
         }
 
-        private void onWorkingTimeUpdated(EventArgs e)
+        private void PeriodicTimer_Tick(object sender, EventArgs e)
         {
-            if (WorkingTimeUpdated != null)
-            {
-                WorkingTimeUpdated(this, e);
-            }
+            periodicTimer.Stop();
+
+            CalculateTotelAbsence();
+            UpdateWorkingTime();
+            UpdateLeaveTime();
         }
 
-        private void onLeaveTimeUpdated(EventArgs e)
-        {
-            if (LeaveTimeUpdated != null)
-            {
-                LeaveTimeUpdated(this, e);
-            }
-        }
-
-        public event EventHandler WorkingTimeUpdated;
-        public event EventHandler LeaveTimeUpdated;
-
-        private DateTime startTime;
-        private Timer notifyTimer = null;
-        private Properties.Settings userSettings = null;
-        private Session session = null;
+        private void NotifyAbsenceUpdated(EventArgs e) => AbsenceUpdated?.Invoke(this, e);
+        private void NotifyWorkingTimeUpdated(EventArgs e) => WorkingTimeUpdated?.Invoke(this, e);
+        private void NotifyLeaveTimeUpdated(EventArgs e) => LeaveTimeUpdated?.Invoke(this, e);
     }
 }

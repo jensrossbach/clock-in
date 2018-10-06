@@ -16,7 +16,7 @@ namespace ClockIn
             TopMost = Properties.Settings.Default.NotificationAlwaysOnTop;
         }
 
-        public void initialize(Image img, string text, bool approaching)
+        public void Initialize(Image img, string text, bool approaching)
         {
             lblIcon.Image = img;
             lblText.Text = text;
@@ -58,11 +58,11 @@ namespace ClockIn
         {
             if (cbxNotifyAgain.Checked)
             {
-                Program.TimeMgr.restartMaxTimeTimer((int)nmcNotifyAgain.Value);
+                Program.TimeMgr.RestartMaxTimeTimer((int)nmcNotifyAgain.Value);
             }
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
+        private void BtnOK_Click(object sender, EventArgs e)
         {
             Close();
         }
