@@ -17,6 +17,11 @@ click on the icon in the system tray or press the hotkey you've defined.
 ## Copyright and Disclaimer
 Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved.
 
+The software uses icons from external sources:
+- Application by FastIcon.com, see http://www.fasticon.com
+- Smilies copyright (C) 2002 wbchug.net :: Yazoo, see file
+  yazoo-icons-readme.txt for details
+
 Jens Rossbach ("the author") grants you the right to use and distribute this
 software free of charge.
 
