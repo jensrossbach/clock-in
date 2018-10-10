@@ -46,7 +46,7 @@ namespace ClockIn
             periodicTimer.Interval = 60000;
 
             // take time snapshot
-            startTime = DateTime.Now;
+            startTime = DateTime.Now - TimeSpan.FromMinutes((double)userSettings.ArrivalTimeOffset);
 
             HandleStart();
         }

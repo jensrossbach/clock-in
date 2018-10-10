@@ -334,5 +334,17 @@ namespace ClockIn.Properties {
                 this["OutsideLunchBreak2"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public decimal ArrivalTimeOffset {
+            get {
+                return ((decimal)(this["ArrivalTimeOffset"]));
+            }
+            set {
+                this["ArrivalTimeOffset"] = value;
+            }
+        }
     }
 }

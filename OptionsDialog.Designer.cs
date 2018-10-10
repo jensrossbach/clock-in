@@ -76,12 +76,15 @@
             this.lblSoundFile = new System.Windows.Forms.Label();
             this.cbxNotificationAlwayOnTop = new System.Windows.Forms.CheckBox();
             this.lblHotkey = new System.Windows.Forms.Label();
-            this.txtHotkey = new ClockIn.HotkeyControl();
             this.tbcOptions = new System.Windows.Forms.TabControl();
             this.tbpTimePeriods = new System.Windows.Forms.TabPage();
             this.grpOtherPeriod = new System.Windows.Forms.GroupBox();
             this.tbpNotifications = new System.Windows.Forms.TabPage();
             this.tbpAppStart = new System.Windows.Forms.TabPage();
+            this.lblOffsetMinutes = new System.Windows.Forms.Label();
+            this.nmcArrivalTimeOffset = new System.Windows.Forms.NumericUpDown();
+            this.lblArrivalTimeOffset = new System.Windows.Forms.Label();
+            this.txtHotkey = new ClockIn.HotkeyControl();
             this.grpLastSession.SuspendLayout();
             this.grpBreaksPeriod.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcBreak)).BeginInit();
@@ -98,6 +101,7 @@
             this.grpOtherPeriod.SuspendLayout();
             this.tbpNotifications.SuspendLayout();
             this.tbpAppStart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmcArrivalTimeOffset)).BeginInit();
             this.SuspendLayout();
             // 
             // lblRegularTime
@@ -502,15 +506,6 @@
             resources.ApplyResources(this.lblHotkey, "lblHotkey");
             this.lblHotkey.Name = "lblHotkey";
             // 
-            // txtHotkey
-            // 
-            this.txtHotkey.DataBindings.Add(new System.Windows.Forms.Binding("Hotkey", global::ClockIn.Properties.Settings.Default, "MainWindowHotkey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtHotkey.Hotkey = global::ClockIn.Properties.Settings.Default.MainWindowHotkey;
-            resources.ApplyResources(this.txtHotkey, "txtHotkey");
-            this.txtHotkey.Name = "txtHotkey";
-            this.txtHotkey.Enter += new System.EventHandler(this.TxtHotkey_Enter);
-            this.txtHotkey.Leave += new System.EventHandler(this.txtHotkey_Leave);
-            // 
             // tbcOptions
             // 
             this.tbcOptions.Controls.Add(this.tbpTimePeriods);
@@ -555,7 +550,6 @@
             // tbpNotifications
             // 
             this.tbpNotifications.Controls.Add(this.cbxNotifyRegularTime);
-            this.tbpNotifications.Controls.Add(this.txtHotkey);
             this.tbpNotifications.Controls.Add(this.cbxNotifyMaxTime);
             this.tbpNotifications.Controls.Add(this.lblHotkey);
             this.tbpNotifications.Controls.Add(this.nmcNotifyAdvance);
@@ -564,18 +558,53 @@
             this.tbpNotifications.Controls.Add(this.lblSoundFile);
             this.tbpNotifications.Controls.Add(this.cbxPlaySound);
             this.tbpNotifications.Controls.Add(this.btnSelectSound);
+            this.tbpNotifications.Controls.Add(this.txtHotkey);
             resources.ApplyResources(this.tbpNotifications, "tbpNotifications");
             this.tbpNotifications.Name = "tbpNotifications";
             this.tbpNotifications.UseVisualStyleBackColor = true;
             // 
             // tbpAppStart
             // 
+            this.tbpAppStart.Controls.Add(this.lblOffsetMinutes);
+            this.tbpAppStart.Controls.Add(this.nmcArrivalTimeOffset);
+            this.tbpAppStart.Controls.Add(this.lblArrivalTimeOffset);
             this.tbpAppStart.Controls.Add(this.cbxAutoLaunch);
             this.tbpAppStart.Controls.Add(this.grpLastSession);
             this.tbpAppStart.Controls.Add(this.cbxLowPowerIsStart);
             resources.ApplyResources(this.tbpAppStart, "tbpAppStart");
             this.tbpAppStart.Name = "tbpAppStart";
             this.tbpAppStart.UseVisualStyleBackColor = true;
+            // 
+            // lblOffsetMinutes
+            // 
+            resources.ApplyResources(this.lblOffsetMinutes, "lblOffsetMinutes");
+            this.lblOffsetMinutes.Name = "lblOffsetMinutes";
+            // 
+            // nmcArrivalTimeOffset
+            // 
+            this.nmcArrivalTimeOffset.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "ArrivalTimeOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.nmcArrivalTimeOffset, "nmcArrivalTimeOffset");
+            this.nmcArrivalTimeOffset.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.nmcArrivalTimeOffset.Name = "nmcArrivalTimeOffset";
+            this.nmcArrivalTimeOffset.Value = global::ClockIn.Properties.Settings.Default.ArrivalTimeOffset;
+            // 
+            // lblArrivalTimeOffset
+            // 
+            resources.ApplyResources(this.lblArrivalTimeOffset, "lblArrivalTimeOffset");
+            this.lblArrivalTimeOffset.Name = "lblArrivalTimeOffset";
+            // 
+            // txtHotkey
+            // 
+            this.txtHotkey.DataBindings.Add(new System.Windows.Forms.Binding("Hotkey", global::ClockIn.Properties.Settings.Default, "MainWindowHotkey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtHotkey.Hotkey = global::ClockIn.Properties.Settings.Default.MainWindowHotkey;
+            resources.ApplyResources(this.txtHotkey, "txtHotkey");
+            this.txtHotkey.Name = "txtHotkey";
+            this.txtHotkey.Enter += new System.EventHandler(this.TxtHotkey_Enter);
+            this.txtHotkey.Leave += new System.EventHandler(this.txtHotkey_Leave);
             // 
             // OptionsDialog
             // 
@@ -616,6 +645,7 @@
             this.tbpNotifications.PerformLayout();
             this.tbpAppStart.ResumeLayout(false);
             this.tbpAppStart.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmcArrivalTimeOffset)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -675,5 +705,8 @@
         private System.Windows.Forms.Label lblBreak;
         private System.Windows.Forms.NumericUpDown nmcBreak;
         private System.Windows.Forms.GroupBox grpOtherPeriod;
+        private System.Windows.Forms.NumericUpDown nmcArrivalTimeOffset;
+        private System.Windows.Forms.Label lblArrivalTimeOffset;
+        private System.Windows.Forms.Label lblOffsetMinutes;
     }
 }
