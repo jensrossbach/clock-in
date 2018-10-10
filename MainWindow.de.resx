@@ -142,6 +142,9 @@
   <data name="btnClose.Text" xml:space="preserve">
     <value>&amp;Schließen</value>
   </data>
+  <data name="icnTrayIcon.BalloonTipText" xml:space="preserve">
+    <value>Tool zur Erinnerung an Arbeitszeitgrenzen</value>
+  </data>
   <data name="ctxTrayMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 76</value>
   </data>
