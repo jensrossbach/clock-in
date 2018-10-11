@@ -4,6 +4,14 @@ Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved
 Version History
 ===============
 
+v2.1.6858.34889 (2018-10-11)
+----------------------------
+
+Added:   Possibility to specify start time offset
+Fixed:   Wrong title of system tray icon
+Fixed:   No recalculation of late shift break adder when resuming from energy saving mode
+
+
 v2.0.6853.21047 (2018-10-06)
 ----------------------------
 
