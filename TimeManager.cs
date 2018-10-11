@@ -99,12 +99,16 @@ namespace ClockIn
 
         public void ContinueSession()
         {
+            Debug.WriteLine("[TimeManager] Continue last session.");
+
             LoadAbsenceFromSession();
             CheckExpiration();
         }
 
         public void RestartSession(bool toCurTime)
         {
+            Debug.WriteLine("[TimeManager] Restart session (" + (toCurTime ? "now" : "to start") + ").");
+
             session.Arrival = toCurTime ? DateTime.Now : startTime;
             session.NotifyLevel = 0;
             session.Absence = string.Empty;
@@ -183,6 +187,8 @@ namespace ClockIn
 
         private void HandleStart()
         {
+            Debug.WriteLine("[TimeManager] Handle application start.");
+
             if (session.Arrival.Date == startTime.Date)
             {
                 if (userSettings.NewSessionOnStartup)
@@ -229,6 +235,8 @@ namespace ClockIn
                 {
                     notifyTimer.Interval = interval;
                     notifyTimer.Start();
+
+                    Debug.WriteLine("[TimeManager] Notify timer started at level " + session.NotifyLevel + " (" + interval + " ms).");
                 }
             }
             else if (session.NotifyLevel < 2)
@@ -239,6 +247,8 @@ namespace ClockIn
                 {
                     notifyTimer.Interval = interval;
                     notifyTimer.Start();
+
+                    Debug.WriteLine("[TimeManager] Notify timer started at level " + session.NotifyLevel + " (" + interval + " ms).");
                 }
             }
         }
@@ -362,10 +372,13 @@ namespace ClockIn
                 {
                     breakAdder = TimeSpan.FromMinutes((double)userSettings.OutsideLunchBreak1);
                     periodicTimer.Start();
+
+                    Debug.WriteLine("[TimeManager] Periodic timer started.");
                 }
                 else
                 {
                     periodicTimer.Start();
+                    Debug.WriteLine("[TimeManager] Periodic timer started.");
                 }
             }
 
@@ -410,7 +423,7 @@ namespace ClockIn
 
         private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
         {
-            Trace.WriteLine("Power mode has changed:  MOD " + e.Mode);
+            Debug.WriteLine("[TimeManager] Power mode has changed:  MOD " + e.Mode);
 
             if (e.Mode == PowerModes.Resume)
             {
@@ -421,6 +434,9 @@ namespace ClockIn
                 }
                 else
                 {
+                    CalculateTotelAbsence();
+                    NotifyAbsenceUpdated(new EventArgs());
+
                     CheckExpiration();
                 }
             }
@@ -428,7 +444,7 @@ namespace ClockIn
 
         private void Absence_ListChanged(object sender, ListChangedEventArgs e)
         {
-            Trace.WriteLine("Absence list has changed.");
+            Debug.WriteLine("[TimeManager] Absence list has changed.");
 
             UpdateAbsence();
             UpdateWorkingTime();
@@ -437,12 +453,15 @@ namespace ClockIn
 
         private void NotifyTimer_Tick(object sender, EventArgs e)
         {
+            Debug.WriteLine("[TimeManager] Notify timer expired.");
             notifyTimer.Stop();
+
             CheckExpiration();
         }
 
         private void PeriodicTimer_Tick(object sender, EventArgs e)
         {
+            Debug.WriteLine("[TimeManager] Periodic timer expired.");
             periodicTimer.Stop();
 
             CalculateTotelAbsence();
