@@ -80,11 +80,12 @@
             this.tbpTimePeriods = new System.Windows.Forms.TabPage();
             this.grpOtherPeriod = new System.Windows.Forms.GroupBox();
             this.tbpNotifications = new System.Windows.Forms.TabPage();
+            this.txtHotkey = new ClockIn.HotkeyControl();
             this.tbpAppStart = new System.Windows.Forms.TabPage();
+            this.cbxMinimized = new System.Windows.Forms.CheckBox();
             this.lblOffsetMinutes = new System.Windows.Forms.Label();
             this.nmcArrivalTimeOffset = new System.Windows.Forms.NumericUpDown();
             this.lblArrivalTimeOffset = new System.Windows.Forms.Label();
-            this.txtHotkey = new ClockIn.HotkeyControl();
             this.grpLastSession.SuspendLayout();
             this.grpBreaksPeriod.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcBreak)).BeginInit();
@@ -563,8 +564,18 @@
             this.tbpNotifications.Name = "tbpNotifications";
             this.tbpNotifications.UseVisualStyleBackColor = true;
             // 
+            // txtHotkey
+            // 
+            this.txtHotkey.DataBindings.Add(new System.Windows.Forms.Binding("Hotkey", global::ClockIn.Properties.Settings.Default, "MainWindowHotkey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtHotkey.Hotkey = global::ClockIn.Properties.Settings.Default.MainWindowHotkey;
+            resources.ApplyResources(this.txtHotkey, "txtHotkey");
+            this.txtHotkey.Name = "txtHotkey";
+            this.txtHotkey.Enter += new System.EventHandler(this.TxtHotkey_Enter);
+            this.txtHotkey.Leave += new System.EventHandler(this.txtHotkey_Leave);
+            // 
             // tbpAppStart
             // 
+            this.tbpAppStart.Controls.Add(this.cbxMinimized);
             this.tbpAppStart.Controls.Add(this.lblOffsetMinutes);
             this.tbpAppStart.Controls.Add(this.nmcArrivalTimeOffset);
             this.tbpAppStart.Controls.Add(this.lblArrivalTimeOffset);
@@ -574,6 +585,14 @@
             resources.ApplyResources(this.tbpAppStart, "tbpAppStart");
             this.tbpAppStart.Name = "tbpAppStart";
             this.tbpAppStart.UseVisualStyleBackColor = true;
+            // 
+            // cbxMinimized
+            // 
+            resources.ApplyResources(this.cbxMinimized, "cbxMinimized");
+            this.cbxMinimized.Checked = global::ClockIn.Properties.Settings.Default.StartMinimized;
+            this.cbxMinimized.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::ClockIn.Properties.Settings.Default, "StartMinimized", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.cbxMinimized.Name = "cbxMinimized";
+            this.cbxMinimized.UseVisualStyleBackColor = true;
             // 
             // lblOffsetMinutes
             // 
@@ -596,15 +615,6 @@
             // 
             resources.ApplyResources(this.lblArrivalTimeOffset, "lblArrivalTimeOffset");
             this.lblArrivalTimeOffset.Name = "lblArrivalTimeOffset";
-            // 
-            // txtHotkey
-            // 
-            this.txtHotkey.DataBindings.Add(new System.Windows.Forms.Binding("Hotkey", global::ClockIn.Properties.Settings.Default, "MainWindowHotkey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtHotkey.Hotkey = global::ClockIn.Properties.Settings.Default.MainWindowHotkey;
-            resources.ApplyResources(this.txtHotkey, "txtHotkey");
-            this.txtHotkey.Name = "txtHotkey";
-            this.txtHotkey.Enter += new System.EventHandler(this.TxtHotkey_Enter);
-            this.txtHotkey.Leave += new System.EventHandler(this.txtHotkey_Leave);
             // 
             // OptionsDialog
             // 
@@ -708,5 +718,6 @@
         private System.Windows.Forms.NumericUpDown nmcArrivalTimeOffset;
         private System.Windows.Forms.Label lblArrivalTimeOffset;
         private System.Windows.Forms.Label lblOffsetMinutes;
+        private System.Windows.Forms.CheckBox cbxMinimized;
     }
 }

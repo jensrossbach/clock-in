@@ -370,12 +370,6 @@
   <data name="lblHotkey.Text" xml:space="preserve">
     <value>Hot-Key:</value>
   </data>
-  <data name="txtHotkey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 183</value>
-  </data>
-  <data name="txtHotkey.Text" xml:space="preserve">
-    <value>Kein</value>
-  </data>
   <data name="tbcOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>327, 416</value>
   </data>
@@ -397,14 +391,29 @@
   <data name="tbpNotifications.Text" xml:space="preserve">
     <value>Benachrichtigungen</value>
   </data>
+  <data name="txtHotkey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 183</value>
+  </data>
+  <data name="txtHotkey.Text" xml:space="preserve">
+    <value>Kein</value>
+  </data>
   <data name="tbpAppStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>319, 390</value>
   </data>
   <data name="tbpAppStart.Text" xml:space="preserve">
     <value>Anwendungsstart</value>
   </data>
+  <data name="cbxMinimized.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 176</value>
+  </data>
+  <data name="cbxMinimized.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 17</value>
+  </data>
+  <data name="cbxMinimized.Text" xml:space="preserve">
+    <value>&amp;Minimiert starten</value>
+  </data>
   <data name="lblOffsetMinutes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>223, 187</value>
+    <value>223, 210</value>
   </data>
   <data name="lblOffsetMinutes.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 13</value>
@@ -413,10 +422,10 @@
     <value>Minuten</value>
   </data>
   <data name="nmcArrivalTimeOffset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 185</value>
+    <value>172, 208</value>
   </data>
   <data name="lblArrivalTimeOffset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 187</value>
+    <value>12, 210</value>
   </data>
   <data name="lblArrivalTimeOffset.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 13</value>

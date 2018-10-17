@@ -25,7 +25,7 @@ namespace ClockIn
                     Properties.Settings.Default.Upgraded = true;
                     Properties.Settings.Default.Save();
 
-                    Trace.WriteLine("INFO: Settings upgraded from previous version");
+                    Debug.WriteLine("[Program] Settings upgraded from previous version.");
                 } 
                 
                 Application.EnableVisualStyles();

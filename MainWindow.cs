@@ -31,6 +31,11 @@ namespace ClockIn
 
             InitializeComponent();
 
+            if (Properties.Settings.Default.StartMinimized)
+            {
+                WindowState = FormWindowState.Minimized;
+            }
+
             Properties.Settings.Default.PropertyChanged += DefaultSettings_PropertyChanged;
 
             showMainWinHK = new Hotkey(Properties.Settings.Default.MainWindowHotkey);
@@ -146,7 +151,10 @@ namespace ClockIn
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            Hide();
+            if (Properties.Settings.Default.StartMinimized)
+            {
+                Hide();
+            }
 
             lblLeaveTimeIcon.Image = Properties.Resources.Power;
         }
