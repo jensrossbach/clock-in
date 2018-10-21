@@ -1,4 +1,8 @@
-﻿using System;
+﻿// ClockIn
+// Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved.
+
+
+using System;
 using System.Threading;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -6,16 +10,29 @@ using System.Windows.Forms;
 
 namespace ClockIn
 {
+    /// <summary>
+    ///   Main class of the application
+    /// </summary>
     static class Program
     {
         /// <summary>
-        /// Der Haupteinstiegspunkt für die Anwendung.
+        ///   Time manager instance
+        /// </summary>
+        public static TimeManager TimeMgr
+        {
+            get
+            {
+                return timeMgr;
+            }
+        }
+
+        /// <summary>
+        ///   Main entry point of the application
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
-            bool firstInstance = true;
-            instanceMutex = new Mutex(false, "{ef6fec17-3816-459a-a72e-21fd34ebdc6b}", out firstInstance);
+            instanceMutex = new Mutex(false, "{ef6fec17-3816-459a-a72e-21fd34ebdc6b}", out bool firstInstance);
 
             if (firstInstance)
             {
@@ -36,14 +53,6 @@ namespace ClockIn
                 HotkeyManager.Init();
                 Application.Run(new MainWindow());
                 HotkeyManager.Deinit();
-            }
-        }
-
-        public static TimeManager TimeMgr
-        {
-            get
-            {
-                return timeMgr;
             }
         }
 

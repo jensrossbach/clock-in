@@ -1,4 +1,8 @@
-﻿using System;
+﻿// ClockIn
+// Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved.
+
+
+using System;
 using System.Diagnostics;
 using System.Collections;
 using System.Windows.Forms;
@@ -7,8 +11,14 @@ using System.Runtime.InteropServices;
 
 namespace ClockIn
 {
+    /// <summary>
+    ///   Listens for key presses and manages registered hotkeys.
+    /// </summary>
     static class HotkeyManager
     {
+        /// <summary>
+        ///   Enables or disables hotkey handling.
+        /// </summary>
         public static bool HotkeysEnabled
         {
             get
@@ -21,6 +31,9 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Initializes the hotkey manager.
+        /// </summary>
         public static void Init()
         {
             if (handlerID == IntPtr.Zero)
@@ -36,6 +49,9 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Deinitializes the hotkey manager.
+        /// </summary>
         public static void Deinit()
         {
             if (handlerID != IntPtr.Zero)
@@ -44,25 +60,33 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Registers a new hotkey.
+        /// </summary>
+        /// <param name="hotKey">Hotkey to register</param>
         public static void RegisterHotkey(Hotkey hotKey)
         {
             hotKeys.Add(hotKey);
         }
 
+        /// <summary>
+        ///   Unregisters a new hotkey.
+        /// </summary>
+        /// <param name="hotKey">Hotkey to unregister</param>
         public static void UnregisterHotkey(Hotkey hotKey)
         {
             hotKeys.Remove(hotKey);
         }
 
+        /// <summary>
+        ///   Handles system key events.
+        /// </summary>
+        /// <see>LowLevelKeyboardProc for more information</see>
         private static IntPtr KeyHandler(int nCode, IntPtr wParam, IntPtr lParam)
         {
             if (hotkeysEnabled && (nCode >= 0) && ((wParam == (IntPtr)WM_KEYDOWN) || (wParam == (IntPtr)WM_SYSKEYDOWN)))
             {
                 int keyCode = Marshal.ReadInt32(lParam);
-
-                //Console.WriteLine("Modifiers: " + Control.ModifierKeys);
-                //Console.WriteLine("Key Name:  " + (Keys)keyCode);
-                //Console.WriteLine("Key Code:  " + keyCode);
 
                 if ((keyCode != MOD_LWIN) &&
                     (keyCode != MOD_LSHIFT) && (keyCode != MOD_RSHIFT) &&

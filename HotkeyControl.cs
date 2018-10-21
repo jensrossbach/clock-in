@@ -1,4 +1,8 @@
-﻿using System;
+﻿// ClockIn
+// Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved.
+
+
+using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -8,95 +12,12 @@ using System.Runtime.InteropServices;
 namespace ClockIn
 {
     /// <summary>
-    /// A simple control that allows the user to select pretty much any valid hotkey combination
+    /// A simple control that allows the user to select pretty much any valid hotkey combination.
     /// </summary>
     public class HotkeyControl : TextBox
     {
         /// <summary>
-        /// Used to make sure that there is no right-click menu available
-        /// </summary>
-        public override ContextMenu ContextMenu
-        {
-            get
-            {
-                return emptyContextMenu;
-            }
-            set
-            {
-                base.ContextMenu = emptyContextMenu;
-            }
-        }
-
-        /// <summary>
-        /// Forces the control to be non-multiline
-        /// </summary>
-        public override bool Multiline
-        {
-            get
-            {
-                return base.Multiline;
-            }
-            set
-            {
-                // Ignore what the user wants; force Multiline to false
-                base.Multiline = false;
-            }
-        }
-
-        /// <summary>
-        /// Used to get/set the hotkey
-        /// </summary>
-        public Keys Hotkey
-        {
-            get
-            {
-                return ClockIn.Hotkey.ConstructHotkey(keyModifiers, keyCode);
-            }
-            set
-            {
-                ClockIn.Hotkey.SplitHotkey(value, out keyModifiers, out keyCode);
-                Render(true);
-            }
-        }
-
-        /// <summary>
-        /// Used to get/set the hotkey key code (e.g. Keys.A)
-        /// </summary>
-		[Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Keys KeyCode
-        {
-            get
-            {
-                return keyCode;
-            }
-            set
-            {
-                keyCode = value;
-                Render(true);
-            }
-        }
-
-        /// <summary>
-        /// Used to get/set the hotkey modifiers (e.g. Keys.Alt | Keys.Control)
-        /// </summary>
-		[Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Keys KeyModifiers
-        {
-            get
-            {
-                return keyModifiers;
-            }
-            set
-            {
-                keyModifiers = value;
-                Render(true);
-            }
-        }
-
-        /// <summary>
-        /// Creates a new HotkeyControl
+        ///   Creates a new HotkeyControl.
         /// </summary>
         public HotkeyControl()
         {
@@ -115,17 +36,98 @@ namespace ClockIn
         }
 
         /// <summary>
-        /// Resets this hotkey control to None
+        ///   Used to make sure that there is no right-click menu available.
+        /// </summary>
+        public override ContextMenu ContextMenu
+        {
+            get
+            {
+                return emptyContextMenu;
+            }
+            set
+            {
+                base.ContextMenu = emptyContextMenu;
+            }
+        }
+
+        /// <summary>
+        ///   Forces the control to be non-multiline.
+        /// </summary>
+        public override bool Multiline
+        {
+            get
+            {
+                return base.Multiline;
+            }
+            set
+            {
+                // Ignore what the user wants; force Multiline to false
+                base.Multiline = false;
+            }
+        }
+
+        /// <summary>
+        ///   Used to get/set the hotkey.
+        /// </summary>
+        public Keys Hotkey
+        {
+            get
+            {
+                return ClockIn.Hotkey.ConstructHotkey(keyModifiers, keyCode);
+            }
+            set
+            {
+                ClockIn.Hotkey.SplitHotkey(value, out keyModifiers, out keyCode);
+                Render(true);
+            }
+        }
+
+        /// <summary>
+        ///   Used to get/set the hotkey key code (e.g. Keys.A).
+        /// </summary>
+		[Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Keys KeyCode
+        {
+            get
+            {
+                return keyCode;
+            }
+            set
+            {
+                keyCode = value;
+                Render(true);
+            }
+        }
+
+        /// <summary>
+        ///   Used to get/set the hotkey modifiers (e.g. Keys.Alt | Keys.Control).
+        /// </summary>
+		[Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Keys KeyModifiers
+        {
+            get
+            {
+                return keyModifiers;
+            }
+            set
+            {
+                keyModifiers = value;
+                Render(true);
+            }
+        }
+
+        /// <summary>
+        ///   Clears the current hotkey and resets the TextBox.
         /// </summary>
         public new void Clear()
         {
-            //Hotkey = Keys.None;
-            //HotkeyModifiers = Keys.None;
             ResetHotkey();
         }
 
         /// <summary>
-        /// Clears the current hotkey and resets the TextBox
+        ///   Clears the current hotkey and resets the TextBox.
         /// </summary>
         public void ResetHotkey()
         {
@@ -136,7 +138,7 @@ namespace ClockIn
         }
 
         /// <summary>
-        /// Handles some misc keys, such as Ctrl+Delete and Shift+Insert
+        ///   Handles some misc keys, such as Ctrl+Delete and Shift+Insert.
         /// </summary>
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -156,8 +158,8 @@ namespace ClockIn
         }
 
         /// <summary>
-        /// Populates the ArrayLists specifying disallowed hotkeys
-        /// such as Shift+A, Ctrl+Alt+4 (would produce a dollar sign), etc.
+        ///   Populates the ArrayLists specifying disallowed hotkeys
+        ///   such as Shift+A, Ctrl+Alt+4 (would produce a dollar sign), etc.
         /// </summary>
         private void PopulateModifierLists()
         {
@@ -207,7 +209,7 @@ namespace ClockIn
         }
 
         /// <summary>
-        /// Helper function
+        ///   Helper function
         /// </summary>
         private void Render()
         {
@@ -215,9 +217,11 @@ namespace ClockIn
         }
 
         /// <summary>
-        /// Redraws the TextBox when necessary.
+        ///   Redraws the TextBox when necessary.
         /// </summary>
-        /// <param name="calledProgramatically">Specifies whether this function was called by the Hotkey/HotkeyModifiers properties or by the user.</param>
+        /// <param name="calledProgramatically">
+        ///   Specifies whether this function was called by the Hotkey/HotkeyModifiers properties or by the user.
+        /// </param>
         private void Render(bool calledProgramatically)
         {
             // No hotkey set
@@ -311,6 +315,11 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Converts modifiers into a string representation.
+        /// </summary>
+        /// <param name="modifiers">Modifiers to be converted</param>
+        /// <returns>String representation of the modifiers</returns>
         private string ModifiersToString(Keys modifiers)
         {
             string str = string.Empty;
@@ -343,6 +352,11 @@ namespace ClockIn
             return str;
         }
 
+        /// <summary>
+        ///   Converts a raw key into a string representation.
+        /// </summary>
+        /// <param name="hotKey">Raw key to be converted</param>
+        /// <returns>String representation of the raw key</returns>
         private string HotkeyToString(Keys hotKey)
         {
             string str = null;
@@ -500,14 +514,19 @@ namespace ClockIn
             return str;
         }
 
+        /// <summary>
+        ///   Converts a key code into a character.
+        /// </summary>
+        /// <param name="keyCode">Key code to be converted</param>
+        /// <returns>Key code as character</returns>
         private char KeyCodeToChar(Keys keyCode)
         {
             return (char)MapVirtualKey((uint)keyCode, VirtualKeyToVirtualChar);
         }
 
         /// <summary>
-        /// Fires when a key is pushed down. Here, we'll want to update the text in the box
-        /// to notify the user what combination is currently pressed.
+        ///   Fires when a key is pushed down. Here, we'll want to update the text in the box
+        ///   to notify the user what combination is currently pressed.
         /// </summary>
         private void HotkeyControl_KeyDown(object sender, KeyEventArgs e)
         {
@@ -527,8 +546,8 @@ namespace ClockIn
         }
 
         /// <summary>
-        /// Fires when all keys are released. If the current hotkey isn't valid, reset it.
-        /// Otherwise, do nothing and keep the text and hotkey as it was.
+        ///   Fires when all keys are released. If the current hotkey isn't valid, reset it.
+        ///   Otherwise, do nothing and keep the text and hotkey as it was.
         /// </summary>
         private void HotkeyControl_KeyUp(object sender, KeyEventArgs e)
         {
@@ -540,8 +559,8 @@ namespace ClockIn
         }
 
         /// <summary>
-        /// Prevents the letter/whatever entered to show up in the TextBox
-        /// Without this, a "A" key press would appear as "aControl, Alt + A"
+        ///   Prevents the letter/whatever entered to show up in the TextBox
+        ///   Without this, a "A" key press would appear as "aControl, Alt + A".
         /// </summary>
         private void HotkeyControl_KeyPress(object sender, KeyPressEventArgs e)
         {

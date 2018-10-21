@@ -1,4 +1,8 @@
-﻿using System;
+﻿// ClockIn
+// Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved.
+
+
+using System;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
@@ -8,16 +12,9 @@ namespace ClockIn
 {
     public partial class MainWindow : Form
     {
-        private bool exit;
-        private Timer wtTimer = null;
-        private Hotkey showMainWinHK = null;
-
-        private enum WorkingTimeDisplay
-        {
-            ElapsedTime,
-            RemainingTime
-        }
-
+        /// <summary>
+        ///   Default constructor of the class
+        /// </summary>
         public MainWindow()
         {
             exit = false;
@@ -44,6 +41,9 @@ namespace ClockIn
             HotkeyManager.RegisterHotkey(showMainWinHK);
         }
 
+        /// <summary>
+        ///   Updates the working time inside the window.
+        /// </summary>
         public void UpdateWorkingTime()
         {
             wtTimer.Stop();
@@ -94,6 +94,9 @@ namespace ClockIn
             wtTimer.Start();
         }
 
+        /// <summary>
+        ///   Updates the leave time inside the window.
+        /// </summary>
         public void UpdateLeaveTime()
         {
             bool overTime;
@@ -111,6 +114,9 @@ namespace ClockIn
             lblLeaveTime.Text = leaveTime.ToString(@"HH\:mm");
         }
 
+        /// <summary>
+        ///   Updates the absence inside the window.
+        /// </summary>
         private void UpdateAbsence()
         {
             TimeSpan absence = Program.TimeMgr.TotalAbsence;
@@ -125,12 +131,18 @@ namespace ClockIn
             txtAbsence.Text = absenceText;
         }
 
+        /// <summary>
+        ///   Calculates the interval until next full minute.
+        /// </summary>
         private int GetInterval()
         {
             DateTime now = DateTime.Now;
             return ((60 - now.Second) * 1000 - now.Millisecond);
         }
 
+        /// <summary>
+        ///   Switches the working time display between elapsed and remaining time.
+        /// </summary>
         private void SwitchWorkingTimeDisplay()
         {
             WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), Properties.Settings.Default.WorkingTimeDisplay);
@@ -149,6 +161,11 @@ namespace ClockIn
             UpdateLeaveTime();
         }
 
+        /// <summary>
+        ///   Handles the event when the window is loading.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void MainWindow_Load(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.StartMinimized)
@@ -159,6 +176,11 @@ namespace ClockIn
             lblLeaveTimeIcon.Image = Properties.Resources.Power;
         }
 
+        /// <summary>
+        ///   Handles the event when the window has been resized.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void MainWindow_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
@@ -167,6 +189,11 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Handles the event when the visibility of the window has changed.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void MainWindow_VisibleChanged(object sender, EventArgs e)
         {
             if (Visible)
@@ -181,6 +208,11 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Handles the event when the window is about to be closed.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!exit)
@@ -190,12 +222,22 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Handles the event when the window has been closed.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
             wtTimer.Stop();
             Properties.Settings.Default.Save();
         }
 
+        /// <summary>
+        ///   Handles the event when the arrival time text box has validated the input.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void DtpArrival_Validated(object sender, EventArgs e)
         {
             Program.TimeMgr.UpdateArrival(dtpArrival.Value);
@@ -203,28 +245,53 @@ namespace ClockIn
             UpdateLeaveTime();
         }
 
+        /// <summary>
+        ///   Handles a click on the working time icon.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void LblWorkingTimeIcon_Click(object sender, EventArgs e)
         {
             SwitchWorkingTimeDisplay();
         }
 
+        /// <summary>
+        ///   Handles a click on the working time text.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void LblWorkingTime_Click(object sender, EventArgs e)
         {
             SwitchWorkingTimeDisplay();
         }
 
+        /// <summary>
+        ///   Handles a click on the leave time icon.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void LblLeaveTimeIcon_Click(object sender, EventArgs e)
         {
             UpdateWorkingTime();
             UpdateLeaveTime();
         }
 
+        /// <summary>
+        ///   Handles a click on the leave time text.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void LblLeaveTime_Click(object sender, EventArgs e)
         {
             UpdateWorkingTime();
             UpdateLeaveTime();
         }
 
+        /// <summary>
+        ///   Handles a click on the reset time button.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void BtnResetTime_Click(object sender, EventArgs e)
         {
             Program.TimeMgr.RestartSession(true);
@@ -233,11 +300,21 @@ namespace ClockIn
             UpdateLeaveTime();
         }
 
+        /// <summary>
+        ///   Handles a click on the absence button.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void BtnAbsence_Click(object sender, EventArgs e)
         {
             new AbsenceDialog().ShowDialog(this);
         }
 
+        /// <summary>
+        ///   Handles a click on the about button.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void BtnAbout_Click(object sender, EventArgs e)
         {
             object[] attribs = Assembly.GetEntryAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
@@ -252,16 +329,31 @@ namespace ClockIn
             MessageBox.Show(text, Properties.Resources.AboutCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        ///   Handles a click on the options button.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void BtnOptions_Click(object sender, EventArgs e)
         {
             new OptionsDialog(this).ShowDialog();
         }
 
+        /// <summary>
+        ///   Handles a click on the close button.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void BtnClose_Click(object sender, EventArgs e)
         {
             Hide();
         }
 
+        /// <summary>
+        ///   Handles a double click on the system tray icon.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void IcnTray_DoubleClick(object sender, EventArgs e)
         {
             Show();
@@ -269,6 +361,11 @@ namespace ClockIn
             BringToFront();
         }
 
+        /// <summary>
+        ///   Handles a click on the restore item in the system tray menu.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void ItmRestore_Click(object sender, EventArgs e)
         {
             Show();
@@ -276,22 +373,42 @@ namespace ClockIn
             BringToFront();
         }
 
+        /// <summary>
+        ///   Handles a click on the options item in the system tray menu.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void ItmOptions_Click(object sender, EventArgs e)
         {
             new OptionsDialog(this).ShowDialog(this);
         }
 
+        /// <summary>
+        ///   Handles a click on the exit item in the system tray menu.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void ItmExit_Click(object sender, EventArgs e)
         {
             exit = true;
             Close();
         }
 
+        /// <summary>
+        ///   Handles the expiration of the working time update timer.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void WtTimer_Tick(object sender, EventArgs e)
         {
             UpdateWorkingTime();
         }
 
+        /// <summary>
+        ///   Handles an update of the absence.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void TimeMgr_AbsenceUpdated(object sender, EventArgs e)
         {
             if (Visible)
@@ -300,6 +417,11 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Handles an update of the working time.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         void TimeMgr_WorkingTimeUpdated(object sender, EventArgs e)
         {
             if (Visible)
@@ -308,6 +430,11 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Handles an update of the leave time.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         void TimeMgr_LeaveTimeUpdated(object sender, EventArgs e)
         {
             if (Visible)
@@ -316,6 +443,11 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Handles the change of a user setting.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void DefaultSettings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "DisplayMaximumTime")
@@ -333,6 +465,11 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Handles the key press of the hotkey.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void ShowMainWin_HotkeyPressed(object sender, EventArgs e)
         {
             if (!Visible)
@@ -342,5 +479,15 @@ namespace ClockIn
                 BringToFront();
             }
         }
+
+        private enum WorkingTimeDisplay
+        {
+            ElapsedTime,
+            RemainingTime
+        }
+
+        private bool exit;
+        private Timer wtTimer = null;
+        private Hotkey showMainWinHK = null;
     }
 }

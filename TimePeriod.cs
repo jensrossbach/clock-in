@@ -1,23 +1,33 @@
-﻿using System;
+﻿// ClockIn
+// Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved.
+
+
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 
 namespace ClockIn
 {
+    /// <summary>
+    ///   Represents a certain period of time
+    /// </summary>
     public class TimePeriod : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        DateTime startTime;
-        DateTime endTime;
-
+        /// <summary>
+        ///   Default constructor of the class
+        /// </summary>
         public TimePeriod()
         {
             DateTime now = DateTime.Now;
             SetupTime(now, now);
         }
 
+        /// <summary>
+        ///   Constructs the time period from a start and end time.
+        /// </summary>
+        /// <param name="start">Start time</param>
+        /// <param name="end">End time</param>
         public TimePeriod(DateTime start, DateTime end)
         {
             if (startTime > endTime)
@@ -28,6 +38,10 @@ namespace ClockIn
             SetupTime(start, end);
         }
 
+        /// <summary>
+        ///   Constructs the time period from its string representation.
+        /// </summary>
+        /// <param name="periodString">String representation of the time period</param>
         public TimePeriod(string periodString)
         {
             string[] parts = periodString.Split('|');
@@ -41,12 +55,24 @@ namespace ClockIn
             endTime = DateTime.Parse(parts[1]);
         }
 
+        /// <summary>
+        ///   Constructs the time period by cloning another one.
+        /// </summary>
+        /// <param name="other">Time period to be cloned</param>
         public TimePeriod(TimePeriod other)
         {
             startTime = other.StartTime;
             endTime = other.EndTime;
         }
 
+        /// <summary>
+        ///   Event notifies when a property from this time period has changed.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        ///   Start time of the time period
+        /// </summary>
         public DateTime StartTime
         {
             get
@@ -63,6 +89,9 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   End time of the time period
+        /// </summary>
         public DateTime EndTime
         {
             get
@@ -79,8 +108,15 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Time span of the time period
+        /// </summary>
         public TimeSpan Duration => endTime.TimeOfDay - startTime.TimeOfDay;
 
+        /// <summary>
+        ///   Copies another time period to this one.
+        /// </summary>
+        /// <param name="other">Time period to copy</param>
         public void CopyFrom(TimePeriod other)
         {
             bool notify = false;
@@ -103,11 +139,21 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Checks if this time period intersects with another one.
+        /// </summary>
+        /// <param name="other">Time period to check for intersection</param>
+        /// <returns>true if time period intersects with the other one, false otherwise</returns>
         public bool Intersecting(TimePeriod other)
         {
             return Math.Min(endTime.Ticks, other.EndTime.Ticks) > Math.Max(startTime.Ticks, other.StartTime.Ticks);
         }
 
+        /// <summary>
+        ///   Returns the intersection between this time period and another one.
+        /// </summary>
+        /// <param name="other">Time period to get intersection for</param>
+        /// <returns>Intersection with other time period as time span</returns>
         public TimeSpan GetIntersection(TimePeriod other)
         {
             if (Intersecting(other))
@@ -120,17 +166,33 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Converts the time period into its string representation.
+        /// </summary>
+        /// <returns>String representation of the time period</returns>
         public override string ToString() => startTime.ToString("s") + "|" + endTime.ToString("s");
 
+        /// <summary>
+        ///   Initializes the time period from a start and end time.
+        /// </summary>
+        /// <param name="start">Start time</param>
+        /// <param name="end">End time</param>
         private void SetupTime(DateTime start, DateTime end)
         {
             startTime = start.AddTicks(-(start.Ticks % TimeSpan.FromMinutes(1).Ticks));
             endTime = end.AddTicks(-(end.Ticks % TimeSpan.FromMinutes(1).Ticks));
         }
 
+        /// <summary>
+        ///   Notifies the change of a property from this time period.
+        /// </summary>
+        /// <param name="propertyName">Name of the property that has changed</param>
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private DateTime startTime;
+        private DateTime endTime;
     }
 }
