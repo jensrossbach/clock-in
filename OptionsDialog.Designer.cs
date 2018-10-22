@@ -571,7 +571,7 @@
             resources.ApplyResources(this.txtHotkey, "txtHotkey");
             this.txtHotkey.Name = "txtHotkey";
             this.txtHotkey.Enter += new System.EventHandler(this.TxtHotkey_Enter);
-            this.txtHotkey.Leave += new System.EventHandler(this.txtHotkey_Leave);
+            this.txtHotkey.Leave += new System.EventHandler(this.TxtHotkey_Leave);
             // 
             // tbpAppStart
             // 
