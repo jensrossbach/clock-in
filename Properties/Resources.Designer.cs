@@ -89,6 +89,24 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die You are about to reach your regular daily working time in {0} minutes. ähnelt.
+        /// </summary>
+        internal static string AheadOfRegularTimeLimit {
+            get {
+                return ResourceManager.GetString("AheadOfRegularTimeLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die You are about to reach your maximum daily working time in {0} minutes! ähnelt.
+        /// </summary>
+        internal static string ApproachingMaximumTimeLimit {
+            get {
+                return ResourceManager.GetString("ApproachingMaximumTimeLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Continue previously started session? ähnelt.
         /// </summary>
         internal static string AskSessionOnStartup {

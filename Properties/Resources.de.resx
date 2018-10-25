@@ -263,4 +263,10 @@ http://icons.wbchug.net</value>
   <data name="InvalidAbsencePeriod" xml:space="preserve">
     <value>Bitte gültigen Zeitraum für Abwesenheit angeben!</value>
   </data>
+  <data name="AheadOfRegularTimeLimit" xml:space="preserve">
+    <value>Sie erreichen die reguläre Tagesarbeitszeit in {0} Minuten.</value>
+  </data>
+  <data name="ApproachingMaximumTimeLimit" xml:space="preserve">
+    <value>Sie erreichen die maximale Tagesarbeitszeit in {0} Minuten!</value>
+  </data>
 </root>

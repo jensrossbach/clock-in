@@ -358,5 +358,17 @@ namespace ClockIn.Properties {
                 this["StartMinimized"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal NotifyRegAdvance {
+            get {
+                return ((decimal)(this["NotifyRegAdvance"]));
+            }
+            set {
+                this["NotifyRegAdvance"] = value;
+            }
+        }
     }
 }

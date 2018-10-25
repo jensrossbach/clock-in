@@ -29,12 +29,15 @@ namespace ClockIn
         /// <summary>
         ///   Initializes the notification dialog.
         /// </summary>
-        public void Initialize(Image img, string text, bool approaching)
+        /// <param name="img">Icon to be shown</param>
+        /// <param name="text">Text to be shown</param>
+        /// <param name="enableRepeat">true if controls for repeating notification should be shown</param>
+        public void Initialize(Image img, string text, bool enableRepeat)
         {
             lblIcon.Image = img;
             lblText.Text = text;
 
-            if (approaching)
+            if (enableRepeat)
             {
                 cbxNotifyAgain.Visible = true;
                 nmcNotifyAgain.Visible = true;

@@ -33,7 +33,7 @@
             this.lblRegularTimeH = new System.Windows.Forms.Label();
             this.lblMaxTime = new System.Windows.Forms.Label();
             this.lblMaxTimeH = new System.Windows.Forms.Label();
-            this.lblMinBefore = new System.Windows.Forms.Label();
+            this.lblMinBeforeMax = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.grpLastSession = new System.Windows.Forms.GroupBox();
             this.rbtQueryStartBehavior = new System.Windows.Forms.RadioButton();
@@ -66,7 +66,7 @@
             this.lblWorkspan1 = new System.Windows.Forms.Label();
             this.btnSelectSound = new System.Windows.Forms.Button();
             this.cbxPlaySound = new System.Windows.Forms.CheckBox();
-            this.nmcNotifyAdvance = new System.Windows.Forms.NumericUpDown();
+            this.nmcNotifyMaxAdvance = new System.Windows.Forms.NumericUpDown();
             this.cbxNotifyMaxTime = new System.Windows.Forms.CheckBox();
             this.cbxNotifyRegularTime = new System.Windows.Forms.CheckBox();
             this.nmcMaxTime = new System.Windows.Forms.NumericUpDown();
@@ -80,6 +80,8 @@
             this.tbpTimePeriods = new System.Windows.Forms.TabPage();
             this.grpOtherPeriod = new System.Windows.Forms.GroupBox();
             this.tbpNotifications = new System.Windows.Forms.TabPage();
+            this.lblMinBeforeReg = new System.Windows.Forms.Label();
+            this.nmcNotifyRegAdvance = new System.Windows.Forms.NumericUpDown();
             this.txtHotkey = new ClockIn.HotkeyControl();
             this.tbpAppStart = new System.Windows.Forms.TabPage();
             this.cbxMinimized = new System.Windows.Forms.CheckBox();
@@ -93,7 +95,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmcWorkspan2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmcAdder1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmcWorkspan1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmcNotifyAdvance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmcNotifyMaxAdvance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmcMaxTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmcRegularTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmcBreaksDuration)).BeginInit();
@@ -101,6 +103,7 @@
             this.tbpTimePeriods.SuspendLayout();
             this.grpOtherPeriod.SuspendLayout();
             this.tbpNotifications.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmcNotifyRegAdvance)).BeginInit();
             this.tbpAppStart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcArrivalTimeOffset)).BeginInit();
             this.SuspendLayout();
@@ -125,10 +128,10 @@
             resources.ApplyResources(this.lblMaxTimeH, "lblMaxTimeH");
             this.lblMaxTimeH.Name = "lblMaxTimeH";
             // 
-            // lblMinBefore
+            // lblMinBeforeMax
             // 
-            resources.ApplyResources(this.lblMinBefore, "lblMinBefore");
-            this.lblMinBefore.Name = "lblMinBefore";
+            resources.ApplyResources(this.lblMinBeforeMax, "lblMinBeforeMax");
+            this.lblMinBeforeMax.Name = "lblMinBeforeMax";
             // 
             // btnClose
             // 
@@ -392,17 +395,17 @@
             this.cbxPlaySound.Name = "cbxPlaySound";
             this.cbxPlaySound.UseVisualStyleBackColor = true;
             // 
-            // nmcNotifyAdvance
+            // nmcNotifyMaxAdvance
             // 
-            this.nmcNotifyAdvance.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "NotifyAdvance", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            resources.ApplyResources(this.nmcNotifyAdvance, "nmcNotifyAdvance");
-            this.nmcNotifyAdvance.Maximum = new decimal(new int[] {
+            this.nmcNotifyMaxAdvance.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "NotifyAdvance", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.nmcNotifyMaxAdvance, "nmcNotifyMaxAdvance");
+            this.nmcNotifyMaxAdvance.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
-            this.nmcNotifyAdvance.Name = "nmcNotifyAdvance";
-            this.nmcNotifyAdvance.Value = global::ClockIn.Properties.Settings.Default.NotifyAdvance;
+            this.nmcNotifyMaxAdvance.Name = "nmcNotifyMaxAdvance";
+            this.nmcNotifyMaxAdvance.Value = global::ClockIn.Properties.Settings.Default.NotifyAdvance;
             // 
             // cbxNotifyMaxTime
             // 
@@ -550,12 +553,14 @@
             // 
             // tbpNotifications
             // 
+            this.tbpNotifications.Controls.Add(this.lblMinBeforeReg);
+            this.tbpNotifications.Controls.Add(this.nmcNotifyRegAdvance);
             this.tbpNotifications.Controls.Add(this.cbxNotifyRegularTime);
             this.tbpNotifications.Controls.Add(this.cbxNotifyMaxTime);
             this.tbpNotifications.Controls.Add(this.lblHotkey);
-            this.tbpNotifications.Controls.Add(this.nmcNotifyAdvance);
+            this.tbpNotifications.Controls.Add(this.nmcNotifyMaxAdvance);
             this.tbpNotifications.Controls.Add(this.cbxNotificationAlwayOnTop);
-            this.tbpNotifications.Controls.Add(this.lblMinBefore);
+            this.tbpNotifications.Controls.Add(this.lblMinBeforeMax);
             this.tbpNotifications.Controls.Add(this.lblSoundFile);
             this.tbpNotifications.Controls.Add(this.cbxPlaySound);
             this.tbpNotifications.Controls.Add(this.btnSelectSound);
@@ -563,6 +568,23 @@
             resources.ApplyResources(this.tbpNotifications, "tbpNotifications");
             this.tbpNotifications.Name = "tbpNotifications";
             this.tbpNotifications.UseVisualStyleBackColor = true;
+            // 
+            // lblMinBeforeReg
+            // 
+            resources.ApplyResources(this.lblMinBeforeReg, "lblMinBeforeReg");
+            this.lblMinBeforeReg.Name = "lblMinBeforeReg";
+            // 
+            // nmcNotifyRegAdvance
+            // 
+            this.nmcNotifyRegAdvance.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "NotifyRegAdvance", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.nmcNotifyRegAdvance, "nmcNotifyRegAdvance");
+            this.nmcNotifyRegAdvance.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.nmcNotifyRegAdvance.Name = "nmcNotifyRegAdvance";
+            this.nmcNotifyRegAdvance.Value = global::ClockIn.Properties.Settings.Default.NotifyRegAdvance;
             // 
             // txtHotkey
             // 
@@ -642,7 +664,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmcWorkspan2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmcAdder1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmcWorkspan1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmcNotifyAdvance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmcNotifyMaxAdvance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmcMaxTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmcRegularTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmcBreaksDuration)).EndInit();
@@ -653,6 +675,7 @@
             this.grpOtherPeriod.PerformLayout();
             this.tbpNotifications.ResumeLayout(false);
             this.tbpNotifications.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmcNotifyRegAdvance)).EndInit();
             this.tbpAppStart.ResumeLayout(false);
             this.tbpAppStart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcArrivalTimeOffset)).EndInit();
@@ -668,7 +691,7 @@
         private System.Windows.Forms.Label lblMaxTimeH;
         private System.Windows.Forms.CheckBox cbxNotifyRegularTime;
         private System.Windows.Forms.CheckBox cbxNotifyMaxTime;
-        private System.Windows.Forms.Label lblMinBefore;
+        private System.Windows.Forms.Label lblMinBeforeMax;
         private System.Windows.Forms.CheckBox cbxPlaySound;
         private System.Windows.Forms.Button btnSelectSound;
         private System.Windows.Forms.Button btnClose;
@@ -678,7 +701,7 @@
         private System.Windows.Forms.RadioButton rbtNewSession;
         private System.Windows.Forms.NumericUpDown nmcRegularTime;
         private System.Windows.Forms.NumericUpDown nmcMaxTime;
-        private System.Windows.Forms.NumericUpDown nmcNotifyAdvance;
+        private System.Windows.Forms.NumericUpDown nmcNotifyMaxAdvance;
         private System.Windows.Forms.CheckBox cbxLowPowerIsStart;
         private System.Windows.Forms.DateTimePicker dtpBreaksBegin;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
@@ -719,5 +742,7 @@
         private System.Windows.Forms.Label lblArrivalTimeOffset;
         private System.Windows.Forms.Label lblOffsetMinutes;
         private System.Windows.Forms.CheckBox cbxMinimized;
+        private System.Windows.Forms.Label lblMinBeforeReg;
+        private System.Windows.Forms.NumericUpDown nmcNotifyRegAdvance;
     }
 }

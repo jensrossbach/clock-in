@@ -136,13 +136,10 @@
   <data name="lblMaxTimeH.Location" type="System.Drawing.Point, System.Drawing">
     <value>289, 44</value>
   </data>
-  <data name="lblMinBefore.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 63</value>
-  </data>
-  <data name="lblMinBefore.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblMinBeforeMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 13</value>
   </data>
-  <data name="lblMinBefore.Text" xml:space="preserve">
+  <data name="lblMinBeforeMax.Text" xml:space="preserve">
     <value>Minuten vorher</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
@@ -305,13 +302,13 @@
     <value>Bei Arbeit länger als:</value>
   </data>
   <data name="btnSelectSound.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 120</value>
+    <value>32, 153</value>
   </data>
   <data name="btnSelectSound.Text" xml:space="preserve">
     <value>&amp;Auswählen...</value>
   </data>
   <data name="cbxPlaySound.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 97</value>
+    <value>12, 130</value>
   </data>
   <data name="cbxPlaySound.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 17</value>
@@ -319,11 +316,8 @@
   <data name="cbxPlaySound.Text" xml:space="preserve">
     <value>&amp;Sound abspielen:</value>
   </data>
-  <data name="nmcNotifyAdvance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 61</value>
-  </data>
   <data name="cbxNotifyMaxTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 38</value>
+    <value>12, 69</value>
   </data>
   <data name="cbxNotifyMaxTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>295, 17</value>
@@ -349,11 +343,17 @@
   <data name="dlgSelectSound.Filter" xml:space="preserve">
     <value>Wave-Dateien|*.wav</value>
   </data>
+  <data name="lblSoundFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 158</value>
+  </data>
+  <data name="lblSoundFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 13</value>
+  </data>
   <data name="lblSoundFile.Text" xml:space="preserve">
     <value>(nichts gewählt)</value>
   </data>
   <data name="cbxNotificationAlwayOnTop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 159</value>
+    <value>12, 192</value>
   </data>
   <data name="cbxNotificationAlwayOnTop.Size" type="System.Drawing.Size, System.Drawing">
     <value>206, 17</value>
@@ -362,7 +362,7 @@
     <value>Benachrichtigungsfenster immer &amp;vorne</value>
   </data>
   <data name="lblHotkey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 186</value>
+    <value>12, 225</value>
   </data>
   <data name="lblHotkey.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 13</value>
@@ -391,8 +391,14 @@
   <data name="tbpNotifications.Text" xml:space="preserve">
     <value>Benachrichtigungen</value>
   </data>
+  <data name="lblMinBeforeReg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 13</value>
+  </data>
+  <data name="lblMinBeforeReg.Text" xml:space="preserve">
+    <value>Minuten vorher</value>
+  </data>
   <data name="txtHotkey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 183</value>
+    <value>66, 222</value>
   </data>
   <data name="txtHotkey.Text" xml:space="preserve">
     <value>Kein</value>

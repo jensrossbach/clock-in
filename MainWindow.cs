@@ -48,28 +48,44 @@ namespace ClockIn
         {
             wtTimer.Stop();
 
-            TimeManager.WorkingLevel level;
-            TimeSpan elapsedTime = Program.TimeMgr.GetCurrentElapsedWorkingTime(out level);
+            TimeSpan elapsedTime = Program.TimeMgr.GetCurrentElapsedWorkingTime(out TimeManager.WorkingLevel level);
 
-            if (elapsedTime.TotalMinutes > (int)(Properties.Settings.Default.MaximumWorkingTime * 60))
+            switch (level)
             {
-                lblWorkingTime.ForeColor = Color.Red;
-                lblIcon.Image = Properties.Resources.Sad;
-            }
-            else if (elapsedTime.TotalMinutes > (int)((Properties.Settings.Default.MaximumWorkingTime * 60) - Properties.Settings.Default.NotifyAdvance))
-            {
-                lblWorkingTime.ForeColor = Color.Orange;
-                lblIcon.Image = Properties.Resources.Ooooh;
-            }
-            else if (elapsedTime.TotalMinutes > (int)(Properties.Settings.Default.RegularWorkingTime * 60))
-            {
-                lblWorkingTime.ForeColor = Color.DarkGreen;
-                lblIcon.Image = Properties.Resources.BigSmile;
-            }
-            else
-            {
-                lblWorkingTime.ForeColor = Color.Black;
-                lblIcon.Image = Properties.Resources.Confused;
+                case TimeManager.WorkingLevel.RegularTime:
+                case TimeManager.WorkingLevel.AheadOfClosingTime:
+                {
+                    lblWorkingTime.ForeColor = Color.Black;
+                    lblIcon.Image = Properties.Resources.Confused;
+
+                    break;
+                }
+                case TimeManager.WorkingLevel.OverTime:
+                {
+                    lblWorkingTime.ForeColor = Color.DarkGreen;
+                    lblIcon.Image = Properties.Resources.BigSmile;
+
+                    break;
+                }
+                case TimeManager.WorkingLevel.ApproachingMaxTime:
+                {
+                    lblWorkingTime.ForeColor = Color.Orange;
+                    lblIcon.Image = Properties.Resources.Ooooh;
+
+                    break;
+                }
+                case TimeManager.WorkingLevel.MaxTimeViolation:
+                {
+                    lblWorkingTime.ForeColor = Color.Red;
+                    lblIcon.Image = Properties.Resources.Sad;
+
+                    break;
+                }
+                default:
+                {
+                    // cannot happen
+                    break;
+                }
             }
 
             WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), Properties.Settings.Default.WorkingTimeDisplay);

@@ -48,10 +48,11 @@ namespace ClockIn
         /// </summary>
         public enum WorkingLevel
         {
-            RegularTime,         // Working within regular time
-            OverTime,            // Working longer than regular time
-            ApproachingMaxTime,  // Approaching maximum working time
-            MaxTimeViolation     // Exceeded maximum working time
+            RegularTime        = 0,  // Working within regular time
+            AheadOfClosingTime = 1,  // Ahead of closing time
+            OverTime           = 2,  // Working longer than regular time
+            ApproachingMaxTime = 3,  // Approaching maximum working time
+            MaxTimeViolation   = 4   // Exceeded maximum working time
         }
 
         /// <summary>
@@ -192,14 +193,21 @@ namespace ClockIn
             {
                 level = WorkingLevel.MaxTimeViolation;
             }
-            else if (workingTime >= (TimeSpan.FromHours((double)userSettings.MaximumWorkingTime) -
-                                     TimeSpan.FromMinutes((double)userSettings.NotifyAdvance)))
+            else if ((userSettings.NotifyAdvance > 0) &&
+                     (workingTime >= (TimeSpan.FromHours((double)userSettings.MaximumWorkingTime) -
+                                      TimeSpan.FromMinutes((double)userSettings.NotifyAdvance))))
             {
                 level = WorkingLevel.ApproachingMaxTime;
             }
             else if (workingTime >= TimeSpan.FromHours((double)userSettings.RegularWorkingTime))
             {
                 level = WorkingLevel.OverTime;
+            }
+            else if ((userSettings.NotifyRegAdvance > 0) &&
+                     (workingTime >= (TimeSpan.FromHours((double)userSettings.RegularWorkingTime) -
+                                      TimeSpan.FromMinutes((double)userSettings.NotifyRegAdvance))))
+            {
+                level = WorkingLevel.AheadOfClosingTime;
             }
             else
             {
@@ -215,8 +223,7 @@ namespace ClockIn
         /// <returns>Remaining working time</returns>
         public TimeSpan GetCurrentRemainingWorkingTime()
         {
-            bool overTime;
-            DateTime leaveTime = GetCurrentLeaveTime(out overTime);
+            DateTime leaveTime = GetCurrentLeaveTime(out bool overTime);
             DateTime cur = DateTime.Now;
 
             if (leaveTime > cur)
@@ -300,7 +307,8 @@ namespace ClockIn
 
             if (session.NotifyLevel < 1)
             {
-                int interval = (int)(CalculateWorkingTime((int)userSettings.RegularWorkingTime).Ticks / TimeSpan.TicksPerMillisecond);
+                TimeSpan workingTime = CalculateWorkingTime((int)userSettings.RegularWorkingTime) - new TimeSpan(0, (int)userSettings.NotifyRegAdvance, 0);
+                int interval = (int)(workingTime.Ticks / TimeSpan.TicksPerMillisecond);
                 if (interval > 0)
                 {
                     notifyTimer.Interval = interval;
@@ -332,7 +340,7 @@ namespace ClockIn
         {
             if (minutes > 0)
             {
-                session.NotifyLevel = 1;
+                session.NotifyLevel = 2;
                 notifyTimer.Interval = minutes * 60 * 1000;
                 notifyTimer.Start();
             }
@@ -355,7 +363,11 @@ namespace ClockIn
             }
             else if (level == WorkingLevel.OverTime)
             {
-                NotifyRegularTimeLimit();
+                NotifyRegularTimeLimit(false);
+            }
+            else if (level == WorkingLevel.AheadOfClosingTime)
+            {
+                NotifyRegularTimeLimit(true);
             }
 
             NotifyWorkingTimeUpdated(new EventArgs());
@@ -365,14 +377,25 @@ namespace ClockIn
         /// <summary>
         ///   Notifies that regular working time has been reached.
         /// </summary>
-        private void NotifyRegularTimeLimit()
+        private void NotifyRegularTimeLimit(bool ahead)
         {
             if (session.NotifyLevel < 1)
             {
                 session.NotifyLevel = 1;
 
                 NotificationDialog dlg = new NotificationDialog();
-                dlg.Initialize(Properties.Resources.BigSmile, Properties.Resources.RegularTimeLimitReached, false);
+
+                string message;
+                if (ahead)
+                {
+                    message = string.Format(Properties.Resources.AheadOfRegularTimeLimit, GetRemainingMinutes((int)userSettings.RegularWorkingTime));
+                }
+                else
+                {
+                    message = Properties.Resources.RegularTimeLimitReached;
+                }
+
+                dlg.Initialize(Properties.Resources.BigSmile, message, false);
                 dlg.Show();
             }
         }
@@ -388,9 +411,30 @@ namespace ClockIn
                 session.NotifyLevel = 2;
 
                 NotificationDialog dlg = new NotificationDialog();
-                dlg.Initialize(approaching ? Properties.Resources.Ooooh : Properties.Resources.Sad, Properties.Resources.MaxmimumTimeLimitReached, approaching);
+
+                string message;
+                if (approaching)
+                {
+                    message = string.Format(Properties.Resources.ApproachingMaximumTimeLimit, GetRemainingMinutes((int)userSettings.MaximumWorkingTime));
+                }
+                else
+                {
+                    message = Properties.Resources.MaxmimumTimeLimitReached;
+                }
+
+                dlg.Initialize(approaching ? Properties.Resources.Ooooh : Properties.Resources.Sad, message, approaching);
                 dlg.Show();
             }
+        }
+
+        /// <summary>
+        ///   Returns the remaining minutes until time limit.
+        /// </summary>
+        /// <param name="clearWorkingTimeHours">Number of hours to work</param>
+        /// <returns>Remaining minutes</returns>
+        int GetRemainingMinutes(int clearWorkingTimeHours)
+        {
+            return (int)Math.Ceiling((CalculateLeaveTime(clearWorkingTimeHours) - DateTime.Now).TotalMinutes);
         }
 
         /// <summary>

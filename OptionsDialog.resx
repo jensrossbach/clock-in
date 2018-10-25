@@ -240,35 +240,35 @@
   <data name="&gt;&gt;lblMaxTimeH.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="lblMinBefore.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblMinBeforeMax.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lblMinBefore.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblMinBeforeMax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblMinBefore.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 63</value>
+  <data name="lblMinBeforeMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 94</value>
   </data>
-  <data name="lblMinBefore.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblMinBeforeMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 13</value>
   </data>
-  <data name="lblMinBefore.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblMinBeforeMax.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="lblMinBefore.Text" xml:space="preserve">
+  <data name="lblMinBeforeMax.Text" xml:space="preserve">
     <value>minutes before</value>
   </data>
-  <data name="&gt;&gt;lblMinBefore.Name" xml:space="preserve">
-    <value>lblMinBefore</value>
+  <data name="&gt;&gt;lblMinBeforeMax.Name" xml:space="preserve">
+    <value>lblMinBeforeMax</value>
   </data>
-  <data name="&gt;&gt;lblMinBefore.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblMinBeforeMax.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblMinBefore.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblMinBeforeMax.Parent" xml:space="preserve">
     <value>tbpNotifications</value>
   </data>
-  <data name="&gt;&gt;lblMinBefore.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;lblMinBeforeMax.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="btnClose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -297,6 +297,24 @@
   <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="rbtQueryStartBehavior.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rbtQueryStartBehavior.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rbtQueryStartBehavior.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 69</value>
+  </data>
+  <data name="rbtQueryStartBehavior.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 17</value>
+  </data>
+  <data name="rbtQueryStartBehavior.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="rbtQueryStartBehavior.Text" xml:space="preserve">
+    <value>&amp;Ask on every start</value>
+  </data>
   <data name="&gt;&gt;rbtQueryStartBehavior.Name" xml:space="preserve">
     <value>rbtQueryStartBehavior</value>
   </data>
@@ -309,6 +327,24 @@
   <data name="&gt;&gt;rbtQueryStartBehavior.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="rbtContinueSession.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rbtContinueSession.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rbtContinueSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 46</value>
+  </data>
+  <data name="rbtContinueSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 17</value>
+  </data>
+  <data name="rbtContinueSession.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="rbtContinueSession.Text" xml:space="preserve">
+    <value>Continue &amp;today's session</value>
+  </data>
   <data name="&gt;&gt;rbtContinueSession.Name" xml:space="preserve">
     <value>rbtContinueSession</value>
   </data>
@@ -320,6 +356,24 @@
   </data>
   <data name="&gt;&gt;rbtContinueSession.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="rbtNewSession.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rbtNewSession.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rbtNewSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 23</value>
+  </data>
+  <data name="rbtNewSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 17</value>
+  </data>
+  <data name="rbtNewSession.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="rbtNewSession.Text" xml:space="preserve">
+    <value>Always start &amp;new session</value>
   </data>
   <data name="&gt;&gt;rbtNewSession.Name" xml:space="preserve">
     <value>rbtNewSession</value>
@@ -357,96 +411,6 @@
   <data name="&gt;&gt;grpLastSession.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="rbtQueryStartBehavior.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rbtQueryStartBehavior.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="rbtQueryStartBehavior.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 69</value>
-  </data>
-  <data name="rbtQueryStartBehavior.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 17</value>
-  </data>
-  <data name="rbtQueryStartBehavior.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="rbtQueryStartBehavior.Text" xml:space="preserve">
-    <value>&amp;Ask on every start</value>
-  </data>
-  <data name="&gt;&gt;rbtQueryStartBehavior.Name" xml:space="preserve">
-    <value>rbtQueryStartBehavior</value>
-  </data>
-  <data name="&gt;&gt;rbtQueryStartBehavior.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rbtQueryStartBehavior.Parent" xml:space="preserve">
-    <value>grpLastSession</value>
-  </data>
-  <data name="&gt;&gt;rbtQueryStartBehavior.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="rbtContinueSession.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rbtContinueSession.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="rbtContinueSession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 46</value>
-  </data>
-  <data name="rbtContinueSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 17</value>
-  </data>
-  <data name="rbtContinueSession.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="rbtContinueSession.Text" xml:space="preserve">
-    <value>Continue &amp;today's session</value>
-  </data>
-  <data name="&gt;&gt;rbtContinueSession.Name" xml:space="preserve">
-    <value>rbtContinueSession</value>
-  </data>
-  <data name="&gt;&gt;rbtContinueSession.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rbtContinueSession.Parent" xml:space="preserve">
-    <value>grpLastSession</value>
-  </data>
-  <data name="&gt;&gt;rbtContinueSession.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="rbtNewSession.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rbtNewSession.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="rbtNewSession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 23</value>
-  </data>
-  <data name="rbtNewSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 17</value>
-  </data>
-  <data name="rbtNewSession.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="rbtNewSession.Text" xml:space="preserve">
-    <value>Always start &amp;new session</value>
-  </data>
-  <data name="&gt;&gt;rbtNewSession.Name" xml:space="preserve">
-    <value>rbtNewSession</value>
-  </data>
-  <data name="&gt;&gt;rbtNewSession.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rbtNewSession.Parent" xml:space="preserve">
-    <value>grpLastSession</value>
-  </data>
-  <data name="&gt;&gt;rbtNewSession.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="cbxAutoLaunch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -460,7 +424,7 @@
     <value>213, 17</value>
   </data>
   <data name="cbxAutoLaunch.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="cbxAutoLaunch.Text" xml:space="preserve">
     <value>&amp;Launch application on Windows startup</value>
@@ -490,7 +454,7 @@
     <value>236, 17</value>
   </data>
   <data name="cbxLowPowerIsStart.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="cbxLowPowerIsStart.Text" xml:space="preserve">
     <value>Wakeup from low &amp;power state means startup</value>
@@ -572,114 +536,6 @@
   </data>
   <data name="&gt;&gt;lblBreaksMin.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblBreakMin.Name" xml:space="preserve">
-    <value>lblBreakMin</value>
-  </data>
-  <data name="&gt;&gt;lblBreakMin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblBreakMin.Parent" xml:space="preserve">
-    <value>grpBreaksPeriod</value>
-  </data>
-  <data name="&gt;&gt;lblBreakMin.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblBreak.Name" xml:space="preserve">
-    <value>lblBreak</value>
-  </data>
-  <data name="&gt;&gt;lblBreak.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblBreak.Parent" xml:space="preserve">
-    <value>grpBreaksPeriod</value>
-  </data>
-  <data name="&gt;&gt;lblBreak.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;nmcBreak.Name" xml:space="preserve">
-    <value>nmcBreak</value>
-  </data>
-  <data name="&gt;&gt;nmcBreak.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nmcBreak.Parent" xml:space="preserve">
-    <value>grpBreaksPeriod</value>
-  </data>
-  <data name="&gt;&gt;nmcBreak.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;dtpBreaksEnd.Name" xml:space="preserve">
-    <value>dtpBreaksEnd</value>
-  </data>
-  <data name="&gt;&gt;dtpBreaksEnd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dtpBreaksEnd.Parent" xml:space="preserve">
-    <value>grpBreaksPeriod</value>
-  </data>
-  <data name="&gt;&gt;dtpBreaksEnd.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;lblBreaksEnd.Name" xml:space="preserve">
-    <value>lblBreaksEnd</value>
-  </data>
-  <data name="&gt;&gt;lblBreaksEnd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblBreaksEnd.Parent" xml:space="preserve">
-    <value>grpBreaksPeriod</value>
-  </data>
-  <data name="&gt;&gt;lblBreaksEnd.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;lblBreaksBegin.Name" xml:space="preserve">
-    <value>lblBreaksBegin</value>
-  </data>
-  <data name="&gt;&gt;lblBreaksBegin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblBreaksBegin.Parent" xml:space="preserve">
-    <value>grpBreaksPeriod</value>
-  </data>
-  <data name="&gt;&gt;lblBreaksBegin.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;dtpBreaksBegin.Name" xml:space="preserve">
-    <value>dtpBreaksBegin</value>
-  </data>
-  <data name="&gt;&gt;dtpBreaksBegin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dtpBreaksBegin.Parent" xml:space="preserve">
-    <value>grpBreaksPeriod</value>
-  </data>
-  <data name="&gt;&gt;dtpBreaksBegin.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="grpBreaksPeriod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 84</value>
-  </data>
-  <data name="grpBreaksPeriod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 122</value>
-  </data>
-  <data name="grpBreaksPeriod.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="grpBreaksPeriod.Text" xml:space="preserve">
-    <value>Lunch break period</value>
-  </data>
-  <data name="&gt;&gt;grpBreaksPeriod.Name" xml:space="preserve">
-    <value>grpBreaksPeriod</value>
-  </data>
-  <data name="&gt;&gt;grpBreaksPeriod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpBreaksPeriod.Parent" xml:space="preserve">
-    <value>tbpTimePeriods</value>
-  </data>
-  <data name="&gt;&gt;grpBreaksPeriod.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="lblBreakMin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -872,6 +728,30 @@
   </data>
   <data name="&gt;&gt;dtpBreaksBegin.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="grpBreaksPeriod.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 84</value>
+  </data>
+  <data name="grpBreaksPeriod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 122</value>
+  </data>
+  <data name="grpBreaksPeriod.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="grpBreaksPeriod.Text" xml:space="preserve">
+    <value>Lunch break period</value>
+  </data>
+  <data name="&gt;&gt;grpBreaksPeriod.Name" xml:space="preserve">
+    <value>grpBreaksPeriod</value>
+  </data>
+  <data name="&gt;&gt;grpBreaksPeriod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpBreaksPeriod.Parent" xml:space="preserve">
+    <value>tbpTimePeriods</value>
+  </data>
+  <data name="&gt;&gt;grpBreaksPeriod.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="lblAdder2Min.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1213,13 +1093,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnSelectSound.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 120</value>
+    <value>37, 151</value>
   </data>
   <data name="btnSelectSound.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="btnSelectSound.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="btnSelectSound.Text" xml:space="preserve">
     <value>&amp;Choose...</value>
@@ -1234,7 +1114,7 @@
     <value>tbpNotifications</value>
   </data>
   <data name="&gt;&gt;btnSelectSound.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="cbxPlaySound.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1243,13 +1123,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbxPlaySound.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 97</value>
+    <value>18, 128</value>
   </data>
   <data name="cbxPlaySound.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 17</value>
   </data>
   <data name="cbxPlaySound.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="cbxPlaySound.Text" xml:space="preserve">
     <value>Play &amp;sound:</value>
@@ -1264,28 +1144,28 @@
     <value>tbpNotifications</value>
   </data>
   <data name="&gt;&gt;cbxPlaySound.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
-  <data name="nmcNotifyAdvance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 61</value>
+  <data name="nmcNotifyMaxAdvance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 92</value>
   </data>
-  <data name="nmcNotifyAdvance.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="nmcNotifyMaxAdvance.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
   </data>
-  <data name="nmcNotifyAdvance.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+  <data name="nmcNotifyMaxAdvance.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
   </data>
-  <data name="&gt;&gt;nmcNotifyAdvance.Name" xml:space="preserve">
-    <value>nmcNotifyAdvance</value>
+  <data name="&gt;&gt;nmcNotifyMaxAdvance.Name" xml:space="preserve">
+    <value>nmcNotifyMaxAdvance</value>
   </data>
-  <data name="&gt;&gt;nmcNotifyAdvance.Type" xml:space="preserve">
+  <data name="&gt;&gt;nmcNotifyMaxAdvance.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;nmcNotifyAdvance.Parent" xml:space="preserve">
+  <data name="&gt;&gt;nmcNotifyMaxAdvance.Parent" xml:space="preserve">
     <value>tbpNotifications</value>
   </data>
-  <data name="&gt;&gt;nmcNotifyAdvance.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;nmcNotifyMaxAdvance.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="cbxNotifyMaxTime.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1294,13 +1174,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbxNotifyMaxTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 38</value>
+    <value>18, 69</value>
   </data>
   <data name="cbxNotifyMaxTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 17</value>
   </data>
   <data name="cbxNotifyMaxTime.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="cbxNotifyMaxTime.Text" xml:space="preserve">
     <value>Notify upon reaching &amp;maximum working time</value>
@@ -1315,7 +1195,7 @@
     <value>tbpNotifications</value>
   </data>
   <data name="&gt;&gt;cbxNotifyMaxTime.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="cbxNotifyRegularTime.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1345,7 +1225,7 @@
     <value>tbpNotifications</value>
   </data>
   <data name="&gt;&gt;cbxNotifyRegularTime.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="nmcMaxTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>181, 42</value>
@@ -1423,7 +1303,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblSoundFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 98</value>
+    <value>105, 129</value>
   </data>
   <data name="lblSoundFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 13</value>
@@ -1444,7 +1324,7 @@
     <value>tbpNotifications</value>
   </data>
   <data name="&gt;&gt;lblSoundFile.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="cbxNotificationAlwayOnTop.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1453,13 +1333,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbxNotificationAlwayOnTop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 159</value>
+    <value>18, 190</value>
   </data>
   <data name="cbxNotificationAlwayOnTop.Size" type="System.Drawing.Size, System.Drawing">
     <value>186, 17</value>
   </data>
   <data name="cbxNotificationAlwayOnTop.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="cbxNotificationAlwayOnTop.Text" xml:space="preserve">
     <value>Notification window always on t&amp;op</value>
@@ -1474,7 +1354,7 @@
     <value>tbpNotifications</value>
   </data>
   <data name="&gt;&gt;cbxNotificationAlwayOnTop.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="lblHotkey.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1483,7 +1363,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblHotkey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 186</value>
+    <value>15, 222</value>
   </data>
   <data name="lblHotkey.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 13</value>
@@ -1504,64 +1384,19 @@
     <value>tbpNotifications</value>
   </data>
   <data name="&gt;&gt;lblHotkey.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;tbpTimePeriods.Name" xml:space="preserve">
-    <value>tbpTimePeriods</value>
+  <data name="grpOtherPeriod.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 214</value>
   </data>
-  <data name="&gt;&gt;tbpTimePeriods.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="grpOtherPeriod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 160</value>
   </data>
-  <data name="&gt;&gt;tbpTimePeriods.Parent" xml:space="preserve">
-    <value>tbcOptions</value>
-  </data>
-  <data name="&gt;&gt;tbpTimePeriods.ZOrder" xml:space="preserve">
+  <data name="grpOtherPeriod.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tbpNotifications.Name" xml:space="preserve">
-    <value>tbpNotifications</value>
-  </data>
-  <data name="&gt;&gt;tbpNotifications.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbpNotifications.Parent" xml:space="preserve">
-    <value>tbcOptions</value>
-  </data>
-  <data name="&gt;&gt;tbpNotifications.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tbpAppStart.Name" xml:space="preserve">
-    <value>tbpAppStart</value>
-  </data>
-  <data name="&gt;&gt;tbpAppStart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbpAppStart.Parent" xml:space="preserve">
-    <value>tbcOptions</value>
-  </data>
-  <data name="&gt;&gt;tbpAppStart.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tbcOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="tbcOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>268, 416</value>
-  </data>
-  <data name="tbcOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tbcOptions.Name" xml:space="preserve">
-    <value>tbcOptions</value>
-  </data>
-  <data name="&gt;&gt;tbcOptions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbcOptions.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tbcOptions.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="grpOtherPeriod.Text" xml:space="preserve">
+    <value>Late shift</value>
   </data>
   <data name="&gt;&gt;grpOtherPeriod.Name" xml:space="preserve">
     <value>grpOtherPeriod</value>
@@ -1602,41 +1437,80 @@
   <data name="&gt;&gt;tbpTimePeriods.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="grpOtherPeriod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 214</value>
+  <data name="lblMinBeforeReg.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="grpOtherPeriod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 160</value>
+  <data name="lblMinBeforeReg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="grpOtherPeriod.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblMinBeforeReg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 40</value>
+  </data>
+  <data name="lblMinBeforeReg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 13</value>
+  </data>
+  <data name="lblMinBeforeReg.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="grpOtherPeriod.Text" xml:space="preserve">
-    <value>Late shift</value>
+  <data name="lblMinBeforeReg.Text" xml:space="preserve">
+    <value>minutes before</value>
   </data>
-  <data name="&gt;&gt;grpOtherPeriod.Name" xml:space="preserve">
-    <value>grpOtherPeriod</value>
+  <data name="&gt;&gt;lblMinBeforeReg.Name" xml:space="preserve">
+    <value>lblMinBeforeReg</value>
   </data>
-  <data name="&gt;&gt;grpOtherPeriod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lblMinBeforeReg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;grpOtherPeriod.Parent" xml:space="preserve">
-    <value>tbpTimePeriods</value>
+  <data name="&gt;&gt;lblMinBeforeReg.Parent" xml:space="preserve">
+    <value>tbpNotifications</value>
   </data>
-  <data name="&gt;&gt;grpOtherPeriod.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;lblMinBeforeReg.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="nmcNotifyRegAdvance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 38</value>
+  </data>
+  <data name="nmcNotifyRegAdvance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="nmcNotifyRegAdvance.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;nmcNotifyRegAdvance.Name" xml:space="preserve">
+    <value>nmcNotifyRegAdvance</value>
+  </data>
+  <data name="&gt;&gt;nmcNotifyRegAdvance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcNotifyRegAdvance.Parent" xml:space="preserve">
+    <value>tbpNotifications</value>
+  </data>
+  <data name="&gt;&gt;nmcNotifyRegAdvance.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtHotkey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>65, 219</value>
+  </data>
+  <data name="txtHotkey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 20</value>
+  </data>
+  <data name="txtHotkey.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="txtHotkey.Text" xml:space="preserve">
+    <value>None</value>
   </data>
   <data name="&gt;&gt;txtHotkey.Name" xml:space="preserve">
     <value>txtHotkey</value>
   </data>
   <data name="&gt;&gt;txtHotkey.Type" xml:space="preserve">
-    <value>ClockIn.HotkeyControl, ClockIn, Version=2.1.6858.34889, Culture=neutral, PublicKeyToken=null</value>
+    <value>ClockIn.HotkeyControl, ClockIn, Version=2.1.6869.38882, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;txtHotkey.Parent" xml:space="preserve">
     <value>tbpNotifications</value>
   </data>
   <data name="&gt;&gt;txtHotkey.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="tbpNotifications.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -1665,104 +1539,11 @@
   <data name="&gt;&gt;tbpNotifications.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="txtHotkey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>65, 183</value>
-  </data>
-  <data name="txtHotkey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 20</value>
-  </data>
-  <data name="txtHotkey.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="txtHotkey.Text" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="&gt;&gt;txtHotkey.Name" xml:space="preserve">
-    <value>txtHotkey</value>
-  </data>
-  <data name="&gt;&gt;txtHotkey.Type" xml:space="preserve">
-    <value>ClockIn.HotkeyControl, ClockIn, Version=2.1.6864.32181, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;txtHotkey.Parent" xml:space="preserve">
-    <value>tbpNotifications</value>
-  </data>
-  <data name="&gt;&gt;txtHotkey.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;cbxMinimized.Name" xml:space="preserve">
-    <value>cbxMinimized</value>
-  </data>
-  <data name="&gt;&gt;cbxMinimized.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxMinimized.Parent" xml:space="preserve">
-    <value>tbpAppStart</value>
-  </data>
-  <data name="&gt;&gt;cbxMinimized.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblOffsetMinutes.Name" xml:space="preserve">
-    <value>lblOffsetMinutes</value>
-  </data>
-  <data name="&gt;&gt;lblOffsetMinutes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblOffsetMinutes.Parent" xml:space="preserve">
-    <value>tbpAppStart</value>
-  </data>
-  <data name="&gt;&gt;lblOffsetMinutes.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;nmcArrivalTimeOffset.Name" xml:space="preserve">
-    <value>nmcArrivalTimeOffset</value>
-  </data>
-  <data name="&gt;&gt;nmcArrivalTimeOffset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nmcArrivalTimeOffset.Parent" xml:space="preserve">
-    <value>tbpAppStart</value>
-  </data>
-  <data name="&gt;&gt;nmcArrivalTimeOffset.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblArrivalTimeOffset.Name" xml:space="preserve">
-    <value>lblArrivalTimeOffset</value>
-  </data>
-  <data name="&gt;&gt;lblArrivalTimeOffset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblArrivalTimeOffset.Parent" xml:space="preserve">
-    <value>tbpAppStart</value>
-  </data>
-  <data name="&gt;&gt;lblArrivalTimeOffset.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tbpAppStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tbpAppStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 390</value>
-  </data>
-  <data name="tbpAppStart.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tbpAppStart.Text" xml:space="preserve">
-    <value>Application Start</value>
-  </data>
-  <data name="&gt;&gt;tbpAppStart.Name" xml:space="preserve">
-    <value>tbpAppStart</value>
-  </data>
-  <data name="&gt;&gt;tbpAppStart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbpAppStart.Parent" xml:space="preserve">
-    <value>tbcOptions</value>
-  </data>
-  <data name="&gt;&gt;tbpAppStart.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="cbxMinimized.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="cbxMinimized.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="cbxMinimized.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 177</value>
@@ -1771,7 +1552,7 @@
     <value>96, 17</value>
   </data>
   <data name="cbxMinimized.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="cbxMinimized.Text" xml:space="preserve">
     <value>Start &amp;minimized</value>
@@ -1825,7 +1606,7 @@
     <value>45, 20</value>
   </data>
   <data name="nmcArrivalTimeOffset.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="&gt;&gt;nmcArrivalTimeOffset.Name" xml:space="preserve">
     <value>nmcArrivalTimeOffset</value>
@@ -1868,6 +1649,51 @@
   </data>
   <data name="&gt;&gt;lblArrivalTimeOffset.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="tbpAppStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tbpAppStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 390</value>
+  </data>
+  <data name="tbpAppStart.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tbpAppStart.Text" xml:space="preserve">
+    <value>Application Start</value>
+  </data>
+  <data name="&gt;&gt;tbpAppStart.Name" xml:space="preserve">
+    <value>tbpAppStart</value>
+  </data>
+  <data name="&gt;&gt;tbpAppStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpAppStart.Parent" xml:space="preserve">
+    <value>tbcOptions</value>
+  </data>
+  <data name="&gt;&gt;tbpAppStart.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tbcOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="tbcOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>268, 416</value>
+  </data>
+  <data name="tbcOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbcOptions.Name" xml:space="preserve">
+    <value>tbcOptions</value>
+  </data>
+  <data name="&gt;&gt;tbcOptions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbcOptions.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tbcOptions.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
