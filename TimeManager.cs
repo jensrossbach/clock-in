@@ -340,7 +340,7 @@ namespace ClockIn
         {
             if (minutes > 0)
             {
-                session.NotifyLevel = 2;
+                session.NotifyLevel = 1;
                 notifyTimer.Interval = minutes * 60 * 1000;
                 notifyTimer.Start();
             }
