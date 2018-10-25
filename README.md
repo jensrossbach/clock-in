@@ -1,4 +1,4 @@
-# ClockIn v2.0
+# ClockIn v2.2
 Welcome to ClockIn, the time manager for notifying you about your working time.
 
 ## What is ClockIn?

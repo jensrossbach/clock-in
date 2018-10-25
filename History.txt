@@ -4,6 +4,14 @@ Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved
 Version History
 ===============
 
+v2.2.6872.22519 (2018-10-25)
+----------------------------
+
+Added:   Possibility for notification ahead of regular working time limit
+Added:   Option to start application in foreground
+Changed: Internal code improvements
+
+
 v2.1.6858.34889 (2018-10-11)
 ----------------------------
 
