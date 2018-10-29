@@ -275,4 +275,8 @@ http://icons.wbchug.net</value>
   <data name="ApproachingMaximumTimeLimit" xml:space="preserve">
     <value>You are about to reach your maximum daily working time in {0} minutes!</value>
   </data>
+  <data name="TooltipText" xml:space="preserve">
+    <value>ClockIn
+Closing time at {0}.</value>
+  </data>
 </root>

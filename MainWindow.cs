@@ -115,8 +115,7 @@ namespace ClockIn
         /// </summary>
         public void UpdateLeaveTime()
         {
-            bool overTime;
-            DateTime leaveTime = Program.TimeMgr.GetCurrentLeaveTime(out overTime);
+            DateTime leaveTime = Program.TimeMgr.GetCurrentLeaveTime(out bool overTime);
 
             if (overTime)
             {
@@ -128,6 +127,7 @@ namespace ClockIn
             }
             
             lblLeaveTime.Text = leaveTime.ToString(@"HH\:mm");
+            icnTrayIcon.Text = string.Format(Properties.Resources.TooltipText, lblLeaveTime.Text);
         }
 
         /// <summary>

@@ -269,4 +269,8 @@ http://icons.wbchug.net</value>
   <data name="ApproachingMaximumTimeLimit" xml:space="preserve">
     <value>Sie erreichen die maximale Tagesarbeitszeit in {0} Minuten!</value>
   </data>
+  <data name="TooltipText" xml:space="preserve">
+    <value>ClockIn
+Feierabend um {0} Uhr.</value>
+  </data>
 </root>

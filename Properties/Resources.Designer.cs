@@ -518,5 +518,15 @@ namespace ClockIn.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die ClockIn
+        ///Closing time at {0}. ähnelt.
+        /// </summary>
+        internal static string TooltipText {
+            get {
+                return ResourceManager.GetString("TooltipText", resourceCulture);
+            }
+        }
     }
 }
