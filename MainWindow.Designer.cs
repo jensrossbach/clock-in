@@ -61,19 +61,16 @@
             // 
             resources.ApplyResources(this.lblBegin, "lblBegin");
             this.lblBegin.Name = "lblBegin";
-            this.ttMain.SetToolTip(this.lblBegin, resources.GetString("lblBegin.ToolTip"));
             // 
             // lblAbsence
             // 
             resources.ApplyResources(this.lblAbsence, "lblAbsence");
             this.lblAbsence.Name = "lblAbsence";
-            this.ttMain.SetToolTip(this.lblAbsence, resources.GetString("lblAbsence.ToolTip"));
             // 
             // btnOptions
             // 
             resources.ApplyResources(this.btnOptions, "btnOptions");
             this.btnOptions.Name = "btnOptions";
-            this.ttMain.SetToolTip(this.btnOptions, resources.GetString("btnOptions.ToolTip"));
             this.btnOptions.UseVisualStyleBackColor = true;
             this.btnOptions.Click += new System.EventHandler(this.BtnOptions_Click);
             // 
@@ -81,7 +78,6 @@
             // 
             resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.Name = "btnClose";
-            this.ttMain.SetToolTip(this.btnClose, resources.GetString("btnClose.ToolTip"));
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
@@ -89,25 +85,23 @@
             // 
             resources.ApplyResources(this.lblWorkingTime, "lblWorkingTime");
             this.lblWorkingTime.Name = "lblWorkingTime";
-            this.ttMain.SetToolTip(this.lblWorkingTime, resources.GetString("lblWorkingTime.ToolTip"));
             this.lblWorkingTime.Click += new System.EventHandler(this.LblWorkingTime_Click);
             // 
             // icnTrayIcon
             // 
-            resources.ApplyResources(this.icnTrayIcon, "icnTrayIcon");
             this.icnTrayIcon.ContextMenuStrip = this.ctxTrayMenu;
+            resources.ApplyResources(this.icnTrayIcon, "icnTrayIcon");
             this.icnTrayIcon.DoubleClick += new System.EventHandler(this.IcnTray_DoubleClick);
             // 
             // ctxTrayMenu
             // 
-            resources.ApplyResources(this.ctxTrayMenu, "ctxTrayMenu");
             this.ctxTrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itmRestore,
             this.itmOptions,
             this.toolStripSeparator1,
             this.itmExit});
             this.ctxTrayMenu.Name = "ctxTrayMenu";
-            this.ttMain.SetToolTip(this.ctxTrayMenu, resources.GetString("ctxTrayMenu.ToolTip"));
+            resources.ApplyResources(this.ctxTrayMenu, "ctxTrayMenu");
             // 
             // itmRestore
             // 
@@ -117,19 +111,19 @@
             // 
             // itmOptions
             // 
-            resources.ApplyResources(this.itmOptions, "itmOptions");
             this.itmOptions.Name = "itmOptions";
+            resources.ApplyResources(this.itmOptions, "itmOptions");
             this.itmOptions.Click += new System.EventHandler(this.ItmOptions_Click);
             // 
             // toolStripSeparator1
             // 
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // itmExit
             // 
-            resources.ApplyResources(this.itmExit, "itmExit");
             this.itmExit.Name = "itmExit";
+            resources.ApplyResources(this.itmExit, "itmExit");
             this.itmExit.Click += new System.EventHandler(this.ItmExit_Click);
             // 
             // dtpArrival
@@ -139,7 +133,6 @@
             this.dtpArrival.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpArrival.Name = "dtpArrival";
             this.dtpArrival.ShowUpDown = true;
-            this.ttMain.SetToolTip(this.dtpArrival, resources.GetString("dtpArrival.ToolTip"));
             this.dtpArrival.Value = global::ClockIn.Session.Default.Arrival;
             this.dtpArrival.Validated += new System.EventHandler(this.DtpArrival_Validated);
             // 
@@ -147,7 +140,6 @@
             // 
             resources.ApplyResources(this.btnAbout, "btnAbout");
             this.btnAbout.Name = "btnAbout";
-            this.ttMain.SetToolTip(this.btnAbout, resources.GetString("btnAbout.ToolTip"));
             this.btnAbout.UseVisualStyleBackColor = true;
             this.btnAbout.Click += new System.EventHandler(this.BtnAbout_Click);
             // 
@@ -155,40 +147,35 @@
             // 
             resources.ApplyResources(this.lblWorkingTimeIcon, "lblWorkingTimeIcon");
             this.lblWorkingTimeIcon.Name = "lblWorkingTimeIcon";
-            this.ttMain.SetToolTip(this.lblWorkingTimeIcon, resources.GetString("lblWorkingTimeIcon.ToolTip"));
             this.lblWorkingTimeIcon.Click += new System.EventHandler(this.LblWorkingTimeIcon_Click);
             // 
             // lblLeaveTimeIcon
             // 
             resources.ApplyResources(this.lblLeaveTimeIcon, "lblLeaveTimeIcon");
             this.lblLeaveTimeIcon.Name = "lblLeaveTimeIcon";
-            this.ttMain.SetToolTip(this.lblLeaveTimeIcon, resources.GetString("lblLeaveTimeIcon.ToolTip"));
             this.lblLeaveTimeIcon.Click += new System.EventHandler(this.LblLeaveTimeIcon_Click);
             // 
             // lblLeaveTime
             // 
             resources.ApplyResources(this.lblLeaveTime, "lblLeaveTime");
             this.lblLeaveTime.Name = "lblLeaveTime";
-            this.ttMain.SetToolTip(this.lblLeaveTime, resources.GetString("lblLeaveTime.ToolTip"));
             this.lblLeaveTime.Click += new System.EventHandler(this.LblLeaveTime_Click);
             // 
             // pnlTimeDisplay
             // 
-            resources.ApplyResources(this.pnlTimeDisplay, "pnlTimeDisplay");
             this.pnlTimeDisplay.BackColor = System.Drawing.SystemColors.Window;
             this.pnlTimeDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlTimeDisplay.Controls.Add(this.lblWorkingTimeIcon);
             this.pnlTimeDisplay.Controls.Add(this.lblWorkingTime);
             this.pnlTimeDisplay.Controls.Add(this.lblLeaveTime);
             this.pnlTimeDisplay.Controls.Add(this.lblLeaveTimeIcon);
+            resources.ApplyResources(this.pnlTimeDisplay, "pnlTimeDisplay");
             this.pnlTimeDisplay.Name = "pnlTimeDisplay";
-            this.ttMain.SetToolTip(this.pnlTimeDisplay, resources.GetString("pnlTimeDisplay.ToolTip"));
             // 
             // lblIcon
             // 
             resources.ApplyResources(this.lblIcon, "lblIcon");
             this.lblIcon.Name = "lblIcon";
-            this.ttMain.SetToolTip(this.lblIcon, resources.GetString("lblIcon.ToolTip"));
             // 
             // cbxDisplayMaxTime
             // 
@@ -196,13 +183,12 @@
             this.cbxDisplayMaxTime.Checked = global::ClockIn.Properties.Settings.Default.DisplayMaximumTime;
             this.cbxDisplayMaxTime.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::ClockIn.Properties.Settings.Default, "DisplayMaximumTime", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.cbxDisplayMaxTime.Name = "cbxDisplayMaxTime";
-            this.ttMain.SetToolTip(this.cbxDisplayMaxTime, resources.GetString("cbxDisplayMaxTime.ToolTip"));
             this.cbxDisplayMaxTime.UseVisualStyleBackColor = true;
             // 
             // btnResetTime
             // 
-            resources.ApplyResources(this.btnResetTime, "btnResetTime");
             this.btnResetTime.Image = global::ClockIn.Properties.Resources.Reset;
+            resources.ApplyResources(this.btnResetTime, "btnResetTime");
             this.btnResetTime.Name = "btnResetTime";
             this.ttMain.SetToolTip(this.btnResetTime, resources.GetString("btnResetTime.ToolTip"));
             this.btnResetTime.UseVisualStyleBackColor = true;
@@ -213,7 +199,6 @@
             resources.ApplyResources(this.txtAbsence, "txtAbsence");
             this.txtAbsence.Name = "txtAbsence";
             this.txtAbsence.ReadOnly = true;
-            this.ttMain.SetToolTip(this.txtAbsence, resources.GetString("txtAbsence.ToolTip"));
             // 
             // btnAbsence
             // 
@@ -246,10 +231,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainWindow";
-            this.ttMain.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
-            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.VisibleChanged += new System.EventHandler(this.MainWindow_VisibleChanged);
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.ctxTrayMenu.ResumeLayout(false);

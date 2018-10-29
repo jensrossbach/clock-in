@@ -27,10 +27,12 @@ namespace ClockIn
             Program.TimeMgr.LeaveTimeUpdated += TimeMgr_LeaveTimeUpdated;
 
             InitializeComponent();
+            lblLeaveTimeIcon.Image = Properties.Resources.Power;
 
             if (Properties.Settings.Default.StartMinimized)
             {
                 WindowState = FormWindowState.Minimized;
+                ShowInTaskbar = false;
             }
 
             Properties.Settings.Default.PropertyChanged += DefaultSettings_PropertyChanged;
@@ -175,21 +177,6 @@ namespace ClockIn
             Properties.Settings.Default.WorkingTimeDisplay = System.Enum.Format(typeof(WorkingTimeDisplay), wtd, "G");
             UpdateWorkingTime();
             UpdateLeaveTime();
-        }
-
-        /// <summary>
-        ///   Handles the event when the window is loading.
-        /// </summary>
-        /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-            if (Properties.Settings.Default.StartMinimized)
-            {
-                Hide();
-            }
-
-            lblLeaveTimeIcon.Image = Properties.Resources.Power;
         }
 
         /// <summary>
@@ -374,6 +361,7 @@ namespace ClockIn
         {
             Show();
             WindowState = FormWindowState.Normal;
+            ShowInTaskbar = true;
             BringToFront();
         }
 
@@ -386,6 +374,7 @@ namespace ClockIn
         {
             Show();
             WindowState = FormWindowState.Normal;
+            ShowInTaskbar = true;
             BringToFront();
         }
 
