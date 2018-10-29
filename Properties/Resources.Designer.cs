@@ -107,6 +107,15 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die A new day has begun. Restart session? ähnelt.
+        /// </summary>
+        internal static string AskSessionAtMidnight {
+            get {
+                return ResourceManager.GetString("AskSessionAtMidnight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Continue previously started session? ähnelt.
         /// </summary>
         internal static string AskSessionOnStartup {

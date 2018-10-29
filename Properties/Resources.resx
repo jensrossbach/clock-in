@@ -279,4 +279,7 @@ http://icons.wbchug.net</value>
     <value>ClockIn
 Closing time at {0}.</value>
   </data>
+  <data name="AskSessionAtMidnight" xml:space="preserve">
+    <value>A new day has begun. Restart session?</value>
+  </data>
 </root>

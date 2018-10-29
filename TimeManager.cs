@@ -23,6 +23,10 @@ namespace ClockIn
         public TimeManager()
         {
             userSettings = Properties.Settings.Default;
+
+            // take time snapshot
+            startTime = DateTime.Now - TimeSpan.FromMinutes((double)userSettings.ArrivalTimeOffset);
+
             session = Session.Default;
             absence = new BindingList<TimePeriod>();
             totalAbsence = TimeSpan.Zero;
@@ -37,8 +41,8 @@ namespace ClockIn
             periodicTimer.Tick += new EventHandler(PeriodicTimer_Tick);
             periodicTimer.Interval = 60000;
 
-            // take time snapshot
-            startTime = DateTime.Now - TimeSpan.FromMinutes((double)userSettings.ArrivalTimeOffset);
+            eodTimer = new Timer();
+            eodTimer.Tick += EodTimer_Tick;
 
             HandleStart();
         }
@@ -296,6 +300,7 @@ namespace ClockIn
             }
 
             session.Save();
+            SetupEoDTimer();
         }
 
         /// <summary>
@@ -329,6 +334,18 @@ namespace ClockIn
                     Debug.WriteLine("[TimeManager] Notify timer started at level " + session.NotifyLevel + " (" + interval + " ms).");
                 }
             }
+        }
+
+        /// <summary>
+        ///   Configures and starts the end-of-day timer.
+        /// </summary>
+        void SetupEoDTimer()
+        {
+            eodTimer.Stop();
+            eodTimer.Interval = (int)(DateTime.Today.AddDays(1.0) - DateTime.Now).TotalMilliseconds;
+            eodTimer.Start();
+
+            Debug.WriteLine("[TimeManager] End-of-day timer started (" + eodTimer.Interval + " ms).");
         }
 
         /// <summary>
@@ -581,9 +598,9 @@ namespace ClockIn
 
             if (e.Mode == PowerModes.Resume)
             {
-                startTime = DateTime.Now;
                 if (Properties.Settings.Default.LowPowerIsStart)
                 {
+                    startTime = DateTime.Now;
                     HandleStart();
                 }
                 else
@@ -592,6 +609,7 @@ namespace ClockIn
                     NotifyAbsenceUpdated(new EventArgs());
 
                     CheckExpiration();
+                    SetupEoDTimer();
                 }
             }
         }
@@ -638,6 +656,28 @@ namespace ClockIn
             UpdateLeaveTime();
         }
 
+        private void EodTimer_Tick(object sender, EventArgs e)
+        {
+            Debug.WriteLine("[TimeManager] End-of-day timer expired.");
+            eodTimer.Stop();
+
+            DialogResult result = MessageBox.Show(Properties.Resources.AskSessionAtMidnight,
+                                                  Properties.Resources.MessageBoxCaption,
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                RestartSession(true);
+            }
+            else
+            {
+                CheckExpiration();
+            }
+
+            SetupEoDTimer();
+        }
+
         private void NotifyAbsenceUpdated(EventArgs e) => AbsenceUpdated?.Invoke(this, e);
         private void NotifyWorkingTimeUpdated(EventArgs e) => WorkingTimeUpdated?.Invoke(this, e);
         private void NotifyLeaveTimeUpdated(EventArgs e) => LeaveTimeUpdated?.Invoke(this, e);
@@ -645,6 +685,7 @@ namespace ClockIn
         private DateTime startTime;
         private Timer notifyTimer = null;
         private Timer periodicTimer = null;
+        private Timer eodTimer = null;
         private Properties.Settings userSettings = null;
         private Session session = null;
         private BindingList<TimePeriod> absence;

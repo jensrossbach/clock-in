@@ -174,7 +174,7 @@ namespace ClockIn
                 wtd = WorkingTimeDisplay.ElapsedTime;
             }
 
-            Properties.Settings.Default.WorkingTimeDisplay = System.Enum.Format(typeof(WorkingTimeDisplay), wtd, "G");
+            Properties.Settings.Default.WorkingTimeDisplay = Enum.Format(typeof(WorkingTimeDisplay), wtd, "G");
             UpdateWorkingTime();
             UpdateLeaveTime();
         }

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AskSessionOnStartup" xml:space="preserve">
-    <value>Zuletzt gestartete Session fortsetzen?</value>
+    <value>Zuletzt gestartete Sitzung fortsetzen?</value>
   </data>
   <data name="MaxmimumTimeLimitReached" xml:space="preserve">
     <value>Sie haben die maximale Tagesarbeitszeit erreicht!</value>
@@ -272,5 +272,8 @@ http://icons.wbchug.net</value>
   <data name="TooltipText" xml:space="preserve">
     <value>ClockIn
 Feierabend um {0} Uhr.</value>
+  </data>
+  <data name="AskSessionAtMidnight" xml:space="preserve">
+    <value>Ein neuer Tag hat anfangen. Aktuelle Sitzung neu starten?</value>
   </data>
 </root>
