@@ -1,10 +1,10 @@
-#ClockIn Workflow
+# ClockIn Workflow
 This guide shows the ClockIn contribution workflow using GitLab and Git.
 
-##Working with Issues
+## Working with Issues
 Issues are used to track the work done inside the ClockIn repository.
 
-###Creating Issues
+### Creating Issues
 Every kind of work should usually be documented by an issue. There might be exceptions for very small changes or fixes for which creating issues would mean too much overhead (e.g. you closed an issue and just afterwards detect a problem with your change).
 
 For the usual workflow, if you encounter a bug/defect, have a proposal for an enhancement of the software or any other kind of request, you have to create an issue. Every issue must have a meaningful and understandable title and description. Optionally, they can have a due date. Issues must be tagged with at least one appropriate descriptive label:
@@ -19,10 +19,10 @@ For the usual workflow, if you encounter a bug/defect, have a proposal for an en
 
 All other labels are reserved for state indication and must not be used when creating issues. Do not set the assignee and milestone attributes, this is also done in a later stage of the workflow (see below).
 
-###Issue based Workflow
+### Issue based Workflow
 The issue based workflow is described step-wise in the next couple of chapters.
 
-####Analysis and Planning
+#### Analysis and Planning
 The following steps are usually done by the maintainers of the project.
 
 1. If the issue is accepted and will be worked on, continue with step 4 below.
@@ -33,7 +33,7 @@ The following steps are usually done by the maintainers of the project.
 6. From within the issue, create a merge request with a branch called "clockin-#" with *#* being the number of the issue (example: `clockin-12`). The merge request will automatically be linked with the issue and inherit the labels from the issue. This step can be omitted in case the issue does not affect the repository and as a consequence nothing needs to be merged.
 7. In the issue board, drag the issue into the *confirmed* column. This will automatically assign the *confirmed* label to the issue.
 
-####Working on the Issue
+#### Working on the Issue
 The following steps are done by the developers and the maintainers of the project.
 
 1. In the issue board, drag the issue from the *confirmed* column into the *working* column. This will automatically remove the *confirmed* label and assign the *working* label to the issue.
@@ -45,7 +45,7 @@ The following steps are done by the developers and the maintainers of the projec
 `git push origin HEAD:clockin-12`
 7. When done with the work necessary to resolve the issue, remove the WiP (work in progress) status of the merge request. This indicates to the maintainers that the changes are ready for review and can finally be merged.
 
-####Completion
+#### Completion
 The following steps are usually done by the maintainers of the project.
 
 1. If the issue does not include a merge request, check the changes and continue with step 7.
@@ -55,7 +55,7 @@ The following steps are usually done by the maintainers of the project.
 5. Press the merge button.
 6. In the issue, remove the *working* label and add the *solved* label.
 
-##Releasing the Software
+## Releasing the Software
 When a milestone has been completed, the software has to be released. For this purpose, a final merge request (without issue) must be created. The merge request should be tagged with the *release* label und assigned to the milestone. The corresponding branch should have the name *release-major.minor* (using the major and minor version part of the software to be released).
 
 In context of this merge request, the following changes need to be done:
