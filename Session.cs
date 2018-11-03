@@ -2,6 +2,8 @@
 // Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved.
 
 
+using System.ComponentModel;
+
 namespace ClockIn
 {
     /// <summary>
@@ -17,21 +19,14 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Handles the event when session settings have changed.
+        ///   Event notifies when property has been validated.
         /// </summary>
-        /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void SettingChangingEventHandler(object sender, System.Configuration.SettingChangingEventArgs e)
-        {
-        }
+        public event PropertyChangedEventHandler PropertyValidated;
 
         /// <summary>
-        ///   Handles the event when session settings have been saved.
+        ///   Notifies about a validated property.
         /// </summary>
-        /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void SettingsSavingEventHandler(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-        }
+        /// <param name="propertyName">Name of the property</param>
+        public void NotifyPropertyValidated(string propertyName) => PropertyValidated?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

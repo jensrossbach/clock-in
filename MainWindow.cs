@@ -3,6 +3,7 @@
 
 
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
@@ -50,7 +51,7 @@ namespace ClockIn
         {
             wtTimer.Stop();
 
-            TimeSpan elapsedTime = Program.TimeMgr.GetCurrentElapsedWorkingTime(out TimeManager.WorkingLevel level);
+            TimeSpan elapsedTime = Program.TimeMgr.GetElapsedWorkingTime(out TimeManager.WorkingLevel level);
 
             switch (level)
             {
@@ -98,7 +99,7 @@ namespace ClockIn
             }
             else
             {
-                TimeSpan remainingTime = Program.TimeMgr.GetCurrentRemainingWorkingTime();
+                TimeSpan remainingTime = Program.TimeMgr.GetRemainingWorkingTime();
                 if (remainingTime.Seconds > 0)
                 {
                     remainingTime = new TimeSpan(remainingTime.Hours, remainingTime.Minutes + 1, 0);
@@ -115,21 +116,26 @@ namespace ClockIn
         /// <summary>
         ///   Updates the leave time inside the window.
         /// </summary>
-        public void UpdateLeaveTime()
+        /// <param name="updateLabel">true if label should be updated</param>
+        public void UpdateLeaveTime(bool updateLabel)
         {
-            DateTime leaveTime = Program.TimeMgr.GetCurrentLeaveTime(out bool overTime);
+            string leaveTime = Program.TimeMgr.GetLeaveTime(out bool overTime).ToString(@"HH\:mm");
 
-            if (overTime)
+            if (updateLabel)
             {
-                lblLeaveTime.ForeColor = Color.Red;
+                if (overTime)
+                {
+                    lblLeaveTime.ForeColor = Color.Red;
+                }
+                else
+                {
+                    lblLeaveTime.ForeColor = Color.Black;
+                }
+
+                lblLeaveTime.Text = leaveTime;
             }
-            else
-            {
-                lblLeaveTime.ForeColor = Color.Black;
-            }
-            
-            lblLeaveTime.Text = leaveTime.ToString(@"HH\:mm");
-            icnTrayIcon.Text = string.Format(Properties.Resources.TooltipText, lblLeaveTime.Text);
+
+            icnTrayIcon.Text = string.Format(Properties.Resources.TooltipText, leaveTime);
         }
 
         /// <summary>
@@ -176,7 +182,32 @@ namespace ClockIn
 
             Properties.Settings.Default.WorkingTimeDisplay = Enum.Format(typeof(WorkingTimeDisplay), wtd, "G");
             UpdateWorkingTime();
-            UpdateLeaveTime();
+            UpdateLeaveTime(true);
+        }
+
+        /// <summary>
+        ///   Restores the main window so that it is visible.
+        /// </summary>
+        private void RestoreMainWindow()
+        {
+            Visible = true;
+            ShowInTaskbar = true;
+            WindowState = FormWindowState.Normal;
+
+            BringToFront();
+        }
+
+        /// <summary>
+        ///   Handles the event when the window is loading.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.StartMinimized)
+            {
+                Visible = false;
+            }
         }
 
         /// <summary>
@@ -188,7 +219,7 @@ namespace ClockIn
         {
             if (WindowState == FormWindowState.Minimized)
             {
-                Hide();
+                Visible = false;
             }
         }
 
@@ -203,7 +234,7 @@ namespace ClockIn
             {
                 UpdateAbsence();
                 UpdateWorkingTime();
-                UpdateLeaveTime();
+                UpdateLeaveTime(true);
             }
             else
             {
@@ -220,7 +251,7 @@ namespace ClockIn
         {
             if (!exit)
             {
-                Hide();
+                Visible = false;
                 e.Cancel = true;
             }
         }
@@ -243,9 +274,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void DtpArrival_Validated(object sender, EventArgs e)
         {
-            Program.TimeMgr.UpdateArrival(dtpArrival.Value);
-            UpdateWorkingTime();
-            UpdateLeaveTime();
+            Session.Default.NotifyPropertyValidated("Arrival");
         }
 
         /// <summary>
@@ -276,7 +305,7 @@ namespace ClockIn
         private void LblLeaveTimeIcon_Click(object sender, EventArgs e)
         {
             UpdateWorkingTime();
-            UpdateLeaveTime();
+            UpdateLeaveTime(true);
         }
 
         /// <summary>
@@ -287,7 +316,7 @@ namespace ClockIn
         private void LblLeaveTime_Click(object sender, EventArgs e)
         {
             UpdateWorkingTime();
-            UpdateLeaveTime();
+            UpdateLeaveTime(true);
         }
 
         /// <summary>
@@ -300,7 +329,7 @@ namespace ClockIn
             Program.TimeMgr.RestartSession(true);
 
             UpdateWorkingTime();
-            UpdateLeaveTime();
+            UpdateLeaveTime(true);
         }
 
         /// <summary>
@@ -349,7 +378,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            Hide();
+            Visible = false;
         }
 
         /// <summary>
@@ -359,10 +388,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void IcnTray_DoubleClick(object sender, EventArgs e)
         {
-            Show();
-            WindowState = FormWindowState.Normal;
-            ShowInTaskbar = true;
-            BringToFront();
+            RestoreMainWindow();
         }
 
         /// <summary>
@@ -372,10 +398,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void ItmRestore_Click(object sender, EventArgs e)
         {
-            Show();
-            WindowState = FormWindowState.Normal;
-            ShowInTaskbar = true;
-            BringToFront();
+            RestoreMainWindow();
         }
 
         /// <summary>
@@ -442,10 +465,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         void TimeMgr_LeaveTimeUpdated(object sender, EventArgs e)
         {
-            if (Visible)
-            {
-                UpdateLeaveTime();
-            }
+            UpdateLeaveTime(Visible);
         }
 
         /// <summary>
@@ -460,8 +480,9 @@ namespace ClockIn
                 if (Visible)
                 {
                     UpdateWorkingTime();
-                    UpdateLeaveTime();
                 }
+
+                UpdateLeaveTime(Visible);
             }
 
             if (e.PropertyName == "MainWindowHotkey")
@@ -477,11 +498,11 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void ShowMainWin_HotkeyPressed(object sender, EventArgs e)
         {
+            Debug.WriteLine("[MainWindow] Hotkey pressed.");
+
             if (!Visible)
             {
-                Show();
-                WindowState = FormWindowState.Normal;
-                BringToFront();
+                RestoreMainWindow();
             }
         }
 

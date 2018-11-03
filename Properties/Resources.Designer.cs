@@ -452,6 +452,24 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Additional break must not be longer than work span! ähnelt.
+        /// </summary>
+        internal static string OutsideLunchAdderGreaterThanWorkspan {
+            get {
+                return ResourceManager.GetString("OutsideLunchAdderGreaterThanWorkspan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die First work span must not be greater than second work span! ähnelt.
+        /// </summary>
+        internal static string OutsideLunchWorkspan1Greater2 {
+            get {
+                return ResourceManager.GetString("OutsideLunchWorkspan1Greater2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Absence periods must not overlap! ähnelt.
         /// </summary>
         internal static string OverlappingAbsence {

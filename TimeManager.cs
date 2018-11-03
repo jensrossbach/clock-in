@@ -22,17 +22,20 @@ namespace ClockIn
         /// </summary>
         public TimeManager()
         {
+            session = Session.Default;
             userSettings = Properties.Settings.Default;
 
             // take time snapshot
-            startTime = DateTime.Now - TimeSpan.FromMinutes((double)userSettings.ArrivalTimeOffset);
+            startTime = DateTime.Now.Truncate(TimeSpan.FromMinutes(1)) - TimeSpan.FromMinutes((double)userSettings.ArrivalTimeOffset);
 
-            session = Session.Default;
             absence = new BindingList<TimePeriod>();
             totalAbsence = TimeSpan.Zero;
 
             SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
             absence.ListChanged += Absence_ListChanged;
+            session.PropertyValidated += Session_PropertyValidated;
+            userSettings.PropertyChanged += UserSettings_PropertyChanged;
+            AbsenceUpdated += TotalAbsence_Updated;
 
             notifyTimer = new Timer();
             notifyTimer.Tick += new EventHandler(NotifyTimer_Tick);
@@ -97,50 +100,6 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Updates the arrival time.
-        ///   This also recalculates time values and restarts timers.
-        /// </summary>
-        /// <param name="time">New arrival time</param>
-        public void UpdateArrival(DateTime time)
-        {
-            DateTime cur = DateTime.Now;
-            session.Arrival = new DateTime(cur.Year, cur.Month, cur.Day, time.Hour, time.Minute, 0);
-
-            CalculateTotelAbsence();
-            NotifyAbsenceUpdated(new EventArgs());
-
-            CheckExpiration();
-            session.Save();
-        }
-
-        /// <summary>
-        ///   Recalculates the total absence.
-        /// </summary>
-        public void UpdateAbsence()
-        {
-            CalculateTotelAbsence();
-            StoreAbsenceInSession();
-
-            NotifyAbsenceUpdated(new EventArgs());
-        }
-
-        /// <summary>
-        ///   Updates the working time.
-        /// </summary>
-        public void UpdateWorkingTime()
-        {
-            CheckExpiration();
-        }
-
-        /// <summary>
-        ///   Updates the leave time.
-        /// </summary>
-        public void UpdateLeaveTime()
-        {
-            NotifyLeaveTimeUpdated(new EventArgs());
-        }
-
-        /// <summary>
         ///   Continues last session earlier from the day.
         /// </summary>
         public void ContinueSession()
@@ -148,7 +107,6 @@ namespace ClockIn
             Debug.WriteLine("[TimeManager] Continue last session.");
 
             LoadAbsenceFromSession();
-            CheckExpiration();
         }
 
         /// <summary>
@@ -162,24 +120,20 @@ namespace ClockIn
         {
             Debug.WriteLine("[TimeManager] Restart session (" + (toCurTime ? "now" : "to start") + ").");
 
-            session.Arrival = toCurTime ? DateTime.Now : startTime;
+            session.Arrival = toCurTime ? DateTime.Now.Truncate(TimeSpan.FromMinutes(1)) : startTime;
             session.NotifyLevel = 0;
             session.Absence = string.Empty;
 
             absence.Clear();
-
-            CalculateTotelAbsence();
-            NotifyAbsenceUpdated(new EventArgs());
-
-            SetupNotificationTimer();
+            UpdateTotalAbsence();
         }
 
         /// <summary>
-        ///   Calculates the elapsed working time.
+        ///   Returns the elapsed working time.
         /// </summary>
         /// <param name="level">Working level which has been reached</param>
         /// <returns>Elapsed working time</returns>
-        public TimeSpan GetCurrentElapsedWorkingTime(out WorkingLevel level)
+        public TimeSpan GetElapsedWorkingTime(out WorkingLevel level)
         {
             DateTime cur = DateTime.Now;
             TimeSpan workingTime = cur - session.Arrival;
@@ -222,12 +176,12 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Returns the current remaining working time.
+        ///   Returns the remaining working time.
         /// </summary>
         /// <returns>Remaining working time</returns>
-        public TimeSpan GetCurrentRemainingWorkingTime()
+        public TimeSpan GetRemainingWorkingTime()
         {
-            DateTime leaveTime = GetCurrentLeaveTime(out bool overTime);
+            DateTime leaveTime = GetLeaveTime(out bool overTime);
             DateTime cur = DateTime.Now;
 
             if (leaveTime > cur)
@@ -241,13 +195,13 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Retuens the current leave time.
+        ///   Retuens the leave time.
         /// </summary>
         /// <param name="level">
         ///     true if regular working time has been reached, false otherwise
         /// </param>
         /// <returns>Leave time</returns>
-        public DateTime GetCurrentLeaveTime(out bool overTime)
+        public DateTime GetLeaveTime(out bool overTime)
         {
             DateTime leaveTime = CalculateLeaveTime((int)userSettings.RegularWorkingTime);
             overTime = (leaveTime < DateTime.Now);
@@ -304,39 +258,6 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Configures and starts the notification timer.
-        /// </summary>
-        private void SetupNotificationTimer()
-        {
-            notifyTimer.Stop();
-
-            if (session.NotifyLevel < 1)
-            {
-                TimeSpan workingTime = CalculateWorkingTime((int)userSettings.RegularWorkingTime) - new TimeSpan(0, (int)userSettings.NotifyRegAdvance, 0);
-                int interval = (int)(workingTime.Ticks / TimeSpan.TicksPerMillisecond);
-                if (interval > 0)
-                {
-                    notifyTimer.Interval = interval;
-                    notifyTimer.Start();
-
-                    Debug.WriteLine("[TimeManager] Notify timer started at level " + session.NotifyLevel + " (" + interval + " ms).");
-                }
-            }
-            else if (session.NotifyLevel < 2)
-            {
-                TimeSpan workingTime = CalculateWorkingTime((int)userSettings.MaximumWorkingTime) - new TimeSpan(0, (int)userSettings.NotifyAdvance, 0);
-                int interval = (int)(workingTime.Ticks / TimeSpan.TicksPerMillisecond);
-                if (interval > 0)
-                {
-                    notifyTimer.Interval = interval;
-                    notifyTimer.Start();
-
-                    Debug.WriteLine("[TimeManager] Notify timer started at level " + session.NotifyLevel + " (" + interval + " ms).");
-                }
-            }
-        }
-
-        /// <summary>
         ///   Configures and starts the end-of-day timer.
         /// </summary>
         void SetupEoDTimer()
@@ -368,7 +289,7 @@ namespace ClockIn
         /// </summary>
         private void CheckExpiration()
         {
-            TimeSpan workingTime = GetCurrentElapsedWorkingTime(out WorkingLevel level);
+            TimeSpan workingTime = GetElapsedWorkingTime(out WorkingLevel level);
 
             if (level == WorkingLevel.MaxTimeViolation)
             {
@@ -387,8 +308,34 @@ namespace ClockIn
                 NotifyRegularTimeLimit(true);
             }
 
-            NotifyWorkingTimeUpdated(new EventArgs());
-            SetupNotificationTimer();
+            notifyTimer.Stop();
+
+            if (session.NotifyLevel < 1)
+            {
+                workingTime = CalculateRemainingTime((int)userSettings.RegularWorkingTime) - new TimeSpan(0, (int)userSettings.NotifyRegAdvance, 0);
+                int interval = (int)(workingTime.Ticks / TimeSpan.TicksPerMillisecond);
+                if (interval > 0)
+                {
+                    notifyTimer.Interval = interval;
+                    notifyTimer.Start();
+
+                    Debug.WriteLine("[TimeManager] Notify timer started at level " + session.NotifyLevel + " (" + interval + " ms).");
+                }
+            }
+            else if (session.NotifyLevel < 2)
+            {
+                workingTime = CalculateRemainingTime((int)userSettings.MaximumWorkingTime) - new TimeSpan(0, (int)userSettings.NotifyAdvance, 0);
+                int interval = (int)(workingTime.Ticks / TimeSpan.TicksPerMillisecond);
+                if (interval > 0)
+                {
+                    notifyTimer.Interval = interval;
+                    notifyTimer.Start();
+
+                    Debug.WriteLine("[TimeManager] Notify timer started at level " + session.NotifyLevel + " (" + interval + " ms).");
+                }
+            }
+
+            NotifyWorkingTimeUpdated();
         }
 
         /// <summary>
@@ -462,17 +409,19 @@ namespace ClockIn
         private DateTime CalculateLeaveTime(int clearWorkingTimeHours) => session.Arrival + TimeSpan.FromHours(clearWorkingTimeHours) + totalAbsence;
 
         /// <summary>
-        ///   Calculates the working time.
+        ///   Calculates the remaining working time.
         /// </summary>
         /// <param name="clearWorkingTimeHours">Number of hours to work</param>
-        /// <returns>Working time</returns>
-        private TimeSpan CalculateWorkingTime(int clearWorkingTimeHours) => CalculateLeaveTime(clearWorkingTimeHours) - DateTime.Now;
+        /// <returns>Remaining working time</returns>
+        private TimeSpan CalculateRemainingTime(int clearWorkingTimeHours) => CalculateLeaveTime(clearWorkingTimeHours) - DateTime.Now;
 
         /// <summary>
-        ///   Calculates the total absence time span considering chargeable breaks.
+        ///   Updates the total absence time span considering chargeable breaks.
         /// </summary>
-        private void CalculateTotelAbsence()
+        private void UpdateTotalAbsence()
         {
+            periodicTimer.Stop();
+
             DateTime now = DateTime.Now;
             TimePeriod breakPeriod = new TimePeriod(new DateTime(now.Year, now.Month, now.Day,
                                                                  userSettings.BreaksBegin.Hour,
@@ -523,7 +472,6 @@ namespace ClockIn
                     work = TimeSpan.Zero;
                 }
 
-                periodicTimer.Stop();
                 if (work > TimeSpan.FromHours((double)userSettings.OutsideLunchWorkspan2))
                 {
                     breakAdder = TimeSpan.FromMinutes((double)userSettings.OutsideLunchBreak2);
@@ -543,6 +491,7 @@ namespace ClockIn
             }
 
             totalAbsence += breakAdder;
+            NotifyAbsenceUpdated();
         }
 
         /// <summary>
@@ -583,8 +532,82 @@ namespace ClockIn
                 }
             }
 
-            CalculateTotelAbsence();
-            NotifyAbsenceUpdated(new EventArgs());
+            UpdateTotalAbsence();
+        }
+
+        private void TotalAbsence_Updated(object sender, EventArgs e)
+        {
+            Debug.WriteLine("[TimeManager] Total absence has been updated.");
+
+            CheckExpiration();
+            NotifyLeaveTimeUpdated();
+        }
+
+        /// <summary>
+        ///   Handles absence list change events.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void Absence_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            Debug.WriteLine("[TimeManager] Absence list has changed.");
+
+            UpdateTotalAbsence();
+            StoreAbsenceInSession();
+        }
+
+        /// <summary>
+        ///   Handles validation of session properties.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void Session_PropertyValidated(object sender, PropertyChangedEventArgs e)
+        {
+            Debug.WriteLine("[TimeManager] Session property '" + e.PropertyName + "' has been validated.");
+
+            switch (e.PropertyName)
+            {
+                case "Arrival":
+                {
+                    UpdateTotalAbsence();
+                    session.Save();
+
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        ///   Handles changes of user settings properties.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void UserSettings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            Debug.WriteLine("[TimeManager] User settings property '" + e.PropertyName + "' has changed.");
+
+            switch (e.PropertyName)
+            {
+                case "RegularWorkingTime":
+                case "MaximumWorkingTime":
+                {
+                    CheckExpiration();
+                    NotifyLeaveTimeUpdated();
+
+                    break;
+                }
+                case "BreaksBegin":
+                case "BreaksEnd":
+                case "Break":
+                case "OutsideLunchWorkspan1":
+                case "OutsideLunchWorkspan2":
+                case "OutsideLunchBreak1":
+                case "OutsideLunchBreak2":
+                {
+                    UpdateTotalAbsence();
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -600,32 +623,15 @@ namespace ClockIn
             {
                 if (Properties.Settings.Default.LowPowerIsStart)
                 {
-                    startTime = DateTime.Now;
+                    startTime = DateTime.Now.Truncate(TimeSpan.FromMinutes(1)) - TimeSpan.FromMinutes((double)userSettings.ArrivalTimeOffset);
                     HandleStart();
                 }
                 else
                 {
-                    CalculateTotelAbsence();
-                    NotifyAbsenceUpdated(new EventArgs());
-
-                    CheckExpiration();
+                    UpdateTotalAbsence();
                     SetupEoDTimer();
                 }
             }
-        }
-
-        /// <summary>
-        ///   Handles absence list change events.
-        /// </summary>
-        /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void Absence_ListChanged(object sender, ListChangedEventArgs e)
-        {
-            Debug.WriteLine("[TimeManager] Absence list has changed.");
-
-            UpdateAbsence();
-            UpdateWorkingTime();
-            UpdateLeaveTime();
         }
 
         /// <summary>
@@ -651,14 +657,15 @@ namespace ClockIn
             Debug.WriteLine("[TimeManager] Periodic timer expired.");
             periodicTimer.Stop();
 
-            CalculateTotelAbsence();
-            UpdateWorkingTime();
-            UpdateLeaveTime();
+            UpdateTotalAbsence();
         }
 
         private void EodTimer_Tick(object sender, EventArgs e)
         {
             Debug.WriteLine("[TimeManager] End-of-day timer expired.");
+
+            notifyTimer.Stop();
+            periodicTimer.Stop();
             eodTimer.Stop();
 
             DialogResult result = MessageBox.Show(Properties.Resources.AskSessionAtMidnight,
@@ -672,15 +679,15 @@ namespace ClockIn
             }
             else
             {
-                CheckExpiration();
+                UpdateTotalAbsence();
             }
 
             SetupEoDTimer();
         }
 
-        private void NotifyAbsenceUpdated(EventArgs e) => AbsenceUpdated?.Invoke(this, e);
-        private void NotifyWorkingTimeUpdated(EventArgs e) => WorkingTimeUpdated?.Invoke(this, e);
-        private void NotifyLeaveTimeUpdated(EventArgs e) => LeaveTimeUpdated?.Invoke(this, e);
+        private void NotifyAbsenceUpdated() => AbsenceUpdated?.Invoke(this, new EventArgs());
+        private void NotifyWorkingTimeUpdated() => WorkingTimeUpdated?.Invoke(this, new EventArgs());
+        private void NotifyLeaveTimeUpdated() => LeaveTimeUpdated?.Invoke(this, new EventArgs());
 
         private DateTime startTime;
         private Timer notifyTimer = null;

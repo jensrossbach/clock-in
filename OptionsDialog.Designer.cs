@@ -234,6 +234,7 @@
             0});
             this.nmcBreak.Name = "nmcBreak";
             this.nmcBreak.Value = global::ClockIn.Properties.Settings.Default.Break;
+            this.nmcBreak.Validating += new System.ComponentModel.CancelEventHandler(this.NmcBreak_Validating);
             // 
             // dtpBreaksEnd
             // 
@@ -244,7 +245,6 @@
             this.dtpBreaksEnd.ShowUpDown = true;
             this.dtpBreaksEnd.Value = global::ClockIn.Properties.Settings.Default.BreaksEnd;
             this.dtpBreaksEnd.Validating += new System.ComponentModel.CancelEventHandler(this.DtpBreaksEnd_Validating);
-            this.dtpBreaksEnd.Validated += new System.EventHandler(this.DtpBreaksEnd_Validated);
             // 
             // lblBreaksEnd
             // 
@@ -265,7 +265,6 @@
             this.dtpBreaksBegin.ShowUpDown = true;
             this.dtpBreaksBegin.Value = global::ClockIn.Properties.Settings.Default.BreaksBegin;
             this.dtpBreaksBegin.Validating += new System.ComponentModel.CancelEventHandler(this.DtpBreaksBegin_Validating);
-            this.dtpBreaksBegin.Validated += new System.EventHandler(this.DtpBreaksBegin_Validated);
             // 
             // lblAdder2Min
             // 
@@ -283,6 +282,7 @@
             0});
             this.nmcAdder2.Name = "nmcAdder2";
             this.nmcAdder2.Value = global::ClockIn.Properties.Settings.Default.OutsideLunchBreak2;
+            this.nmcAdder2.Validating += new System.ComponentModel.CancelEventHandler(this.NmcAdder2_Validating);
             // 
             // lblAdder1Min
             // 
@@ -316,6 +316,7 @@
             0});
             this.nmcWorkspan2.Name = "nmcWorkspan2";
             this.nmcWorkspan2.Value = global::ClockIn.Properties.Settings.Default.OutsideLunchWorkspan2;
+            this.nmcWorkspan2.Validating += new System.ComponentModel.CancelEventHandler(this.NmcWorkspan2_Validating);
             // 
             // lblWorkspan2H
             // 
@@ -348,6 +349,7 @@
             0});
             this.nmcAdder1.Name = "nmcAdder1";
             this.nmcAdder1.Value = global::ClockIn.Properties.Settings.Default.OutsideLunchBreak1;
+            this.nmcAdder1.Validating += new System.ComponentModel.CancelEventHandler(this.NmcAdder1_Validating);
             // 
             // nmcWorkspan1
             // 
@@ -371,6 +373,7 @@
             0});
             this.nmcWorkspan1.Name = "nmcWorkspan1";
             this.nmcWorkspan1.Value = global::ClockIn.Properties.Settings.Default.OutsideLunchWorkspan1;
+            this.nmcWorkspan1.Validating += new System.ComponentModel.CancelEventHandler(this.NmcWorkspan1_Validating);
             // 
             // lblWorkspan1
             // 
@@ -448,7 +451,6 @@
             this.nmcMaxTime.Name = "nmcMaxTime";
             this.nmcMaxTime.Value = global::ClockIn.Properties.Settings.Default.MaximumWorkingTime;
             this.nmcMaxTime.Validating += new System.ComponentModel.CancelEventHandler(this.NmcMaxTime_Validating);
-            this.nmcMaxTime.Validated += new System.EventHandler(this.NmcMaxTime_Validated);
             // 
             // nmcRegularTime
             // 
@@ -473,7 +475,6 @@
             this.nmcRegularTime.Name = "nmcRegularTime";
             this.nmcRegularTime.Value = global::ClockIn.Properties.Settings.Default.RegularWorkingTime;
             this.nmcRegularTime.Validating += new System.ComponentModel.CancelEventHandler(this.NmcRegularTime_Validating);
-            this.nmcRegularTime.Validated += new System.EventHandler(this.NmcRegularTime_Validated);
             // 
             // nmcBreaksDuration
             // 

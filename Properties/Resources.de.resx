@@ -276,4 +276,10 @@ Feierabend um {0} Uhr.</value>
   <data name="AskSessionAtMidnight" xml:space="preserve">
     <value>Ein neuer Tag hat anfangen. Aktuelle Sitzung neu starten?</value>
   </data>
+  <data name="OutsideLunchAdderGreaterThanWorkspan" xml:space="preserve">
+    <value>Die zusätzliche Pause darf nicht länger als die Arbeitszeitspanne sein!</value>
+  </data>
+  <data name="OutsideLunchWorkspan1Greater2" xml:space="preserve">
+    <value>Die erste Arbeitszeitspanne darf nicht länger als die zweite sein!</value>
+  </data>
 </root>

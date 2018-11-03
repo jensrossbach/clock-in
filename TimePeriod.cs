@@ -179,8 +179,8 @@ namespace ClockIn
         /// <param name="end">End time</param>
         private void SetupTime(DateTime start, DateTime end)
         {
-            startTime = start.AddTicks(-(start.Ticks % TimeSpan.FromMinutes(1).Ticks));
-            endTime = end.AddTicks(-(end.Ticks % TimeSpan.FromMinutes(1).Ticks));
+            startTime = start.Truncate(TimeSpan.FromMinutes(1));
+            endTime = end.Truncate(TimeSpan.FromMinutes(1));
         }
 
         /// <summary>

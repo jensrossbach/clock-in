@@ -282,4 +282,10 @@ Closing time at {0}.</value>
   <data name="AskSessionAtMidnight" xml:space="preserve">
     <value>A new day has begun. Restart session?</value>
   </data>
+  <data name="OutsideLunchAdderGreaterThanWorkspan" xml:space="preserve">
+    <value>Additional break must not be longer than work span!</value>
+  </data>
+  <data name="OutsideLunchWorkspan1Greater2" xml:space="preserve">
+    <value>First work span must not be greater than second work span!</value>
+  </data>
 </root>
