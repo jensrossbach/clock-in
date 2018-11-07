@@ -195,6 +195,7 @@ namespace ClockIn
             WindowState = FormWindowState.Normal;
 
             BringToFront();
+            Activate();
         }
 
         /// <summary>
@@ -500,7 +501,11 @@ namespace ClockIn
         {
             Debug.WriteLine("[MainWindow] Hotkey pressed.");
 
-            if (!Visible)
+            if (Visible)
+            {
+                Activate();
+            }
+            else
             {
                 RestoreMainWindow();
             }
