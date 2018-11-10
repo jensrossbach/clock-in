@@ -46,8 +46,6 @@ namespace ClockIn
 
             eodTimer = new Timer();
             eodTimer.Tick += EodTimer_Tick;
-
-            HandleStart();
         }
 
         /// <summary>
@@ -100,6 +98,48 @@ namespace ClockIn
         }
 
         /// <summary>
+        ///   Handles application start.
+        /// </summary>
+        public void HandleStart()
+        {
+            Debug.WriteLine("[TimeManager] Handle application start.");
+
+            if (session.Arrival.Date == startTime.Date)
+            {
+                if (userSettings.NewSessionOnStartup)
+                {
+                    RestartSession(false);
+                }
+                else if (userSettings.AskSessionOnStartup)
+                {
+                    DialogResult result = MessageBox.Show(Properties.Resources.AskSessionOnStartup,
+                                                          Properties.Resources.MessageBoxCaption,
+                                                          MessageBoxButtons.YesNo,
+                                                          MessageBoxIcon.Question);
+
+                    if (result == DialogResult.No)
+                    {
+                        RestartSession(false);
+                    }
+                    else
+                    {
+                        ContinueSession();
+                    }
+                }
+                else
+                {
+                    ContinueSession();
+                }
+            }
+            else
+            {
+                RestartSession(false);
+            }
+
+            SetupEoDTimer();
+        }
+
+        /// <summary>
         ///   Continues last session earlier from the day.
         /// </summary>
         public void ContinueSession()
@@ -123,6 +163,8 @@ namespace ClockIn
             session.Arrival = toCurTime ? DateTime.Now.Truncate(TimeSpan.FromMinutes(1)) : startTime;
             session.NotifyLevel = 0;
             session.Absence = string.Empty;
+
+            session.Save();
 
             absence.Clear();
             UpdateTotalAbsence();
@@ -215,61 +257,6 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Handles application start.
-        /// </summary>
-        private void HandleStart()
-        {
-            Debug.WriteLine("[TimeManager] Handle application start.");
-
-            if (session.Arrival.Date == startTime.Date)
-            {
-                if (userSettings.NewSessionOnStartup)
-                {
-                    RestartSession(false);
-                }
-                else if (userSettings.AskSessionOnStartup)
-                {
-                    DialogResult result = MessageBox.Show(Properties.Resources.AskSessionOnStartup,
-                                                          Properties.Resources.MessageBoxCaption,
-                                                          MessageBoxButtons.YesNo,
-                                                          MessageBoxIcon.Question);
-
-                    if (result == DialogResult.No)
-                    {
-                        RestartSession(false);
-                    }
-                    else
-                    {
-                        ContinueSession();
-                    }
-                }
-                else
-                {
-                    ContinueSession();
-                }
-            }
-            else
-            {
-                RestartSession(false);
-            }
-
-            session.Save();
-            SetupEoDTimer();
-        }
-
-        /// <summary>
-        ///   Configures and starts the end-of-day timer.
-        /// </summary>
-        void SetupEoDTimer()
-        {
-            eodTimer.Stop();
-            eodTimer.Interval = (int)(DateTime.Today.AddDays(1.0) - DateTime.Now).TotalMilliseconds;
-            eodTimer.Start();
-
-            Debug.WriteLine("[TimeManager] End-of-day timer started (" + eodTimer.Interval + " ms).");
-        }
-
-        /// <summary>
         ///   Restarts the notification timer for notifying about maximum
         ///   working time reached.
         /// </summary>
@@ -279,9 +266,23 @@ namespace ClockIn
             if (minutes > 0)
             {
                 session.NotifyLevel = 1;
+                session.Save();
+
                 notifyTimer.Interval = minutes * 60 * 1000;
                 notifyTimer.Start();
             }
+        }
+
+        /// <summary>
+        ///   Configures and starts the end-of-day timer.
+        /// </summary>
+        private void SetupEoDTimer()
+        {
+            eodTimer.Stop();
+            eodTimer.Interval = (int)(DateTime.Today.AddDays(1.0) - DateTime.Now).TotalMilliseconds;
+            eodTimer.Start();
+
+            Debug.WriteLine("[TimeManager] End-of-day timer started (" + eodTimer.Interval + " ms).");
         }
 
         /// <summary>
@@ -346,6 +347,7 @@ namespace ClockIn
             if (session.NotifyLevel < 1)
             {
                 session.NotifyLevel = 1;
+                session.Save();
 
                 NotificationDialog dlg = new NotificationDialog();
 
@@ -373,6 +375,7 @@ namespace ClockIn
             if (session.NotifyLevel < 2)
             {
                 session.NotifyLevel = 2;
+                session.Save();
 
                 NotificationDialog dlg = new NotificationDialog();
 
@@ -569,8 +572,8 @@ namespace ClockIn
             {
                 case "Arrival":
                 {
-                    UpdateTotalAbsence();
                     session.Save();
+                    UpdateTotalAbsence();
 
                     break;
                 }

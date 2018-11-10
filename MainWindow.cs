@@ -42,6 +42,7 @@ namespace ClockIn
             showMainWinHK.HotkeyPressed += ShowMainWin_HotkeyPressed;
 
             HotkeyManager.RegisterHotkey(showMainWinHK);
+            Program.TimeMgr.HandleStart();
         }
 
         /// <summary>
