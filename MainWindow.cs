@@ -393,6 +393,23 @@ namespace ClockIn
         }
 
         /// <summary>
+        ///   Handles mouse moves over the system tray icon.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void IcnTrayIcon_MouseMove(object sender, MouseEventArgs e)
+        {
+            DateTime now = DateTime.Now;
+
+            // avoid too many updates in short time
+            if ((now - lastTrayTooltipUpdate).TotalSeconds >= 1)
+            {
+                UpdateLeaveTime(Visible);
+                lastTrayTooltipUpdate = now;
+            }
+        }
+
+        /// <summary>
         ///   Handles a click on the restore item in the system tray menu.
         /// </summary>
         /// <param name="sender">Event origin</param>
@@ -520,5 +537,6 @@ namespace ClockIn
         private bool exit;
         private Timer wtTimer = null;
         private Hotkey showMainWinHK = null;
+        private DateTime lastTrayTooltipUpdate = DateTime.Now;
     }
 }

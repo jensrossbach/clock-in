@@ -92,6 +92,7 @@
             this.icnTrayIcon.ContextMenuStrip = this.ctxTrayMenu;
             resources.ApplyResources(this.icnTrayIcon, "icnTrayIcon");
             this.icnTrayIcon.DoubleClick += new System.EventHandler(this.IcnTray_DoubleClick);
+            this.icnTrayIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.IcnTrayIcon_MouseMove);
             // 
             // ctxTrayMenu
             // 
