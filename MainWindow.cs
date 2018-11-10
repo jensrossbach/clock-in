@@ -36,6 +36,13 @@ namespace ClockIn
                 ShowInTaskbar = false;
             }
 
+            OperatingSystem os = Environment.OSVersion;
+            if ((os.Platform == PlatformID.Win32NT) && (((os.Version.Major == 6) && (os.Version.Minor >= 2)) || (os.Version.Major >= 10)))
+            {
+                icnTrayIcon.Icon = Properties.Resources.FlatTrayIcon;
+            }
+            icnTrayIcon.Visible = true;
+
             Properties.Settings.Default.PropertyChanged += DefaultSettings_PropertyChanged;
 
             showMainWinHK = new Hotkey(Properties.Settings.Default.MainWindowHotkey);

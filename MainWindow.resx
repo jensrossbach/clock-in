@@ -2995,9 +2995,6 @@
   <data name="icnTrayIcon.Text" xml:space="preserve">
     <value>ClockIn</value>
   </data>
-  <data name="icnTrayIcon.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="dtpArrival.CustomFormat" xml:space="preserve">
     <value>HH:mm</value>
   </data>

@@ -19,6 +19,8 @@ Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved.
 
 The software uses icons from external sources:
 - Application icon by FastIcon.com, see http://www.fasticon.com
+- Flat system tray icon designed by: Freepik from Flaticon,
+  see http://www.flaticon.com
 - Smilies copyright (C) 2002 wbchug.net :: Yazoo, see file
   yazoo-icons-readme.txt for details
 

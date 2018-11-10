@@ -142,6 +142,9 @@ Copyright  © {1}
 Application icon by: FastIcon.com
 http://www.fasticon.com
 
+Flat system tray icon designed by: Freepik from Flaticon
+http://www.flaticon.com
+
 Smilies Copyright © 2002 wbchug.net :: Yazoo
 http://icons.wbchug.net</value>
   </data>
@@ -287,5 +290,8 @@ Closing time at {0}.</value>
   </data>
   <data name="OutsideLunchWorkspan1Greater2" xml:space="preserve">
     <value>First work span must not be greater than second work span!</value>
+  </data>
+  <data name="FlatTrayIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\tray.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

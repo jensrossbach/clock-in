@@ -79,6 +79,9 @@ namespace ClockIn.Properties {
         ///Application icon by: FastIcon.com
         ///http://www.fasticon.com
         ///
+        ///Flat system tray icon designed by: Freepik from Flaticon
+        ///http://www.flaticon.com
+        ///
         ///Smilies Copyright © 2002 wbchug.net :: Yazoo
         ///http://icons.wbchug.net ähnelt.
         /// </summary>
@@ -168,6 +171,16 @@ namespace ClockIn.Properties {
         internal static string EditAbsence {
             get {
                 return ResourceManager.GetString("EditAbsence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon FlatTrayIcon {
+            get {
+                object obj = ResourceManager.GetObject("FlatTrayIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
