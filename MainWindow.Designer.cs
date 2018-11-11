@@ -232,9 +232,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainWindow";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
-            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.VisibleChanged += new System.EventHandler(this.MainWindow_VisibleChanged);
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.ctxTrayMenu.ResumeLayout(false);

@@ -30,12 +30,6 @@ namespace ClockIn
             InitializeComponent();
             lblLeaveTimeIcon.Image = Properties.Resources.Power;
 
-            if (Properties.Settings.Default.StartMinimized)
-            {
-                WindowState = FormWindowState.Minimized;
-                ShowInTaskbar = false;
-            }
-
             OperatingSystem os = Environment.OSVersion;
             if ((os.Platform == PlatformID.Win32NT) && (((os.Version.Major == 6) && (os.Version.Minor >= 2)) || (os.Version.Major >= 10)))
             {
@@ -49,7 +43,6 @@ namespace ClockIn
             showMainWinHK.HotkeyPressed += ShowMainWin_HotkeyPressed;
 
             HotkeyManager.RegisterHotkey(showMainWinHK);
-            Program.TimeMgr.HandleStart();
         }
 
         /// <summary>
@@ -198,25 +191,11 @@ namespace ClockIn
         /// </summary>
         private void RestoreMainWindow()
         {
-            Visible = true;
-            ShowInTaskbar = true;
             WindowState = FormWindowState.Normal;
+            Visible = true;
 
             BringToFront();
             Activate();
-        }
-
-        /// <summary>
-        ///   Handles the event when the window is loading.
-        /// </summary>
-        /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-            if (Properties.Settings.Default.StartMinimized)
-            {
-                Visible = false;
-            }
         }
 
         /// <summary>
@@ -313,8 +292,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void LblLeaveTimeIcon_Click(object sender, EventArgs e)
         {
-            UpdateWorkingTime();
-            UpdateLeaveTime(true);
+            Session.Default.NotifyPropertyValidated("Arrival");
         }
 
         /// <summary>
@@ -324,8 +302,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void LblLeaveTime_Click(object sender, EventArgs e)
         {
-            UpdateWorkingTime();
-            UpdateLeaveTime(true);
+            Session.Default.NotifyPropertyValidated("Arrival");
         }
 
         /// <summary>
@@ -336,9 +313,6 @@ namespace ClockIn
         private void BtnResetTime_Click(object sender, EventArgs e)
         {
             Program.TimeMgr.RestartSession(true);
-
-            UpdateWorkingTime();
-            UpdateLeaveTime(true);
         }
 
         /// <summary>
@@ -445,7 +419,9 @@ namespace ClockIn
         private void ItmExit_Click(object sender, EventArgs e)
         {
             exit = true;
+
             Close();
+            Application.ExitThread();
         }
 
         /// <summary>

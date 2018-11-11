@@ -32,15 +32,19 @@ namespace ClockIn
         [STAThread]
         public static void Main()
         {
+            Debug.WriteLine("[Program] Hello from ClockIn :)");
+
             instanceMutex = new Mutex(false, "{ef6fec17-3816-459a-a72e-21fd34ebdc6b}", out bool firstInstance);
 
             if (firstInstance)
             {
-                if (!Properties.Settings.Default.Upgraded)
+                Properties.Settings settings = Properties.Settings.Default;
+
+                if (!settings.Upgraded)
                 {
-                    Properties.Settings.Default.Upgrade();
-                    Properties.Settings.Default.Upgraded = true;
-                    Properties.Settings.Default.Save();
+                    settings.Upgrade();
+                    settings.Upgraded = true;
+                    settings.Save();
 
                     Debug.WriteLine("[Program] Settings upgraded from previous version.");
                 } 
@@ -48,12 +52,30 @@ namespace ClockIn
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                timeMgr = new TimeManager();
-
                 HotkeyManager.Init();
-                Application.Run(new MainWindow());
+
+                timeMgr = new TimeManager();
+                mainWindow = new MainWindow();
+
+                timeMgr.HandleStart();
+
+                if (!settings.StartMinimized)
+                {
+                    mainWindow.WindowState = FormWindowState.Normal;
+                    mainWindow.Visible = true;
+                }
+
+                Debug.WriteLine("[Program] Entering main application loop...");
+                Application.Run();
+
                 HotkeyManager.Deinit();
             }
+            else
+            {
+                Debug.WriteLine("[Program] ClockIn already running, exiting...");
+            }
+
+            Debug.WriteLine("[Program] Bye bye!");
         }
 
         public static DateTime Truncate(this DateTime dateTime, TimeSpan timeSpan)
@@ -68,5 +90,6 @@ namespace ClockIn
 
         private static Mutex instanceMutex = null;
         private static TimeManager timeMgr = null;
+        private static MainWindow mainWindow = null;
     }
 }

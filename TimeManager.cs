@@ -23,10 +23,10 @@ namespace ClockIn
         public TimeManager()
         {
             session = Session.Default;
-            userSettings = Properties.Settings.Default;
+            settings = Properties.Settings.Default;
 
             // take time snapshot
-            startTime = DateTime.Now.Truncate(TimeSpan.FromMinutes(1)) - TimeSpan.FromMinutes((double)userSettings.ArrivalTimeOffset);
+            startTime = DateTime.Now.Truncate(TimeSpan.FromMinutes(1)) - TimeSpan.FromMinutes((double)settings.ArrivalTimeOffset);
 
             absence = new BindingList<TimePeriod>();
             totalAbsence = TimeSpan.Zero;
@@ -34,7 +34,7 @@ namespace ClockIn
             SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
             absence.ListChanged += Absence_ListChanged;
             session.PropertyValidated += Session_PropertyValidated;
-            userSettings.PropertyChanged += UserSettings_PropertyChanged;
+            settings.PropertyChanged += Settings_PropertyChanged;
             AbsenceUpdated += TotalAbsence_Updated;
 
             notifyTimer = new Timer();
@@ -106,11 +106,11 @@ namespace ClockIn
 
             if (session.Arrival.Date == startTime.Date)
             {
-                if (userSettings.NewSessionOnStartup)
+                if (settings.NewSessionOnStartup)
                 {
                     RestartSession(false);
                 }
-                else if (userSettings.AskSessionOnStartup)
+                else if (settings.AskSessionOnStartup)
                 {
                     DialogResult result = MessageBox.Show(Properties.Resources.AskSessionOnStartup,
                                                           Properties.Resources.MessageBoxCaption,
@@ -189,23 +189,23 @@ namespace ClockIn
                 workingTime -= totalAbsence;
             }
 
-            if (workingTime >= TimeSpan.FromHours((double)userSettings.MaximumWorkingTime))
+            if (workingTime >= TimeSpan.FromHours((double)settings.MaximumWorkingTime))
             {
                 level = WorkingLevel.MaxTimeViolation;
             }
-            else if ((userSettings.NotifyAdvance > 0) &&
-                     (workingTime >= (TimeSpan.FromHours((double)userSettings.MaximumWorkingTime) -
-                                      TimeSpan.FromMinutes((double)userSettings.NotifyAdvance))))
+            else if ((settings.NotifyAdvance > 0) &&
+                     (workingTime >= (TimeSpan.FromHours((double)settings.MaximumWorkingTime) -
+                                      TimeSpan.FromMinutes((double)settings.NotifyAdvance))))
             {
                 level = WorkingLevel.ApproachingMaxTime;
             }
-            else if (workingTime >= TimeSpan.FromHours((double)userSettings.RegularWorkingTime))
+            else if (workingTime >= TimeSpan.FromHours((double)settings.RegularWorkingTime))
             {
                 level = WorkingLevel.OverTime;
             }
-            else if ((userSettings.NotifyRegAdvance > 0) &&
-                     (workingTime >= (TimeSpan.FromHours((double)userSettings.RegularWorkingTime) -
-                                      TimeSpan.FromMinutes((double)userSettings.NotifyRegAdvance))))
+            else if ((settings.NotifyRegAdvance > 0) &&
+                     (workingTime >= (TimeSpan.FromHours((double)settings.RegularWorkingTime) -
+                                      TimeSpan.FromMinutes((double)settings.NotifyRegAdvance))))
             {
                 level = WorkingLevel.AheadOfClosingTime;
             }
@@ -245,12 +245,12 @@ namespace ClockIn
         /// <returns>Leave time</returns>
         public DateTime GetLeaveTime(out bool overTime)
         {
-            DateTime leaveTime = CalculateLeaveTime((int)userSettings.RegularWorkingTime);
+            DateTime leaveTime = CalculateLeaveTime((int)settings.RegularWorkingTime);
             overTime = (leaveTime < DateTime.Now);
 
-            if (overTime || Properties.Settings.Default.DisplayMaximumTime)
+            if (overTime || settings.DisplayMaximumTime)
             {
-                leaveTime = CalculateLeaveTime((int)userSettings.MaximumWorkingTime);
+                leaveTime = CalculateLeaveTime((int)settings.MaximumWorkingTime);
             }
 
             return leaveTime;
@@ -313,7 +313,7 @@ namespace ClockIn
 
             if (session.NotifyLevel < 1)
             {
-                workingTime = CalculateRemainingTime((int)userSettings.RegularWorkingTime) - new TimeSpan(0, (int)userSettings.NotifyRegAdvance, 0);
+                workingTime = CalculateRemainingTime((int)settings.RegularWorkingTime) - new TimeSpan(0, (int)settings.NotifyRegAdvance, 0);
                 int interval = (int)(workingTime.Ticks / TimeSpan.TicksPerMillisecond);
                 if (interval > 0)
                 {
@@ -325,7 +325,7 @@ namespace ClockIn
             }
             else if (session.NotifyLevel < 2)
             {
-                workingTime = CalculateRemainingTime((int)userSettings.MaximumWorkingTime) - new TimeSpan(0, (int)userSettings.NotifyAdvance, 0);
+                workingTime = CalculateRemainingTime((int)settings.MaximumWorkingTime) - new TimeSpan(0, (int)settings.NotifyAdvance, 0);
                 int interval = (int)(workingTime.Ticks / TimeSpan.TicksPerMillisecond);
                 if (interval > 0)
                 {
@@ -354,7 +354,7 @@ namespace ClockIn
                 string message;
                 if (ahead)
                 {
-                    message = string.Format(Properties.Resources.AheadOfRegularTimeLimit, GetRemainingMinutes((int)userSettings.RegularWorkingTime));
+                    message = string.Format(Properties.Resources.AheadOfRegularTimeLimit, GetRemainingMinutes((int)settings.RegularWorkingTime));
                 }
                 else
                 {
@@ -382,7 +382,7 @@ namespace ClockIn
                 string message;
                 if (approaching)
                 {
-                    message = string.Format(Properties.Resources.ApproachingMaximumTimeLimit, GetRemainingMinutes((int)userSettings.MaximumWorkingTime));
+                    message = string.Format(Properties.Resources.ApproachingMaximumTimeLimit, GetRemainingMinutes((int)settings.MaximumWorkingTime));
                 }
                 else
                 {
@@ -427,11 +427,11 @@ namespace ClockIn
 
             DateTime now = DateTime.Now;
             TimePeriod breakPeriod = new TimePeriod(new DateTime(now.Year, now.Month, now.Day,
-                                                                 userSettings.BreaksBegin.Hour,
-                                                                 userSettings.BreaksBegin.Minute, 0),
+                                                                 settings.BreaksBegin.Hour,
+                                                                 settings.BreaksBegin.Minute, 0),
                                                     new DateTime(now.Year, now.Month, now.Day,
-                                                                 userSettings.BreaksEnd.Hour,
-                                                                 userSettings.BreaksEnd.Minute, 0));
+                                                                 settings.BreaksEnd.Hour,
+                                                                 settings.BreaksEnd.Minute, 0));
             TimeSpan chargeableAbsence = TimeSpan.Zero;
             totalAbsence = TimeSpan.Zero;
 
@@ -441,18 +441,18 @@ namespace ClockIn
                 totalAbsence += tp.Duration;
             }
 
-            if ((session.Arrival.TimeOfDay >= userSettings.BreaksBegin.TimeOfDay) &&
-                (session.Arrival.TimeOfDay <= userSettings.BreaksEnd.TimeOfDay))
+            if ((session.Arrival.TimeOfDay >= settings.BreaksBegin.TimeOfDay) &&
+                (session.Arrival.TimeOfDay <= settings.BreaksEnd.TimeOfDay))
             {
-                TimePeriod tp = new TimePeriod(userSettings.BreaksBegin, session.Arrival);
+                TimePeriod tp = new TimePeriod(settings.BreaksBegin, session.Arrival);
                 chargeableAbsence += tp.GetIntersection(breakPeriod);
             }
 
             TimeSpan breakAdder = TimeSpan.Zero;
 
-            if (session.Arrival.TimeOfDay <= userSettings.BreaksEnd.TimeOfDay)
+            if (session.Arrival.TimeOfDay <= settings.BreaksEnd.TimeOfDay)
             {
-                breakAdder = TimeSpan.FromMinutes((double)userSettings.Break);
+                breakAdder = TimeSpan.FromMinutes((double)settings.Break);
 
                 if (chargeableAbsence < breakAdder)
                 {
@@ -475,13 +475,13 @@ namespace ClockIn
                     work = TimeSpan.Zero;
                 }
 
-                if (work > TimeSpan.FromHours((double)userSettings.OutsideLunchWorkspan2))
+                if (work > TimeSpan.FromHours((double)settings.OutsideLunchWorkspan2))
                 {
-                    breakAdder = TimeSpan.FromMinutes((double)userSettings.OutsideLunchBreak2);
+                    breakAdder = TimeSpan.FromMinutes((double)settings.OutsideLunchBreak2);
                 }
-                else if (work > TimeSpan.FromHours((double)userSettings.OutsideLunchWorkspan1))
+                else if (work > TimeSpan.FromHours((double)settings.OutsideLunchWorkspan1))
                 {
-                    breakAdder = TimeSpan.FromMinutes((double)userSettings.OutsideLunchBreak1);
+                    breakAdder = TimeSpan.FromMinutes((double)settings.OutsideLunchBreak1);
                     periodicTimer.Start();
 
                     Debug.WriteLine("[TimeManager] Periodic timer started.");
@@ -585,9 +585,9 @@ namespace ClockIn
         /// </summary>
         /// <param name="sender">Event origin</param>
         /// <param name="e">Event arguments</param>
-        private void UserSettings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            Debug.WriteLine("[TimeManager] User settings property '" + e.PropertyName + "' has changed.");
+            Debug.WriteLine("[TimeManager] Settings property '" + e.PropertyName + "' has changed.");
 
             switch (e.PropertyName)
             {
@@ -624,9 +624,9 @@ namespace ClockIn
 
             if (e.Mode == PowerModes.Resume)
             {
-                if (Properties.Settings.Default.LowPowerIsStart)
+                if (settings.LowPowerIsStart)
                 {
-                    startTime = DateTime.Now.Truncate(TimeSpan.FromMinutes(1)) - TimeSpan.FromMinutes((double)userSettings.ArrivalTimeOffset);
+                    startTime = DateTime.Now.Truncate(TimeSpan.FromMinutes(1)) - TimeSpan.FromMinutes((double)settings.ArrivalTimeOffset);
                     HandleStart();
                 }
                 else
@@ -696,7 +696,7 @@ namespace ClockIn
         private Timer notifyTimer = null;
         private Timer periodicTimer = null;
         private Timer eodTimer = null;
-        private Properties.Settings userSettings = null;
+        private Properties.Settings settings = null;
         private Session session = null;
         private BindingList<TimePeriod> absence;
         private TimeSpan totalAbsence;
