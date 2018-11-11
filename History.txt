@@ -4,6 +4,18 @@ Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved
 Version History
 ===============
 
+v2.4.6889.20160 (2018-11-11)
+----------------------------
+
+Added:   Pressing hotkey brings main window to front if already visible
+Added:   New flat system tray icon on Windows 8 or newer
+Changed: Internal improvements
+Fixed:   System tray icon tooltip shows wrong leave time after reaching
+         end of regular working time when main window is minimized
+Fixed:   In some special constellation, notification popup does not
+         occur after reaching end of regular or maximum working time
+
+
 v2.3.6881.28576 (2018-11-03)
 ----------------------------
 
