@@ -279,8 +279,7 @@ http://icons.wbchug.net</value>
     <value>You are about to reach your maximum daily working time in {0} minutes!</value>
   </data>
   <data name="TooltipText" xml:space="preserve">
-    <value>ClockIn
-Closing time at {0}.</value>
+    <value>Closing time at {0}</value>
   </data>
   <data name="AskSessionAtMidnight" xml:space="preserve">
     <value>A new day has begun. Restart session?</value>

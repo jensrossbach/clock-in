@@ -273,8 +273,7 @@ http://icons.wbchug.net</value>
     <value>Sie erreichen die maximale Tagesarbeitszeit in {0} Minuten!</value>
   </data>
   <data name="TooltipText" xml:space="preserve">
-    <value>ClockIn
-Feierabend um {0} Uhr.</value>
+    <value>Feierabend um {0} Uhr</value>
   </data>
   <data name="AskSessionAtMidnight" xml:space="preserve">
     <value>Ein neuer Tag hat anfangen. Aktuelle Sitzung neu starten?</value>

@@ -560,8 +560,7 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die ClockIn
-        ///Closing time at {0}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Closing time at {0} ähnelt.
         /// </summary>
         internal static string TooltipText {
             get {
