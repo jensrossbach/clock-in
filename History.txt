@@ -4,6 +4,13 @@ Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved
 Version History
 ===============
 
+v2.5.6895.31440 (2018-11-17)
+----------------------------
+
+Added:   Usage of flat system tray icon on Windows 8 or newer is now configurable
+Changed: Tooltip text of system tray icon reduced to one line without application name
+
+
 v2.4.6889.20160 (2018-11-11)
 ----------------------------
 
