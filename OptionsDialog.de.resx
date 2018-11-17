@@ -403,11 +403,20 @@
   <data name="txtHotkey.Text" xml:space="preserve">
     <value>Kein</value>
   </data>
-  <data name="tbpAppStart.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tbpMisc.Size" type="System.Drawing.Size, System.Drawing">
     <value>319, 390</value>
   </data>
-  <data name="tbpAppStart.Text" xml:space="preserve">
-    <value>Anwendungsstart</value>
+  <data name="tbpMisc.Text" xml:space="preserve">
+    <value>Sonstiges</value>
+  </data>
+  <data name="cbxFlatIcon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 199</value>
+  </data>
+  <data name="cbxFlatIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 17</value>
+  </data>
+  <data name="cbxFlatIcon.Text" xml:space="preserve">
+    <value>M&amp;odernes Symbol unter Windows 8 und neuer</value>
   </data>
   <data name="cbxMinimized.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 176</value>
@@ -419,7 +428,7 @@
     <value>&amp;Minimiert starten</value>
   </data>
   <data name="lblOffsetMinutes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>223, 210</value>
+    <value>223, 234</value>
   </data>
   <data name="lblOffsetMinutes.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 13</value>
@@ -428,10 +437,10 @@
     <value>Minuten</value>
   </data>
   <data name="nmcArrivalTimeOffset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 208</value>
+    <value>172, 232</value>
   </data>
   <data name="lblArrivalTimeOffset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 210</value>
+    <value>12, 234</value>
   </data>
   <data name="lblArrivalTimeOffset.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 13</value>

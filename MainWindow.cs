@@ -30,11 +30,7 @@ namespace ClockIn
             InitializeComponent();
             lblLeaveTimeIcon.Image = Properties.Resources.Power;
 
-            OperatingSystem os = Environment.OSVersion;
-            if ((os.Platform == PlatformID.Win32NT) && (((os.Version.Major == 6) && (os.Version.Minor >= 2)) || (os.Version.Major >= 10)))
-            {
-                icnTrayIcon.Icon = Properties.Resources.FlatTrayIcon;
-            }
+            UpdateSystemTrayIcon(false);
             icnTrayIcon.Visible = true;
 
             Properties.Settings.Default.PropertyChanged += DefaultSettings_PropertyChanged;
@@ -196,6 +192,25 @@ namespace ClockIn
 
             BringToFront();
             Activate();
+        }
+
+        /// <summary>
+        ///   Updates the system tray icon.
+        /// </summary>
+        /// <param name="reset">true if icon can be reset to default</param>
+        private void UpdateSystemTrayIcon(bool reset)
+        {
+            OperatingSystem os = Environment.OSVersion;
+
+            if ((Properties.Settings.Default.FlatIconOnNewWindows) &&
+                ((os.Platform == PlatformID.Win32NT) && (((os.Version.Major == 6) && (os.Version.Minor >= 2)) || (os.Version.Major >= 10))))
+            {
+                icnTrayIcon.Icon = Properties.Resources.FlatTrayIcon;
+            }
+            else if (reset)
+            {
+                icnTrayIcon.Icon = Icon;
+            }
         }
 
         /// <summary>
@@ -477,19 +492,28 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void DefaultSettings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "DisplayMaximumTime")
+            switch (e.PropertyName)
             {
-                if (Visible)
+                case "DisplayMaximumTime":
                 {
-                    UpdateWorkingTime();
+                    if (Visible)
+                    {
+                        UpdateWorkingTime();
+                    }
+
+                    UpdateLeaveTime(Visible);
+                    break;
                 }
-
-                UpdateLeaveTime(Visible);
-            }
-
-            if (e.PropertyName == "MainWindowHotkey")
-            {
-                showMainWinHK.Key = Properties.Settings.Default.MainWindowHotkey;
+                case "MainWindowHotkey":
+                {
+                    showMainWinHK.Key = Properties.Settings.Default.MainWindowHotkey;
+                    break;
+                }
+                case "FlatIconOnNewWindows":
+                {
+                    UpdateSystemTrayIcon(true);
+                    break;
+                }
             }
         }
 
@@ -501,15 +525,7 @@ namespace ClockIn
         private void ShowMainWin_HotkeyPressed(object sender, EventArgs e)
         {
             Debug.WriteLine("[MainWindow] Hotkey pressed.");
-
-            if (Visible)
-            {
-                Activate();
-            }
-            else
-            {
-                RestoreMainWindow();
-            }
+            RestoreMainWindow();
         }
 
         private enum WorkingTimeDisplay

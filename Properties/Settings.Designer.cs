@@ -370,5 +370,17 @@ namespace ClockIn.Properties {
                 this["NotifyRegAdvance"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FlatIconOnNewWindows {
+            get {
+                return ((bool)(this["FlatIconOnNewWindows"]));
+            }
+            set {
+                this["FlatIconOnNewWindows"] = value;
+            }
+        }
     }
 }

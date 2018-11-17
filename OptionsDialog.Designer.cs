@@ -83,7 +83,8 @@
             this.lblMinBeforeReg = new System.Windows.Forms.Label();
             this.nmcNotifyRegAdvance = new System.Windows.Forms.NumericUpDown();
             this.txtHotkey = new ClockIn.HotkeyControl();
-            this.tbpAppStart = new System.Windows.Forms.TabPage();
+            this.tbpMisc = new System.Windows.Forms.TabPage();
+            this.cbxFlatIcon = new System.Windows.Forms.CheckBox();
             this.cbxMinimized = new System.Windows.Forms.CheckBox();
             this.lblOffsetMinutes = new System.Windows.Forms.Label();
             this.nmcArrivalTimeOffset = new System.Windows.Forms.NumericUpDown();
@@ -104,7 +105,7 @@
             this.grpOtherPeriod.SuspendLayout();
             this.tbpNotifications.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcNotifyRegAdvance)).BeginInit();
-            this.tbpAppStart.SuspendLayout();
+            this.tbpMisc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcArrivalTimeOffset)).BeginInit();
             this.SuspendLayout();
             // 
@@ -515,7 +516,7 @@
             // 
             this.tbcOptions.Controls.Add(this.tbpTimePeriods);
             this.tbcOptions.Controls.Add(this.tbpNotifications);
-            this.tbcOptions.Controls.Add(this.tbpAppStart);
+            this.tbcOptions.Controls.Add(this.tbpMisc);
             resources.ApplyResources(this.tbcOptions, "tbcOptions");
             this.tbcOptions.Name = "tbcOptions";
             this.tbcOptions.SelectedIndex = 0;
@@ -596,18 +597,28 @@
             this.txtHotkey.Enter += new System.EventHandler(this.TxtHotkey_Enter);
             this.txtHotkey.Leave += new System.EventHandler(this.TxtHotkey_Leave);
             // 
-            // tbpAppStart
+            // tbpMisc
             // 
-            this.tbpAppStart.Controls.Add(this.cbxMinimized);
-            this.tbpAppStart.Controls.Add(this.lblOffsetMinutes);
-            this.tbpAppStart.Controls.Add(this.nmcArrivalTimeOffset);
-            this.tbpAppStart.Controls.Add(this.lblArrivalTimeOffset);
-            this.tbpAppStart.Controls.Add(this.cbxAutoLaunch);
-            this.tbpAppStart.Controls.Add(this.grpLastSession);
-            this.tbpAppStart.Controls.Add(this.cbxLowPowerIsStart);
-            resources.ApplyResources(this.tbpAppStart, "tbpAppStart");
-            this.tbpAppStart.Name = "tbpAppStart";
-            this.tbpAppStart.UseVisualStyleBackColor = true;
+            this.tbpMisc.Controls.Add(this.cbxFlatIcon);
+            this.tbpMisc.Controls.Add(this.cbxMinimized);
+            this.tbpMisc.Controls.Add(this.lblOffsetMinutes);
+            this.tbpMisc.Controls.Add(this.nmcArrivalTimeOffset);
+            this.tbpMisc.Controls.Add(this.lblArrivalTimeOffset);
+            this.tbpMisc.Controls.Add(this.cbxAutoLaunch);
+            this.tbpMisc.Controls.Add(this.grpLastSession);
+            this.tbpMisc.Controls.Add(this.cbxLowPowerIsStart);
+            resources.ApplyResources(this.tbpMisc, "tbpMisc");
+            this.tbpMisc.Name = "tbpMisc";
+            this.tbpMisc.UseVisualStyleBackColor = true;
+            // 
+            // cbxFlatIcon
+            // 
+            resources.ApplyResources(this.cbxFlatIcon, "cbxFlatIcon");
+            this.cbxFlatIcon.Checked = global::ClockIn.Properties.Settings.Default.FlatIconOnNewWindows;
+            this.cbxFlatIcon.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxFlatIcon.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::ClockIn.Properties.Settings.Default, "FlatIconOnNewWindows", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.cbxFlatIcon.Name = "cbxFlatIcon";
+            this.cbxFlatIcon.UseVisualStyleBackColor = true;
             // 
             // cbxMinimized
             // 
@@ -677,8 +688,8 @@
             this.tbpNotifications.ResumeLayout(false);
             this.tbpNotifications.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcNotifyRegAdvance)).EndInit();
-            this.tbpAppStart.ResumeLayout(false);
-            this.tbpAppStart.PerformLayout();
+            this.tbpMisc.ResumeLayout(false);
+            this.tbpMisc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcArrivalTimeOffset)).EndInit();
             this.ResumeLayout(false);
 
@@ -722,7 +733,7 @@
         private System.Windows.Forms.TabControl tbcOptions;
         private System.Windows.Forms.TabPage tbpTimePeriods;
         private System.Windows.Forms.TabPage tbpNotifications;
-        private System.Windows.Forms.TabPage tbpAppStart;
+        private System.Windows.Forms.TabPage tbpMisc;
         private System.Windows.Forms.Label lblAdder2Min;
         private System.Windows.Forms.Label lblAdder1Min;
         private System.Windows.Forms.NumericUpDown nmcAdder2;
@@ -745,5 +756,6 @@
         private System.Windows.Forms.CheckBox cbxMinimized;
         private System.Windows.Forms.Label lblMinBeforeReg;
         private System.Windows.Forms.NumericUpDown nmcNotifyRegAdvance;
+        private System.Windows.Forms.CheckBox cbxFlatIcon;
     }
 }
