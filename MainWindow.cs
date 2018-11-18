@@ -183,14 +183,22 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Restores the main window so that it is visible.
+        ///   Minimizes the main window to the system tray.
+        /// </summary>
+        private void MinimizeMainWindow()
+        {
+            WindowState = FormWindowState.Minimized;
+            Visible = false;
+        }
+
+        /// <summary>
+        ///   Restores the main window from system tray.
         /// </summary>
         private void RestoreMainWindow()
         {
-            WindowState = FormWindowState.Normal;
             Visible = true;
+            WindowState = FormWindowState.Normal;
 
-            BringToFront();
             Activate();
         }
 
@@ -210,6 +218,19 @@ namespace ClockIn
             else if (reset)
             {
                 icnTrayIcon.Icon = Icon;
+            }
+        }
+
+        /// <summary>
+        ///   Handles the event when the window has been moved.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void MainWindow_LocationChanged(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                Properties.Settings.Default.MainWindowLocation = Location;
             }
         }
 
@@ -254,7 +275,7 @@ namespace ClockIn
         {
             if (!exit)
             {
-                Visible = false;
+                MinimizeMainWindow();
                 e.Cancel = true;
             }
         }
@@ -376,7 +397,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            Visible = false;
+            MinimizeMainWindow();
         }
 
         /// <summary>
@@ -525,6 +546,13 @@ namespace ClockIn
         private void ShowMainWin_HotkeyPressed(object sender, EventArgs e)
         {
             Debug.WriteLine("[MainWindow] Hotkey pressed.");
+
+            if (Visible)
+            {
+                // this trick is needed in order to bring window to front if it is already opened
+                WindowState = FormWindowState.Minimized;
+            }
+
             RestoreMainWindow();
         }
 

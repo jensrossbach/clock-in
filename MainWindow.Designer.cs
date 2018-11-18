@@ -226,7 +226,6 @@
             this.Controls.Add(this.lblBegin);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnOptions);
-            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::ClockIn.Properties.Settings.Default, "MainWindowLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Location = global::ClockIn.Properties.Settings.Default.MainWindowLocation;
             this.MaximizeBox = false;
@@ -235,6 +234,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
+            this.LocationChanged += new System.EventHandler(this.MainWindow_LocationChanged);
             this.VisibleChanged += new System.EventHandler(this.MainWindow_VisibleChanged);
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.ctxTrayMenu.ResumeLayout(false);
