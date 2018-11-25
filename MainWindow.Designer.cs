@@ -236,7 +236,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.LocationChanged += new System.EventHandler(this.MainWindow_LocationChanged);
             this.VisibleChanged += new System.EventHandler(this.MainWindow_VisibleChanged);
-            this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.ctxTrayMenu.ResumeLayout(false);
             this.pnlTimeDisplay.ResumeLayout(false);
             this.ResumeLayout(false);

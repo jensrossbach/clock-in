@@ -235,19 +235,6 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Handles the event when the window has been resized.
-        /// </summary>
-        /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void MainWindow_Resize(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Minimized)
-            {
-                Visible = false;
-            }
-        }
-
-        /// <summary>
         ///   Handles the event when the visibility of the window has changed.
         /// </summary>
         /// <param name="sender">Event origin</param>
@@ -549,7 +536,7 @@ namespace ClockIn
 
             if (Visible)
             {
-                // this trick is needed in order to bring window to front if it is already opened
+                // this workaround is needed in order to bring window to front if it is already opened
                 WindowState = FormWindowState.Minimized;
             }
 
