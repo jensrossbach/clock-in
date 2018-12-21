@@ -90,6 +90,7 @@
             this.nmcArrivalTimeOffset = new System.Windows.Forms.NumericUpDown();
             this.lblArrivalTimeOffset = new System.Windows.Forms.Label();
             this.grpAbsence = new System.Windows.Forms.GroupBox();
+            this.cbxConfirmOnClockIn = new System.Windows.Forms.CheckBox();
             this.cbxMinimizeOnClockOut = new System.Windows.Forms.CheckBox();
             this.cbxClockInAtWakeup = new System.Windows.Forms.CheckBox();
             this.cbxClockInAtStart = new System.Windows.Forms.CheckBox();
@@ -659,11 +660,20 @@
             // grpAbsence
             // 
             resources.ApplyResources(this.grpAbsence, "grpAbsence");
+            this.grpAbsence.Controls.Add(this.cbxConfirmOnClockIn);
             this.grpAbsence.Controls.Add(this.cbxMinimizeOnClockOut);
             this.grpAbsence.Controls.Add(this.cbxClockInAtWakeup);
             this.grpAbsence.Controls.Add(this.cbxClockInAtStart);
             this.grpAbsence.Name = "grpAbsence";
             this.grpAbsence.TabStop = false;
+            // 
+            // cbxConfirmOnClockIn
+            // 
+            resources.ApplyResources(this.cbxConfirmOnClockIn, "cbxConfirmOnClockIn");
+            this.cbxConfirmOnClockIn.Checked = global::ClockIn.Properties.Settings.Default.ConfirmAbsenceOnClockIn;
+            this.cbxConfirmOnClockIn.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::ClockIn.Properties.Settings.Default, "ConfirmAbsenceOnClockIn", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.cbxConfirmOnClockIn.Name = "cbxConfirmOnClockIn";
+            this.cbxConfirmOnClockIn.UseVisualStyleBackColor = true;
             // 
             // cbxMinimizeOnClockOut
             // 
@@ -805,5 +815,6 @@
         private System.Windows.Forms.CheckBox cbxClockInAtStart;
         private System.Windows.Forms.GroupBox grpAbsence;
         private System.Windows.Forms.CheckBox cbxMinimizeOnClockOut;
+        private System.Windows.Forms.CheckBox cbxConfirmOnClockIn;
     }
 }

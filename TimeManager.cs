@@ -351,7 +351,19 @@ namespace ClockIn
                 currentAbsence.EndTime = time;
                 if (currentAbsence.Duration != TimeSpan.Zero)
                 {
-                    absence.Add(currentAbsence);
+                    if (settings.ConfirmAbsenceOnClockIn)
+                    {
+                        DialogResult res = new AbsenceInputDialog(currentAbsence, Properties.Resources.EditAbsence).ShowDialog();
+
+                        if (res == DialogResult.OK)
+                        {
+                            absence.Add(currentAbsence);
+                        }
+                    }
+                    else
+                    {
+                        absence.Add(currentAbsence);
+                    }
                 }
                 else
                 {

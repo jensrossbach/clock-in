@@ -418,5 +418,17 @@ namespace ClockIn.Properties {
                 this["MinimizeOnClockOut"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ConfirmAbsenceOnClockIn {
+            get {
+                return ((bool)(this["ConfirmAbsenceOnClockIn"]));
+            }
+            set {
+                this["ConfirmAbsenceOnClockIn"] = value;
+            }
+        }
     }
 }

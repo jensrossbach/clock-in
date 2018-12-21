@@ -143,10 +143,16 @@
     <value>Minuten vorher</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>264, 446</value>
+    <value>264, 464</value>
   </data>
   <data name="btnClose.Text" xml:space="preserve">
     <value>Schl&amp;ießen</value>
+  </data>
+  <data name="grpLastSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 98</value>
+  </data>
+  <data name="grpLastSession.Text" xml:space="preserve">
+    <value>Letzte Sitzung</value>
   </data>
   <data name="rbtQueryStartBehavior.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 17</value>
@@ -166,12 +172,6 @@
   <data name="rbtNewSession.Text" xml:space="preserve">
     <value>Immer &amp;neue Sitzung beginnen</value>
   </data>
-  <data name="grpLastSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 98</value>
-  </data>
-  <data name="grpLastSession.Text" xml:space="preserve">
-    <value>Letzte Sitzung</value>
-  </data>
   <data name="cbxAutoLaunch.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 17</value>
   </data>
@@ -189,6 +189,12 @@
   </data>
   <data name="lblBreaks.Text" xml:space="preserve">
     <value>Pausen:</value>
+  </data>
+  <data name="grpBreaksPeriod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 122</value>
+  </data>
+  <data name="grpBreaksPeriod.Text" xml:space="preserve">
+    <value>Mittagspausenzeitraum</value>
   </data>
   <data name="lblBreakMin.Location" type="System.Drawing.Point, System.Drawing">
     <value>245, 87</value>
@@ -219,12 +225,6 @@
   </data>
   <data name="dtpBreaksBegin.Location" type="System.Drawing.Point, System.Drawing">
     <value>184, 22</value>
-  </data>
-  <data name="grpBreaksPeriod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 122</value>
-  </data>
-  <data name="grpBreaksPeriod.Text" xml:space="preserve">
-    <value>Mittagspausenzeitraum</value>
   </data>
   <data name="lblAdder2Min.Location" type="System.Drawing.Point, System.Drawing">
     <value>172, 122</value>
@@ -361,17 +361,26 @@
   <data name="lblHotkey.Text" xml:space="preserve">
     <value>Hot-Key:</value>
   </data>
+  <data name="tbcOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>327, 434</value>
+  </data>
+  <data name="tbpTimePeriods.Size" type="System.Drawing.Size, System.Drawing">
+    <value>319, 408</value>
+  </data>
+  <data name="tbpTimePeriods.Text" xml:space="preserve">
+    <value>Zeiträume</value>
+  </data>
   <data name="grpOtherPeriod.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 160</value>
   </data>
   <data name="grpOtherPeriod.Text" xml:space="preserve">
     <value>Spätschicht</value>
   </data>
-  <data name="tbpTimePeriods.Size" type="System.Drawing.Size, System.Drawing">
-    <value>319, 390</value>
+  <data name="tbpNotifications.Size" type="System.Drawing.Size, System.Drawing">
+    <value>319, 408</value>
   </data>
-  <data name="tbpTimePeriods.Text" xml:space="preserve">
-    <value>Zeiträume</value>
+  <data name="tbpNotifications.Text" xml:space="preserve">
+    <value>Benachrichtigungen</value>
   </data>
   <data name="lblMinBeforeReg.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 13</value>
@@ -382,11 +391,11 @@
   <data name="txtHotkey.Location" type="System.Drawing.Point, System.Drawing">
     <value>66, 222</value>
   </data>
-  <data name="tbpNotifications.Size" type="System.Drawing.Size, System.Drawing">
-    <value>319, 390</value>
+  <data name="tbpMisc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>319, 408</value>
   </data>
-  <data name="tbpNotifications.Text" xml:space="preserve">
-    <value>Benachrichtigungen</value>
+  <data name="tbpMisc.Text" xml:space="preserve">
+    <value>Sonstiges</value>
   </data>
   <data name="cbxFlatIcon.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 17</value>
@@ -421,6 +430,18 @@
   <data name="lblArrivalTimeOffset.Text" xml:space="preserve">
     <value>Verschiebung der Ankunftszeit:</value>
   </data>
+  <data name="grpAbsence.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 124</value>
+  </data>
+  <data name="grpAbsence.Text" xml:space="preserve">
+    <value>In Abwesenheit</value>
+  </data>
+  <data name="cbxConfirmOnClockIn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 17</value>
+  </data>
+  <data name="cbxConfirmOnClockIn.Text" xml:space="preserve">
+    <value>Abwesenheit beim Einstempeln &amp;bestätigen</value>
+  </data>
   <data name="cbxMinimizeOnClockOut.Size" type="System.Drawing.Size, System.Drawing">
     <value>164, 17</value>
   </data>
@@ -439,23 +460,8 @@
   <data name="cbxClockInAtStart.Text" xml:space="preserve">
     <value>Einstempeln bei Programm&amp;start</value>
   </data>
-  <data name="grpAbsence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 100</value>
-  </data>
-  <data name="grpAbsence.Text" xml:space="preserve">
-    <value>In Abwesenheit</value>
-  </data>
-  <data name="tbpMisc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>319, 390</value>
-  </data>
-  <data name="tbpMisc.Text" xml:space="preserve">
-    <value>Sonstiges</value>
-  </data>
-  <data name="tbcOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>327, 416</value>
-  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>350, 481</value>
+    <value>350, 499</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Optionen</value>
