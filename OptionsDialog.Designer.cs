@@ -82,6 +82,7 @@
             this.tbpNotifications = new System.Windows.Forms.TabPage();
             this.lblMinBeforeReg = new System.Windows.Forms.Label();
             this.nmcNotifyRegAdvance = new System.Windows.Forms.NumericUpDown();
+            this.txtHotkey = new ClockIn.HotkeyControl();
             this.tbpMisc = new System.Windows.Forms.TabPage();
             this.cbxFlatIcon = new System.Windows.Forms.CheckBox();
             this.cbxMinimized = new System.Windows.Forms.CheckBox();
@@ -89,9 +90,9 @@
             this.nmcArrivalTimeOffset = new System.Windows.Forms.NumericUpDown();
             this.lblArrivalTimeOffset = new System.Windows.Forms.Label();
             this.grpAbsence = new System.Windows.Forms.GroupBox();
+            this.cbxMinimizeOnClockOut = new System.Windows.Forms.CheckBox();
             this.cbxClockInAtWakeup = new System.Windows.Forms.CheckBox();
             this.cbxClockInAtStart = new System.Windows.Forms.CheckBox();
-            this.txtHotkey = new ClockIn.HotkeyControl();
             this.grpLastSession.SuspendLayout();
             this.grpBreaksPeriod.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcBreak)).BeginInit();
@@ -147,10 +148,10 @@
             // 
             // grpLastSession
             // 
+            resources.ApplyResources(this.grpLastSession, "grpLastSession");
             this.grpLastSession.Controls.Add(this.rbtQueryStartBehavior);
             this.grpLastSession.Controls.Add(this.rbtContinueSession);
             this.grpLastSession.Controls.Add(this.rbtNewSession);
-            resources.ApplyResources(this.grpLastSession, "grpLastSession");
             this.grpLastSession.Name = "grpLastSession";
             this.grpLastSession.TabStop = false;
             // 
@@ -207,6 +208,7 @@
             // 
             // grpBreaksPeriod
             // 
+            resources.ApplyResources(this.grpBreaksPeriod, "grpBreaksPeriod");
             this.grpBreaksPeriod.Controls.Add(this.lblBreakMin);
             this.grpBreaksPeriod.Controls.Add(this.lblBreak);
             this.grpBreaksPeriod.Controls.Add(this.nmcBreak);
@@ -214,7 +216,6 @@
             this.grpBreaksPeriod.Controls.Add(this.lblBreaksEnd);
             this.grpBreaksPeriod.Controls.Add(this.lblBreaksBegin);
             this.grpBreaksPeriod.Controls.Add(this.dtpBreaksBegin);
-            resources.ApplyResources(this.grpBreaksPeriod, "grpBreaksPeriod");
             this.grpBreaksPeriod.Name = "grpBreaksPeriod";
             this.grpBreaksPeriod.TabStop = false;
             // 
@@ -230,8 +231,8 @@
             // 
             // nmcBreak
             // 
-            this.nmcBreak.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "Break", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.nmcBreak, "nmcBreak");
+            this.nmcBreak.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "Break", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcBreak.Maximum = new decimal(new int[] {
             180,
             0,
@@ -278,8 +279,8 @@
             // 
             // nmcAdder2
             // 
-            this.nmcAdder2.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "OutsideLunchBreak2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.nmcAdder2, "nmcAdder2");
+            this.nmcAdder2.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "OutsideLunchBreak2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcAdder2.Maximum = new decimal(new int[] {
             180,
             0,
@@ -301,6 +302,7 @@
             // 
             // nmcWorkspan2
             // 
+            resources.ApplyResources(this.nmcWorkspan2, "nmcWorkspan2");
             this.nmcWorkspan2.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "OutsideLunchWorkspan2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcWorkspan2.DecimalPlaces = 1;
             this.nmcWorkspan2.Increment = new decimal(new int[] {
@@ -308,7 +310,6 @@
             0,
             0,
             65536});
-            resources.ApplyResources(this.nmcWorkspan2, "nmcWorkspan2");
             this.nmcWorkspan2.Maximum = new decimal(new int[] {
             24,
             0,
@@ -345,8 +346,8 @@
             // 
             // nmcAdder1
             // 
-            this.nmcAdder1.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "OutsideLunchBreak1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.nmcAdder1, "nmcAdder1");
+            this.nmcAdder1.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "OutsideLunchBreak1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcAdder1.Maximum = new decimal(new int[] {
             180,
             0,
@@ -358,6 +359,7 @@
             // 
             // nmcWorkspan1
             // 
+            resources.ApplyResources(this.nmcWorkspan1, "nmcWorkspan1");
             this.nmcWorkspan1.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "OutsideLunchWorkspan1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcWorkspan1.DecimalPlaces = 1;
             this.nmcWorkspan1.Increment = new decimal(new int[] {
@@ -365,7 +367,6 @@
             0,
             0,
             65536});
-            resources.ApplyResources(this.nmcWorkspan1, "nmcWorkspan1");
             this.nmcWorkspan1.Maximum = new decimal(new int[] {
             24,
             0,
@@ -387,9 +388,9 @@
             // 
             // btnSelectSound
             // 
+            resources.ApplyResources(this.btnSelectSound, "btnSelectSound");
             this.btnSelectSound.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", global::ClockIn.Properties.Settings.Default, "PlaySound", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.btnSelectSound.Enabled = global::ClockIn.Properties.Settings.Default.PlaySound;
-            resources.ApplyResources(this.btnSelectSound, "btnSelectSound");
             this.btnSelectSound.Name = "btnSelectSound";
             this.btnSelectSound.UseVisualStyleBackColor = true;
             this.btnSelectSound.Click += new System.EventHandler(this.BtnSelectSound_Click);
@@ -405,8 +406,8 @@
             // 
             // nmcNotifyMaxAdvance
             // 
-            this.nmcNotifyMaxAdvance.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "NotifyAdvance", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.nmcNotifyMaxAdvance, "nmcNotifyMaxAdvance");
+            this.nmcNotifyMaxAdvance.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "NotifyAdvance", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcNotifyMaxAdvance.Maximum = new decimal(new int[] {
             60,
             0,
@@ -435,6 +436,7 @@
             // 
             // nmcMaxTime
             // 
+            resources.ApplyResources(this.nmcMaxTime, "nmcMaxTime");
             this.nmcMaxTime.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "MaximumWorkingTime", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcMaxTime.DecimalPlaces = 1;
             this.nmcMaxTime.Increment = new decimal(new int[] {
@@ -442,7 +444,6 @@
             0,
             0,
             65536});
-            resources.ApplyResources(this.nmcMaxTime, "nmcMaxTime");
             this.nmcMaxTime.Maximum = new decimal(new int[] {
             24,
             0,
@@ -459,6 +460,7 @@
             // 
             // nmcRegularTime
             // 
+            resources.ApplyResources(this.nmcRegularTime, "nmcRegularTime");
             this.nmcRegularTime.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "RegularWorkingTime", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcRegularTime.DecimalPlaces = 1;
             this.nmcRegularTime.Increment = new decimal(new int[] {
@@ -466,7 +468,6 @@
             0,
             0,
             65536});
-            resources.ApplyResources(this.nmcRegularTime, "nmcRegularTime");
             this.nmcRegularTime.Maximum = new decimal(new int[] {
             24,
             0,
@@ -483,8 +484,8 @@
             // 
             // nmcBreaksDuration
             // 
-            this.nmcBreaksDuration.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "BreaksDuration", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.nmcBreaksDuration, "nmcBreaksDuration");
+            this.nmcBreaksDuration.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "BreaksDuration", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcBreaksDuration.Maximum = new decimal(new int[] {
             180,
             0,
@@ -518,15 +519,16 @@
             // 
             // tbcOptions
             // 
+            resources.ApplyResources(this.tbcOptions, "tbcOptions");
             this.tbcOptions.Controls.Add(this.tbpTimePeriods);
             this.tbcOptions.Controls.Add(this.tbpNotifications);
             this.tbcOptions.Controls.Add(this.tbpMisc);
-            resources.ApplyResources(this.tbcOptions, "tbcOptions");
             this.tbcOptions.Name = "tbcOptions";
             this.tbcOptions.SelectedIndex = 0;
             // 
             // tbpTimePeriods
             // 
+            resources.ApplyResources(this.tbpTimePeriods, "tbpTimePeriods");
             this.tbpTimePeriods.Controls.Add(this.lblRegularTimeH);
             this.tbpTimePeriods.Controls.Add(this.grpBreaksPeriod);
             this.tbpTimePeriods.Controls.Add(this.lblRegularTime);
@@ -535,12 +537,12 @@
             this.tbpTimePeriods.Controls.Add(this.nmcMaxTime);
             this.tbpTimePeriods.Controls.Add(this.lblMaxTimeH);
             this.tbpTimePeriods.Controls.Add(this.grpOtherPeriod);
-            resources.ApplyResources(this.tbpTimePeriods, "tbpTimePeriods");
             this.tbpTimePeriods.Name = "tbpTimePeriods";
             this.tbpTimePeriods.UseVisualStyleBackColor = true;
             // 
             // grpOtherPeriod
             // 
+            resources.ApplyResources(this.grpOtherPeriod, "grpOtherPeriod");
             this.grpOtherPeriod.Controls.Add(this.lblAdder2Min);
             this.grpOtherPeriod.Controls.Add(this.nmcAdder1);
             this.grpOtherPeriod.Controls.Add(this.lblAdder1Min);
@@ -553,12 +555,12 @@
             this.grpOtherPeriod.Controls.Add(this.nmcWorkspan1);
             this.grpOtherPeriod.Controls.Add(this.nmcWorkspan2);
             this.grpOtherPeriod.Controls.Add(this.lblAdder1);
-            resources.ApplyResources(this.grpOtherPeriod, "grpOtherPeriod");
             this.grpOtherPeriod.Name = "grpOtherPeriod";
             this.grpOtherPeriod.TabStop = false;
             // 
             // tbpNotifications
             // 
+            resources.ApplyResources(this.tbpNotifications, "tbpNotifications");
             this.tbpNotifications.Controls.Add(this.lblMinBeforeReg);
             this.tbpNotifications.Controls.Add(this.nmcNotifyRegAdvance);
             this.tbpNotifications.Controls.Add(this.cbxNotifyRegularTime);
@@ -571,7 +573,6 @@
             this.tbpNotifications.Controls.Add(this.cbxPlaySound);
             this.tbpNotifications.Controls.Add(this.btnSelectSound);
             this.tbpNotifications.Controls.Add(this.txtHotkey);
-            resources.ApplyResources(this.tbpNotifications, "tbpNotifications");
             this.tbpNotifications.Name = "tbpNotifications";
             this.tbpNotifications.UseVisualStyleBackColor = true;
             // 
@@ -582,8 +583,8 @@
             // 
             // nmcNotifyRegAdvance
             // 
-            this.nmcNotifyRegAdvance.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "NotifyRegAdvance", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.nmcNotifyRegAdvance, "nmcNotifyRegAdvance");
+            this.nmcNotifyRegAdvance.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "NotifyRegAdvance", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcNotifyRegAdvance.Maximum = new decimal(new int[] {
             60,
             0,
@@ -592,8 +593,18 @@
             this.nmcNotifyRegAdvance.Name = "nmcNotifyRegAdvance";
             this.nmcNotifyRegAdvance.Value = global::ClockIn.Properties.Settings.Default.NotifyRegAdvance;
             // 
+            // txtHotkey
+            // 
+            resources.ApplyResources(this.txtHotkey, "txtHotkey");
+            this.txtHotkey.DataBindings.Add(new System.Windows.Forms.Binding("Hotkey", global::ClockIn.Properties.Settings.Default, "MainWindowHotkey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtHotkey.Hotkey = global::ClockIn.Properties.Settings.Default.MainWindowHotkey;
+            this.txtHotkey.Name = "txtHotkey";
+            this.txtHotkey.Enter += new System.EventHandler(this.TxtHotkey_Enter);
+            this.txtHotkey.Leave += new System.EventHandler(this.TxtHotkey_Leave);
+            // 
             // tbpMisc
             // 
+            resources.ApplyResources(this.tbpMisc, "tbpMisc");
             this.tbpMisc.Controls.Add(this.cbxFlatIcon);
             this.tbpMisc.Controls.Add(this.cbxMinimized);
             this.tbpMisc.Controls.Add(this.lblOffsetMinutes);
@@ -603,7 +614,6 @@
             this.tbpMisc.Controls.Add(this.grpLastSession);
             this.tbpMisc.Controls.Add(this.cbxLowPowerIsStart);
             this.tbpMisc.Controls.Add(this.grpAbsence);
-            resources.ApplyResources(this.tbpMisc, "tbpMisc");
             this.tbpMisc.Name = "tbpMisc";
             this.tbpMisc.UseVisualStyleBackColor = true;
             // 
@@ -631,8 +641,8 @@
             // 
             // nmcArrivalTimeOffset
             // 
-            this.nmcArrivalTimeOffset.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "ArrivalTimeOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.nmcArrivalTimeOffset, "nmcArrivalTimeOffset");
+            this.nmcArrivalTimeOffset.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::ClockIn.Properties.Settings.Default, "ArrivalTimeOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nmcArrivalTimeOffset.Maximum = new decimal(new int[] {
             30,
             0,
@@ -648,11 +658,21 @@
             // 
             // grpAbsence
             // 
+            resources.ApplyResources(this.grpAbsence, "grpAbsence");
+            this.grpAbsence.Controls.Add(this.cbxMinimizeOnClockOut);
             this.grpAbsence.Controls.Add(this.cbxClockInAtWakeup);
             this.grpAbsence.Controls.Add(this.cbxClockInAtStart);
-            resources.ApplyResources(this.grpAbsence, "grpAbsence");
             this.grpAbsence.Name = "grpAbsence";
             this.grpAbsence.TabStop = false;
+            // 
+            // cbxMinimizeOnClockOut
+            // 
+            resources.ApplyResources(this.cbxMinimizeOnClockOut, "cbxMinimizeOnClockOut");
+            this.cbxMinimizeOnClockOut.Checked = global::ClockIn.Properties.Settings.Default.MinimizeOnClockOut;
+            this.cbxMinimizeOnClockOut.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxMinimizeOnClockOut.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::ClockIn.Properties.Settings.Default, "MinimizeOnClockOut", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.cbxMinimizeOnClockOut.Name = "cbxMinimizeOnClockOut";
+            this.cbxMinimizeOnClockOut.UseVisualStyleBackColor = true;
             // 
             // cbxClockInAtWakeup
             // 
@@ -671,15 +691,6 @@
             this.cbxClockInAtStart.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::ClockIn.Properties.Settings.Default, "ClockInAtStart", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.cbxClockInAtStart.Name = "cbxClockInAtStart";
             this.cbxClockInAtStart.UseVisualStyleBackColor = true;
-            // 
-            // txtHotkey
-            // 
-            this.txtHotkey.DataBindings.Add(new System.Windows.Forms.Binding("Hotkey", global::ClockIn.Properties.Settings.Default, "MainWindowHotkey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtHotkey.Hotkey = global::ClockIn.Properties.Settings.Default.MainWindowHotkey;
-            resources.ApplyResources(this.txtHotkey, "txtHotkey");
-            this.txtHotkey.Name = "txtHotkey";
-            this.txtHotkey.Enter += new System.EventHandler(this.TxtHotkey_Enter);
-            this.txtHotkey.Leave += new System.EventHandler(this.TxtHotkey_Leave);
             // 
             // OptionsDialog
             // 
@@ -793,5 +804,6 @@
         private System.Windows.Forms.CheckBox cbxClockInAtWakeup;
         private System.Windows.Forms.CheckBox cbxClockInAtStart;
         private System.Windows.Forms.GroupBox grpAbsence;
+        private System.Windows.Forms.CheckBox cbxMinimizeOnClockOut;
     }
 }

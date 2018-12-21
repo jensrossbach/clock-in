@@ -166,26 +166,17 @@
   <data name="rbtNewSession.Text" xml:space="preserve">
     <value>Immer &amp;neue Sitzung beginnen</value>
   </data>
-  <data name="grpLastSession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 16</value>
-  </data>
   <data name="grpLastSession.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 98</value>
   </data>
   <data name="grpLastSession.Text" xml:space="preserve">
     <value>Letzte Sitzung</value>
   </data>
-  <data name="cbxAutoLaunch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 130</value>
-  </data>
   <data name="cbxAutoLaunch.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 17</value>
   </data>
   <data name="cbxAutoLaunch.Text" xml:space="preserve">
     <value>Programm mit &amp;Windows starten</value>
-  </data>
-  <data name="cbxLowPowerIsStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 176</value>
   </data>
   <data name="cbxLowPowerIsStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>255, 17</value>
@@ -391,26 +382,17 @@
   <data name="txtHotkey.Location" type="System.Drawing.Point, System.Drawing">
     <value>66, 222</value>
   </data>
-  <data name="txtHotkey.Text" xml:space="preserve">
-    <value>Kein</value>
-  </data>
   <data name="tbpNotifications.Size" type="System.Drawing.Size, System.Drawing">
     <value>319, 390</value>
   </data>
   <data name="tbpNotifications.Text" xml:space="preserve">
     <value>Benachrichtigungen</value>
   </data>
-  <data name="cbxFlatIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 199</value>
-  </data>
   <data name="cbxFlatIcon.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 17</value>
   </data>
   <data name="cbxFlatIcon.Text" xml:space="preserve">
     <value>M&amp;odernes Symbol unter Windows 8 und neuer</value>
-  </data>
-  <data name="cbxMinimized.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 153</value>
   </data>
   <data name="cbxMinimized.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 17</value>
@@ -439,6 +421,12 @@
   <data name="lblArrivalTimeOffset.Text" xml:space="preserve">
     <value>Verschiebung der Ankunftszeit:</value>
   </data>
+  <data name="cbxMinimizeOnClockOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 17</value>
+  </data>
+  <data name="cbxMinimizeOnClockOut.Text" xml:space="preserve">
+    <value>Beim Ausstempeln minimi&amp;eren</value>
+  </data>
   <data name="cbxClockInAtWakeup.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 17</value>
   </data>
@@ -451,11 +439,8 @@
   <data name="cbxClockInAtStart.Text" xml:space="preserve">
     <value>Einstempeln bei Programm&amp;start</value>
   </data>
-  <data name="grpAbsence.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 270</value>
-  </data>
   <data name="grpAbsence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 78</value>
+    <value>290, 100</value>
   </data>
   <data name="grpAbsence.Text" xml:space="preserve">
     <value>In Abwesenheit</value>

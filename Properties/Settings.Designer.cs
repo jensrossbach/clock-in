@@ -406,5 +406,17 @@ namespace ClockIn.Properties {
                 this["ClockInAtWakeup"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MinimizeOnClockOut {
+            get {
+                return ((bool)(this["MinimizeOnClockOut"]));
+            }
+            set {
+                this["MinimizeOnClockOut"] = value;
+            }
+        }
     }
 }

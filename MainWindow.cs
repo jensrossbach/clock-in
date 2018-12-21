@@ -384,6 +384,11 @@ namespace ClockIn
         {
             if (Program.TimeMgr.State == TimeManager.WorkingState.Working)
             {
+                if (Properties.Settings.Default.MinimizeOnClockOut)
+                {
+                    MinimizeMainWindow();
+                }
+
                 Program.TimeMgr.State = TimeManager.WorkingState.Absent;
             }
             else

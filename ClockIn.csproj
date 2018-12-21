@@ -209,8 +209,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="clock.ico" />
-    <None Include="Icons\Cool.png" />
     <Content Include="tray.ico" />
+    <Content Include="Icons\BigSmile.png" />
+    <Content Include="Icons\Confused.png" />
+    <Content Include="Icons\Cool.png" />
+    <Content Include="Icons\Ooooh.png" />
+    <Content Include="Icons\Sad.png" />
+    <Content Include="Icons\Power.png" />
+    <Content Include="Icons\Reset.png" />
+    <Content Include="Icons\Stopwatch.png" />
+    <Content Include="Icons\Timer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
