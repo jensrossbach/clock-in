@@ -82,13 +82,16 @@
             this.tbpNotifications = new System.Windows.Forms.TabPage();
             this.lblMinBeforeReg = new System.Windows.Forms.Label();
             this.nmcNotifyRegAdvance = new System.Windows.Forms.NumericUpDown();
-            this.txtHotkey = new ClockIn.HotkeyControl();
             this.tbpMisc = new System.Windows.Forms.TabPage();
             this.cbxFlatIcon = new System.Windows.Forms.CheckBox();
             this.cbxMinimized = new System.Windows.Forms.CheckBox();
             this.lblOffsetMinutes = new System.Windows.Forms.Label();
             this.nmcArrivalTimeOffset = new System.Windows.Forms.NumericUpDown();
             this.lblArrivalTimeOffset = new System.Windows.Forms.Label();
+            this.grpAbsence = new System.Windows.Forms.GroupBox();
+            this.cbxClockInAtWakeup = new System.Windows.Forms.CheckBox();
+            this.cbxClockInAtStart = new System.Windows.Forms.CheckBox();
+            this.txtHotkey = new ClockIn.HotkeyControl();
             this.grpLastSession.SuspendLayout();
             this.grpBreaksPeriod.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcBreak)).BeginInit();
@@ -107,6 +110,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmcNotifyRegAdvance)).BeginInit();
             this.tbpMisc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcArrivalTimeOffset)).BeginInit();
+            this.grpAbsence.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblRegularTime
@@ -588,15 +592,6 @@
             this.nmcNotifyRegAdvance.Name = "nmcNotifyRegAdvance";
             this.nmcNotifyRegAdvance.Value = global::ClockIn.Properties.Settings.Default.NotifyRegAdvance;
             // 
-            // txtHotkey
-            // 
-            this.txtHotkey.DataBindings.Add(new System.Windows.Forms.Binding("Hotkey", global::ClockIn.Properties.Settings.Default, "MainWindowHotkey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtHotkey.Hotkey = global::ClockIn.Properties.Settings.Default.MainWindowHotkey;
-            resources.ApplyResources(this.txtHotkey, "txtHotkey");
-            this.txtHotkey.Name = "txtHotkey";
-            this.txtHotkey.Enter += new System.EventHandler(this.TxtHotkey_Enter);
-            this.txtHotkey.Leave += new System.EventHandler(this.TxtHotkey_Leave);
-            // 
             // tbpMisc
             // 
             this.tbpMisc.Controls.Add(this.cbxFlatIcon);
@@ -607,6 +602,7 @@
             this.tbpMisc.Controls.Add(this.cbxAutoLaunch);
             this.tbpMisc.Controls.Add(this.grpLastSession);
             this.tbpMisc.Controls.Add(this.cbxLowPowerIsStart);
+            this.tbpMisc.Controls.Add(this.grpAbsence);
             resources.ApplyResources(this.tbpMisc, "tbpMisc");
             this.tbpMisc.Name = "tbpMisc";
             this.tbpMisc.UseVisualStyleBackColor = true;
@@ -650,6 +646,41 @@
             resources.ApplyResources(this.lblArrivalTimeOffset, "lblArrivalTimeOffset");
             this.lblArrivalTimeOffset.Name = "lblArrivalTimeOffset";
             // 
+            // grpAbsence
+            // 
+            this.grpAbsence.Controls.Add(this.cbxClockInAtWakeup);
+            this.grpAbsence.Controls.Add(this.cbxClockInAtStart);
+            resources.ApplyResources(this.grpAbsence, "grpAbsence");
+            this.grpAbsence.Name = "grpAbsence";
+            this.grpAbsence.TabStop = false;
+            // 
+            // cbxClockInAtWakeup
+            // 
+            resources.ApplyResources(this.cbxClockInAtWakeup, "cbxClockInAtWakeup");
+            this.cbxClockInAtWakeup.Checked = global::ClockIn.Properties.Settings.Default.ClockInAtWakeup;
+            this.cbxClockInAtWakeup.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxClockInAtWakeup.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::ClockIn.Properties.Settings.Default, "ClockInAtWakeup", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.cbxClockInAtWakeup.Name = "cbxClockInAtWakeup";
+            this.cbxClockInAtWakeup.UseVisualStyleBackColor = true;
+            // 
+            // cbxClockInAtStart
+            // 
+            resources.ApplyResources(this.cbxClockInAtStart, "cbxClockInAtStart");
+            this.cbxClockInAtStart.Checked = global::ClockIn.Properties.Settings.Default.ClockInAtStart;
+            this.cbxClockInAtStart.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxClockInAtStart.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::ClockIn.Properties.Settings.Default, "ClockInAtStart", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.cbxClockInAtStart.Name = "cbxClockInAtStart";
+            this.cbxClockInAtStart.UseVisualStyleBackColor = true;
+            // 
+            // txtHotkey
+            // 
+            this.txtHotkey.DataBindings.Add(new System.Windows.Forms.Binding("Hotkey", global::ClockIn.Properties.Settings.Default, "MainWindowHotkey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtHotkey.Hotkey = global::ClockIn.Properties.Settings.Default.MainWindowHotkey;
+            resources.ApplyResources(this.txtHotkey, "txtHotkey");
+            this.txtHotkey.Name = "txtHotkey";
+            this.txtHotkey.Enter += new System.EventHandler(this.TxtHotkey_Enter);
+            this.txtHotkey.Leave += new System.EventHandler(this.TxtHotkey_Leave);
+            // 
             // OptionsDialog
             // 
             this.AcceptButton = this.btnClose;
@@ -691,6 +722,8 @@
             this.tbpMisc.ResumeLayout(false);
             this.tbpMisc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmcArrivalTimeOffset)).EndInit();
+            this.grpAbsence.ResumeLayout(false);
+            this.grpAbsence.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -757,5 +790,8 @@
         private System.Windows.Forms.Label lblMinBeforeReg;
         private System.Windows.Forms.NumericUpDown nmcNotifyRegAdvance;
         private System.Windows.Forms.CheckBox cbxFlatIcon;
+        private System.Windows.Forms.CheckBox cbxClockInAtWakeup;
+        private System.Windows.Forms.CheckBox cbxClockInAtStart;
+        private System.Windows.Forms.GroupBox grpAbsence;
     }
 }

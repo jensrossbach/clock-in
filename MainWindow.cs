@@ -26,6 +26,7 @@ namespace ClockIn
             Program.TimeMgr.AbsenceUpdated += TimeMgr_AbsenceUpdated;
             Program.TimeMgr.WorkingTimeUpdated += TimeMgr_WorkingTimeUpdated;
             Program.TimeMgr.LeaveTimeUpdated += TimeMgr_LeaveTimeUpdated;
+            Program.TimeMgr.WorkingStateUpdated += TimeMgr_WorkingStateUpdated;
 
             InitializeComponent();
             lblLeaveTimeIcon.Image = Properties.Resources.Power;
@@ -48,66 +49,79 @@ namespace ClockIn
         {
             wtTimer.Stop();
 
-            TimeSpan elapsedTime = Program.TimeMgr.GetElapsedWorkingTime(out TimeManager.WorkingLevel level);
-
-            switch (level)
+            if (Program.TimeMgr.State == TimeManager.WorkingState.Working)
             {
-                case TimeManager.WorkingLevel.RegularTime:
-                case TimeManager.WorkingLevel.AheadOfClosingTime:
-                {
-                    lblWorkingTime.ForeColor = Color.Black;
-                    lblIcon.Image = Properties.Resources.Confused;
+                TimeSpan elapsedTime = Program.TimeMgr.GetElapsedWorkingTime(out TimeManager.WorkingLevel level);
 
-                    break;
-                }
-                case TimeManager.WorkingLevel.OverTime:
+                switch (level)
                 {
-                    lblWorkingTime.ForeColor = Color.DarkGreen;
-                    lblIcon.Image = Properties.Resources.BigSmile;
+                    case TimeManager.WorkingLevel.RegularTime:
+                    case TimeManager.WorkingLevel.AheadOfClosingTime:
+                    {
+                        lblWorkingTime.ForeColor = Color.Black;
+                        lblIcon.Image = Properties.Resources.Confused;
 
-                    break;
+                        break;
+                    }
+                    case TimeManager.WorkingLevel.OverTime:
+                    {
+                        lblWorkingTime.ForeColor = Color.DarkGreen;
+                        lblIcon.Image = Properties.Resources.BigSmile;
+
+                        break;
+                    }
+                    case TimeManager.WorkingLevel.ApproachingMaxTime:
+                    {
+                        lblWorkingTime.ForeColor = Color.Orange;
+                        lblIcon.Image = Properties.Resources.Ooooh;
+
+                        break;
+                    }
+                    case TimeManager.WorkingLevel.MaxTimeViolation:
+                    {
+                        lblWorkingTime.ForeColor = Color.Red;
+                        lblIcon.Image = Properties.Resources.Sad;
+
+                        break;
+                    }
+                    default:
+                    {
+                        // cannot happen
+                        break;
+                    }
                 }
-                case TimeManager.WorkingLevel.ApproachingMaxTime:
+
+                WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), Properties.Settings.Default.WorkingTimeDisplay);
+                if (wtd == WorkingTimeDisplay.ElapsedTime)
                 {
-                    lblWorkingTime.ForeColor = Color.Orange;
-                    lblIcon.Image = Properties.Resources.Ooooh;
-
-                    break;
+                    lblWorkingTimeIcon.Image = Properties.Resources.Stopwatch;
+                    lblWorkingTime.Text = elapsedTime.ToString(@"hh\hmm\m");
                 }
-                case TimeManager.WorkingLevel.MaxTimeViolation:
+                else
                 {
-                    lblWorkingTime.ForeColor = Color.Red;
-                    lblIcon.Image = Properties.Resources.Sad;
+                    TimeSpan remainingTime = Program.TimeMgr.GetRemainingWorkingTime();
+                    if (remainingTime.Seconds > 0)
+                    {
+                        remainingTime = new TimeSpan(remainingTime.Hours, remainingTime.Minutes + 1, 0);
+                    }
 
-                    break;
+                    lblWorkingTimeIcon.Image = Properties.Resources.Timer;
+                    lblWorkingTime.Text = remainingTime.ToString(@"\-hh\hmm\m");
                 }
-                default:
-                {
-                    // cannot happen
-                    break;
-                }
-            }
 
-            WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), Properties.Settings.Default.WorkingTimeDisplay);
-            if (wtd == WorkingTimeDisplay.ElapsedTime)
-            {
-                lblWorkingTimeIcon.Image = Properties.Resources.Stopwatch;
-                lblWorkingTime.Text = elapsedTime.ToString(@"hh\hmm\m");
+                pnlTimeDisplay.BackColor = Color.White;
+
+                wtTimer.Interval = GetInterval();
+                wtTimer.Start();
             }
             else
             {
-                TimeSpan remainingTime = Program.TimeMgr.GetRemainingWorkingTime();
-                if (remainingTime.Seconds > 0)
-                {
-                    remainingTime = new TimeSpan(remainingTime.Hours, remainingTime.Minutes + 1, 0);
-                }
-
+                lblWorkingTime.ForeColor = Color.Black;
+                lblWorkingTime.Text = "--h--m";
                 lblWorkingTimeIcon.Image = Properties.Resources.Timer;
-                lblWorkingTime.Text = remainingTime.ToString(@"\-hh\hmm\m");
+                lblIcon.Image = Properties.Resources.Cool;
+                pnlTimeDisplay.BackColor = Color.LightGoldenrodYellow;
             }
-
-            wtTimer.Interval = GetInterval();
-            wtTimer.Start();
         }
 
         /// <summary>
@@ -116,23 +130,36 @@ namespace ClockIn
         /// <param name="updateLabel">true if label should be updated</param>
         public void UpdateLeaveTime(bool updateLabel)
         {
-            string leaveTime = Program.TimeMgr.GetLeaveTime(out bool overTime).ToString(@"HH\:mm");
-
-            if (updateLabel)
+            if (Program.TimeMgr.State == TimeManager.WorkingState.Working)
             {
-                if (overTime)
+                string leaveTime = Program.TimeMgr.GetLeaveTime(out bool overTime).ToString(@"HH\:mm");
+
+                if (updateLabel)
                 {
-                    lblLeaveTime.ForeColor = Color.Red;
+                    if (overTime)
+                    {
+                        lblLeaveTime.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        lblLeaveTime.ForeColor = Color.Black;
+                    }
+
+                    lblLeaveTime.Text = leaveTime;
                 }
-                else
+
+                icnTrayIcon.Text = string.Format(Properties.Resources.TooltipText, leaveTime);
+            }
+            else
+            {
+                if (updateLabel)
                 {
                     lblLeaveTime.ForeColor = Color.Black;
+                    lblLeaveTime.Text = "--:--";
                 }
 
-                lblLeaveTime.Text = leaveTime;
+                icnTrayIcon.Text = string.Format(Properties.Resources.TooltipTextAbsent, Program.TimeMgr.ClockOutTime.ToString(@"HH\:mm"));
             }
-
-            icnTrayIcon.Text = string.Format(Properties.Resources.TooltipText, leaveTime);
         }
 
         /// <summary>
@@ -349,6 +376,23 @@ namespace ClockIn
         }
 
         /// <summary>
+        ///   Handles a click on the clock in/out button.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void BtnClockInOut_Click(object sender, EventArgs e)
+        {
+            if (Program.TimeMgr.State == TimeManager.WorkingState.Working)
+            {
+                Program.TimeMgr.State = TimeManager.WorkingState.Absent;
+            }
+            else
+            {
+                Program.TimeMgr.State = TimeManager.WorkingState.Working;
+            }
+        }
+
+        /// <summary>
         ///   Handles a click on the about button.
         /// </summary>
         /// <param name="sender">Event origin</param>
@@ -435,6 +479,26 @@ namespace ClockIn
         }
 
         /// <summary>
+        ///   Handles a click on the clock-in item in the system tray menu.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void ItmClockIn_Click(object sender, EventArgs e)
+        {
+            Program.TimeMgr.State = TimeManager.WorkingState.Working;
+        }
+
+        /// <summary>
+        ///   Handles a click on the clock-out item in the system tray menu.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void ItmClockOut_Click(object sender, EventArgs e)
+        {
+            Program.TimeMgr.State = TimeManager.WorkingState.Absent;
+        }
+
+        /// <summary>
         ///   Handles a click on the exit item in the system tray menu.
         /// </summary>
         /// <param name="sender">Event origin</param>
@@ -490,6 +554,39 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         void TimeMgr_LeaveTimeUpdated(object sender, EventArgs e)
         {
+            UpdateLeaveTime(Visible);
+        }
+
+        /// <summary>
+        ///   Handles an update of the working state.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void TimeMgr_WorkingStateUpdated(object sender, EventArgs e)
+        {
+            if (Program.TimeMgr.State == TimeManager.WorkingState.Working)
+            {
+                Text = Properties.Resources.WindowCaption;
+
+                btnClockInOut.Text = Properties.Resources.ClockOut;
+                itmClockIn.Enabled = false;
+                itmClockOut.Enabled = true;
+            }
+            else
+            {
+                Text = Properties.Resources.WindowCaptionAbsent;
+
+                btnClockInOut.Text = Properties.Resources.ClockIn;
+                itmClockIn.Enabled = true;
+                itmClockOut.Enabled = false;
+            }
+
+            if (Visible)
+            {
+                UpdateAbsence();
+                UpdateWorkingTime();
+            }
+
             UpdateLeaveTime(Visible);
         }
 

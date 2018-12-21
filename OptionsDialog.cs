@@ -44,7 +44,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.RegularTimeGreaterMaxTime, Properties.Resources.MessageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Properties.Resources.RegularTimeGreaterMaxTime, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 ret = true;
@@ -53,7 +53,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.BreakGreaterRegularMaxTime, Properties.Resources.MessageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Properties.Resources.BreakGreaterRegularMaxTime, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 ret = true;
@@ -76,7 +76,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.RegularTimeGreaterMaxTime, Properties.Resources.MessageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Properties.Resources.RegularTimeGreaterMaxTime, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 ret = true;
@@ -85,7 +85,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.BreakGreaterRegularMaxTime, Properties.Resources.MessageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Properties.Resources.BreakGreaterRegularMaxTime, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 ret = true;
@@ -108,7 +108,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.BreaksBeginAfterBreaksEnd, Properties.Resources.MessageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Properties.Resources.BreaksBeginAfterBreaksEnd, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 ret = true;
@@ -131,7 +131,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.BreaksBeginAfterBreaksEnd, Properties.Resources.MessageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Properties.Resources.BreaksBeginAfterBreaksEnd, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 ret = true;
@@ -154,7 +154,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.BreakGreaterRegularMaxTime, Properties.Resources.MessageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Properties.Resources.BreakGreaterRegularMaxTime, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 ret = true;
@@ -177,7 +177,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.OutsideLunchWorkspan1Greater2, Properties.Resources.MessageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Properties.Resources.OutsideLunchWorkspan1Greater2, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 ret = true;
@@ -186,7 +186,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.OutsideLunchAdderGreaterThanWorkspan, Properties.Resources.MessageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Properties.Resources.OutsideLunchAdderGreaterThanWorkspan, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 ret = true;
@@ -209,7 +209,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.OutsideLunchWorkspan1Greater2, Properties.Resources.MessageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Properties.Resources.OutsideLunchWorkspan1Greater2, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 ret = true;
@@ -218,7 +218,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.OutsideLunchAdderGreaterThanWorkspan, Properties.Resources.MessageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Properties.Resources.OutsideLunchAdderGreaterThanWorkspan, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 ret = true;
@@ -241,7 +241,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.OutsideLunchAdderGreaterThanWorkspan, Properties.Resources.MessageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Properties.Resources.OutsideLunchAdderGreaterThanWorkspan, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 ret = true;
@@ -264,7 +264,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.OutsideLunchAdderGreaterThanWorkspan, Properties.Resources.MessageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Properties.Resources.OutsideLunchAdderGreaterThanWorkspan, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 ret = true;

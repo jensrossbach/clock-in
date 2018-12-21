@@ -79,7 +79,7 @@ namespace ClockIn
                 if (!ValidTimePeriod)
                 {
                     MessageBox.Show(Properties.Resources.InvalidAbsencePeriod,
-                                    Properties.Resources.MessageBoxCaption,
+                                    Properties.Resources.WindowCaption,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
 
@@ -88,7 +88,7 @@ namespace ClockIn
                 else if (Overlapping)
                 {
                     MessageBox.Show(Properties.Resources.OverlappingAbsence,
-                                    Properties.Resources.MessageBoxCaption,
+                                    Properties.Resources.WindowCaption,
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
 

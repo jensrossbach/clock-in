@@ -30,18 +30,20 @@ namespace ClockIn
 
             absence = new BindingList<TimePeriod>();
             totalAbsence = TimeSpan.Zero;
+            workingState = WorkingState.Working;
 
-            SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
+            SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
             absence.ListChanged += Absence_ListChanged;
             session.PropertyValidated += Session_PropertyValidated;
             settings.PropertyChanged += Settings_PropertyChanged;
             AbsenceUpdated += TotalAbsence_Updated;
+            WorkingStateUpdated += WorkingState_Updated;
 
             notifyTimer = new Timer();
-            notifyTimer.Tick += new EventHandler(NotifyTimer_Tick);
+            notifyTimer.Tick += NotifyTimer_Tick;
 
             periodicTimer = new Timer();
-            periodicTimer.Tick += new EventHandler(PeriodicTimer_Tick);
+            periodicTimer.Tick += PeriodicTimer_Tick;
             periodicTimer.Interval = 60000;
 
             eodTimer = new Timer();
@@ -61,6 +63,15 @@ namespace ClockIn
         }
 
         /// <summary>
+        ///   Working state
+        /// </summary>
+        public enum WorkingState
+        {
+            Working = 0,  // Present and working
+            Absent  = 1   // Absent / not working
+        }
+
+        /// <summary>
         ///   Event notifies when absence has been updated.
         /// </summary>
         public event EventHandler AbsenceUpdated;
@@ -74,6 +85,11 @@ namespace ClockIn
         ///   Event notifies when leave time has been updated.
         /// </summary>
         public event EventHandler LeaveTimeUpdated;
+
+        /// <summary>
+        ///   Event notifies whenworking state has been updated.
+        /// </summary>
+        public event EventHandler WorkingStateUpdated;
 
         /// <summary>
         ///   List of absence time periods
@@ -98,6 +114,35 @@ namespace ClockIn
         }
 
         /// <summary>
+        ///   Time of clocking out
+        /// </summary>
+        public DateTime ClockOutTime
+        {
+            get
+            {
+                return (currentAbsence != null) ? currentAbsence.StartTime : DateTime.MinValue;
+            }
+        }
+
+        /// <summary>
+        ///   Current working state
+        /// </summary>
+        public WorkingState State
+        {
+            get
+            {
+                return workingState;
+            }
+            set
+            {
+                if (workingState != value)
+                {
+                    SetWorkingState(value, DateTime.Now);
+                }
+            }
+        }
+
+        /// <summary>
         ///   Handles application start.
         /// </summary>
         public void HandleStart()
@@ -113,7 +158,7 @@ namespace ClockIn
                 else if (settings.AskSessionOnStartup)
                 {
                     DialogResult result = MessageBox.Show(Properties.Resources.AskSessionOnStartup,
-                                                          Properties.Resources.MessageBoxCaption,
+                                                          Properties.Resources.WindowCaption,
                                                           MessageBoxButtons.YesNo,
                                                           MessageBoxIcon.Question);
 
@@ -146,7 +191,17 @@ namespace ClockIn
         {
             Debug.WriteLine("[TimeManager] Continue last session.");
 
+            if (session.ClockedOut)
+            {
+                SetWorkingState(WorkingState.Absent, session.ClockOutTime);
+            }
+
             LoadAbsenceFromSession();
+
+            if (settings.ClockInAtStart)
+            {
+                State = WorkingState.Working;
+            }
         }
 
         /// <summary>
@@ -163,6 +218,8 @@ namespace ClockIn
             session.Arrival = toCurTime ? DateTime.Now.Truncate(TimeSpan.FromMinutes(1)) : startTime;
             session.NotifyLevel = 0;
             session.Absence = string.Empty;
+            session.ClockedOut = false;
+            session.ClockOutTime = DateTime.MinValue;
 
             session.Save();
 
@@ -271,6 +328,41 @@ namespace ClockIn
                 notifyTimer.Interval = minutes * 60 * 1000;
                 notifyTimer.Start();
             }
+        }
+
+        /// <summary>
+        ///   Sets the current working state.
+        /// </summary>
+        /// <param name="state">Target working state</param>
+        /// <param name="time">Clock in/out time</param>
+        private void SetWorkingState(WorkingState state, DateTime time)
+        {
+            Debug.WriteLine("[TimeManager] Changing working state to " + state);
+
+            if (state == WorkingState.Absent)
+            {
+                currentAbsence = new TimePeriod
+                {
+                    StartTime = time
+                };
+            }
+            else if (currentAbsence != null)
+            {
+                currentAbsence.EndTime = time;
+                if (currentAbsence.Duration != TimeSpan.Zero)
+                {
+                    absence.Add(currentAbsence);
+                }
+                else
+                {
+                    UpdateTotalAbsence();
+                }
+
+                currentAbsence = null;
+            }
+
+            workingState = state;
+            NotifyWorkingStateUpdated();
         }
 
         /// <summary>
@@ -535,15 +627,47 @@ namespace ClockIn
                 }
             }
 
-            UpdateTotalAbsence();
+            if (workingState == WorkingState.Working)
+            {
+                UpdateTotalAbsence();
+            }
         }
 
+        /// <summary>
+        ///   Handles total absence update events.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void TotalAbsence_Updated(object sender, EventArgs e)
         {
             Debug.WriteLine("[TimeManager] Total absence has been updated.");
 
             CheckExpiration();
             NotifyLeaveTimeUpdated();
+        }
+
+        /// <summary>
+        ///   Handles working state update events.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void WorkingState_Updated(object sender, EventArgs e)
+        {
+            if (workingState == WorkingState.Absent)
+            {
+                notifyTimer.Stop();
+                periodicTimer.Stop();
+
+                session.ClockedOut = true;
+                session.ClockOutTime = currentAbsence.StartTime;
+            }
+            else
+            {
+                session.ClockedOut = false;
+                session.ClockOutTime = DateTime.MinValue;
+            }
+
+            session.Save();
         }
 
         /// <summary>
@@ -631,7 +755,18 @@ namespace ClockIn
                 }
                 else
                 {
-                    UpdateTotalAbsence();
+                    if (workingState == WorkingState.Absent)
+                    {
+                        if (settings.ClockInAtWakeup)
+                        {
+                            State = WorkingState.Working;
+                        }
+                    }
+                    else
+                    {
+                        UpdateTotalAbsence();
+                    }
+
                     SetupEoDTimer();
                 }
             }
@@ -672,7 +807,7 @@ namespace ClockIn
             eodTimer.Stop();
 
             DialogResult result = MessageBox.Show(Properties.Resources.AskSessionAtMidnight,
-                                                  Properties.Resources.MessageBoxCaption,
+                                                  Properties.Resources.WindowCaption,
                                                   MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Question);
 
@@ -691,6 +826,7 @@ namespace ClockIn
         private void NotifyAbsenceUpdated() => AbsenceUpdated?.Invoke(this, new EventArgs());
         private void NotifyWorkingTimeUpdated() => WorkingTimeUpdated?.Invoke(this, new EventArgs());
         private void NotifyLeaveTimeUpdated() => LeaveTimeUpdated?.Invoke(this, new EventArgs());
+        private void NotifyWorkingStateUpdated() => WorkingStateUpdated?.Invoke(this, new EventArgs());
 
         private DateTime startTime;
         private Timer notifyTimer = null;
@@ -700,5 +836,7 @@ namespace ClockIn
         private Session session = null;
         private BindingList<TimePeriod> absence;
         private TimeSpan totalAbsence;
+        private WorkingState workingState;
+        private TimePeriod currentAbsence = null;
     }
 }

@@ -251,7 +251,7 @@ http://icons.wbchug.net</value>
   <data name="KeyUp" xml:space="preserve">
     <value>Hoch</value>
   </data>
-  <data name="MessageBoxCaption" xml:space="preserve">
+  <data name="WindowCaption" xml:space="preserve">
     <value>ClockIn</value>
   </data>
   <data name="EditAbsence" xml:space="preserve">
@@ -283,5 +283,17 @@ http://icons.wbchug.net</value>
   </data>
   <data name="OutsideLunchWorkspan1Greater2" xml:space="preserve">
     <value>Die erste Arbeitszeitspanne darf nicht länger als die zweite sein!</value>
+  </data>
+  <data name="TooltipTextAbsent" xml:space="preserve">
+    <value>Ausgestempelt seit {0} Uhr</value>
+  </data>
+  <data name="WindowCaptionAbsent" xml:space="preserve">
+    <value>ClockIn (ausgestempelt)</value>
+  </data>
+  <data name="ClockIn" xml:space="preserve">
+    <value>Einstempeln</value>
+  </data>
+  <data name="ClockOut" xml:space="preserve">
+    <value>Ausstempeln</value>
   </data>
 </root>

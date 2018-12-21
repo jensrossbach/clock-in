@@ -156,11 +156,39 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Clock in ähnelt.
+        /// </summary>
+        internal static string ClockIn {
+            get {
+                return ResourceManager.GetString("ClockIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Clock out ähnelt.
+        /// </summary>
+        internal static string ClockOut {
+            get {
+                return ResourceManager.GetString("ClockOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Confused {
             get {
                 object obj = ResourceManager.GetObject("Confused", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cool {
+            get {
+                object obj = ResourceManager.GetObject("Cool", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -437,15 +465,6 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die ClockIn ähnelt.
-        /// </summary>
-        internal static string MessageBoxCaption {
-            get {
-                return ResourceManager.GetString("MessageBoxCaption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die New absence ähnelt.
         /// </summary>
         internal static string NewAbsence {
@@ -565,6 +584,33 @@ namespace ClockIn.Properties {
         internal static string TooltipText {
             get {
                 return ResourceManager.GetString("TooltipText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Clocked out since {0} ähnelt.
+        /// </summary>
+        internal static string TooltipTextAbsent {
+            get {
+                return ResourceManager.GetString("TooltipTextAbsent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die ClockIn ähnelt.
+        /// </summary>
+        internal static string WindowCaption {
+            get {
+                return ResourceManager.GetString("WindowCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die ClockIn (clocked out) ähnelt.
+        /// </summary>
+        internal static string WindowCaptionAbsent {
+            get {
+                return ResourceManager.GetString("WindowCaptionAbsent", resourceCulture);
             }
         }
     }

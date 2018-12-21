@@ -39,7 +39,10 @@
             this.ctxTrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.itmRestore = new System.Windows.Forms.ToolStripMenuItem();
             this.itmOptions = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.itmSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.itmClockIn = new System.Windows.Forms.ToolStripMenuItem();
+            this.itmClockOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.itmSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.itmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.dtpArrival = new System.Windows.Forms.DateTimePicker();
             this.btnAbout = new System.Windows.Forms.Button();
@@ -53,6 +56,7 @@
             this.txtAbsence = new System.Windows.Forms.TextBox();
             this.btnAbsence = new System.Windows.Forms.Button();
             this.ttMain = new System.Windows.Forms.ToolTip(this.components);
+            this.btnClockInOut = new System.Windows.Forms.Button();
             this.ctxTrayMenu.SuspendLayout();
             this.pnlTimeDisplay.SuspendLayout();
             this.SuspendLayout();
@@ -99,7 +103,10 @@
             this.ctxTrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itmRestore,
             this.itmOptions,
-            this.toolStripSeparator1,
+            this.itmSeparator1,
+            this.itmClockIn,
+            this.itmClockOut,
+            this.itmSeparator2,
             this.itmExit});
             this.ctxTrayMenu.Name = "ctxTrayMenu";
             resources.ApplyResources(this.ctxTrayMenu, "ctxTrayMenu");
@@ -116,10 +123,27 @@
             resources.ApplyResources(this.itmOptions, "itmOptions");
             this.itmOptions.Click += new System.EventHandler(this.ItmOptions_Click);
             // 
-            // toolStripSeparator1
+            // itmSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.itmSeparator1.Name = "itmSeparator1";
+            resources.ApplyResources(this.itmSeparator1, "itmSeparator1");
+            // 
+            // itmClockIn
+            // 
+            resources.ApplyResources(this.itmClockIn, "itmClockIn");
+            this.itmClockIn.Name = "itmClockIn";
+            this.itmClockIn.Click += new System.EventHandler(this.ItmClockIn_Click);
+            // 
+            // itmClockOut
+            // 
+            this.itmClockOut.Name = "itmClockOut";
+            resources.ApplyResources(this.itmClockOut, "itmClockOut");
+            this.itmClockOut.Click += new System.EventHandler(this.ItmClockOut_Click);
+            // 
+            // itmSeparator2
+            // 
+            this.itmSeparator2.Name = "itmSeparator2";
+            resources.ApplyResources(this.itmSeparator2, "itmSeparator2");
             // 
             // itmExit
             // 
@@ -209,11 +233,19 @@
             this.btnAbsence.UseVisualStyleBackColor = true;
             this.btnAbsence.Click += new System.EventHandler(this.BtnAbsence_Click);
             // 
+            // btnClockInOut
+            // 
+            resources.ApplyResources(this.btnClockInOut, "btnClockInOut");
+            this.btnClockInOut.Name = "btnClockInOut";
+            this.btnClockInOut.UseVisualStyleBackColor = true;
+            this.btnClockInOut.Click += new System.EventHandler(this.BtnClockInOut_Click);
+            // 
             // MainWindow
             // 
             this.AcceptButton = this.btnClose;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnClockInOut);
             this.Controls.Add(this.btnAbsence);
             this.Controls.Add(this.txtAbsence);
             this.Controls.Add(this.btnResetTime);
@@ -254,7 +286,7 @@
         private System.Windows.Forms.ContextMenuStrip ctxTrayMenu;
         private System.Windows.Forms.ToolStripMenuItem itmRestore;
         private System.Windows.Forms.ToolStripMenuItem itmOptions;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator itmSeparator1;
         private System.Windows.Forms.ToolStripMenuItem itmExit;
         private System.Windows.Forms.DateTimePicker dtpArrival;
         private System.Windows.Forms.Button btnAbout;
@@ -268,6 +300,10 @@
         private System.Windows.Forms.TextBox txtAbsence;
         private System.Windows.Forms.Button btnAbsence;
         private System.Windows.Forms.ToolTip ttMain;
+        private System.Windows.Forms.ToolStripMenuItem itmClockIn;
+        private System.Windows.Forms.ToolStripMenuItem itmClockOut;
+        private System.Windows.Forms.ToolStripSeparator itmSeparator2;
+        private System.Windows.Forms.Button btnClockInOut;
     }
 }
 

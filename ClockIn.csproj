@@ -209,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="clock.ico" />
+    <None Include="Icons\Cool.png" />
     <Content Include="tray.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

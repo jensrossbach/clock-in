@@ -123,7 +123,7 @@
   <data name="MaxmimumTimeLimitReached" xml:space="preserve">
     <value>You have reached your maximum daily working time!</value>
   </data>
-  <data name="MessageBoxCaption" xml:space="preserve">
+  <data name="WindowCaption" xml:space="preserve">
     <value>ClockIn</value>
   </data>
   <data name="RegularTimeGreaterMaxTime" xml:space="preserve">
@@ -292,5 +292,20 @@ http://icons.wbchug.net</value>
   </data>
   <data name="FlatTrayIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\tray.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TooltipTextAbsent" xml:space="preserve">
+    <value>Clocked out since {0}</value>
+  </data>
+  <data name="Cool" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cool.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WindowCaptionAbsent" xml:space="preserve">
+    <value>ClockIn (clocked out)</value>
+  </data>
+  <data name="ClockIn" xml:space="preserve">
+    <value>Clock in</value>
+  </data>
+  <data name="ClockOut" xml:space="preserve">
+    <value>Clock out</value>
   </data>
 </root>

@@ -144,7 +144,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblBegin.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="lblAbsence.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -171,7 +171,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblAbsence.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="btnOptions.Location" type="System.Drawing.Point, System.Drawing">
     <value>211, 167</value>
@@ -180,7 +180,7 @@
     <value>75, 23</value>
   </data>
   <data name="btnOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="btnOptions.Text" xml:space="preserve">
     <value>&amp;Options...</value>
@@ -195,7 +195,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnOptions.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
     <value>292, 167</value>
@@ -204,7 +204,7 @@
     <value>75, 23</value>
   </data>
   <data name="btnClose.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="btnClose.Text" xml:space="preserve">
     <value>&amp;Close</value>
@@ -219,7 +219,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="lblWorkingTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 20.25pt</value>
@@ -261,28 +261,46 @@
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
   <data name="itmRestore.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
+    <value>125, 22</value>
   </data>
   <data name="itmRestore.Text" xml:space="preserve">
     <value>Restore</value>
   </data>
   <data name="itmOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
+    <value>125, 22</value>
   </data>
   <data name="itmOptions.Text" xml:space="preserve">
     <value>Options</value>
   </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 6</value>
+  <data name="itmSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 6</value>
+  </data>
+  <data name="itmClockIn.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="itmClockIn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 22</value>
+  </data>
+  <data name="itmClockIn.Text" xml:space="preserve">
+    <value>Clock in</value>
+  </data>
+  <data name="itmClockOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 22</value>
+  </data>
+  <data name="itmClockOut.Text" xml:space="preserve">
+    <value>Clock out</value>
+  </data>
+  <data name="itmSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 6</value>
   </data>
   <data name="itmExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
+    <value>125, 22</value>
   </data>
   <data name="itmExit.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
   <data name="ctxTrayMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 76</value>
+    <value>126, 126</value>
   </data>
   <data name="&gt;&gt;ctxTrayMenu.Name" xml:space="preserve">
     <value>ctxTrayMenu</value>
@@ -3017,7 +3035,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dtpArrival.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="btnAbout.Location" type="System.Drawing.Point, System.Drawing">
     <value>130, 167</value>
@@ -3026,7 +3044,7 @@
     <value>75, 23</value>
   </data>
   <data name="btnAbout.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btnAbout.Text" xml:space="preserve">
     <value>&amp;About...</value>
@@ -3041,7 +3059,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAbout.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="lblWorkingTimeIcon.ImageIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3144,7 +3162,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlTimeDisplay.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="lblIcon.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 94</value>
@@ -3165,7 +3183,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblIcon.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="cbxDisplayMaxTime.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3192,7 +3210,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbxDisplayMaxTime.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="btnResetTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>163, 18</value>
@@ -3219,7 +3237,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnResetTime.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="txtAbsence.Location" type="System.Drawing.Point, System.Drawing">
     <value>102, 54</value>
@@ -3240,7 +3258,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtAbsence.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnAbsence.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 6.75pt</value>
@@ -3270,6 +3288,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAbsence.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnClockInOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 122</value>
+  </data>
+  <data name="btnClockInOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 23</value>
+  </data>
+  <data name="btnClockInOut.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnClockInOut.Text" xml:space="preserve">
+    <value>Clock out</value>
+  </data>
+  <data name="&gt;&gt;btnClockInOut.Name" xml:space="preserve">
+    <value>btnClockInOut</value>
+  </data>
+  <data name="&gt;&gt;btnClockInOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClockInOut.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnClockInOut.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -6004,10 +6046,28 @@
   <data name="&gt;&gt;itmOptions.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
-    <value>toolStripSeparator1</value>
+  <data name="&gt;&gt;itmSeparator1.Name" xml:space="preserve">
+    <value>itmSeparator1</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+  <data name="&gt;&gt;itmSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;itmClockIn.Name" xml:space="preserve">
+    <value>itmClockIn</value>
+  </data>
+  <data name="&gt;&gt;itmClockIn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;itmClockOut.Name" xml:space="preserve">
+    <value>itmClockOut</value>
+  </data>
+  <data name="&gt;&gt;itmClockOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;itmSeparator2.Name" xml:space="preserve">
+    <value>itmSeparator2</value>
+  </data>
+  <data name="&gt;&gt;itmSeparator2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;itmExit.Name" xml:space="preserve">

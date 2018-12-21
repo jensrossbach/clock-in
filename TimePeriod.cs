@@ -30,12 +30,14 @@ namespace ClockIn
         /// <param name="end">End time</param>
         public TimePeriod(DateTime start, DateTime end)
         {
-            if (startTime > endTime)
+            if (endTime < startTime)
             {
-                throw new ArgumentException("Start time must be before end time");
+                SetupTime(start, start);
             }
-
-            SetupTime(start, end);
+            else
+            {
+                SetupTime(start, end);
+            }
         }
 
         /// <summary>
@@ -81,9 +83,11 @@ namespace ClockIn
             }
             set
             {
-                if (startTime != value)
+                DateTime val = value.Truncate(TimeSpan.FromMinutes(1));
+
+                if (startTime != val)
                 {
-                    startTime = value;
+                    startTime = val;
                     NotifyPropertyChanged();
                 }
             }
@@ -100,9 +104,19 @@ namespace ClockIn
             }
             set
             {
-                if (endTime != value)
+                DateTime val = value.Truncate(TimeSpan.FromMinutes(1));
+
+                if (endTime != val)
                 {
-                    endTime = value;
+                    if (val < startTime)
+                    {
+                        endTime = startTime;
+                    }
+                    else
+                    {
+                        endTime = val;
+                    }
+
                     NotifyPropertyChanged();
                 }
             }
@@ -111,7 +125,7 @@ namespace ClockIn
         /// <summary>
         ///   Time span of the time period
         /// </summary>
-        public TimeSpan Duration => endTime.TimeOfDay - startTime.TimeOfDay;
+        public TimeSpan Duration => endTime - startTime;
 
         /// <summary>
         ///   Copies another time period to this one.
