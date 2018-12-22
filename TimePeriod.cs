@@ -77,10 +77,7 @@ namespace ClockIn
         /// </summary>
         public DateTime StartTime
         {
-            get
-            {
-                return startTime;
-            }
+            get => startTime;
             set
             {
                 DateTime val = value.Truncate(TimeSpan.FromMinutes(1));
@@ -98,10 +95,7 @@ namespace ClockIn
         /// </summary>
         public DateTime EndTime
         {
-            get
-            {
-                return endTime;
-            }
+            get => endTime;
             set
             {
                 DateTime val = value.Truncate(TimeSpan.FromMinutes(1));
@@ -158,10 +152,7 @@ namespace ClockIn
         /// </summary>
         /// <param name="other">Time period to check for intersection</param>
         /// <returns>true if time period intersects with the other one, false otherwise</returns>
-        public bool Intersecting(TimePeriod other)
-        {
-            return Math.Min(endTime.Ticks, other.EndTime.Ticks) > Math.Max(startTime.Ticks, other.StartTime.Ticks);
-        }
+        public bool Intersecting(TimePeriod other) => Math.Min(endTime.Ticks, other.EndTime.Ticks) > Math.Max(startTime.Ticks, other.StartTime.Ticks);
 
         /// <summary>
         ///   Returns the intersection between this time period and another one.

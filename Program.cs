@@ -18,13 +18,7 @@ namespace ClockIn
         /// <summary>
         ///   Time manager instance
         /// </summary>
-        public static TimeManager TimeMgr
-        {
-            get
-            {
-                return timeMgr;
-            }
-        }
+        public static TimeManager TimeMgr { get; private set; } = null;
 
         /// <summary>
         ///   Main entry point of the application
@@ -54,10 +48,10 @@ namespace ClockIn
 
                 HotkeyManager.Init();
 
-                timeMgr = new TimeManager();
+                TimeMgr = new TimeManager();
                 mainWindow = new MainWindow();
 
-                timeMgr.HandleStart();
+                TimeMgr.HandleStart();
 
                 if (!settings.StartMinimized)
                 {
@@ -89,7 +83,6 @@ namespace ClockIn
         }
 
         private static Mutex instanceMutex = null;
-        private static TimeManager timeMgr = null;
         private static MainWindow mainWindow = null;
     }
 }

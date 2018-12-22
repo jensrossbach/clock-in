@@ -19,17 +19,7 @@ namespace ClockIn
         /// <summary>
         ///   Enables or disables hotkey handling.
         /// </summary>
-        public static bool HotkeysEnabled
-        {
-            get
-            {
-                return hotkeysEnabled;
-            }
-            set
-            {
-                hotkeysEnabled = value;
-            }
-        }
+        public static bool HotkeysEnabled { get; set; } = true;
 
         /// <summary>
         ///   Initializes the hotkey manager.
@@ -39,7 +29,7 @@ namespace ClockIn
             if (handlerID == IntPtr.Zero)
             {
                 hotKeys = new ArrayList();
-                hotkeysEnabled = true;
+                HotkeysEnabled = true;
 
                 using (Process curProcess = Process.GetCurrentProcess())
                 using (ProcessModule curModule = curProcess.MainModule)
@@ -84,7 +74,7 @@ namespace ClockIn
         /// <see>LowLevelKeyboardProc for more information</see>
         private static IntPtr KeyHandler(int nCode, IntPtr wParam, IntPtr lParam)
         {
-            if (hotkeysEnabled && (nCode >= 0) && ((wParam == (IntPtr)WM_KEYDOWN) || (wParam == (IntPtr)WM_SYSKEYDOWN)))
+            if (HotkeysEnabled && (nCode >= 0) && ((wParam == (IntPtr)WM_KEYDOWN) || (wParam == (IntPtr)WM_SYSKEYDOWN)))
             {
                 int keyCode = Marshal.ReadInt32(lParam);
 
@@ -133,10 +123,9 @@ namespace ClockIn
         private const int MOD_LALT   = 0xA4;
         private const int MOD_RALT   = 0xA5;
 
-        private static LowLevelKeyboardProc keyHandler = KeyHandler;
+        private static readonly LowLevelKeyboardProc keyHandler = KeyHandler;
         private static IntPtr handlerID = IntPtr.Zero;
 
         private static ArrayList hotKeys = null;
-        private static bool hotkeysEnabled = true;
     }
 }

@@ -18,9 +18,6 @@ namespace ClockIn
         /// </summary>
         public MainWindow()
         {
-            exit = false;
-
-            wtTimer = new Timer();
             wtTimer.Tick += new EventHandler(WtTimer_Tick);
 
             Program.TimeMgr.AbsenceUpdated += TimeMgr_AbsenceUpdated;
@@ -651,8 +648,8 @@ namespace ClockIn
             RemainingTime
         }
 
-        private bool exit;
-        private Timer wtTimer = null;
+        private bool exit = false;
+        private Timer wtTimer = new Timer();
         private Hotkey showMainWinHK = null;
         private DateTime lastTrayTooltipUpdate = DateTime.Now;
     }

@@ -30,8 +30,6 @@ namespace ClockIn
             KeyDown += new KeyEventHandler(HotkeyControl_KeyDown);
 
             // Fill the ArrayLists that contain all invalid hotkey combinations
-            needNonShiftModifier = new ArrayList();
-            needNonAltGrModifier = new ArrayList();
             PopulateModifierLists();
         }
 
@@ -582,8 +580,8 @@ namespace ClockIn
 
         // ArrayLists used to enforce the use of proper modifiers.
         // Shift+A isn't a valid hotkey, for instance, as it would screw up when the user is typing.
-        private ArrayList needNonShiftModifier = null;
-        private ArrayList needNonAltGrModifier = null;
+        private ArrayList needNonShiftModifier = new ArrayList();
+        private ArrayList needNonAltGrModifier = new ArrayList();
 
         private ContextMenu emptyContextMenu = new ContextMenu();
     }

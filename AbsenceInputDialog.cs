@@ -107,8 +107,7 @@ namespace ClockIn
         /// </summary>
         private void ApplyInput()
         {
-            timePeriod.StartTime = tempTimePeriod.StartTime;
-            timePeriod.EndTime = tempTimePeriod.EndTime;
+            timePeriod.CopyFrom(tempTimePeriod);
         }
 
         /// <summary>

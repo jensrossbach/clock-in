@@ -26,10 +26,7 @@ namespace ClockIn
         /// </summary>
         public override DataGridViewCell CellTemplate
         {
-            get
-            {
-                return base.CellTemplate;
-            }
+            get => base.CellTemplate;
             set
             {
                 // ensure that the cell used for the template is a DataGridViewTimeCell
@@ -59,39 +56,21 @@ namespace ClockIn
 
         /// <summary>
         ///   Overrides the DataGridViewTextBoxCell.EditType property.
+        ///   Return the type of the editing control that DataGridViewTimeCell uses.
         /// </summary>
-        public override Type EditType
-        {
-            get
-            {
-                // return the type of the editing control that DataGridViewTimeCell uses
-                return typeof(DataGridViewTimeEditingControl);
-            }
-        }
+        public override Type EditType => typeof(DataGridViewTimeEditingControl);
 
         /// <summary>
         ///   Overrides the DataGridViewTextBoxCell.ValueType property.
+        ///   Return the type of the value that DataGridViewTimeCell contains.
         /// </summary>
-        public override Type ValueType
-        {
-            get
-            {
-                // return the type of the value that DataGridViewTimeCell contains
-                return typeof(DateTime);
-            }
-        }
+        public override Type ValueType => typeof(DateTime);
 
         /// <summary>
         ///   Overrides the DataGridViewTextBoxCell.DefaultNewRowValue property.
+        ///   Use the current date and time as the default value.
         /// </summary>
-        public override object DefaultNewRowValue
-        {
-            get
-            {
-                // use the current date and time as the default value
-                return DateTime.Now;
-            }
-        }
+        public override object DefaultNewRowValue => DateTime.Now;
 
         /// <summary>
         ///   Overrides the DataGridViewTextBoxCell.InitializeEditingControl method.
@@ -135,10 +114,7 @@ namespace ClockIn
         /// </summary>
         public object EditingControlFormattedValue
         {
-            get
-            {
-                return Value.ToShortTimeString();
-            }
+            get => Value.ToShortTimeString();
             set
             {
                 if (value is String)
@@ -163,10 +139,7 @@ namespace ClockIn
         /// <summary>
         ///   Implements the IDataGridViewEditingControl.GetEditingControlFormattedValue property.
         /// </summary>
-        public object GetEditingControlFormattedValue(DataGridViewDataErrorContexts context)
-        {
-            return EditingControlFormattedValue;
-        }
+        public object GetEditingControlFormattedValue(DataGridViewDataErrorContexts context) => EditingControlFormattedValue;
 
         /// <summary>
         ///   Implements the IDataGridViewEditingControl.ApplyCellStyleToEditingControl property.
@@ -181,69 +154,27 @@ namespace ClockIn
         /// <summary>
         ///   Implements the IDataGridViewEditingControl.EditingControlRowIndex property.
         /// </summary>
-        public int EditingControlRowIndex
-        {
-            get
-            {
-                return rowIndex;
-            }
-            set
-            {
-                rowIndex = value;
-            }
-        }
+        public int EditingControlRowIndex { get; set; } = -1;
 
         /// <summary>
         ///   Implements the IDataGridViewEditingControl.RepositionEditingControlOnValueChange property.
         /// </summary>
-        public bool RepositionEditingControlOnValueChange
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public bool RepositionEditingControlOnValueChange => false;
 
         /// <summary>
         ///   Implements the IDataGridViewEditingControl.EditingControlDataGridView property.
         /// </summary>
-        public DataGridView EditingControlDataGridView
-        {
-            get
-            {
-                return dataGridView;
-            }
-            set
-            {
-                dataGridView = value;
-            }
-        }
+        public DataGridView EditingControlDataGridView { get; set; } = null;
 
         /// <summary>
         ///   Implements the IDataGridViewEditingControl.EditingControlValueChanged property.
         /// </summary>
-        public bool EditingControlValueChanged
-        {
-            get
-            {
-                return valueChanged;
-            }
-            set
-            {
-                valueChanged = value;
-            }
-        }
+        public bool EditingControlValueChanged { get; set; } = false;
 
         /// <summary>
         ///   Implements the IDataGridViewEditingControl.EditingPanelCursor property.
         /// </summary>
-        public Cursor EditingPanelCursor
-        {
-            get
-            {
-                return base.Cursor;
-            }
-        }
+        public Cursor EditingPanelCursor => base.Cursor;
 
         /// <summary>
         ///   Implements the IDataGridViewEditingControl.EditingControlWantsInputKey method.
@@ -284,14 +215,10 @@ namespace ClockIn
         {
             // notify the DataGridView that the contents of the cell
             // have changed
-            valueChanged = true;
+            EditingControlValueChanged = true;
 
             EditingControlDataGridView.NotifyCurrentCellDirty(true);
             base.OnValueChanged(eventargs);
         }
-
-        private DataGridView dataGridView;
-        private bool valueChanged = false;
-        private int rowIndex;
     }
 }

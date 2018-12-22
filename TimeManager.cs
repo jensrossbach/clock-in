@@ -22,31 +22,21 @@ namespace ClockIn
         /// </summary>
         public TimeManager()
         {
-            session = Session.Default;
-            settings = Properties.Settings.Default;
-
             // take time snapshot
             startTime = DateTime.Now.Truncate(TimeSpan.FromMinutes(1)) - TimeSpan.FromMinutes((double)settings.ArrivalTimeOffset);
 
-            absence = new BindingList<TimePeriod>();
-            totalAbsence = TimeSpan.Zero;
-            workingState = WorkingState.Working;
-
             SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
-            absence.ListChanged += Absence_ListChanged;
+            Absence.ListChanged += Absence_ListChanged;
             session.PropertyValidated += Session_PropertyValidated;
             settings.PropertyChanged += Settings_PropertyChanged;
             AbsenceUpdated += TotalAbsence_Updated;
             WorkingStateUpdated += WorkingState_Updated;
 
-            notifyTimer = new Timer();
             notifyTimer.Tick += NotifyTimer_Tick;
 
-            periodicTimer = new Timer();
             periodicTimer.Tick += PeriodicTimer_Tick;
             periodicTimer.Interval = 60000;
 
-            eodTimer = new Timer();
             eodTimer.Tick += EodTimer_Tick;
         }
 
@@ -94,48 +84,27 @@ namespace ClockIn
         /// <summary>
         ///   List of absence time periods
         /// </summary>
-        public BindingList<TimePeriod> Absence
-        {
-            get
-            {
-                return absence;
-            }
-        }
+        public BindingList<TimePeriod> Absence { get; } = new BindingList<TimePeriod>();
 
         /// <summary>
         ///   Total absence including implicitly added chargeable break
         /// </summary>
-        public TimeSpan TotalAbsence
-        {
-            get
-            {
-                return totalAbsence;
-            }
-        }
+        public TimeSpan TotalAbsence { get; private set; } = TimeSpan.Zero;
 
         /// <summary>
         ///   Time of clocking out
         /// </summary>
-        public DateTime ClockOutTime
-        {
-            get
-            {
-                return (currentAbsence != null) ? currentAbsence.StartTime : DateTime.MinValue;
-            }
-        }
+        public DateTime ClockOutTime => (currentAbsence != null) ? currentAbsence.StartTime : DateTime.MinValue;
 
         /// <summary>
         ///   Current working state
         /// </summary>
         public WorkingState State
         {
-            get
-            {
-                return workingState;
-            }
+            get => state;
             set
             {
-                if (workingState != value)
+                if (state != value)
                 {
                     SetWorkingState(value, DateTime.Now);
                 }
@@ -223,7 +192,7 @@ namespace ClockIn
 
             session.Save();
 
-            absence.Clear();
+            Absence.Clear();
             UpdateTotalAbsence();
         }
 
@@ -237,13 +206,13 @@ namespace ClockIn
             DateTime cur = DateTime.Now;
             TimeSpan workingTime = cur - session.Arrival;
 
-            if (totalAbsence >= workingTime)
+            if (TotalAbsence >= workingTime)
             {
                 workingTime = TimeSpan.Zero;
             }
             else
             {
-                workingTime -= totalAbsence;
+                workingTime -= TotalAbsence;
             }
 
             if (workingTime >= TimeSpan.FromHours((double)settings.MaximumWorkingTime))
@@ -357,12 +326,12 @@ namespace ClockIn
 
                         if (res == DialogResult.OK)
                         {
-                            absence.Add(currentAbsence);
+                            Absence.Add(currentAbsence);
                         }
                     }
                     else
                     {
-                        absence.Add(currentAbsence);
+                        Absence.Add(currentAbsence);
                     }
                 }
                 else
@@ -373,7 +342,7 @@ namespace ClockIn
                 currentAbsence = null;
             }
 
-            workingState = state;
+            this.state = state;
             NotifyWorkingStateUpdated();
         }
 
@@ -513,7 +482,7 @@ namespace ClockIn
         /// </summary>
         /// <param name="clearWorkingTimeHours">Number of hours to work</param>
         /// <returns>Leave time</returns>
-        private DateTime CalculateLeaveTime(int clearWorkingTimeHours) => session.Arrival + TimeSpan.FromHours(clearWorkingTimeHours) + totalAbsence;
+        private DateTime CalculateLeaveTime(int clearWorkingTimeHours) => session.Arrival + TimeSpan.FromHours(clearWorkingTimeHours) + TotalAbsence;
 
         /// <summary>
         ///   Calculates the remaining working time.
@@ -537,12 +506,12 @@ namespace ClockIn
                                                                  settings.BreaksEnd.Hour,
                                                                  settings.BreaksEnd.Minute, 0));
             TimeSpan chargeableAbsence = TimeSpan.Zero;
-            totalAbsence = TimeSpan.Zero;
+            TotalAbsence = TimeSpan.Zero;
 
-            foreach (TimePeriod tp in absence)
+            foreach (TimePeriod tp in Absence)
             {
                 chargeableAbsence += tp.GetIntersection(breakPeriod);
-                totalAbsence += tp.Duration;
+                TotalAbsence += tp.Duration;
             }
 
             if ((session.Arrival.TimeOfDay >= settings.BreaksBegin.TimeOfDay) &&
@@ -570,9 +539,9 @@ namespace ClockIn
             else
             {
                 TimeSpan work = now - session.Arrival;
-                if (work >= totalAbsence)
+                if (work >= TotalAbsence)
                 {
-                    work -= totalAbsence;
+                    work -= TotalAbsence;
                 }
                 else
                 {
@@ -597,7 +566,7 @@ namespace ClockIn
                 }
             }
 
-            totalAbsence += breakAdder;
+            TotalAbsence += breakAdder;
             NotifyAbsenceUpdated();
         }
 
@@ -608,7 +577,7 @@ namespace ClockIn
         {
             session.Absence = string.Empty;
 
-            foreach (TimePeriod tp in absence)
+            foreach (TimePeriod tp in Absence)
             {
                 if (session.Absence != string.Empty)
                 {
@@ -634,12 +603,12 @@ namespace ClockIn
                 {
                     if (tp != string.Empty)
                     {
-                        absence.Add(new TimePeriod(tp));
+                        Absence.Add(new TimePeriod(tp));
                     }
                 }
             }
 
-            if (workingState == WorkingState.Working)
+            if (state == WorkingState.Working)
             {
                 UpdateTotalAbsence();
             }
@@ -665,7 +634,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void WorkingState_Updated(object sender, EventArgs e)
         {
-            if (workingState == WorkingState.Absent)
+            if (state == WorkingState.Absent)
             {
                 notifyTimer.Stop();
                 periodicTimer.Stop();
@@ -767,7 +736,7 @@ namespace ClockIn
                 }
                 else
                 {
-                    if (workingState == WorkingState.Absent)
+                    if (state == WorkingState.Absent)
                     {
                         if (settings.ClockInAtWakeup)
                         {
@@ -841,14 +810,15 @@ namespace ClockIn
         private void NotifyWorkingStateUpdated() => WorkingStateUpdated?.Invoke(this, new EventArgs());
 
         private DateTime startTime;
-        private Timer notifyTimer = null;
-        private Timer periodicTimer = null;
-        private Timer eodTimer = null;
-        private Properties.Settings settings = null;
-        private Session session = null;
-        private BindingList<TimePeriod> absence;
-        private TimeSpan totalAbsence;
-        private WorkingState workingState;
+
+        private Timer notifyTimer = new Timer();
+        private Timer periodicTimer = new Timer();
+        private Timer eodTimer = new Timer();
+
+        private Properties.Settings settings = Properties.Settings.Default;
+        private Session session = Session.Default;
+
+        private WorkingState state = WorkingState.Working;
         private TimePeriod currentAbsence = null;
     }
 }
