@@ -71,11 +71,11 @@ namespace ClockIn
         {
             get
             {
-                return ClockIn.Hotkey.ConstructHotkey(keyModifiers, keyCode);
+                return ClockIn.Hotkey.Merge(keyModifiers, keyCode);
             }
             set
             {
-                ClockIn.Hotkey.SplitHotkey(value, out keyModifiers, out keyCode);
+                ClockIn.Hotkey.Split(value, out keyModifiers, out keyCode);
                 Render(true);
             }
         }

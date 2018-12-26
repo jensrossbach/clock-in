@@ -308,4 +308,10 @@ http://icons.wbchug.net</value>
   <data name="ClockOut" xml:space="preserve">
     <value>Clock out</value>
   </data>
+  <data name="HotkeyAlreadyRegistered" xml:space="preserve">
+    <value>Hotkey is already reserved!</value>
+  </data>
+  <data name="HotkeyFailedToRegister" xml:space="preserve">
+    <value>Hotkey cannot be registered!</value>
+  </data>
 </root>

@@ -84,7 +84,6 @@
     <Compile Include="AbsenceDialog.Designer.cs">
       <DependentUpon>AbsenceDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hotkey.cs" />
     <Compile Include="HotkeyControl.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -3,6 +3,7 @@
 
 
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
@@ -32,11 +33,6 @@ namespace ClockIn
             icnTrayIcon.Visible = true;
 
             Properties.Settings.Default.PropertyChanged += DefaultSettings_PropertyChanged;
-
-            showMainWinHK = new Hotkey(Properties.Settings.Default.MainWindowHotkey);
-            showMainWinHK.HotkeyPressed += ShowMainWin_HotkeyPressed;
-
-            HotkeyManager.RegisterHotkey(showMainWinHK);
         }
 
         /// <summary>
@@ -246,6 +242,36 @@ namespace ClockIn
         }
 
         /// <summary>
+        ///   Registers all hotkeys.
+        /// </summary>
+        private void RegisterHotkeys()
+        {
+            hkShowMainWin = Program.HotkeyMgr.RegisterHotkey(Properties.Settings.Default.MainWindowHotkey, this);
+            if (hkShowMainWin != null)
+            {
+                hkShowMainWin.Pressed += HkShowMainWin_Pressed;
+            }
+        }
+
+        /// <summary>
+        ///   Unregisters all hotkeys.
+        /// </summary>
+        private void UnregisterHotkeys()
+        {
+            Program.HotkeyMgr.UnregisterHotkey(hkShowMainWin);
+        }
+
+        /// <summary>
+        ///   Handles the event when the window is loaded.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            RegisterHotkeys();
+        }
+
+        /// <summary>
         ///   Handles the event when the window has been moved.
         /// </summary>
         /// <param name="sender">Event origin</param>
@@ -300,6 +326,7 @@ namespace ClockIn
         {
             wtTimer.Stop();
             Properties.Settings.Default.Save();
+            UnregisterHotkeys();
         }
 
         /// <summary>
@@ -541,7 +568,7 @@ namespace ClockIn
         /// </summary>
         /// <param name="sender">Event origin</param>
         /// <param name="e">Event arguments</param>
-        void TimeMgr_WorkingTimeUpdated(object sender, EventArgs e)
+        private void TimeMgr_WorkingTimeUpdated(object sender, EventArgs e)
         {
             if (Visible)
             {
@@ -554,7 +581,7 @@ namespace ClockIn
         /// </summary>
         /// <param name="sender">Event origin</param>
         /// <param name="e">Event arguments</param>
-        void TimeMgr_LeaveTimeUpdated(object sender, EventArgs e)
+        private void TimeMgr_LeaveTimeUpdated(object sender, EventArgs e)
         {
             UpdateLeaveTime(Visible);
         }
@@ -613,7 +640,7 @@ namespace ClockIn
                 }
                 case "MainWindowHotkey":
                 {
-                    showMainWinHK.Key = Properties.Settings.Default.MainWindowHotkey;
+                    Program.HotkeyMgr.ReregisterHotkey(hkShowMainWin, Properties.Settings.Default.MainWindowHotkey, this);
                     break;
                 }
                 case "FlatIconOnNewWindows":
@@ -625,21 +652,16 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Handles the key press of the hotkey.
+        ///   Handles the key press of the show main window hotkey.
         /// </summary>
         /// <param name="sender">Event origin</param>
         /// <param name="e">Event arguments</param>
-        private void ShowMainWin_HotkeyPressed(object sender, EventArgs e)
+        private void HkShowMainWin_Pressed(object sender, HandledEventArgs e)
         {
-            Debug.WriteLine("[MainWindow] Hotkey pressed.");
-
-            if (Visible)
-            {
-                // this workaround is needed in order to bring window to front if it is already opened
-                WindowState = FormWindowState.Minimized;
-            }
+            Debug.WriteLine("[MainWindow] Hotkey for showing main window pressed.");
 
             RestoreMainWindow();
+            e.Handled = true;
         }
 
         private enum WorkingTimeDisplay
@@ -650,7 +672,7 @@ namespace ClockIn
 
         private bool exit = false;
         private Timer wtTimer = new Timer();
-        private Hotkey showMainWinHK = null;
+        private Hotkey hkShowMainWin = null;
         private DateTime lastTrayTooltipUpdate = DateTime.Now;
     }
 }

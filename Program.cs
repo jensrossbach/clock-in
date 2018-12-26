@@ -21,6 +21,11 @@ namespace ClockIn
         public static TimeManager TimeMgr { get; private set; } = null;
 
         /// <summary>
+        ///   Hotkey manager instance
+        /// </summary>
+        public static HotkeyManager HotkeyMgr { get; private set; } = null;
+
+        /// <summary>
         ///   Main entry point of the application
         /// </summary>
         [STAThread]
@@ -46,9 +51,9 @@ namespace ClockIn
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                HotkeyManager.Init();
-
                 TimeMgr = new TimeManager();
+                HotkeyMgr = new HotkeyManager();
+
                 mainWindow = new MainWindow();
 
                 TimeMgr.HandleStart();
@@ -61,8 +66,6 @@ namespace ClockIn
 
                 Debug.WriteLine("[Program] Entering main application loop...");
                 Application.Run();
-
-                HotkeyManager.Deinit();
             }
             else
             {

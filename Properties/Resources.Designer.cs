@@ -213,6 +213,24 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Hotkey is already reserved! ähnelt.
+        /// </summary>
+        internal static string HotkeyAlreadyRegistered {
+            get {
+                return ResourceManager.GetString("HotkeyAlreadyRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Hotkey cannot be registered! ähnelt.
+        /// </summary>
+        internal static string HotkeyFailedToRegister {
+            get {
+                return ResourceManager.GetString("HotkeyFailedToRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Please enter valid time period for absence! ähnelt.
         /// </summary>
         internal static string InvalidAbsencePeriod {

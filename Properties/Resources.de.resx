@@ -296,4 +296,10 @@ http://icons.wbchug.net</value>
   <data name="ClockOut" xml:space="preserve">
     <value>Ausstempeln</value>
   </data>
+  <data name="HotkeyAlreadyRegistered" xml:space="preserve">
+    <value>Tastenkürzel ist bereits belegt!</value>
+  </data>
+  <data name="HotkeyFailedToRegister" xml:space="preserve">
+    <value>Tastenkürzel kann nicht registriert werden!</value>
+  </data>
 </root>

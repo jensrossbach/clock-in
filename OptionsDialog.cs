@@ -523,7 +523,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void TxtHotkey_Enter(object sender, EventArgs e)
         {
-            HotkeyManager.HotkeysEnabled = false;
+            Program.HotkeyMgr.HotkeysEnabled = false;
         }
 
         /// <summary>
@@ -533,7 +533,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void TxtHotkey_Leave(object sender, EventArgs e)
         {
-            HotkeyManager.HotkeysEnabled = true;
+            Program.HotkeyMgr.HotkeysEnabled = true;
         }
 
         /// <summary>
