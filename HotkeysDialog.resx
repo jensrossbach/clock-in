@@ -117,101 +117,80 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblRestoreMainWin.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblRestoreMainWin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 178</value>
+  <data name="lblRestoreMainWin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 15</value>
   </data>
-  <data name="btnAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="lblRestoreMainWin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 13</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="lblRestoreMainWin.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="btnAdd.Text" xml:space="preserve">
-    <value>&amp;Add</value>
+  <data name="lblRestoreMainWin.Text" xml:space="preserve">
+    <value>Restore main window:</value>
   </data>
-  <data name="&gt;&gt;btnAdd.Name" xml:space="preserve">
-    <value>btnAdd</value>
+  <data name="&gt;&gt;lblRestoreMainWin.Name" xml:space="preserve">
+    <value>lblRestoreMainWin</value>
   </data>
-  <data name="&gt;&gt;btnAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lblRestoreMainWin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnAdd.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblRestoreMainWin.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;btnAdd.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="btnRemove.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 178</value>
-  </data>
-  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnRemove.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="btnRemove.Text" xml:space="preserve">
-    <value>&amp;Remove</value>
-  </data>
-  <data name="&gt;&gt;btnRemove.Name" xml:space="preserve">
-    <value>btnRemove</value>
-  </data>
-  <data name="&gt;&gt;btnRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRemove.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnRemove.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="btnEdit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 178</value>
-  </data>
-  <data name="btnEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnEdit.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;lblRestoreMainWin.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="btnEdit.Text" xml:space="preserve">
-    <value>&amp;Edit</value>
+  <data name="lblClockInOut.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;btnEdit.Name" xml:space="preserve">
-    <value>btnEdit</value>
+  <data name="lblClockInOut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;btnEdit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblClockInOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 42</value>
   </data>
-  <data name="&gt;&gt;btnEdit.Parent" xml:space="preserve">
+  <data name="lblClockInOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 13</value>
+  </data>
+  <data name="lblClockInOut.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblClockInOut.Text" xml:space="preserve">
+    <value>Clock in/out:</value>
+  </data>
+  <data name="&gt;&gt;lblClockInOut.Name" xml:space="preserve">
+    <value>lblClockInOut</value>
+  </data>
+  <data name="&gt;&gt;lblClockInOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblClockInOut.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;btnEdit.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;lblClockInOut.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="btnClose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 226</value>
+    <value>228, 82</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="btnClose.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="btnClose.Text" xml:space="preserve">
     <value>&amp;Close</value>
@@ -228,47 +207,53 @@
   <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="colBegin.HeaderText" xml:space="preserve">
-    <value>Begin</value>
+  <data name="hkcClockInOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>129, 39</value>
   </data>
-  <data name="colBegin.Width" type="System.Int32, mscorlib">
-    <value>80</value>
+  <data name="hkcClockInOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 20</value>
   </data>
-  <data name="colEnd.HeaderText" xml:space="preserve">
-    <value>End</value>
+  <data name="hkcClockInOut.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="colEnd.Width" type="System.Int32, mscorlib">
-    <value>80</value>
+  <data name="hkcClockInOut.Text" xml:space="preserve">
+    <value>None</value>
   </data>
-  <data name="colDuration.HeaderText" xml:space="preserve">
-    <value>Duration</value>
+  <data name="&gt;&gt;hkcClockInOut.Name" xml:space="preserve">
+    <value>hkcClockInOut</value>
   </data>
-  <data name="colDuration.Width" type="System.Int32, mscorlib">
-    <value>80</value>
+  <data name="&gt;&gt;hkcClockInOut.Type" xml:space="preserve">
+    <value>ClockIn.HotkeyControl, ClockIn, Version=2.5.6935.24195, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <metadata name="timePeriodBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="dgvAbsence.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="dgvAbsence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 160</value>
-  </data>
-  <data name="dgvAbsence.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;dgvAbsence.Name" xml:space="preserve">
-    <value>dgvAbsence</value>
-  </data>
-  <data name="&gt;&gt;dgvAbsence.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvAbsence.Parent" xml:space="preserve">
+  <data name="&gt;&gt;hkcClockInOut.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;dgvAbsence.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;hkcClockInOut.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="hkcRestoreMainWin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>129, 12</value>
+  </data>
+  <data name="hkcRestoreMainWin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 20</value>
+  </data>
+  <data name="hkcRestoreMainWin.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="hkcRestoreMainWin.Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="&gt;&gt;hkcRestoreMainWin.Name" xml:space="preserve">
+    <value>hkcRestoreMainWin</value>
+  </data>
+  <data name="&gt;&gt;hkcRestoreMainWin.Type" xml:space="preserve">
+    <value>ClockIn.HotkeyControl, ClockIn, Version=2.5.6935.24195, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hkcRestoreMainWin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;hkcRestoreMainWin.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -277,37 +262,16 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>267, 261</value>
+    <value>320, 117</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Absence</value>
-  </data>
-  <data name="&gt;&gt;colBegin.Name" xml:space="preserve">
-    <value>colBegin</value>
-  </data>
-  <data name="&gt;&gt;colBegin.Type" xml:space="preserve">
-    <value>ClockIn.DataGridViewTimeColumn, ClockIn, Version=2.5.6935.23406, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colEnd.Name" xml:space="preserve">
-    <value>colEnd</value>
-  </data>
-  <data name="&gt;&gt;colEnd.Type" xml:space="preserve">
-    <value>ClockIn.DataGridViewTimeColumn, ClockIn, Version=2.5.6935.23406, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colDuration.Name" xml:space="preserve">
-    <value>colDuration</value>
-  </data>
-  <data name="&gt;&gt;colDuration.Type" xml:space="preserve">
-    <value>ClockIn.DataGridViewTimeColumn, ClockIn, Version=2.5.6935.23406, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;timePeriodBindingSource.Name" xml:space="preserve">
-    <value>timePeriodBindingSource</value>
-  </data>
-  <data name="&gt;&gt;timePeriodBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Hotkeys</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>AbsenceDialog</value>
+    <value>HotkeysDialog</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

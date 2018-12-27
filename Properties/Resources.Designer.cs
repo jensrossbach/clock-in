@@ -165,11 +165,29 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die You have clocked in. ähnelt.
+        /// </summary>
+        internal static string ClockInNotification {
+            get {
+                return ResourceManager.GetString("ClockInNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Clock out ähnelt.
         /// </summary>
         internal static string ClockOut {
             get {
                 return ResourceManager.GetString("ClockOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die You have clocked out. ähnelt.
+        /// </summary>
+        internal static string ClockOutNotification {
+            get {
+                return ResourceManager.GetString("ClockOutNotification", resourceCulture);
             }
         }
         

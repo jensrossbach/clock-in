@@ -352,15 +352,6 @@
   <data name="cbxNotificationAlwayOnTop.Text" xml:space="preserve">
     <value>Benachrichtigungsfenster immer &amp;vorne</value>
   </data>
-  <data name="lblHotkey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 225</value>
-  </data>
-  <data name="lblHotkey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
-  </data>
-  <data name="lblHotkey.Text" xml:space="preserve">
-    <value>Hot-Key:</value>
-  </data>
   <data name="tbcOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>327, 434</value>
   </data>
@@ -382,14 +373,20 @@
   <data name="tbpNotifications.Text" xml:space="preserve">
     <value>Benachrichtigungen</value>
   </data>
+  <data name="cbxNotifyOnClockInOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 215</value>
+  </data>
+  <data name="cbxNotifyOnClockInOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 17</value>
+  </data>
+  <data name="cbxNotifyOnClockInOut.Text" xml:space="preserve">
+    <value>Benachrichtigung beim &amp;Ein-/Ausstempeln</value>
+  </data>
   <data name="lblMinBeforeReg.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 13</value>
   </data>
   <data name="lblMinBeforeReg.Text" xml:space="preserve">
     <value>Minuten vorher</value>
-  </data>
-  <data name="txtHotkey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 222</value>
   </data>
   <data name="tbpMisc.Size" type="System.Drawing.Size, System.Drawing">
     <value>319, 408</value>
@@ -459,6 +456,12 @@
   </data>
   <data name="cbxClockInAtStart.Text" xml:space="preserve">
     <value>Einstempeln bei Programm&amp;start</value>
+  </data>
+  <data name="btnHotkeys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="btnHotkeys.Text" xml:space="preserve">
+    <value>&amp;Tastenkürzel...</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>350, 499</value>

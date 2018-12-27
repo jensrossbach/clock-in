@@ -430,5 +430,29 @@ namespace ClockIn.Properties {
                 this["ConfirmAbsenceOnClockIn"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        public global::System.Windows.Forms.Keys ClockInOutHotkey {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["ClockInOutHotkey"]));
+            }
+            set {
+                this["ClockInOutHotkey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool NotifyOnClockInOut {
+            get {
+                return ((bool)(this["NotifyOnClockInOut"]));
+            }
+            set {
+                this["NotifyOnClockInOut"] = value;
+            }
+        }
     }
 }

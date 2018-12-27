@@ -517,23 +517,13 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Handles the event when thehotkey text box gained the focus.
+        ///   Handles a click on the hotkeys button.
         /// </summary>
         /// <param name="sender">Event origin</param>
         /// <param name="e">Event arguments</param>
-        private void TxtHotkey_Enter(object sender, EventArgs e)
+        private void BtnHotkeys_Click(object sender, EventArgs e)
         {
-            Program.HotkeyMgr.HotkeysEnabled = false;
-        }
-
-        /// <summary>
-        ///   Handles the event when thehotkey text box lost the focus.
-        /// </summary>
-        /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void TxtHotkey_Leave(object sender, EventArgs e)
-        {
-            Program.HotkeyMgr.HotkeysEnabled = true;
+            new HotkeysDialog().ShowDialog(this);
         }
 
         /// <summary>

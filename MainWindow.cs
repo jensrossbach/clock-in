@@ -242,6 +242,39 @@ namespace ClockIn
         }
 
         /// <summary>
+        ///   Switches the working state.
+        /// </summary>
+        /// <param name="action">Switch action to perform</param>
+        private void SwitchWorkingState(WorkingStateAction action)
+        {
+            if ((action == WorkingStateAction.ClockOut) ||
+                ((action == WorkingStateAction.Toggle) && (Program.TimeMgr.State == TimeManager.WorkingState.Working)))
+            {
+                if (Visible && Properties.Settings.Default.MinimizeOnClockOut)
+                {
+                    MinimizeMainWindow();
+                }
+
+                Program.TimeMgr.State = TimeManager.WorkingState.Absent;
+
+                if (Properties.Settings.Default.NotifyOnClockInOut)
+                {
+                    icnTrayIcon.ShowBalloonTip(5000, "ClockIn", Properties.Resources.ClockOutNotification, ToolTipIcon.None);
+                }
+            }
+            else if ((action == WorkingStateAction.ClockIn) ||
+                     ((action == WorkingStateAction.Toggle) && (Program.TimeMgr.State == TimeManager.WorkingState.Absent)))
+            {
+                Program.TimeMgr.State = TimeManager.WorkingState.Working;
+
+                if (Properties.Settings.Default.NotifyOnClockInOut)
+                {
+                    icnTrayIcon.ShowBalloonTip(5000, "ClockIn", Properties.Resources.ClockInNotification, ToolTipIcon.None);
+                }
+            }
+        }
+
+        /// <summary>
         ///   Registers all hotkeys.
         /// </summary>
         private void RegisterHotkeys()
@@ -251,6 +284,12 @@ namespace ClockIn
             {
                 hkShowMainWin.Pressed += HkShowMainWin_Pressed;
             }
+
+            hkClockInOut = Program.HotkeyMgr.RegisterHotkey(Properties.Settings.Default.ClockInOutHotkey, this);
+            if (hkClockInOut != null)
+            {
+                hkClockInOut.Pressed += HkClockInOut_Pressed;
+            }
         }
 
         /// <summary>
@@ -259,6 +298,7 @@ namespace ClockIn
         private void UnregisterHotkeys()
         {
             Program.HotkeyMgr.UnregisterHotkey(hkShowMainWin);
+            Program.HotkeyMgr.UnregisterHotkey(hkClockInOut);
         }
 
         /// <summary>
@@ -406,19 +446,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void BtnClockInOut_Click(object sender, EventArgs e)
         {
-            if (Program.TimeMgr.State == TimeManager.WorkingState.Working)
-            {
-                if (Properties.Settings.Default.MinimizeOnClockOut)
-                {
-                    MinimizeMainWindow();
-                }
-
-                Program.TimeMgr.State = TimeManager.WorkingState.Absent;
-            }
-            else
-            {
-                Program.TimeMgr.State = TimeManager.WorkingState.Working;
-            }
+            SwitchWorkingState(WorkingStateAction.Toggle);
         }
 
         /// <summary>
@@ -514,7 +542,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void ItmClockIn_Click(object sender, EventArgs e)
         {
-            Program.TimeMgr.State = TimeManager.WorkingState.Working;
+            SwitchWorkingState(WorkingStateAction.ClockIn);
         }
 
         /// <summary>
@@ -524,7 +552,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void ItmClockOut_Click(object sender, EventArgs e)
         {
-            Program.TimeMgr.State = TimeManager.WorkingState.Absent;
+            SwitchWorkingState(WorkingStateAction.ClockOut);
         }
 
         /// <summary>
@@ -643,6 +671,11 @@ namespace ClockIn
                     Program.HotkeyMgr.ReregisterHotkey(hkShowMainWin, Properties.Settings.Default.MainWindowHotkey, this);
                     break;
                 }
+                case "ClockInOutHotkey":
+                {
+                    Program.HotkeyMgr.ReregisterHotkey(hkClockInOut, Properties.Settings.Default.ClockInOutHotkey, this);
+                    break;
+                }
                 case "FlatIconOnNewWindows":
                 {
                     UpdateSystemTrayIcon(true);
@@ -664,15 +697,36 @@ namespace ClockIn
             e.Handled = true;
         }
 
+        /// <summary>
+        ///   Handles the key press of the clock in/out hotkey.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void HkClockInOut_Pressed(object sender, HandledEventArgs e)
+        {
+            Debug.WriteLine("[MainWindow] Hotkey for clocking in/out pressed.");
+            SwitchWorkingState(WorkingStateAction.Toggle);
+        }
+
         private enum WorkingTimeDisplay
         {
             ElapsedTime,
             RemainingTime
         }
 
+        private enum WorkingStateAction
+        {
+            ClockIn,
+            ClockOut,
+            Toggle
+        }
+
         private bool exit = false;
-        private Timer wtTimer = new Timer();
+
         private Hotkey hkShowMainWin = null;
+        private Hotkey hkClockInOut = null;
+
+        private Timer wtTimer = new Timer();
         private DateTime lastTrayTooltipUpdate = DateTime.Now;
     }
 }

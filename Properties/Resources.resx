@@ -314,4 +314,10 @@ http://icons.wbchug.net</value>
   <data name="HotkeyFailedToRegister" xml:space="preserve">
     <value>Hotkey cannot be registered!</value>
   </data>
+  <data name="ClockInNotification" xml:space="preserve">
+    <value>You have clocked in.</value>
+  </data>
+  <data name="ClockOutNotification" xml:space="preserve">
+    <value>You have clocked out.</value>
+  </data>
 </root>
