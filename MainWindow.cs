@@ -14,17 +14,48 @@ namespace ClockIn
 {
     public partial class MainWindow : Form
     {
+        private enum WorkingTimeDisplay
+        {
+            ElapsedTime,
+            RemainingTime
+        }
+
+        private enum WorkingStateAction
+        {
+            ClockIn,
+            ClockOut,
+            Toggle
+        }
+
+
+        private bool exit = false;
+
+        private Hotkey hkShowMainWin = null;
+        private Hotkey hkClockInOut = null;
+
+        private Timer wtTimer = new Timer();
+        private DateTime lastTrayTooltipUpdate = DateTime.Now;
+
+        private TimeManager timeMgr = null;
+        private HotkeyManager hotkeyMgr = null;
+        private Properties.Settings settings = null;
+
+
         /// <summary>
         ///   Default constructor of the class
         /// </summary>
         public MainWindow()
         {
+            timeMgr = Program.TimeMgr;
+            hotkeyMgr = Program.HotkeyMgr;
+            settings = Properties.Settings.Default;
+
             wtTimer.Tick += new EventHandler(WtTimer_Tick);
 
-            Program.TimeMgr.AbsenceUpdated += TimeMgr_AbsenceUpdated;
-            Program.TimeMgr.WorkingTimeUpdated += TimeMgr_WorkingTimeUpdated;
-            Program.TimeMgr.LeaveTimeUpdated += TimeMgr_LeaveTimeUpdated;
-            Program.TimeMgr.WorkingStateUpdated += TimeMgr_WorkingStateUpdated;
+            timeMgr.AbsenceUpdated += TimeMgr_AbsenceUpdated;
+            timeMgr.WorkingTimeUpdated += TimeMgr_WorkingTimeUpdated;
+            timeMgr.LeaveTimeUpdated += TimeMgr_LeaveTimeUpdated;
+            timeMgr.WorkingStateUpdated += TimeMgr_WorkingStateUpdated;
 
             InitializeComponent();
             lblLeaveTimeIcon.Image = Properties.Resources.Power;
@@ -32,8 +63,9 @@ namespace ClockIn
             UpdateSystemTrayIcon(false);
             icnTrayIcon.Visible = true;
 
-            Properties.Settings.Default.PropertyChanged += DefaultSettings_PropertyChanged;
+            settings.PropertyChanged += DefaultSettings_PropertyChanged;
         }
+
 
         /// <summary>
         ///   Updates the working time inside the window.
@@ -42,9 +74,9 @@ namespace ClockIn
         {
             wtTimer.Stop();
 
-            if (Program.TimeMgr.State == TimeManager.WorkingState.Working)
+            if (timeMgr.State == TimeManager.WorkingState.Working)
             {
-                TimeSpan elapsedTime = Program.TimeMgr.GetElapsedWorkingTime(out TimeManager.WorkingLevel level);
+                TimeSpan elapsedTime = timeMgr.GetElapsedWorkingTime(out TimeManager.WorkingLevel level);
 
                 switch (level)
                 {
@@ -84,7 +116,7 @@ namespace ClockIn
                     }
                 }
 
-                WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), Properties.Settings.Default.WorkingTimeDisplay);
+                WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), settings.WorkingTimeDisplay);
                 if (wtd == WorkingTimeDisplay.ElapsedTime)
                 {
                     lblWorkingTimeIcon.Image = Properties.Resources.Stopwatch;
@@ -92,7 +124,7 @@ namespace ClockIn
                 }
                 else
                 {
-                    TimeSpan remainingTime = Program.TimeMgr.GetRemainingWorkingTime();
+                    TimeSpan remainingTime = timeMgr.GetRemainingWorkingTime();
                     if (remainingTime.Seconds > 0)
                     {
                         remainingTime = new TimeSpan(remainingTime.Hours, remainingTime.Minutes + 1, 0);
@@ -123,9 +155,9 @@ namespace ClockIn
         /// <param name="updateLabel">true if label should be updated</param>
         public void UpdateLeaveTime(bool updateLabel)
         {
-            if (Program.TimeMgr.State == TimeManager.WorkingState.Working)
+            if (timeMgr.State == TimeManager.WorkingState.Working)
             {
-                string leaveTime = Program.TimeMgr.GetLeaveTime(out bool overTime).ToString(@"HH\:mm");
+                string leaveTime = timeMgr.GetLeaveTime(out bool overTime).ToString(@"HH\:mm");
 
                 if (updateLabel)
                 {
@@ -151,7 +183,19 @@ namespace ClockIn
                     lblLeaveTime.Text = "--:--";
                 }
 
-                icnTrayIcon.Text = string.Format(Properties.Resources.TooltipTextAbsent, Program.TimeMgr.ClockOutTime.ToString(@"HH\:mm"));
+                icnTrayIcon.Text = string.Format(Properties.Resources.TooltipTextAbsent, timeMgr.ClockOutTime.ToString(@"HH\:mm"));
+            }
+        }
+
+        /// <summary>
+        ///   Handles messages for the main window.
+        /// </summary>
+        /// <param name="m">Message to handle</param>
+        protected override void WndProc(ref Message m)
+        {
+            if (!hotkeyMgr.ProcessMessage(ref m))
+            {
+                base.WndProc(ref m);
             }
         }
 
@@ -160,15 +204,15 @@ namespace ClockIn
         /// </summary>
         private void UpdateAbsence()
         {
-            TimeSpan absence = Program.TimeMgr.TotalAbsence;
+            TimeSpan absence = timeMgr.TotalAbsence;
             string absenceText = "";
 
             if (absence.Hours > 0)
             {
-                absenceText += Program.TimeMgr.TotalAbsence.Hours.ToString("0") + "h ";
+                absenceText += timeMgr.TotalAbsence.Hours.ToString("0") + "h ";
             }
 
-            absenceText += Program.TimeMgr.TotalAbsence.Minutes.ToString("0") + "m";
+            absenceText += timeMgr.TotalAbsence.Minutes.ToString("0") + "m";
             txtAbsence.Text = absenceText;
         }
 
@@ -186,7 +230,7 @@ namespace ClockIn
         /// </summary>
         private void SwitchWorkingTimeDisplay()
         {
-            WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), Properties.Settings.Default.WorkingTimeDisplay);
+            WorkingTimeDisplay wtd = (WorkingTimeDisplay)System.Enum.Parse(typeof(WorkingTimeDisplay), settings.WorkingTimeDisplay);
 
             if (wtd == WorkingTimeDisplay.ElapsedTime)
             {
@@ -197,7 +241,7 @@ namespace ClockIn
                 wtd = WorkingTimeDisplay.ElapsedTime;
             }
 
-            Properties.Settings.Default.WorkingTimeDisplay = Enum.Format(typeof(WorkingTimeDisplay), wtd, "G");
+            settings.WorkingTimeDisplay = Enum.Format(typeof(WorkingTimeDisplay), wtd, "G");
             UpdateWorkingTime();
             UpdateLeaveTime(true);
         }
@@ -230,7 +274,7 @@ namespace ClockIn
         {
             OperatingSystem os = Environment.OSVersion;
 
-            if ((Properties.Settings.Default.FlatIconOnNewWindows) &&
+            if ((settings.FlatIconOnNewWindows) &&
                 ((os.Platform == PlatformID.Win32NT) && (((os.Version.Major == 6) && (os.Version.Minor >= 2)) || (os.Version.Major >= 10))))
             {
                 icnTrayIcon.Icon = Properties.Resources.FlatTrayIcon;
@@ -248,26 +292,26 @@ namespace ClockIn
         private void SwitchWorkingState(WorkingStateAction action)
         {
             if ((action == WorkingStateAction.ClockOut) ||
-                ((action == WorkingStateAction.Toggle) && (Program.TimeMgr.State == TimeManager.WorkingState.Working)))
+                ((action == WorkingStateAction.Toggle) && (timeMgr.State == TimeManager.WorkingState.Working)))
             {
-                if (Visible && Properties.Settings.Default.MinimizeOnClockOut)
+                if (Visible && settings.MinimizeOnClockOut)
                 {
                     MinimizeMainWindow();
                 }
 
-                Program.TimeMgr.State = TimeManager.WorkingState.Absent;
+                timeMgr.State = TimeManager.WorkingState.Absent;
 
-                if (Properties.Settings.Default.NotifyOnClockInOut)
+                if (settings.NotifyOnClockInOut)
                 {
                     icnTrayIcon.ShowBalloonTip(5000, "ClockIn", Properties.Resources.ClockOutNotification, ToolTipIcon.None);
                 }
             }
             else if ((action == WorkingStateAction.ClockIn) ||
-                     ((action == WorkingStateAction.Toggle) && (Program.TimeMgr.State == TimeManager.WorkingState.Absent)))
+                     ((action == WorkingStateAction.Toggle) && (timeMgr.State == TimeManager.WorkingState.Absent)))
             {
-                Program.TimeMgr.State = TimeManager.WorkingState.Working;
+                timeMgr.State = TimeManager.WorkingState.Working;
 
-                if (Properties.Settings.Default.NotifyOnClockInOut)
+                if (settings.NotifyOnClockInOut)
                 {
                     icnTrayIcon.ShowBalloonTip(5000, "ClockIn", Properties.Resources.ClockInNotification, ToolTipIcon.None);
                 }
@@ -277,18 +321,39 @@ namespace ClockIn
         /// <summary>
         ///   Registers all hotkeys.
         /// </summary>
-        private void RegisterHotkeys()
+        /// <param name="hotkey">Name of hotkey (from settings) to register or null to register all hotkeys</param>
+        private void RegisterHotkeys(string hotkey)
         {
-            hkShowMainWin = Program.HotkeyMgr.RegisterHotkey(Properties.Settings.Default.MainWindowHotkey, this);
-            if (hkShowMainWin != null)
+            if ((hotkey == null) || (hotkey == "MainWindowHotkey"))
             {
-                hkShowMainWin.Pressed += HkShowMainWin_Pressed;
+                if (hkShowMainWin == null)
+                {
+                    hkShowMainWin = hotkeyMgr.RegisterHotkey(settings.MainWindowHotkey, this);
+                    if (hkShowMainWin != null)
+                    {
+                        hkShowMainWin.Pressed += HkShowMainWin_Pressed;
+                    }
+                }
+                else
+                {
+                    hotkeyMgr.ReregisterHotkey(hkShowMainWin, settings.MainWindowHotkey, this);
+                }
             }
 
-            hkClockInOut = Program.HotkeyMgr.RegisterHotkey(Properties.Settings.Default.ClockInOutHotkey, this);
-            if (hkClockInOut != null)
+            if ((hotkey == null) || (hotkey == "ClockInOutHotkey"))
             {
-                hkClockInOut.Pressed += HkClockInOut_Pressed;
+                if (hkClockInOut == null)
+                {
+                    hkClockInOut = hotkeyMgr.RegisterHotkey(settings.ClockInOutHotkey, this);
+                    if (hkClockInOut != null)
+                    {
+                        hkClockInOut.Pressed += HkClockInOut_Pressed;
+                    }
+                }
+                else
+                {
+                    hotkeyMgr.ReregisterHotkey(hkClockInOut, settings.ClockInOutHotkey, this);
+                }
             }
         }
 
@@ -297,8 +362,8 @@ namespace ClockIn
         /// </summary>
         private void UnregisterHotkeys()
         {
-            Program.HotkeyMgr.UnregisterHotkey(hkShowMainWin);
-            Program.HotkeyMgr.UnregisterHotkey(hkClockInOut);
+            hotkeyMgr.UnregisterHotkey(hkShowMainWin);
+            hotkeyMgr.UnregisterHotkey(hkClockInOut);
         }
 
         /// <summary>
@@ -308,7 +373,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            RegisterHotkeys();
+            RegisterHotkeys(null);
         }
 
         /// <summary>
@@ -320,7 +385,7 @@ namespace ClockIn
         {
             if (WindowState == FormWindowState.Normal)
             {
-                Properties.Settings.Default.MainWindowLocation = Location;
+                settings.MainWindowLocation = Location;
             }
         }
 
@@ -365,7 +430,7 @@ namespace ClockIn
         private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
             wtTimer.Stop();
-            Properties.Settings.Default.Save();
+            settings.Save();
             UnregisterHotkeys();
         }
 
@@ -426,7 +491,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void BtnResetTime_Click(object sender, EventArgs e)
         {
-            Program.TimeMgr.RestartSession(true);
+            timeMgr.RestartSession(true);
         }
 
         /// <summary>
@@ -621,7 +686,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void TimeMgr_WorkingStateUpdated(object sender, EventArgs e)
         {
-            if (Program.TimeMgr.State == TimeManager.WorkingState.Working)
+            if (timeMgr.State == TimeManager.WorkingState.Working)
             {
                 Text = Properties.Resources.WindowCaption;
 
@@ -667,13 +732,9 @@ namespace ClockIn
                     break;
                 }
                 case "MainWindowHotkey":
-                {
-                    Program.HotkeyMgr.ReregisterHotkey(hkShowMainWin, Properties.Settings.Default.MainWindowHotkey, this);
-                    break;
-                }
                 case "ClockInOutHotkey":
                 {
-                    Program.HotkeyMgr.ReregisterHotkey(hkClockInOut, Properties.Settings.Default.ClockInOutHotkey, this);
+                    RegisterHotkeys(e.PropertyName);
                     break;
                 }
                 case "FlatIconOnNewWindows":
@@ -707,26 +768,5 @@ namespace ClockIn
             Debug.WriteLine("[MainWindow] Hotkey for clocking in/out pressed.");
             SwitchWorkingState(WorkingStateAction.Toggle);
         }
-
-        private enum WorkingTimeDisplay
-        {
-            ElapsedTime,
-            RemainingTime
-        }
-
-        private enum WorkingStateAction
-        {
-            ClockIn,
-            ClockOut,
-            Toggle
-        }
-
-        private bool exit = false;
-
-        private Hotkey hkShowMainWin = null;
-        private Hotkey hkClockInOut = null;
-
-        private Timer wtTimer = new Timer();
-        private DateTime lastTrayTooltipUpdate = DateTime.Now;
     }
 }

@@ -18,6 +18,62 @@ namespace ClockIn
     class TimeManager
     {
         /// <summary>
+        ///   Levels of work which can be reached during the day
+        /// </summary>
+        public enum WorkingLevel
+        {
+            RegularTime        = 0,  // Working within regular time
+            AheadOfClosingTime = 1,  // Ahead of closing time
+            OverTime           = 2,  // Working longer than regular time
+            ApproachingMaxTime = 3,  // Approaching maximum working time
+            MaxTimeViolation   = 4   // Exceeded maximum working time
+        }
+
+        /// <summary>
+        ///   Working state
+        /// </summary>
+        public enum WorkingState
+        {
+            Working = 0,  // Present and working
+            Absent  = 1   // Absent / not working
+        }
+
+
+        private DateTime startTime;
+
+        private Timer notifyTimer = new Timer();
+        private Timer periodicTimer = new Timer();
+        private Timer eodTimer = new Timer();
+
+        private Properties.Settings settings = Properties.Settings.Default;
+        private Session session = Session.Default;
+
+        private WorkingState state = WorkingState.Working;
+        private TimePeriod currentAbsence = null;
+
+
+        /// <summary>
+        ///   Event notifies when absence has been updated.
+        /// </summary>
+        public event EventHandler AbsenceUpdated;
+
+        /// <summary>
+        ///   Event notifies when working time has been updated.
+        /// </summary>
+        public event EventHandler WorkingTimeUpdated;
+
+        /// <summary>
+        ///   Event notifies when leave time has been updated.
+        /// </summary>
+        public event EventHandler LeaveTimeUpdated;
+
+        /// <summary>
+        ///   Event notifies whenworking state has been updated.
+        /// </summary>
+        public event EventHandler WorkingStateUpdated;
+
+
+        /// <summary>
         ///   Default constructor of the class
         /// </summary>
         public TimeManager()
@@ -40,46 +96,6 @@ namespace ClockIn
             eodTimer.Tick += EodTimer_Tick;
         }
 
-        /// <summary>
-        ///   Levels of work which can be reached during the day
-        /// </summary>
-        public enum WorkingLevel
-        {
-            RegularTime        = 0,  // Working within regular time
-            AheadOfClosingTime = 1,  // Ahead of closing time
-            OverTime           = 2,  // Working longer than regular time
-            ApproachingMaxTime = 3,  // Approaching maximum working time
-            MaxTimeViolation   = 4   // Exceeded maximum working time
-        }
-
-        /// <summary>
-        ///   Working state
-        /// </summary>
-        public enum WorkingState
-        {
-            Working = 0,  // Present and working
-            Absent  = 1   // Absent / not working
-        }
-
-        /// <summary>
-        ///   Event notifies when absence has been updated.
-        /// </summary>
-        public event EventHandler AbsenceUpdated;
-
-        /// <summary>
-        ///   Event notifies when working time has been updated.
-        /// </summary>
-        public event EventHandler WorkingTimeUpdated;
-
-        /// <summary>
-        ///   Event notifies when leave time has been updated.
-        /// </summary>
-        public event EventHandler LeaveTimeUpdated;
-
-        /// <summary>
-        ///   Event notifies whenworking state has been updated.
-        /// </summary>
-        public event EventHandler WorkingStateUpdated;
 
         /// <summary>
         ///   List of absence time periods
@@ -110,6 +126,7 @@ namespace ClockIn
                 }
             }
         }
+
 
         /// <summary>
         ///   Handles application start.
@@ -808,17 +825,5 @@ namespace ClockIn
         private void NotifyWorkingTimeUpdated() => WorkingTimeUpdated?.Invoke(this, new EventArgs());
         private void NotifyLeaveTimeUpdated() => LeaveTimeUpdated?.Invoke(this, new EventArgs());
         private void NotifyWorkingStateUpdated() => WorkingStateUpdated?.Invoke(this, new EventArgs());
-
-        private DateTime startTime;
-
-        private Timer notifyTimer = new Timer();
-        private Timer periodicTimer = new Timer();
-        private Timer eodTimer = new Timer();
-
-        private Properties.Settings settings = Properties.Settings.Default;
-        private Session session = Session.Default;
-
-        private WorkingState state = WorkingState.Working;
-        private TimePeriod currentAbsence = null;
     }
 }

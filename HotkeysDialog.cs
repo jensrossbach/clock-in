@@ -21,6 +21,7 @@ namespace ClockIn
             InitializeComponent();
         }
 
+
         /// <summary>
         ///   Handles the event when a hotkey control gained the focus.
         /// </summary>

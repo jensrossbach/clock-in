@@ -231,7 +231,7 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Hotkey is already reserved! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Hotkey {0} is already reserved! ähnelt.
         /// </summary>
         internal static string HotkeyAlreadyRegistered {
             get {
@@ -240,7 +240,7 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Hotkey cannot be registered! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Hotkey {0} cannot be registered! ähnelt.
         /// </summary>
         internal static string HotkeyFailedToRegister {
             get {

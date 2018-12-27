@@ -12,6 +12,10 @@ namespace ClockIn
     /// </summary>
     public partial class AbsenceInputDialog : Form
     {
+        private TimePeriod timePeriod;
+        private TimePeriod tempTimePeriod;
+
+
         /// <summary>
         ///   Default constructor of the class
         /// </summary>
@@ -29,24 +33,12 @@ namespace ClockIn
             dtpEndTime.DataBindings.Add("Value", tempTimePeriod, "EndTime");
         }
 
+
         /// <summary>
         ///   Status if entered time period is valid
         /// </summary>
         /// <returns>true if time period is valid, false otherwise</returns>
-        private bool ValidTimePeriod
-        {
-            get
-            {
-                if (tempTimePeriod.StartTime < tempTimePeriod.EndTime)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
+        private bool ValidTimePeriod => (tempTimePeriod.StartTime < tempTimePeriod.EndTime) ? true : false;
 
         /// <summary>
         ///   Status if entered time period is overlapping with other time periods
@@ -58,7 +50,7 @@ namespace ClockIn
             {
                 foreach (TimePeriod tp in Program.TimeMgr.Absence)
                 {
-                    if ((tp != timePeriod) && (tp.Intersecting(tempTimePeriod)))
+                    if ((tp != timePeriod) && tp.Intersecting(tempTimePeriod))
                     {
                         return true;
                     }
@@ -102,6 +94,7 @@ namespace ClockIn
             }
         }
 
+
         /// <summary>
         ///   Applies the entered input to the passed time period.
         /// </summary>
@@ -134,8 +127,5 @@ namespace ClockIn
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
-        private TimePeriod timePeriod;
-        private TimePeriod tempTimePeriod;
     }
 }

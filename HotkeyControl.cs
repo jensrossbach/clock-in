@@ -16,6 +16,29 @@ namespace ClockIn
     /// </summary>
     public class HotkeyControl : TextBox
     {
+        private const uint VirtualKeyToVirtualScanCode   = 0x00;
+        private const uint VirtualScanCodeToVirtualKey   = 0x01;
+        private const uint VirtualKeyToVirtualChar       = 0x02;
+        private const uint VirtualScanCodeToVirtualKeyEx = 0x03;
+        private const uint VirtualKeyToVirtualScanCodeEx = 0x04;
+
+
+        // These variables store the current hotkey and modifier(s)
+        private Keys keyCode = Keys.None;
+        private Keys keyModifiers = Keys.None;
+
+        // ArrayLists used to enforce the use of proper modifiers.
+        // Shift+A isn't a valid hotkey, for instance, as it would screw up when the user is typing.
+        private ArrayList needNonShiftModifier = new ArrayList();
+        private ArrayList needNonAltGrModifier = new ArrayList();
+
+        private ContextMenu emptyContextMenu = new ContextMenu();
+
+
+        [DllImport("user32.dll")]
+        private static extern uint MapVirtualKey(uint uCode, uint uMapType);
+
+
         /// <summary>
         ///   Creates a new HotkeyControl.
         /// </summary>
@@ -33,19 +56,14 @@ namespace ClockIn
             PopulateModifierLists();
         }
 
+
         /// <summary>
         ///   Used to make sure that there is no right-click menu available.
         /// </summary>
         public override ContextMenu ContextMenu
         {
-            get
-            {
-                return emptyContextMenu;
-            }
-            set
-            {
-                base.ContextMenu = emptyContextMenu;
-            }
+            get => emptyContextMenu;
+            set => base.ContextMenu = emptyContextMenu;
         }
 
         /// <summary>
@@ -53,15 +71,8 @@ namespace ClockIn
         /// </summary>
         public override bool Multiline
         {
-            get
-            {
-                return base.Multiline;
-            }
-            set
-            {
-                // Ignore what the user wants; force Multiline to false
-                base.Multiline = false;
-            }
+            get => base.Multiline;
+            set => base.Multiline = false;  // ignore what the user wants, force Multiline to false
         }
 
         /// <summary>
@@ -69,10 +80,7 @@ namespace ClockIn
         /// </summary>
         public Keys Hotkey
         {
-            get
-            {
-                return ClockIn.Hotkey.Merge(keyModifiers, keyCode);
-            }
+            get => ClockIn.Hotkey.Merge(keyModifiers, keyCode);
             set
             {
                 ClockIn.Hotkey.Split(value, out keyModifiers, out keyCode);
@@ -87,10 +95,7 @@ namespace ClockIn
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Keys KeyCode
         {
-            get
-            {
-                return keyCode;
-            }
+            get => keyCode;
             set
             {
                 keyCode = value;
@@ -105,16 +110,14 @@ namespace ClockIn
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Keys KeyModifiers
         {
-            get
-            {
-                return keyModifiers;
-            }
+            get => keyModifiers;
             set
             {
                 keyModifiers = value;
                 Render(true);
             }
         }
+
 
         /// <summary>
         ///   Clears the current hotkey and resets the TextBox.
@@ -564,25 +567,5 @@ namespace ClockIn
         {
             e.Handled = true;
         }
-
-        [DllImport("user32.dll")]
-        private static extern uint MapVirtualKey(uint uCode, uint uMapType);
-
-        private const uint VirtualKeyToVirtualScanCode = 0x00;
-        private const uint VirtualScanCodeToVirtualKey = 0x01;
-        private const uint VirtualKeyToVirtualChar = 0x02;
-        private const uint VirtualScanCodeToVirtualKeyEx = 0x03;
-        private const uint VirtualKeyToVirtualScanCodeEx = 0x04;
-
-        // These variables store the current hotkey and modifier(s)
-        private Keys keyCode = Keys.None;
-        private Keys keyModifiers = Keys.None;
-
-        // ArrayLists used to enforce the use of proper modifiers.
-        // Shift+A isn't a valid hotkey, for instance, as it would screw up when the user is typing.
-        private ArrayList needNonShiftModifier = new ArrayList();
-        private ArrayList needNonAltGrModifier = new ArrayList();
-
-        private ContextMenu emptyContextMenu = new ContextMenu();
     }
 }

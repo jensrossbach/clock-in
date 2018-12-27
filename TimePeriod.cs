@@ -14,6 +14,16 @@ namespace ClockIn
     /// </summary>
     public class TimePeriod : INotifyPropertyChanged
     {
+        private DateTime startTime;
+        private DateTime endTime;
+
+
+        /// <summary>
+        ///   Event notifies when a property from this time period has changed.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
         /// <summary>
         ///   Default constructor of the class
         /// </summary>
@@ -67,10 +77,6 @@ namespace ClockIn
             endTime = other.EndTime;
         }
 
-        /// <summary>
-        ///   Event notifies when a property from this time period has changed.
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         ///   Start time of the time period
@@ -120,6 +126,7 @@ namespace ClockIn
         ///   Time span of the time period
         /// </summary>
         public TimeSpan Duration => endTime - startTime;
+
 
         /// <summary>
         ///   Copies another time period to this one.
@@ -196,8 +203,5 @@ namespace ClockIn
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        private DateTime startTime;
-        private DateTime endTime;
     }
 }

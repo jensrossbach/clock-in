@@ -26,6 +26,7 @@ namespace ClockIn
             TopMost = Properties.Settings.Default.NotificationAlwaysOnTop;
         }
 
+
         /// <summary>
         ///   Initializes the notification dialog.
         /// </summary>

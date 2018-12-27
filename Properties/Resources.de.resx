@@ -297,10 +297,10 @@ http://icons.wbchug.net</value>
     <value>Ausstempeln</value>
   </data>
   <data name="HotkeyAlreadyRegistered" xml:space="preserve">
-    <value>Tastenkürzel ist bereits belegt!</value>
+    <value>Tastenkürzel {0} ist bereits belegt!</value>
   </data>
   <data name="HotkeyFailedToRegister" xml:space="preserve">
-    <value>Tastenkürzel kann nicht registriert werden!</value>
+    <value>Tastenkürzel {0} kann nicht registriert werden!</value>
   </data>
   <data name="ClockInNotification" xml:space="preserve">
     <value>Sie haben eingestempelt.</value>

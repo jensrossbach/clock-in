@@ -15,6 +15,10 @@ namespace ClockIn
     /// </summary>
     static class Program
     {
+        private static Mutex instanceMutex = null;
+        private static MainWindow mainWindow = null;
+
+        
         /// <summary>
         ///   Time manager instance
         /// </summary>
@@ -24,6 +28,7 @@ namespace ClockIn
         ///   Hotkey manager instance
         /// </summary>
         public static HotkeyManager HotkeyMgr { get; private set; } = null;
+
 
         /// <summary>
         ///   Main entry point of the application
@@ -84,8 +89,5 @@ namespace ClockIn
 
             return dateTime.AddTicks(-(dateTime.Ticks % timeSpan.Ticks));
         }
-
-        private static Mutex instanceMutex = null;
-        private static MainWindow mainWindow = null;
     }
 }

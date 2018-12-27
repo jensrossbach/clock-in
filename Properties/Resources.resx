@@ -309,10 +309,10 @@ http://icons.wbchug.net</value>
     <value>Clock out</value>
   </data>
   <data name="HotkeyAlreadyRegistered" xml:space="preserve">
-    <value>Hotkey is already reserved!</value>
+    <value>Hotkey {0} is already reserved!</value>
   </data>
   <data name="HotkeyFailedToRegister" xml:space="preserve">
-    <value>Hotkey cannot be registered!</value>
+    <value>Hotkey {0} cannot be registered!</value>
   </data>
   <data name="ClockInNotification" xml:space="preserve">
     <value>You have clocked in.</value>

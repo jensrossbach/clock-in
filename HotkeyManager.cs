@@ -22,6 +22,7 @@ namespace ClockIn
         /// </summary>
         public abstract event HandledEventHandler Pressed;
 
+
         /// <summary>
         ///   Key modifiers (ctrl, alt, shift) of the hotkey's key combination
         /// </summary>
@@ -31,6 +32,7 @@ namespace ClockIn
         ///   Key code of the hotkey's key combination
         /// </summary>
         public abstract Keys Code { get; }
+
 
         /// <summary>
         ///   Splits a key combination into key modifiers and key code
@@ -65,14 +67,19 @@ namespace ClockIn
     /// <summary>
     ///   Listens for key presses and manages registered hotkeys.
     /// </summary>
-    public class HotkeyManager : IMessageFilter
+    public class HotkeyManager
     {
         private const uint WM_HOTKEY = 0x0312;
+
+
+        private ArrayList globalHotkeys = new ArrayList();
+
 
         /// <summary>
         ///   Enables or disables hotkey handling.
         /// </summary>
         public bool HotkeysEnabled { get; set; } = true;
+
 
         /// <summary>
         ///   Registers a new hotkey.
@@ -82,22 +89,16 @@ namespace ClockIn
         /// <returns>Registered hotkey</returns>
         public Hotkey RegisterHotkey(Keys key, Control window)
         {
-            GlobalHotkey ghk = null;
+            GlobalHotkey ghk = new GlobalHotkey(key);
 
             try
             {
-                ghk = new GlobalHotkey(key);
                 ghk.Register(window);
-
-                if (globalHotkeys.Count == 0)
-                {
-                    Application.AddMessageFilter(this);
-                }
-
                 globalHotkeys.Add(ghk);
             }
             catch (HotkeyRegisterException e)
             {
+                ghk = null;
                 MessageBox.Show(e.Message,
                                 Properties.Resources.WindowCaption,
                                 MessageBoxButtons.OK,
@@ -115,7 +116,13 @@ namespace ClockIn
         /// <param name="window">Control to register hotkey with</param>
         public void ReregisterHotkey(Hotkey hotkey, Keys key, Control window)
         {
+            if (hotkey == null)
+            {
+                throw new ArgumentException("Argument must not be null", "hotkey");
+            }
+
             GlobalHotkey ghk = (GlobalHotkey)hotkey;
+            ghk.Unregister();
 
             Keys oldKey = ghk.Key;
             ghk.Key = key;
@@ -144,22 +151,21 @@ namespace ClockIn
 
             ghk.Unregister();
             globalHotkeys.Remove(ghk);
-
-            if (globalHotkeys.Count == 0)
-            {
-                Application.RemoveMessageFilter(this);
-            }
         }
 
-        public bool PreFilterMessage(ref Message m)
+        /// <summary>
+        ///  Processes hotkey messages.
+        /// </summary>
+        /// <param name="msg">Message to process</param>
+        public bool ProcessMessage(ref Message msg)
         {
             bool ret = false;
 
-            if ((m.Msg == WM_HOTKEY) && HotkeysEnabled)
+            if ((msg.Msg == WM_HOTKEY) && HotkeysEnabled)
             {
                 foreach (GlobalHotkey ghk in globalHotkeys)
                 {
-                    if (m.WParam.ToInt32() == ghk.Identifier)
+                    if (msg.WParam.ToInt32() == ghk.Identifier)
                     {
                         ret = ghk.TriggerEvent();
                         break;
@@ -170,19 +176,39 @@ namespace ClockIn
             return ret;
         }
 
-        private ArrayList globalHotkeys = new ArrayList();
-
         /// <summary>
         ///   Global hotkey implementation
         /// </summary>
         private class GlobalHotkey : Hotkey, IDisposable
         {
+            /// <summary>
+            ///   Event notifies when hotkey has been pressed.
+            /// </summary>
+            public override event HandledEventHandler Pressed;
+
+
             private const uint MOD_ALT = 0x0001;
             private const uint MOD_CONTROL = 0x0002;
             private const uint MOD_SHIFT = 0x0004;
 
             private const uint ERROR_HOTKEY_ALREADY_REGISTERED = 1409;
 
+
+            private Keys modifiers = Keys.None;
+            private Keys code = Keys.None;
+
+            private KeysConverter keyConv = new KeysConverter();
+
+            private IntPtr hWnd = IntPtr.Zero;
+
+
+            [DllImport("user32.dll", SetLastError = true)]
+            private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+
+            [DllImport("user32.dll", SetLastError = true)]
+            private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+            
             /// <summary>
             ///   Constructs the hotkey from modifiers and key code.
             /// </summary>
@@ -192,8 +218,6 @@ namespace ClockIn
             {
                 this.modifiers = modifiers;
                 this.code = code;
-
-                Enabled = true;
             }
 
             /// <summary>
@@ -203,8 +227,6 @@ namespace ClockIn
             public GlobalHotkey(Keys hotKey)
             {
                 Split(hotKey, out modifiers, out code);
-
-                Enabled = true;
             }
 
             /// <summary>
@@ -215,10 +237,6 @@ namespace ClockIn
                 Unregister();
             }
 
-            /// <summary>
-            ///   Event notifies when hotkey has been pressed.
-            /// </summary>
-            public override event HandledEventHandler Pressed;
 
             /// <summary>
             ///   Modifiers (ctrl, alt, shift) of the hotkey's key combination
@@ -247,10 +265,6 @@ namespace ClockIn
             /// </summary>
             public int Identifier { get; private set; } = 0;
 
-            /// <summary>
-            ///   Enables or disables the hotkey
-            /// </summary>
-            public bool Enabled { get; set; } = false;
 
             /// <summary>
             ///   Registers the hotkey at the system.
@@ -272,9 +286,6 @@ namespace ClockIn
             /// <param name="winHandle">Handle to the main window</param>
             private void Register(IntPtr winHandle)
             {
-                // first unregister if already registered
-                Unregister();
-
                 if ((hWnd == IntPtr.Zero) && (modifiers != Keys.None) && (code != Keys.None))
                 {
                     uint mod = (((modifiers & Keys.Control) != Keys.None) ? MOD_CONTROL : 0) |
@@ -285,23 +296,23 @@ namespace ClockIn
 
                     if (RegisterHotKey(winHandle, Identifier, mod, (uint)code))
                     {
-                        Debug.WriteLine("[Hotkey] Hotkey successfully registered.");
+                        Debug.WriteLine("[Hotkey] Hotkey " + ToString() + " successfully registered.");
 
                         hWnd = winHandle;
                     }
                     else
                     {
-                        Debug.WriteLine("[Hotkey] Failed to register hotkey!");
+                        Debug.WriteLine("[Hotkey] Failed to register hotkey " + ToString() + "!");
 
                         Identifier = 0;
 
                         if (Marshal.GetLastWin32Error() == ERROR_HOTKEY_ALREADY_REGISTERED)
                         {
-                            throw new HotkeyRegisterException(Properties.Resources.HotkeyAlreadyRegistered);
+                            throw new HotkeyRegisterException(string.Format(Properties.Resources.HotkeyAlreadyRegistered, ToString()));
                         }
                         else
                         {
-                            throw new HotkeyRegisterException(Properties.Resources.HotkeyFailedToRegister);
+                            throw new HotkeyRegisterException(string.Format(Properties.Resources.HotkeyFailedToRegister, ToString()));
                         }
                     }
                 }
@@ -316,14 +327,14 @@ namespace ClockIn
                 {
                     if (UnregisterHotKey(hWnd, Identifier))
                     {
-                        Debug.WriteLine("[Hotkey] Hotkey successfully unregistered.");
+                        Debug.WriteLine("[Hotkey] Hotkey " + ToString() + " successfully unregistered.");
 
                         hWnd = IntPtr.Zero;
                         Identifier = 0;
                     }
                     else
                     {
-                        Debug.WriteLine("[Hotkey] Failed to unregister hotkey!");
+                        Debug.WriteLine("[Hotkey] Failed to unregister hotkey " + ToString() + "!");
                     }
                 }
             }
@@ -333,17 +344,10 @@ namespace ClockIn
             /// </summary>
             public bool TriggerEvent()
             {
-                bool ret = false;
+                HandledEventArgs e = new HandledEventArgs();
+                Pressed?.Invoke(this, e);
 
-                if (Enabled)
-                {
-                    HandledEventArgs e = new HandledEventArgs();
-                    Pressed?.Invoke(this, e);
-
-                    ret = e.Handled;
-                }
-
-                return ret;
+                return e.Handled;
             }
 
             /// <summary>
@@ -355,16 +359,7 @@ namespace ClockIn
                 GC.SuppressFinalize(this);
             }
 
-            [DllImport("user32.dll", SetLastError = true)]
-            private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
-
-            [DllImport("user32.dll", SetLastError = true)]
-            private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
-
-            private Keys modifiers = Keys.None;
-            private Keys code = Keys.None;
-
-            private IntPtr hWnd = IntPtr.Zero;
+            public override string ToString() => keyConv.ConvertToString(Merge(modifiers, code));
         }
     }
 }

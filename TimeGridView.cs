@@ -54,6 +54,7 @@ namespace ClockIn
             Style.Format = "t";
         }
 
+
         /// <summary>
         ///   Overrides the DataGridViewTextBoxCell.EditType property.
         ///   Return the type of the editing control that DataGridViewTimeCell uses.
@@ -71,6 +72,7 @@ namespace ClockIn
         ///   Use the current date and time as the default value.
         /// </summary>
         public override object DefaultNewRowValue => DateTime.Now;
+
 
         /// <summary>
         ///   Overrides the DataGridViewTextBoxCell.InitializeEditingControl method.

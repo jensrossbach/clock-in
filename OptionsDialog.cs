@@ -17,6 +17,15 @@ namespace ClockIn
     public partial class OptionsDialog : Form
     {
         /// <summary>
+        ///   Registry key for application auto launch
+        /// </summary>
+        private const string RunKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+
+
+        private MainWindow mainWindow = null;
+
+
+        /// <summary>
         ///   Default constructor of the class
         /// </summary>
         public OptionsDialog(MainWindow mainWin)
@@ -25,10 +34,6 @@ namespace ClockIn
             InitializeComponent();
         }
 
-        /// <summary>
-        ///   Registry key for application auto launch
-        /// </summary>
-        public const string RunKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
 
         /// <summary>
         ///   Validates the value for regular working time.
@@ -535,7 +540,5 @@ namespace ClockIn
         {
             Close();
         }
-
-        private MainWindow mainWindow = null;
     }
 }

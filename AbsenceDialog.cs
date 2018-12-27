@@ -21,6 +21,7 @@ namespace ClockIn
             InitializeComponent();
         }
 
+
         /// <summary>
         ///   Enables/disables buttons depending on the selection in the
         ///   absence period table.
