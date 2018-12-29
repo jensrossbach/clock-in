@@ -28,6 +28,7 @@ namespace ClockIn
         }
 
 
+        private bool initialized = false;
         private bool exit = false;
 
         private Hotkey hkShowMainWin = null;
@@ -57,6 +58,8 @@ namespace ClockIn
             timeMgr.LeaveTimeUpdated += TimeMgr_LeaveTimeUpdated;
             timeMgr.WorkingStateUpdated += TimeMgr_WorkingStateUpdated;
             timeMgr.WorkingTimeAlert += TimeMgr_WorkingTimeAlert;
+
+            hotkeyMgr.HotkeyRegistrationWarning += HotkeyMgr_HotkeyRegistrationWarning;
 
             InitializeComponent();
             lblLeaveTimeIcon.Image = Properties.Resources.Power;
@@ -332,7 +335,7 @@ namespace ClockIn
                     hkShowMainWin = hotkeyMgr.RegisterHotkey(settings.MainWindowHotkey, this);
                     if (hkShowMainWin != null)
                     {
-                        hkShowMainWin.Pressed += HkShowMainWin_Pressed;
+                        hkShowMainWin.Press += HkShowMainWin_Press;
                     }
                 }
                 else
@@ -348,7 +351,7 @@ namespace ClockIn
                     hkClockInOut = hotkeyMgr.RegisterHotkey(settings.ClockInOutHotkey, this);
                     if (hkClockInOut != null)
                     {
-                        hkClockInOut.Pressed += HkClockInOut_Pressed;
+                        hkClockInOut.Press += HkClockInOut_Press;
                     }
                 }
                 else
@@ -375,6 +378,7 @@ namespace ClockIn
         private void MainWindow_Load(object sender, EventArgs e)
         {
             RegisterHotkeys(null);
+            initialized = true;
         }
 
         /// <summary>
@@ -766,6 +770,26 @@ namespace ClockIn
         }
 
         /// <summary>
+        ///   Handles a hotkey registration warning.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void HotkeyMgr_HotkeyRegistrationWarning(object sender, MessageEventArgs e)
+        {
+            if (initialized)
+            {
+                MessageBox.Show(e.Message,
+                                Properties.Resources.WindowCaption,
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+            else
+            {
+                icnTrayIcon.ShowBalloonTip(5000, "ClockIn", e.Message, ToolTipIcon.Warning);
+            }
+        }
+
+        /// <summary>
         ///   Handles the change of a user setting.
         /// </summary>
         /// <param name="sender">Event origin</param>
@@ -803,7 +827,7 @@ namespace ClockIn
         /// </summary>
         /// <param name="sender">Event origin</param>
         /// <param name="e">Event arguments</param>
-        private void HkShowMainWin_Pressed(object sender, HandledEventArgs e)
+        private void HkShowMainWin_Press(object sender, HandledEventArgs e)
         {
             Debug.WriteLine("[MainWindow] Hotkey for showing main window pressed.");
 
@@ -816,7 +840,7 @@ namespace ClockIn
         /// </summary>
         /// <param name="sender">Event origin</param>
         /// <param name="e">Event arguments</param>
-        private void HkClockInOut_Pressed(object sender, HandledEventArgs e)
+        private void HkClockInOut_Press(object sender, HandledEventArgs e)
         {
             Debug.WriteLine("[MainWindow] Hotkey for clocking in/out pressed.");
             SwitchWorkingState(WorkingStateAction.Toggle);

@@ -20,7 +20,7 @@ namespace ClockIn
         /// <summary>
         ///   Event notifies when hotkey has been pressed.
         /// </summary>
-        public abstract event HandledEventHandler Pressed;
+        public abstract event HandledEventHandler Press;
 
 
         /// <summary>
@@ -76,6 +76,12 @@ namespace ClockIn
 
 
         /// <summary>
+        ///   Event notifies when a hotkey registration warning occurs.
+        /// </summary>
+        public event MessageEventHandler HotkeyRegistrationWarning;
+
+
+        /// <summary>
         ///   Enables or disables hotkey handling.
         /// </summary>
         public bool HotkeysEnabled { get; set; } = true;
@@ -99,10 +105,7 @@ namespace ClockIn
             catch (HotkeyRegisterException e)
             {
                 ghk = null;
-                MessageBox.Show(e.Message,
-                                Properties.Resources.WindowCaption,
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                HotkeyRegistrationWarning?.Invoke(this, new MessageEventArgs(e.Message));
             }
 
             return ghk;
@@ -134,10 +137,7 @@ namespace ClockIn
             catch (HotkeyRegisterException e)
             {
                 ghk.Key = oldKey;
-                MessageBox.Show(e.Message,
-                                Properties.Resources.WindowCaption,
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                HotkeyRegistrationWarning?.Invoke(this, new MessageEventArgs(e.Message));
             }
         }
 
@@ -190,7 +190,7 @@ namespace ClockIn
             /// <summary>
             ///   Event notifies when hotkey has been pressed.
             /// </summary>
-            public override event HandledEventHandler Pressed;
+            public override event HandledEventHandler Press;
 
 
             private const uint MOD_ALT     = 0x0001;
@@ -348,7 +348,7 @@ namespace ClockIn
             public bool TriggerEvent()
             {
                 HandledEventArgs e = new HandledEventArgs();
-                Pressed?.Invoke(this, e);
+                Press?.Invoke(this, e);
 
                 return e.Handled;
             }
