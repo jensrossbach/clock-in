@@ -32,6 +32,9 @@ namespace ClockIn
         {
             mainWindow = mainWin;
             InitializeComponent();
+
+            Properties.Settings.Default.SettingChanging += Default_SettingChanging;
+            Properties.Settings.Default.PropertyChanged += Default_PropertyChanged;
         }
 
 
@@ -317,6 +320,24 @@ namespace ClockIn
             }
         }
 
+        private void SetControlStates()
+        {
+            if (Properties.Settings.Default.SystemNotifications)
+            {
+                cbxNotificationAlwayOnTop.Enabled = false;
+                cbxPlaySound.Enabled = false;
+                btnSelectSound.Enabled = false;
+                lblSoundFile.Visible = false;
+            }
+            else
+            {
+                cbxNotificationAlwayOnTop.Enabled = true;
+                cbxPlaySound.Enabled = true;
+                btnSelectSound.Enabled = Properties.Settings.Default.PlaySound;
+                lblSoundFile.Visible = true;
+            }
+        }
+
         private void Default_SettingChanging(object sender, System.Configuration.SettingChangingEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("[OptionsDialog] Setting '" + e.SettingName + "' is about to be changed.");
@@ -371,6 +392,14 @@ namespace ClockIn
             }
         }
 
+        private void Default_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if ((e.PropertyName == "PlaySound") || (e.PropertyName == "SystemNotifications"))
+            {
+                SetControlStates();
+            }
+        }
+
         /// <summary>
         ///   Handles the event when the dialog window is loading.
         /// </summary>
@@ -389,7 +418,7 @@ namespace ClockIn
                 lblSoundFile.Text = Path.GetFileNameWithoutExtension(Properties.Settings.Default.SoundFile);
             }
 
-            Properties.Settings.Default.SettingChanging += Default_SettingChanging;
+            SetControlStates();
         }
 
         /// <summary>

@@ -454,5 +454,17 @@ namespace ClockIn.Properties {
                 this["NotifyOnClockInOut"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SystemNotifications {
+            get {
+                return ((bool)(this["SystemNotifications"]));
+            }
+            set {
+                this["SystemNotifications"] = value;
+            }
+        }
     }
 }

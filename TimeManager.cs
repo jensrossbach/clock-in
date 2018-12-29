@@ -11,12 +11,42 @@ using Microsoft.Win32;
 
 namespace ClockIn
 {
+
     /// <summary>
     ///   Calculates all time related values like elapsed and remaining working
     ///   time, total and chargeable absence time and manages notification timers.
     /// </summary>
     class TimeManager
     {
+        /// <summary>
+        ///   Arguments for working time alert events
+        /// </summary>
+        public class WorkingTimeAlertEventArgs : EventArgs
+        {
+            /// <summary>
+            ///   Working level
+            /// </summary>
+            public WorkingLevel Level { get; set; }
+
+            /// <summary>
+            ///   Time in minutes ahead of the actual working time limit
+            ///   (only applicable to ahead levels)
+            /// </summary>
+            public int AheadTime { get; set; }
+
+            /// <summary>
+            ///   Default constructor of the class
+            /// </summary>
+            /// <param name="level">Working level</param>
+            /// <param name="aheadTime">Ahead time in minutes</param>
+            public WorkingTimeAlertEventArgs(WorkingLevel level, int aheadTime = 0)
+            {
+                Level = level;
+                AheadTime = aheadTime;
+            }
+        }
+
+        
         /// <summary>
         ///   Levels of work which can be reached during the day
         /// </summary>
@@ -53,6 +83,11 @@ namespace ClockIn
 
 
         /// <summary>
+        ///   Event handler for working time alerts
+        /// </summary>
+        public delegate void WorkingTimeAlertEventHandler(object sender, WorkingTimeAlertEventArgs e);
+
+        /// <summary>
         ///   Event notifies when absence has been updated.
         /// </summary>
         public event EventHandler AbsenceUpdated;
@@ -68,9 +103,14 @@ namespace ClockIn
         public event EventHandler LeaveTimeUpdated;
 
         /// <summary>
-        ///   Event notifies whenworking state has been updated.
+        ///   Event notifies when working state has been updated.
         /// </summary>
         public event EventHandler WorkingStateUpdated;
+
+        /// <summary>
+        ///   Event notifies when a working time alert occurs.
+        /// </summary>
+        public event WorkingTimeAlertEventHandler WorkingTimeAlert;
 
 
         /// <summary>
@@ -300,19 +340,21 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Restarts the notification timer for notifying about maximum
-        ///   working time reached.
+        ///   Restarts the notification timer for repeatedly 
+        ///   notifying about maximum working time reached.
         /// </summary>
         /// <param name="minutes">Delay for the timer</param>
-        public void RestartMaxTimeTimer(int minutes)
+        public void RepeatNotificationTimer(int minutes)
         {
             if (minutes > 0)
             {
-                session.NotifyLevel = 1;
+                session.NotifyLevel = 3;
                 session.Save();
 
                 notifyTimer.Interval = minutes * 60 * 1000;
                 notifyTimer.Start();
+
+                Debug.WriteLine("[TimeManager] Notify timer started at level " + session.NotifyLevel + " (" + minutes + " min).");
             }
         }
 
@@ -360,7 +402,7 @@ namespace ClockIn
             }
 
             this.state = state;
-            NotifyWorkingStateUpdated();
+            WorkingStateUpdated?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -380,31 +422,58 @@ namespace ClockIn
         /// </summary>
         private void CheckExpiration()
         {
-            TimeSpan workingTime = GetElapsedWorkingTime(out WorkingLevel level);
+            TimeSpan ts = GetElapsedWorkingTime(out WorkingLevel level);
 
-            if (level == WorkingLevel.MaxTimeViolation)
+            if (session.NotifyLevel < (int)level)
             {
-                NotifyMaximumTimeLimit(false);
-            }
-            else if (level == WorkingLevel.ApproachingMaxTime)
-            {
-                NotifyMaximumTimeLimit(true);
-            }
-            else if (level == WorkingLevel.OverTime)
-            {
-                NotifyRegularTimeLimit(false);
-            }
-            else if (level == WorkingLevel.AheadOfClosingTime)
-            {
-                NotifyRegularTimeLimit(true);
+                int aheadTime = 0;
+                if (level == WorkingLevel.AheadOfClosingTime)
+                {
+                    aheadTime = GetRemainingMinutes((int)settings.RegularWorkingTime);
+                }
+                else if (level == WorkingLevel.ApproachingMaxTime)
+                {
+                    aheadTime = GetRemainingMinutes((int)settings.MaximumWorkingTime);
+                }
+
+                WorkingTimeAlert?.Invoke(this, new WorkingTimeAlertEventArgs(level, aheadTime));
+                session.NotifyLevel = (int)level;
             }
 
             notifyTimer.Stop();
 
-            if (session.NotifyLevel < 1)
+            switch (session.NotifyLevel)
             {
-                workingTime = CalculateRemainingTime((int)settings.RegularWorkingTime) - new TimeSpan(0, (int)settings.NotifyRegAdvance, 0);
-                int interval = (int)(workingTime.Ticks / TimeSpan.TicksPerMillisecond);
+                case 0:
+                {
+                    ts = CalculateRemainingTime((int)settings.RegularWorkingTime) - new TimeSpan(0, (int)settings.NotifyRegAdvance, 0);
+                    break;
+                }
+                case 1:
+                {
+                    ts = CalculateRemainingTime((int)settings.RegularWorkingTime);
+                    break;
+                }
+                case 2:
+                {
+                    ts = CalculateRemainingTime((int)settings.MaximumWorkingTime) - new TimeSpan(0, (int)settings.NotifyAdvance, 0);
+                    break;
+                }
+                case 3:
+                {
+                    ts = CalculateRemainingTime((int)settings.MaximumWorkingTime);
+                    break;
+                }
+                default:
+                {
+                    ts = TimeSpan.Zero;
+                    break;
+                }
+            }
+
+            if (ts != TimeSpan.Zero)
+            {
+                int interval = (int)ts.TotalMilliseconds;
                 if (interval > 0)
                 {
                     notifyTimer.Interval = interval;
@@ -413,75 +482,8 @@ namespace ClockIn
                     Debug.WriteLine("[TimeManager] Notify timer started at level " + session.NotifyLevel + " (" + interval + " ms).");
                 }
             }
-            else if (session.NotifyLevel < 2)
-            {
-                workingTime = CalculateRemainingTime((int)settings.MaximumWorkingTime) - new TimeSpan(0, (int)settings.NotifyAdvance, 0);
-                int interval = (int)(workingTime.Ticks / TimeSpan.TicksPerMillisecond);
-                if (interval > 0)
-                {
-                    notifyTimer.Interval = interval;
-                    notifyTimer.Start();
 
-                    Debug.WriteLine("[TimeManager] Notify timer started at level " + session.NotifyLevel + " (" + interval + " ms).");
-                }
-            }
-
-            NotifyWorkingTimeUpdated();
-        }
-
-        /// <summary>
-        ///   Notifies that regular working time has been reached.
-        /// </summary>
-        private void NotifyRegularTimeLimit(bool ahead)
-        {
-            if (session.NotifyLevel < 1)
-            {
-                session.NotifyLevel = 1;
-                session.Save();
-
-                NotificationDialog dlg = new NotificationDialog();
-
-                string message;
-                if (ahead)
-                {
-                    message = string.Format(Properties.Resources.AheadOfRegularTimeLimit, GetRemainingMinutes((int)settings.RegularWorkingTime));
-                }
-                else
-                {
-                    message = Properties.Resources.RegularTimeLimitReached;
-                }
-
-                dlg.Initialize(Properties.Resources.BigSmile, message, false);
-                dlg.Show();
-            }
-        }
-
-        /// <summary>
-        ///   Notifies that maximum working time has been reached.
-        /// </summary>
-        /// <param name="approaching">true if we are ahead of maximum working time</param>
-        private void NotifyMaximumTimeLimit(bool approaching)
-        {
-            if (session.NotifyLevel < 2)
-            {
-                session.NotifyLevel = 2;
-                session.Save();
-
-                NotificationDialog dlg = new NotificationDialog();
-
-                string message;
-                if (approaching)
-                {
-                    message = string.Format(Properties.Resources.ApproachingMaximumTimeLimit, GetRemainingMinutes((int)settings.MaximumWorkingTime));
-                }
-                else
-                {
-                    message = Properties.Resources.MaxmimumTimeLimitReached;
-                }
-
-                dlg.Initialize(approaching ? Properties.Resources.Ooooh : Properties.Resources.Sad, message, approaching);
-                dlg.Show();
-            }
+            WorkingTimeUpdated?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -489,7 +491,7 @@ namespace ClockIn
         /// </summary>
         /// <param name="clearWorkingTimeHours">Number of hours to work</param>
         /// <returns>Remaining minutes</returns>
-        int GetRemainingMinutes(int clearWorkingTimeHours)
+        private int GetRemainingMinutes(int clearWorkingTimeHours)
         {
             return (int)Math.Ceiling((CalculateLeaveTime(clearWorkingTimeHours) - DateTime.Now).TotalMinutes);
         }
@@ -584,7 +586,7 @@ namespace ClockIn
             }
 
             TotalAbsence += breakAdder;
-            NotifyAbsenceUpdated();
+            AbsenceUpdated?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -641,7 +643,7 @@ namespace ClockIn
             Debug.WriteLine("[TimeManager] Total absence has been updated.");
 
             CheckExpiration();
-            NotifyLeaveTimeUpdated();
+            LeaveTimeUpdated?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -717,7 +719,7 @@ namespace ClockIn
                 case "MaximumWorkingTime":
                 {
                     CheckExpiration();
-                    NotifyLeaveTimeUpdated();
+                    LeaveTimeUpdated?.Invoke(this, new EventArgs());
 
                     break;
                 }
@@ -796,6 +798,11 @@ namespace ClockIn
             UpdateTotalAbsence();
         }
 
+        /// <summary>
+        ///   Handles expiration of the end-of-day timer.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void EodTimer_Tick(object sender, EventArgs e)
         {
             Debug.WriteLine("[TimeManager] End-of-day timer expired.");
@@ -820,10 +827,5 @@ namespace ClockIn
 
             SetupEoDTimer();
         }
-
-        private void NotifyAbsenceUpdated() => AbsenceUpdated?.Invoke(this, new EventArgs());
-        private void NotifyWorkingTimeUpdated() => WorkingTimeUpdated?.Invoke(this, new EventArgs());
-        private void NotifyLeaveTimeUpdated() => LeaveTimeUpdated?.Invoke(this, new EventArgs());
-        private void NotifyWorkingStateUpdated() => WorkingStateUpdated?.Invoke(this, new EventArgs());
     }
 }

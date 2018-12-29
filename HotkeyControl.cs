@@ -133,8 +133,10 @@ namespace ClockIn
         public void ResetHotkey()
         {
             Console.WriteLine("HotkeyControl: ResetHotkey");
+
             keyCode = Keys.None;
             keyModifiers = Keys.None;
+
             Render();
         }
 

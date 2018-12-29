@@ -147,6 +147,11 @@ namespace ClockIn
         /// <param name="hotkey">Hotkey to unregister</param>
         public void UnregisterHotkey(Hotkey hotkey)
         {
+            if (hotkey == null)
+            {
+                throw new ArgumentException("Argument must not be null", "hotkey");
+            }
+
             GlobalHotkey ghk = (GlobalHotkey)hotkey;
 
             ghk.Unregister();
@@ -176,6 +181,7 @@ namespace ClockIn
             return ret;
         }
 
+
         /// <summary>
         ///   Global hotkey implementation
         /// </summary>
@@ -187,9 +193,9 @@ namespace ClockIn
             public override event HandledEventHandler Pressed;
 
 
-            private const uint MOD_ALT = 0x0001;
+            private const uint MOD_ALT     = 0x0001;
             private const uint MOD_CONTROL = 0x0002;
-            private const uint MOD_SHIFT = 0x0004;
+            private const uint MOD_SHIFT   = 0x0004;
 
             private const uint ERROR_HOTKEY_ALREADY_REGISTERED = 1409;
 
@@ -254,10 +260,7 @@ namespace ClockIn
             public Keys Key
             {
                 get => Merge(modifiers, code);
-                set
-                {
-                    Split(value, out modifiers, out code);
-                }
+                set => Split(value, out modifiers, out code);
             }
 
             /// <summary>
@@ -296,13 +299,13 @@ namespace ClockIn
 
                     if (RegisterHotKey(winHandle, Identifier, mod, (uint)code))
                     {
-                        Debug.WriteLine("[Hotkey] Hotkey " + ToString() + " successfully registered.");
+                        Debug.WriteLine("[GlobalHotkey] Hotkey " + ToString() + " successfully registered.");
 
                         hWnd = winHandle;
                     }
                     else
                     {
-                        Debug.WriteLine("[Hotkey] Failed to register hotkey " + ToString() + "!");
+                        Debug.WriteLine("[GlobalHotkey] Failed to register hotkey " + ToString() + "!");
 
                         Identifier = 0;
 
@@ -327,14 +330,14 @@ namespace ClockIn
                 {
                     if (UnregisterHotKey(hWnd, Identifier))
                     {
-                        Debug.WriteLine("[Hotkey] Hotkey " + ToString() + " successfully unregistered.");
+                        Debug.WriteLine("[GlobalHotkey] Hotkey " + ToString() + " successfully unregistered.");
 
                         hWnd = IntPtr.Zero;
                         Identifier = 0;
                     }
                     else
                     {
-                        Debug.WriteLine("[Hotkey] Failed to unregister hotkey " + ToString() + "!");
+                        Debug.WriteLine("[GlobalHotkey] Failed to unregister hotkey " + ToString() + "!");
                     }
                 }
             }

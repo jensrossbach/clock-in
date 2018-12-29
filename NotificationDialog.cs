@@ -18,34 +18,25 @@ namespace ClockIn
         /// <summary>
         ///   Default constructor of the class
         /// </summary>
-        public NotificationDialog()
+        /// <param name="img">Icon to be shown</param>
+        /// <param name="text">Text to be shown</param>
+        /// <param name="enableNotifyAgain">true if controls for repeating notification should be shown</param>
+        public NotificationDialog(Image img, string text, bool enableNotifyAgain)
         {
             InitializeComponent();
 
-            Location = new Point((Screen.PrimaryScreen.Bounds.Width - Size.Width) / 2, (Screen.PrimaryScreen.Bounds.Height - Size.Height) / 2);
             TopMost = Properties.Settings.Default.NotificationAlwaysOnTop;
-        }
 
-
-        /// <summary>
-        ///   Initializes the notification dialog.
-        /// </summary>
-        /// <param name="img">Icon to be shown</param>
-        /// <param name="text">Text to be shown</param>
-        /// <param name="enableRepeat">true if controls for repeating notification should be shown</param>
-        public void Initialize(Image img, string text, bool enableRepeat)
-        {
             lblIcon.Image = img;
             lblText.Text = text;
 
-            if (enableRepeat)
+            if (enableNotifyAgain)
             {
                 cbxNotifyAgain.Visible = true;
                 nmcNotifyAgain.Visible = true;
                 lblMin.Visible = true;
 
                 cbxNotifyAgain.Checked = true;
-                nmcNotifyAgain.Value = Properties.Settings.Default.NotifyAdvance;
             }
             else
             {
@@ -56,6 +47,7 @@ namespace ClockIn
                 cbxNotifyAgain.Checked = false;
             }
         }
+
 
         /// <summary>
         ///   Handles the event when the dialog window is loading.
@@ -90,7 +82,7 @@ namespace ClockIn
         {
             if (cbxNotifyAgain.Checked)
             {
-                Program.TimeMgr.RestartMaxTimeTimer((int)nmcNotifyAgain.Value);
+                Program.TimeMgr.RepeatNotificationTimer((int)nmcNotifyAgain.Value);
             }
         }
 

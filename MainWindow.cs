@@ -56,6 +56,7 @@ namespace ClockIn
             timeMgr.WorkingTimeUpdated += TimeMgr_WorkingTimeUpdated;
             timeMgr.LeaveTimeUpdated += TimeMgr_LeaveTimeUpdated;
             timeMgr.WorkingStateUpdated += TimeMgr_WorkingStateUpdated;
+            timeMgr.WorkingTimeAlert += TimeMgr_WorkingTimeAlert;
 
             InitializeComponent();
             lblLeaveTimeIcon.Image = Properties.Resources.Power;
@@ -710,6 +711,58 @@ namespace ClockIn
             }
 
             UpdateLeaveTime(Visible);
+        }
+
+        /// <summary>
+        ///   Handles a working time alert.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void TimeMgr_WorkingTimeAlert(object sender, TimeManager.WorkingTimeAlertEventArgs e)
+        {
+            Image icon = null;
+            string message = null;
+
+            switch (e.Level)
+            {
+                case TimeManager.WorkingLevel.AheadOfClosingTime:
+                {
+                    icon = Properties.Resources.BigSmile;
+                    message = string.Format(Properties.Resources.AheadOfRegularTimeLimit, e.AheadTime);
+
+                    break;
+                }
+                case TimeManager.WorkingLevel.OverTime:
+                {
+                    icon = Properties.Resources.BigSmile;
+                    message = Properties.Resources.RegularTimeLimitReached;
+
+                    break;
+                }
+                case TimeManager.WorkingLevel.ApproachingMaxTime:
+                {
+                    icon = Properties.Resources.Ooooh;
+                    message = string.Format(Properties.Resources.ApproachingMaximumTimeLimit, e.AheadTime);
+
+                    break;
+                }
+                case TimeManager.WorkingLevel.MaxTimeViolation:
+                {
+                    icon = Properties.Resources.Sad;
+                    message = Properties.Resources.MaxmimumTimeLimitReached;
+
+                    break;
+                }
+            }
+
+            if (settings.SystemNotifications)
+            {
+                icnTrayIcon.ShowBalloonTip(5000, "ClockIn", message, ToolTipIcon.None);
+            }
+            else
+            {
+                new NotificationDialog(icon, message, e.Level == TimeManager.WorkingLevel.MaxTimeViolation).Show();
+            }
         }
 
         /// <summary>
