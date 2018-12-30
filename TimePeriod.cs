@@ -90,7 +90,15 @@ namespace ClockIn
 
                 if (startTime != val)
                 {
-                    startTime = val;
+                    if (val > endTime)
+                    {
+                        startTime = endTime;
+                    }
+                    else
+                    {
+                        startTime = val;
+                    }
+
                     NotifyPropertyChanged();
                 }
             }

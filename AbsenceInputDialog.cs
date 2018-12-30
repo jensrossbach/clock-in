@@ -29,6 +29,9 @@ namespace ClockIn
             InitializeComponent();
             Text = title;
 
+            erpValidation.SetIconAlignment(btnOK, ErrorIconAlignment.MiddleLeft);
+            erpValidation.SetIconPadding(btnOK, 2);
+
             dtpBeginTime.DataBindings.Add("Value", tempTimePeriod, "StartTime");
             dtpEndTime.DataBindings.Add("Value", tempTimePeriod, "EndTime");
         }
@@ -38,7 +41,7 @@ namespace ClockIn
         ///   Status if entered time period is valid
         /// </summary>
         /// <returns>true if time period is valid, false otherwise</returns>
-        private bool ValidTimePeriod => (tempTimePeriod.StartTime < tempTimePeriod.EndTime) ? true : false;
+        private bool ValidTimePeriod => tempTimePeriod.StartTime < tempTimePeriod.EndTime;
 
         /// <summary>
         ///   Status if entered time period is overlapping with other time periods
@@ -60,40 +63,6 @@ namespace ClockIn
             }
         }
 
-        /// <summary>
-        ///   Status if entered input is valid
-        /// </summary>
-        /// <returns>true if input is valid, false otherwise</returns>
-        private bool ValidInput
-        {
-            get
-            {
-                if (!ValidTimePeriod)
-                {
-                    MessageBox.Show(Properties.Resources.InvalidAbsencePeriod,
-                                    Properties.Resources.WindowCaption,
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
-
-                    return false;
-                }
-                else if (Overlapping)
-                {
-                    MessageBox.Show(Properties.Resources.OverlappingAbsence,
-                                    Properties.Resources.WindowCaption,
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
-
-                    return false;
-                }
-                else
-                {
-                    ApplyInput();
-                    return true;
-                }
-            }
-        }
-
 
         /// <summary>
         ///   Applies the entered input to the passed time period.
@@ -110,9 +79,21 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void BtnOK_Click(object sender, System.EventArgs e)
         {
-            if (ValidInput)
+            erpValidation.SetError(btnOK, "");
+
+            if (!ValidTimePeriod)
             {
+                erpValidation.SetError(btnOK, Properties.Resources.InvalidAbsencePeriod);
+            }
+            else if (Overlapping)
+            {
+                erpValidation.SetError(btnOK, Properties.Resources.OverlappingAbsence);
+            }
+            else
+            {
+                ApplyInput();
                 DialogResult = DialogResult.OK;
+
                 Close();
             }
         }

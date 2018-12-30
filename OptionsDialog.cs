@@ -33,6 +33,25 @@ namespace ClockIn
             mainWindow = mainWin;
             InitializeComponent();
 
+            erpValidation.SetIconAlignment(nmcRegularTime, ErrorIconAlignment.MiddleLeft);
+            erpValidation.SetIconPadding(nmcRegularTime, 2);
+            erpValidation.SetIconAlignment(nmcMaxTime, ErrorIconAlignment.MiddleLeft);
+            erpValidation.SetIconPadding(nmcMaxTime, 2);
+            erpValidation.SetIconAlignment(dtpBreaksBegin, ErrorIconAlignment.MiddleLeft);
+            erpValidation.SetIconPadding(dtpBreaksBegin, 2);
+            erpValidation.SetIconAlignment(dtpBreaksEnd, ErrorIconAlignment.MiddleLeft);
+            erpValidation.SetIconPadding(dtpBreaksEnd, 2);
+            erpValidation.SetIconAlignment(nmcBreak, ErrorIconAlignment.MiddleLeft);
+            erpValidation.SetIconPadding(nmcBreak, 2);
+            erpValidation.SetIconAlignment(nmcWorkspan1, ErrorIconAlignment.MiddleLeft);
+            erpValidation.SetIconPadding(nmcWorkspan1, 2);
+            erpValidation.SetIconAlignment(nmcWorkspan2, ErrorIconAlignment.MiddleLeft);
+            erpValidation.SetIconPadding(nmcWorkspan2, 2);
+            erpValidation.SetIconAlignment(nmcAdder1, ErrorIconAlignment.MiddleLeft);
+            erpValidation.SetIconPadding(nmcAdder1, 2);
+            erpValidation.SetIconAlignment(nmcAdder2, ErrorIconAlignment.MiddleLeft);
+            erpValidation.SetIconPadding(nmcAdder2, 2);
+
             Properties.Settings.Default.SettingChanging += Default_SettingChanging;
             Properties.Settings.Default.PropertyChanged += Default_PropertyChanged;
         }
@@ -52,7 +71,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.RegularTimeGreaterMaxTime, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    erpValidation.SetError(nmcRegularTime, Properties.Resources.RegularTimeGreaterMaxTime);
                 }
 
                 ret = true;
@@ -61,7 +80,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.BreakGreaterRegularMaxTime, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    erpValidation.SetError(nmcRegularTime, Properties.Resources.BreakGreaterRegularMaxTime);
                 }
 
                 ret = true;
@@ -84,7 +103,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.RegularTimeGreaterMaxTime, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    erpValidation.SetError(nmcMaxTime, Properties.Resources.RegularTimeGreaterMaxTime);
                 }
 
                 ret = true;
@@ -93,7 +112,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.BreakGreaterRegularMaxTime, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    erpValidation.SetError(nmcMaxTime, Properties.Resources.BreakGreaterRegularMaxTime);
                 }
 
                 ret = true;
@@ -116,7 +135,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.BreaksBeginAfterBreaksEnd, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    erpValidation.SetError(dtpBreaksBegin, Properties.Resources.BreaksBeginAfterBreaksEnd);
                 }
 
                 ret = true;
@@ -139,7 +158,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.BreaksBeginAfterBreaksEnd, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    erpValidation.SetError(dtpBreaksEnd, Properties.Resources.BreaksBeginAfterBreaksEnd);
                 }
 
                 ret = true;
@@ -162,7 +181,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.BreakGreaterRegularMaxTime, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    erpValidation.SetError(nmcBreak, Properties.Resources.BreakGreaterRegularMaxTime);
                 }
 
                 ret = true;
@@ -185,7 +204,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.OutsideLunchWorkspan1Greater2, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    erpValidation.SetError(nmcWorkspan1, Properties.Resources.OutsideLunchWorkspan1Greater2);
                 }
 
                 ret = true;
@@ -194,7 +213,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.OutsideLunchAdderGreaterThanWorkspan, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    erpValidation.SetError(nmcWorkspan1, Properties.Resources.OutsideLunchAdderGreaterThanWorkspan);
                 }
 
                 ret = true;
@@ -217,7 +236,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.OutsideLunchWorkspan1Greater2, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    erpValidation.SetError(nmcWorkspan2, Properties.Resources.OutsideLunchWorkspan1Greater2);
                 }
 
                 ret = true;
@@ -226,7 +245,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.OutsideLunchAdderGreaterThanWorkspan, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    erpValidation.SetError(nmcWorkspan2, Properties.Resources.OutsideLunchAdderGreaterThanWorkspan);
                 }
 
                 ret = true;
@@ -249,7 +268,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.OutsideLunchAdderGreaterThanWorkspan, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    erpValidation.SetError(nmcAdder1, Properties.Resources.OutsideLunchAdderGreaterThanWorkspan);
                 }
 
                 ret = true;
@@ -272,7 +291,7 @@ namespace ClockIn
             {
                 if (showWarning)
                 {
-                    MessageBox.Show(Properties.Resources.OutsideLunchAdderGreaterThanWorkspan, Properties.Resources.WindowCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    erpValidation.SetError(nmcAdder2, Properties.Resources.OutsideLunchAdderGreaterThanWorkspan);
                 }
 
                 ret = true;
@@ -320,6 +339,9 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Sets different control states.
+        /// </summary>
         private void SetControlStates()
         {
             if (Properties.Settings.Default.SystemNotifications)
@@ -338,6 +360,11 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Handles the event when a setting is about to be changed.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void Default_SettingChanging(object sender, System.Configuration.SettingChangingEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("[OptionsDialog] Setting '" + e.SettingName + "' is about to be changed.");
@@ -392,6 +419,11 @@ namespace ClockIn
             }
         }
 
+        /// <summary>
+        ///   Handles the event when a setting has changed.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
         private void Default_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if ((e.PropertyName == "PlaySound") || (e.PropertyName == "SystemNotifications"))
@@ -444,6 +476,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void NmcRegularTime_Validating(object sender, CancelEventArgs e)
         {
+            erpValidation.SetError(nmcRegularTime, "");
             e.Cancel = ValidateRegularWorkingTime(nmcRegularTime.Value, true);
         }
 
@@ -455,6 +488,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void NmcMaxTime_Validating(object sender, CancelEventArgs e)
         {
+            erpValidation.SetError(nmcMaxTime, "");
             e.Cancel = ValidateMaximumWorkingTime(nmcMaxTime.Value, true);
         }
 
@@ -466,6 +500,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void DtpBreaksBegin_Validating(object sender, CancelEventArgs e)
         {
+            erpValidation.SetError(dtpBreaksBegin, "");
             e.Cancel = ValidateBreaksBegin(dtpBreaksBegin.Value, true);
         }
 
@@ -477,6 +512,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void DtpBreaksEnd_Validating(object sender, CancelEventArgs e)
         {
+            erpValidation.SetError(dtpBreaksEnd, "");
             e.Cancel = ValidateBreaksEnd(dtpBreaksEnd.Value, true);
         }
 
@@ -488,6 +524,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void NmcBreak_Validating(object sender, CancelEventArgs e)
         {
+            erpValidation.SetError(nmcBreak, "");
             e.Cancel = ValidateBreak(nmcBreak.Value, true);
         }
 
@@ -499,6 +536,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void NmcWorkspan1_Validating(object sender, CancelEventArgs e)
         {
+            erpValidation.SetError(nmcWorkspan1, "");
             e.Cancel = ValidateWorkspan1(nmcWorkspan1.Value, true);
         }
 
@@ -510,6 +548,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void NmcWorkspan2_Validating(object sender, CancelEventArgs e)
         {
+            erpValidation.SetError(nmcWorkspan2, "");
             e.Cancel = ValidateWorkspan2(nmcWorkspan2.Value, true);
         }
 
@@ -521,6 +560,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void NmcAdder1_Validating(object sender, CancelEventArgs e)
         {
+            erpValidation.SetError(nmcAdder1, "");
             e.Cancel = ValidateAdder1(nmcAdder1.Value, true);
         }
 
@@ -532,6 +572,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void NmcAdder2_Validating(object sender, CancelEventArgs e)
         {
+            erpValidation.SetError(nmcAdder2, "");
             e.Cancel = ValidateAdder2(nmcAdder2.Value, true);
         }
 
@@ -557,7 +598,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void BtnHotkeys_Click(object sender, EventArgs e)
         {
-            new HotkeysDialog().ShowDialog(this);
+            new HotkeysDialog(mainWindow).ShowDialog(this);
         }
 
         /// <summary>

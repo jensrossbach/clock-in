@@ -28,7 +28,6 @@ namespace ClockIn
         }
 
 
-        private bool initialized = false;
         private bool exit = false;
 
         private Hotkey hkShowMainWin = null;
@@ -58,8 +57,6 @@ namespace ClockIn
             timeMgr.LeaveTimeUpdated += TimeMgr_LeaveTimeUpdated;
             timeMgr.WorkingStateUpdated += TimeMgr_WorkingStateUpdated;
             timeMgr.WorkingTimeAlert += TimeMgr_WorkingTimeAlert;
-
-            hotkeyMgr.HotkeyRegistrationWarning += HotkeyMgr_HotkeyRegistrationWarning;
 
             InitializeComponent();
             lblLeaveTimeIcon.Image = Properties.Resources.Power;
@@ -189,6 +186,35 @@ namespace ClockIn
 
                 icnTrayIcon.Text = string.Format(Properties.Resources.TooltipTextAbsent, timeMgr.ClockOutTime.ToString(@"HH\:mm"));
             }
+        }
+
+        /// <summary>
+        ///   Registers a hotkey.
+        /// </summary>
+        /// <param name="hotkey">Name of hotkey (from settings) to register</param>
+        /// <param name="key">Key combination to assign to the hotkey</param>
+        /// <param name="control">Control which is assigned with error provider (optional)</param>
+        /// <param name="errorProvider">Error provider to show registration errors (optional)</param>
+        /// <returns>true if registration was successful, false otherwise</returns>
+        public bool RegisterHotkey(string hotkey, Keys key, Control control = null, ErrorProvider errorProvider = null)
+        {
+            bool ret = false;
+
+            switch (hotkey)
+            {
+                case "MainWindowHotkey":
+                {
+                    ret = RegisterHotkey(ref hkShowMainWin, key, HkShowMainWin_Press, control, errorProvider);
+                    break;
+                }
+                case "ClockInOutHotkey":
+                {
+                    ret = RegisterHotkey(ref hkClockInOut, key, HkClockInOut_Press, control, errorProvider);
+                    break;
+                }
+            }
+
+            return ret;
         }
 
         /// <summary>
@@ -323,42 +349,51 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Registers all hotkeys.
+        ///   Registers or reregisters a hotkey.
         /// </summary>
-        /// <param name="hotkey">Name of hotkey (from settings) to register or null to register all hotkeys</param>
-        private void RegisterHotkeys(string hotkey)
+        /// <param name="hotkey">Hotkey to register or reregister (will be newly assigned when null)</param>
+        /// <param name="key">Key combination to assign to the hotkey</param>
+        /// <param name="handler">Event handler for handling hotkey presses (only needed when registering new hotkey)</param>
+        /// <param name="control">Control which is assigned with error provider (optional)</param>
+        /// <param name="errorProvider">Error provider to show registration errors (optional)</param>
+        /// <returns>true if registration was successful, false otherwise</returns>
+        /// <exception cref="ArgumentException">Thrown when argument 'handler' is null in case argument 'hotkey' is not null.</exception>
+        private bool RegisterHotkey(ref Hotkey hotkey, Keys key, HandledEventHandler handler = null, Control control = null, ErrorProvider errorProvider = null)
         {
-            if ((hotkey == null) || (hotkey == "MainWindowHotkey"))
+            bool ret = false;
+
+            try
             {
-                if (hkShowMainWin == null)
+                if (hotkey == null)
                 {
-                    hkShowMainWin = hotkeyMgr.RegisterHotkey(settings.MainWindowHotkey, this);
-                    if (hkShowMainWin != null)
+                    if (handler == null)
                     {
-                        hkShowMainWin.Press += HkShowMainWin_Press;
+                        throw new ArgumentException("Event handler is required when registering new hotkey", "handler");
                     }
+
+                    hotkey = hotkeyMgr.RegisterHotkey(key, this);
+                    hotkey.Press += handler;
                 }
                 else
                 {
-                    hotkeyMgr.ReregisterHotkey(hkShowMainWin, settings.MainWindowHotkey, this);
+                    hotkeyMgr.ReregisterHotkey(hotkey, key, this);
+                }
+
+                ret = true;
+            }
+            catch (HotkeyRegisterException e)
+            {
+                if ((control != null) && (errorProvider != null))
+                {
+                    errorProvider.SetError(control, e.Message);
+                }
+                else
+                {
+                    icnTrayIcon.ShowBalloonTip(5000, "ClockIn", e.Message, ToolTipIcon.Warning);
                 }
             }
 
-            if ((hotkey == null) || (hotkey == "ClockInOutHotkey"))
-            {
-                if (hkClockInOut == null)
-                {
-                    hkClockInOut = hotkeyMgr.RegisterHotkey(settings.ClockInOutHotkey, this);
-                    if (hkClockInOut != null)
-                    {
-                        hkClockInOut.Press += HkClockInOut_Press;
-                    }
-                }
-                else
-                {
-                    hotkeyMgr.ReregisterHotkey(hkClockInOut, settings.ClockInOutHotkey, this);
-                }
-            }
+            return ret;
         }
 
         /// <summary>
@@ -377,8 +412,8 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            RegisterHotkeys(null);
-            initialized = true;
+            RegisterHotkey("MainWindowHotkey", settings.MainWindowHotkey);
+            RegisterHotkey("ClockInOutHotkey", settings.ClockInOutHotkey);
         }
 
         /// <summary>
@@ -770,26 +805,6 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Handles a hotkey registration warning.
-        /// </summary>
-        /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void HotkeyMgr_HotkeyRegistrationWarning(object sender, MessageEventArgs e)
-        {
-            if (initialized)
-            {
-                MessageBox.Show(e.Message,
-                                Properties.Resources.WindowCaption,
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
-            else
-            {
-                icnTrayIcon.ShowBalloonTip(5000, "ClockIn", e.Message, ToolTipIcon.Warning);
-            }
-        }
-
-        /// <summary>
         ///   Handles the change of a user setting.
         /// </summary>
         /// <param name="sender">Event origin</param>
@@ -806,12 +821,6 @@ namespace ClockIn
                     }
 
                     UpdateLeaveTime(Visible);
-                    break;
-                }
-                case "MainWindowHotkey":
-                case "ClockInOutHotkey":
-                {
-                    RegisterHotkeys(e.PropertyName);
                     break;
                 }
                 case "FlatIconOnNewWindows":

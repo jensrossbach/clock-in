@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HotkeysDialog));
             this.lblRestoreMainWin = new System.Windows.Forms.Label();
             this.lblClockInOut = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.erpHotkeys = new System.Windows.Forms.ErrorProvider(this.components);
             this.hkcClockInOut = new ClockIn.HotkeyControl();
             this.hkcRestoreMainWin = new ClockIn.HotkeyControl();
+            ((System.ComponentModel.ISupportInitialize)(this.erpHotkeys)).BeginInit();
             this.SuspendLayout();
             // 
             // lblRestoreMainWin
@@ -53,14 +56,20 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
+            // erpHotkeys
+            // 
+            this.erpHotkeys.ContainerControl = this;
+            // 
             // hkcClockInOut
             // 
             this.hkcClockInOut.DataBindings.Add(new System.Windows.Forms.Binding("Hotkey", global::ClockIn.Properties.Settings.Default, "ClockInOutHotkey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.hkcClockInOut.Hotkey = global::ClockIn.Properties.Settings.Default.ClockInOutHotkey;
             resources.ApplyResources(this.hkcClockInOut, "hkcClockInOut");
             this.hkcClockInOut.Name = "hkcClockInOut";
+            this.hkcClockInOut.Tag = "ClockInOutHotkey";
             this.hkcClockInOut.Enter += new System.EventHandler(this.HotkeyControl_Enter);
             this.hkcClockInOut.Leave += new System.EventHandler(this.HotkeyControl_Leave);
+            this.hkcClockInOut.Validating += new System.ComponentModel.CancelEventHandler(this.HotkeyControl_Validating);
             // 
             // hkcRestoreMainWin
             // 
@@ -68,8 +77,10 @@
             this.hkcRestoreMainWin.Hotkey = global::ClockIn.Properties.Settings.Default.MainWindowHotkey;
             resources.ApplyResources(this.hkcRestoreMainWin, "hkcRestoreMainWin");
             this.hkcRestoreMainWin.Name = "hkcRestoreMainWin";
+            this.hkcRestoreMainWin.Tag = "MainWindowHotkey";
             this.hkcRestoreMainWin.Enter += new System.EventHandler(this.HotkeyControl_Enter);
             this.hkcRestoreMainWin.Leave += new System.EventHandler(this.HotkeyControl_Leave);
+            this.hkcRestoreMainWin.Validating += new System.ComponentModel.CancelEventHandler(this.HotkeyControl_Validating);
             // 
             // HotkeysDialog
             // 
@@ -87,6 +98,7 @@
             this.Name = "HotkeysDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            ((System.ComponentModel.ISupportInitialize)(this.erpHotkeys)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,5 +111,6 @@
         private System.Windows.Forms.Label lblClockInOut;
         private HotkeyControl hkcClockInOut;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ErrorProvider erpHotkeys;
     }
 }

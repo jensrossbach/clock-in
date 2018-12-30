@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AbsenceInputDialog));
             this.lblBeginTime = new System.Windows.Forms.Label();
             this.lblEndTime = new System.Windows.Forms.Label();
@@ -35,6 +36,8 @@
             this.dtpEndTime = new System.Windows.Forms.DateTimePicker();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.erpValidation = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.erpValidation)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBeginTime
@@ -75,6 +78,10 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
             // 
+            // erpValidation
+            // 
+            this.erpValidation.ContainerControl = this;
+            // 
             // AbsenceInputDialog
             // 
             resources.ApplyResources(this, "$this");
@@ -91,6 +98,7 @@
             this.Name = "AbsenceInputDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            ((System.ComponentModel.ISupportInitialize)(this.erpValidation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,5 +112,6 @@
         private System.Windows.Forms.DateTimePicker dtpEndTime;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.ErrorProvider erpValidation;
     }
 }

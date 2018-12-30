@@ -76,12 +76,6 @@ namespace ClockIn
 
 
         /// <summary>
-        ///   Event notifies when a hotkey registration warning occurs.
-        /// </summary>
-        public event MessageEventHandler HotkeyRegistrationWarning;
-
-
-        /// <summary>
         ///   Enables or disables hotkey handling.
         /// </summary>
         public bool HotkeysEnabled { get; set; } = true;
@@ -93,20 +87,13 @@ namespace ClockIn
         /// <param name="key">Key combination to register</param>
         /// <param name="window">Control to assign hotkey to</param>
         /// <returns>Registered hotkey</returns>
+        /// <exception cref="HotkeyRegisterException">Thrown when hotkey registration failed.</exception>
         public Hotkey RegisterHotkey(Keys key, Control window)
         {
             GlobalHotkey ghk = new GlobalHotkey(key);
 
-            try
-            {
-                ghk.Register(window);
-                globalHotkeys.Add(ghk);
-            }
-            catch (HotkeyRegisterException e)
-            {
-                ghk = null;
-                HotkeyRegistrationWarning?.Invoke(this, new MessageEventArgs(e.Message));
-            }
+            ghk.Register(window);
+            globalHotkeys.Add(ghk);
 
             return ghk;
         }
@@ -117,6 +104,8 @@ namespace ClockIn
         /// <param name="hotkey">Hotkey to re-register</param>
         /// <param name="key">New key combination</param>
         /// <param name="window">Control to register hotkey with</param>
+        /// <exception cref="ArgumentException">Thrown when argument hotkey is null.</exception>
+        /// <exception cref="HotkeyRegisterException">Thrown when hotkey registration failed.</exception>
         public void ReregisterHotkey(Hotkey hotkey, Keys key, Control window)
         {
             if (hotkey == null)
@@ -125,19 +114,22 @@ namespace ClockIn
             }
 
             GlobalHotkey ghk = (GlobalHotkey)hotkey;
-            ghk.Unregister();
 
             Keys oldKey = ghk.Key;
-            ghk.Key = key;
+            if (key != oldKey)
+            {
+                ghk.Unregister();
+                ghk.Key = key;
 
-            try
-            {
-                ghk.Register(window);
-            }
-            catch (HotkeyRegisterException e)
-            {
-                ghk.Key = oldKey;
-                HotkeyRegistrationWarning?.Invoke(this, new MessageEventArgs(e.Message));
+                try
+                {
+                    ghk.Register(window);
+                }
+                catch (HotkeyRegisterException)
+                {
+                    ghk.Key = oldKey;
+                    throw;
+                }
             }
         }
 
@@ -147,15 +139,13 @@ namespace ClockIn
         /// <param name="hotkey">Hotkey to unregister</param>
         public void UnregisterHotkey(Hotkey hotkey)
         {
-            if (hotkey == null)
+            if (hotkey != null)
             {
-                throw new ArgumentException("Argument must not be null", "hotkey");
+                GlobalHotkey ghk = (GlobalHotkey)hotkey;
+
+                ghk.Unregister();
+                globalHotkeys.Remove(ghk);
             }
-
-            GlobalHotkey ghk = (GlobalHotkey)hotkey;
-
-            ghk.Unregister();
-            globalHotkeys.Remove(ghk);
         }
 
         /// <summary>
@@ -273,6 +263,7 @@ namespace ClockIn
             ///   Registers the hotkey at the system.
             /// </summary>
             /// <param name="window">Control to assign hotkey to</param>
+            /// <exception cref="ArgumentException">Thrown when argument window is null.</exception>
             public void Register(Control window)
             {
                 if (window == null)
@@ -287,6 +278,7 @@ namespace ClockIn
             ///   Registers the hotkey at the system.
             /// </summary>
             /// <param name="winHandle">Handle to the main window</param>
+            /// <exception cref="HotkeyRegisterException">Thrown when hotkey registration failed.</exception>
             private void Register(IntPtr winHandle)
             {
                 if ((hWnd == IntPtr.Zero) && (modifiers != Keys.None) && (code != Keys.None))
