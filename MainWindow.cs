@@ -193,28 +193,28 @@ namespace ClockIn
         /// </summary>
         /// <param name="hotkey">Name of hotkey (from settings) to register</param>
         /// <param name="key">Key combination to assign to the hotkey</param>
-        /// <param name="control">Control which is assigned with error provider (optional)</param>
-        /// <param name="errorProvider">Error provider to show registration errors (optional)</param>
-        /// <returns>true if registration was successful, false otherwise</returns>
-        public bool RegisterHotkey(string hotkey, Keys key, Control control = null, ErrorProvider errorProvider = null)
+        /// <param name="showWarning">
+        ///   true to show a warning notification in case of an error,
+        ///   false to throw an exception instead
+        /// </param>
+        /// <exception cref="HotkeyRegisterException">
+        ///   Thrown when an error occurs in case argument 'showWarning' is false.
+        /// </exception>
+        public void RegisterHotkey(string hotkey, Keys key, bool showWarning = true)
         {
-            bool ret = false;
-
             switch (hotkey)
             {
                 case "MainWindowHotkey":
                 {
-                    ret = RegisterHotkey(ref hkShowMainWin, key, HkShowMainWin_Press, control, errorProvider);
+                    RegisterHotkey(ref hkShowMainWin, key, HkShowMainWin_Press, showWarning);
                     break;
                 }
                 case "ClockInOutHotkey":
                 {
-                    ret = RegisterHotkey(ref hkClockInOut, key, HkClockInOut_Press, control, errorProvider);
+                    RegisterHotkey(ref hkClockInOut, key, HkClockInOut_Press, showWarning);
                     break;
                 }
             }
-
-            return ret;
         }
 
         /// <summary>
@@ -354,14 +354,18 @@ namespace ClockIn
         /// <param name="hotkey">Hotkey to register or reregister (will be newly assigned when null)</param>
         /// <param name="key">Key combination to assign to the hotkey</param>
         /// <param name="handler">Event handler for handling hotkey presses (only needed when registering new hotkey)</param>
-        /// <param name="control">Control which is assigned with error provider (optional)</param>
-        /// <param name="errorProvider">Error provider to show registration errors (optional)</param>
-        /// <returns>true if registration was successful, false otherwise</returns>
-        /// <exception cref="ArgumentException">Thrown when argument 'handler' is null in case argument 'hotkey' is not null.</exception>
-        private bool RegisterHotkey(ref Hotkey hotkey, Keys key, HandledEventHandler handler = null, Control control = null, ErrorProvider errorProvider = null)
+        /// <param name="showWarning">
+        ///   true to show a warning notification in case of an error,
+        ///   false to throw an exception instead
+        /// </param>
+        /// <exception cref="ArgumentException">
+        ///   Thrown when argument 'handler' is null in case argument 'hotkey' is not null.
+        /// </exception>
+        /// <exception cref="HotkeyRegisterException">
+        ///   Thrown when an error occurs in case argument 'showWarning' is false.
+        /// </exception>
+        private void RegisterHotkey(ref Hotkey hotkey, Keys key, HandledEventHandler handler, bool showWarning)
         {
-            bool ret = false;
-
             try
             {
                 if (hotkey == null)
@@ -378,22 +382,11 @@ namespace ClockIn
                 {
                     hotkeyMgr.ReregisterHotkey(hotkey, key, this);
                 }
-
-                ret = true;
             }
-            catch (HotkeyRegisterException e)
+            catch (HotkeyRegisterException e) when (showWarning)
             {
-                if ((control != null) && (errorProvider != null))
-                {
-                    errorProvider.SetError(control, e.Message);
-                }
-                else
-                {
-                    icnTrayIcon.ShowBalloonTip(5000, "ClockIn", e.Message, ToolTipIcon.Warning);
-                }
+                icnTrayIcon.ShowBalloonTip(5000, "ClockIn", e.Message, ToolTipIcon.Warning);
             }
-
-            return ret;
         }
 
         /// <summary>

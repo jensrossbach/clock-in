@@ -36,8 +36,8 @@ namespace ClockIn
         ///   Handles the event when a hotkey control gained the focus.
         /// </summary>
         /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void HotkeyControl_Enter(object sender, EventArgs e)
+        /// <param name="args">Event arguments</param>
+        private void HotkeyControl_Enter(object sender, EventArgs args)
         {
             Program.HotkeyMgr.HotkeysEnabled = false;
         }
@@ -46,8 +46,8 @@ namespace ClockIn
         ///   Handles the event when a hotkey control lost the focus.
         /// </summary>
         /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void HotkeyControl_Leave(object sender, EventArgs e)
+        /// <param name="args">Event arguments</param>
+        private void HotkeyControl_Leave(object sender, EventArgs args)
         {
             Program.HotkeyMgr.HotkeysEnabled = true;
         }
@@ -56,19 +56,28 @@ namespace ClockIn
         ///   Handles the event when a hotzkey control is about to validate the input.
         /// </summary>
         /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void HotkeyControl_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        /// <param name="args">Event arguments</param>
+        private void HotkeyControl_Validating(object sender, System.ComponentModel.CancelEventArgs args)
         {
             erpHotkeys.SetError((Control)sender, "");
-            e.Cancel = !mainWindow.RegisterHotkey((string)((HotkeyControl)sender).Tag, ((HotkeyControl)sender).Hotkey, (Control)sender, erpHotkeys);
+
+            try
+            {
+                mainWindow.RegisterHotkey((string)((HotkeyControl)sender).Tag, ((HotkeyControl)sender).Hotkey, false);
+            }
+            catch (HotkeyRegisterException e)
+            {
+                erpHotkeys.SetError((Control)sender, e.Message);
+                args.Cancel = true;
+            }
         }
 
         /// <summary>
         ///   Handles a click on the close button.
         /// </summary>
         /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void BtnClose_Click(object sender, EventArgs e)
+        /// <param name="args">Event arguments</param>
+        private void BtnClose_Click(object sender, EventArgs args)
         {
             Close();
         }
