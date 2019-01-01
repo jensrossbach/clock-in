@@ -1,8 +1,21 @@
 ClockIn
-Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved
+Copyright (C) 2012-2019 Jens Rossbach, All Rights Reserved
 
 Version History
 ===============
+
+v3.0.6940.24229 (2019-01-01)
+----------------------------
+
+Added:   Possibility to clock out and clock in (recorded breaks)
+Added:   Option to use system notifications for working time notifications
+Changed: Use global hotkey registration instead of low-level keyboard hooks
+Changed: Improved working time notification sequence
+Changed: Use error indicators for validation errors instead of message boxes
+Changed: Small bugfixes, optimizations and improvements under the hood
+Fixed:   Main window not showing up in front of all others when pressing hotkey
+         (blinking taskbar icon instead)
+
 
 v2.5.6895.31440 (2018-11-17)
 ----------------------------

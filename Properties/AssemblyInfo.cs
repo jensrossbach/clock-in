@@ -1,5 +1,5 @@
 ﻿// ClockIn
-// Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved.
+// Copyright (C) 2012-2019 Jens Rossbach, All Rights Reserved.
 
 
 using System.Reflection;
@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ClockIn")]
-[assembly: AssemblyCopyright("2012-2018 Jens Rossbach")]
+[assembly: AssemblyCopyright("2012-2019 Jens Rossbach")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -23,5 +23,5 @@ using System.Runtime.InteropServices;
 [assembly: Guid("ef6fec17-3816-459a-a72e-21fd34ebdc6b")]
 
 // Version information
-[assembly: AssemblyVersion("2.5.*")]
+[assembly: AssemblyVersion("3.0.*")]
 //[assembly: AssemblyFileVersion("0.0.0.0")]
