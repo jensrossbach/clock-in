@@ -1,5 +1,5 @@
 ﻿// ClockIn
-// Copyright (C) 2012-2018 Jens Rossbach, All Rights Reserved.
+// Copyright (C) 2012-2019 Jens Rossbach, All Rights Reserved.
 
 
 using System;
