@@ -290,8 +290,8 @@ http://icons.wbchug.net</value>
   <data name="OutsideLunchWorkspan1Greater2" xml:space="preserve">
     <value>First work span must not be greater than second work span!</value>
   </data>
-  <data name="FlatTrayIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\tray.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Modern" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Modern.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TooltipTextAbsent" xml:space="preserve">
     <value>Clocked out since {0}</value>
@@ -319,5 +319,35 @@ http://icons.wbchug.net</value>
   </data>
   <data name="ClockOutNotification" xml:space="preserve">
     <value>You have clocked out.</value>
+  </data>
+  <data name="ModernGreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\ModernGreen.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ModernOrange" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\ModernOrange.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ModernRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\ModernRed.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TooltipTextOvertime" xml:space="preserve">
+    <value>Closing time at {0} (latest!)</value>
+  </data>
+  <data name="ModernYellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\ModernYellow.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Classic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Classic.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClassicBigSmile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\ClassicBigSmile.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClassicCool" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\ClassicCool.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClassicOoooh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\ClassicOoooh.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClassicSad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\ClassicSad.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -308,4 +308,7 @@ http://icons.wbchug.net</value>
   <data name="ClockOutNotification" xml:space="preserve">
     <value>Sie haben ausgestempelt.</value>
   </data>
+  <data name="TooltipTextOvertime" xml:space="preserve">
+    <value>Feierabend um {0} Uhr (spätestens!)</value>
+  </data>
 </root>

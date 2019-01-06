@@ -55,6 +55,7 @@ namespace ClockIn
             timeMgr.AbsenceUpdated += TimeMgr_AbsenceUpdated;
             timeMgr.WorkingTimeUpdated += TimeMgr_WorkingTimeUpdated;
             timeMgr.LeaveTimeUpdated += TimeMgr_LeaveTimeUpdated;
+            timeMgr.WorkingLevelUpdated += TimeMgr_WorkingLevelUpdated;
             timeMgr.WorkingStateUpdated += TimeMgr_WorkingStateUpdated;
             timeMgr.WorkingTimeAlert += TimeMgr_WorkingTimeAlert;
 
@@ -69,41 +70,82 @@ namespace ClockIn
 
 
         /// <summary>
+        ///   Registers a hotkey.
+        /// </summary>
+        /// <param name="hotkey">Name of hotkey (from settings) to register</param>
+        /// <param name="key">Key combination to assign to the hotkey</param>
+        /// <param name="showWarning">
+        ///   true to show a warning notification in case of an error,
+        ///   false to throw an exception instead
+        /// </param>
+        /// <exception cref="HotkeyRegisterException">
+        ///   Thrown when an error occurs in case argument 'showWarning' is false.
+        /// </exception>
+        public void RegisterHotkey(string hotkey, Keys key, bool showWarning = true)
+        {
+            switch (hotkey)
+            {
+                case "MainWindowHotkey":
+                {
+                    RegisterHotkey(ref hkShowMainWin, key, HkShowMainWin_Press, showWarning);
+                    break;
+                }
+                case "ClockInOutHotkey":
+                {
+                    RegisterHotkey(ref hkClockInOut, key, HkClockInOut_Press, showWarning);
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        ///   Handles messages for the main window.
+        /// </summary>
+        /// <param name="m">Message to handle</param>
+        protected override void WndProc(ref Message m)
+        {
+            if (!hotkeyMgr.ProcessMessage(ref m))
+            {
+                base.WndProc(ref m);
+            }
+        }
+
+        /// <summary>
         ///   Updates the working time inside the window.
         /// </summary>
-        public void UpdateWorkingTime()
+        private void UpdateWorkingTime()
         {
             wtTimer.Stop();
 
-            if (timeMgr.State == TimeManager.WorkingState.Working)
+            if (timeMgr.WorkingState == WorkingState.Working)
             {
-                TimeSpan elapsedTime = timeMgr.GetElapsedWorkingTime(out TimeManager.WorkingLevel level);
+                TimeSpan elapsedTime = timeMgr.GetElapsedWorkingTime();
 
-                switch (level)
+                switch (timeMgr.WorkingLevel)
                 {
-                    case TimeManager.WorkingLevel.RegularTime:
-                    case TimeManager.WorkingLevel.AheadOfClosingTime:
+                    case WorkingLevel.RegularTime:
+                    case WorkingLevel.AheadOfClosingTime:
                     {
                         lblWorkingTime.ForeColor = Color.Black;
                         lblIcon.Image = Properties.Resources.Confused;
 
                         break;
                     }
-                    case TimeManager.WorkingLevel.OverTime:
+                    case WorkingLevel.OverTime:
                     {
                         lblWorkingTime.ForeColor = Color.DarkGreen;
                         lblIcon.Image = Properties.Resources.BigSmile;
 
                         break;
                     }
-                    case TimeManager.WorkingLevel.ApproachingMaxTime:
+                    case WorkingLevel.ApproachingMaxTime:
                     {
                         lblWorkingTime.ForeColor = Color.Orange;
                         lblIcon.Image = Properties.Resources.Ooooh;
 
                         break;
                     }
-                    case TimeManager.WorkingLevel.MaxTimeViolation:
+                    case WorkingLevel.MaxTimeViolation:
                     {
                         lblWorkingTime.ForeColor = Color.Red;
                         lblIcon.Image = Properties.Resources.Sad;
@@ -153,79 +195,27 @@ namespace ClockIn
         /// <summary>
         ///   Updates the leave time inside the window.
         /// </summary>
-        /// <param name="updateLabel">true if label should be updated</param>
-        public void UpdateLeaveTime(bool updateLabel)
+        private void UpdateLeaveTime()
         {
-            if (timeMgr.State == TimeManager.WorkingState.Working)
+            if (timeMgr.WorkingState == WorkingState.Working)
             {
                 string leaveTime = timeMgr.GetLeaveTime(out bool overTime).ToString(@"HH\:mm");
 
-                if (updateLabel)
+                if (overTime)
                 {
-                    if (overTime)
-                    {
-                        lblLeaveTime.ForeColor = Color.Red;
-                    }
-                    else
-                    {
-                        lblLeaveTime.ForeColor = Color.Black;
-                    }
-
-                    lblLeaveTime.Text = leaveTime;
+                    lblLeaveTime.ForeColor = Color.Red;
+                }
+                else
+                {
+                    lblLeaveTime.ForeColor = Color.Black;
                 }
 
-                icnTrayIcon.Text = string.Format(Properties.Resources.TooltipText, leaveTime);
+                lblLeaveTime.Text = leaveTime;
             }
             else
             {
-                if (updateLabel)
-                {
-                    lblLeaveTime.ForeColor = Color.Black;
-                    lblLeaveTime.Text = "--:--";
-                }
-
-                icnTrayIcon.Text = string.Format(Properties.Resources.TooltipTextAbsent, timeMgr.ClockOutTime.ToString(@"HH\:mm"));
-            }
-        }
-
-        /// <summary>
-        ///   Registers a hotkey.
-        /// </summary>
-        /// <param name="hotkey">Name of hotkey (from settings) to register</param>
-        /// <param name="key">Key combination to assign to the hotkey</param>
-        /// <param name="showWarning">
-        ///   true to show a warning notification in case of an error,
-        ///   false to throw an exception instead
-        /// </param>
-        /// <exception cref="HotkeyRegisterException">
-        ///   Thrown when an error occurs in case argument 'showWarning' is false.
-        /// </exception>
-        public void RegisterHotkey(string hotkey, Keys key, bool showWarning = true)
-        {
-            switch (hotkey)
-            {
-                case "MainWindowHotkey":
-                {
-                    RegisterHotkey(ref hkShowMainWin, key, HkShowMainWin_Press, showWarning);
-                    break;
-                }
-                case "ClockInOutHotkey":
-                {
-                    RegisterHotkey(ref hkClockInOut, key, HkClockInOut_Press, showWarning);
-                    break;
-                }
-            }
-        }
-
-        /// <summary>
-        ///   Handles messages for the main window.
-        /// </summary>
-        /// <param name="m">Message to handle</param>
-        protected override void WndProc(ref Message m)
-        {
-            if (!hotkeyMgr.ProcessMessage(ref m))
-            {
-                base.WndProc(ref m);
+                lblLeaveTime.ForeColor = Color.Black;
+                lblLeaveTime.Text = "--:--";
             }
         }
 
@@ -244,6 +234,106 @@ namespace ClockIn
 
             absenceText += timeMgr.TotalAbsence.Minutes.ToString("0") + "m";
             txtAbsence.Text = absenceText;
+        }
+
+        /// <summary>
+        ///   Updates the system tray icon.
+        /// </summary>
+        /// <param name="reset">true if icon can be reset to default</param>
+        private void UpdateSystemTrayIcon(bool reset)
+        {
+            OperatingSystem os = Environment.OSVersion;
+
+            if ((settings.FlatIconOnNewWindows) &&
+                ((os.Platform == PlatformID.Win32NT) && (((os.Version.Major == 6) && (os.Version.Minor >= 2)) || (os.Version.Major >= 10))))
+            {
+                if (timeMgr.WorkingState == WorkingState.Working)
+                {
+                    switch (timeMgr.WorkingLevel)
+                    {
+                        case WorkingLevel.RegularTime:
+                        case WorkingLevel.AheadOfClosingTime:
+                        {
+                            icnTrayIcon.Icon = Properties.Resources.Modern;
+                            break;
+                        }
+                        case WorkingLevel.OverTime:
+                        {
+                            icnTrayIcon.Icon = Properties.Resources.ModernGreen;
+                            break;
+                        }
+                        case WorkingLevel.ApproachingMaxTime:
+                        {
+                            icnTrayIcon.Icon = Properties.Resources.ModernOrange;
+                            break;
+                        }
+                        case WorkingLevel.MaxTimeViolation:
+                        {
+                            icnTrayIcon.Icon = Properties.Resources.ModernRed;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    icnTrayIcon.Icon = Properties.Resources.ModernYellow;
+                }
+            }
+            else if (reset)
+            {
+                if (timeMgr.WorkingState == WorkingState.Working)
+                {
+                    switch (timeMgr.WorkingLevel)
+                    {
+                        case WorkingLevel.RegularTime:
+                        case WorkingLevel.AheadOfClosingTime:
+                        {
+                            icnTrayIcon.Icon = Properties.Resources.Classic;
+                            break;
+                        }
+                        case WorkingLevel.OverTime:
+                        {
+                            icnTrayIcon.Icon = Properties.Resources.ClassicBigSmile;
+                            break;
+                        }
+                        case WorkingLevel.ApproachingMaxTime:
+                        {
+                            icnTrayIcon.Icon = Properties.Resources.ClassicOoooh;
+                            break;
+                        }
+                        case WorkingLevel.MaxTimeViolation:
+                        {
+                            icnTrayIcon.Icon = Properties.Resources.ClassicSad;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    icnTrayIcon.Icon = Properties.Resources.ClassicCool;
+                }
+            }
+        }
+
+        private void UpdateSystemTrayIconTooltip()
+        {
+            if (timeMgr.WorkingState == WorkingState.Working)
+            {
+                string leaveTime = timeMgr.GetLeaveTime(out bool overTime).ToString(@"HH\:mm");
+
+                if (overTime)
+                {
+                    icnTrayIcon.Text = string.Format(Properties.Resources.TooltipTextOvertime, leaveTime);
+                }
+                else
+                {
+                    icnTrayIcon.Text = string.Format(Properties.Resources.TooltipText, leaveTime);
+                }
+            }
+            else
+            {
+                icnTrayIcon.Text = string.Format(Properties.Resources.TooltipTextAbsent, timeMgr.ClockOutTime.ToString(@"HH\:mm"));
+            }
         }
 
         /// <summary>
@@ -272,8 +362,12 @@ namespace ClockIn
             }
 
             settings.WorkingTimeDisplay = Enum.Format(typeof(WorkingTimeDisplay), wtd, "G");
+
             UpdateWorkingTime();
-            UpdateLeaveTime(true);
+            UpdateLeaveTime();
+
+            UpdateSystemTrayIcon(true);
+            UpdateSystemTrayIconTooltip();
         }
 
         /// <summary>
@@ -297,39 +391,20 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Updates the system tray icon.
-        /// </summary>
-        /// <param name="reset">true if icon can be reset to default</param>
-        private void UpdateSystemTrayIcon(bool reset)
-        {
-            OperatingSystem os = Environment.OSVersion;
-
-            if ((settings.FlatIconOnNewWindows) &&
-                ((os.Platform == PlatformID.Win32NT) && (((os.Version.Major == 6) && (os.Version.Minor >= 2)) || (os.Version.Major >= 10))))
-            {
-                icnTrayIcon.Icon = Properties.Resources.FlatTrayIcon;
-            }
-            else if (reset)
-            {
-                icnTrayIcon.Icon = Icon;
-            }
-        }
-
-        /// <summary>
         ///   Switches the working state.
         /// </summary>
         /// <param name="action">Switch action to perform</param>
         private void SwitchWorkingState(WorkingStateAction action)
         {
             if ((action == WorkingStateAction.ClockOut) ||
-                ((action == WorkingStateAction.Toggle) && (timeMgr.State == TimeManager.WorkingState.Working)))
+                ((action == WorkingStateAction.Toggle) && (timeMgr.WorkingState == WorkingState.Working)))
             {
                 if (Visible && settings.MinimizeOnClockOut)
                 {
                     MinimizeMainWindow();
                 }
 
-                timeMgr.State = TimeManager.WorkingState.Absent;
+                timeMgr.WorkingState = WorkingState.Absent;
 
                 if (settings.NotifyOnClockInOut)
                 {
@@ -337,9 +412,9 @@ namespace ClockIn
                 }
             }
             else if ((action == WorkingStateAction.ClockIn) ||
-                     ((action == WorkingStateAction.Toggle) && (timeMgr.State == TimeManager.WorkingState.Absent)))
+                     ((action == WorkingStateAction.Toggle) && (timeMgr.WorkingState == WorkingState.Absent)))
             {
-                timeMgr.State = TimeManager.WorkingState.Working;
+                timeMgr.WorkingState = WorkingState.Working;
 
                 if (settings.NotifyOnClockInOut)
                 {
@@ -433,7 +508,7 @@ namespace ClockIn
             {
                 UpdateAbsence();
                 UpdateWorkingTime();
-                UpdateLeaveTime(true);
+                UpdateLeaveTime();
             }
             else
             {
@@ -597,23 +672,6 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Handles mouse moves over the system tray icon.
-        /// </summary>
-        /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void IcnTrayIcon_MouseMove(object sender, MouseEventArgs e)
-        {
-            DateTime now = DateTime.Now;
-
-            // avoid too many updates in short time
-            if ((now - lastTrayTooltipUpdate).TotalSeconds >= 1)
-            {
-                UpdateLeaveTime(Visible);
-                lastTrayTooltipUpdate = now;
-            }
-        }
-
-        /// <summary>
         ///   Handles a click on the restore item in the system tray menu.
         /// </summary>
         /// <param name="sender">Event origin</param>
@@ -709,7 +767,28 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void TimeMgr_LeaveTimeUpdated(object sender, EventArgs e)
         {
-            UpdateLeaveTime(Visible);
+            if (Visible)
+            {
+                UpdateLeaveTime();
+            }
+
+            UpdateSystemTrayIconTooltip();
+        }
+
+        /// <summary>
+        ///   Handles an update of the working level.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void TimeMgr_WorkingLevelUpdated(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                UpdateLeaveTime();
+            }
+
+            UpdateSystemTrayIcon(true);
+            UpdateSystemTrayIconTooltip();
         }
 
         /// <summary>
@@ -719,7 +798,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void TimeMgr_WorkingStateUpdated(object sender, EventArgs e)
         {
-            if (timeMgr.State == TimeManager.WorkingState.Working)
+            if (timeMgr.WorkingState == WorkingState.Working)
             {
                 Text = Properties.Resources.WindowCaption;
 
@@ -740,9 +819,11 @@ namespace ClockIn
             {
                 UpdateAbsence();
                 UpdateWorkingTime();
+                UpdateLeaveTime();
             }
 
-            UpdateLeaveTime(Visible);
+            UpdateSystemTrayIcon(true);
+            UpdateSystemTrayIconTooltip();
         }
 
         /// <summary>
@@ -750,35 +831,35 @@ namespace ClockIn
         /// </summary>
         /// <param name="sender">Event origin</param>
         /// <param name="e">Event arguments</param>
-        private void TimeMgr_WorkingTimeAlert(object sender, TimeManager.WorkingTimeAlertEventArgs e)
+        private void TimeMgr_WorkingTimeAlert(object sender, WorkingTimeAlertEventArgs e)
         {
             Image icon = null;
             string message = null;
 
-            switch (e.Level)
+            switch (e.WorkingLevel)
             {
-                case TimeManager.WorkingLevel.AheadOfClosingTime:
+                case WorkingLevel.AheadOfClosingTime:
                 {
                     icon = Properties.Resources.BigSmile;
                     message = string.Format(Properties.Resources.AheadOfRegularTimeLimit, e.AheadTime);
 
                     break;
                 }
-                case TimeManager.WorkingLevel.OverTime:
+                case WorkingLevel.OverTime:
                 {
                     icon = Properties.Resources.BigSmile;
                     message = Properties.Resources.RegularTimeLimitReached;
 
                     break;
                 }
-                case TimeManager.WorkingLevel.ApproachingMaxTime:
+                case WorkingLevel.ApproachingMaxTime:
                 {
                     icon = Properties.Resources.Ooooh;
                     message = string.Format(Properties.Resources.ApproachingMaximumTimeLimit, e.AheadTime);
 
                     break;
                 }
-                case TimeManager.WorkingLevel.MaxTimeViolation:
+                case WorkingLevel.MaxTimeViolation:
                 {
                     icon = Properties.Resources.Sad;
                     message = Properties.Resources.MaxmimumTimeLimitReached;
@@ -793,7 +874,7 @@ namespace ClockIn
             }
             else
             {
-                new NotificationDialog(icon, message, e.Level == TimeManager.WorkingLevel.MaxTimeViolation).Show();
+                new NotificationDialog(icon, message, e.WorkingLevel == WorkingLevel.MaxTimeViolation).Show();
             }
         }
 
@@ -811,9 +892,10 @@ namespace ClockIn
                     if (Visible)
                     {
                         UpdateWorkingTime();
+                        UpdateLeaveTime();
                     }
 
-                    UpdateLeaveTime(Visible);
+                    UpdateSystemTrayIconTooltip();
                     break;
                 }
                 case "FlatIconOnNewWindows":

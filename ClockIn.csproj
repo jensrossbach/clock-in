@@ -57,7 +57,7 @@
     <StartupObject>ClockIn.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>clock.ico</ApplicationIcon>
+    <ApplicationIcon>Icons\Classic.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -219,13 +219,21 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="clock.ico" />
-    <Content Include="tray.ico" />
-    <Content Include="Icons\BigSmile.png" />
+    <Content Include="Icons\Classic.ico" />
+    <Content Include="Icons\ClassicBigSmile.ico" />
+    <Content Include="Icons\ClassicOoooh.ico" />
+    <Content Include="Icons\ClassicSad.ico" />
+    <Content Include="Icons\ClassicCool.ico" />
+    <Content Include="Icons\Modern.ico" />
+    <Content Include="Icons\ModernGreen.ico" />
+    <Content Include="Icons\ModernOrange.ico" />
+    <Content Include="Icons\ModernRed.ico" />
+    <Content Include="Icons\ModernYellow.ico" />
     <Content Include="Icons\Confused.png" />
-    <Content Include="Icons\Cool.png" />
+    <Content Include="Icons\BigSmile.png" />
     <Content Include="Icons\Ooooh.png" />
     <Content Include="Icons\Sad.png" />
+    <Content Include="Icons\Cool.png" />
     <Content Include="Icons\Power.png" />
     <Content Include="Icons\Reset.png" />
     <Content Include="Icons\Stopwatch.png" />

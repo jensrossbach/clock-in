@@ -156,6 +156,56 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon Classic {
+            get {
+                object obj = ResourceManager.GetObject("Classic", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon ClassicBigSmile {
+            get {
+                object obj = ResourceManager.GetObject("ClassicBigSmile", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon ClassicCool {
+            get {
+                object obj = ResourceManager.GetObject("ClassicCool", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon ClassicOoooh {
+            get {
+                object obj = ResourceManager.GetObject("ClassicOoooh", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon ClassicSad {
+            get {
+                object obj = ResourceManager.GetObject("ClassicSad", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Clock in ähnelt.
         /// </summary>
         internal static string ClockIn {
@@ -217,16 +267,6 @@ namespace ClockIn.Properties {
         internal static string EditAbsence {
             get {
                 return ResourceManager.GetString("EditAbsence", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
-        /// </summary>
-        internal static System.Drawing.Icon FlatTrayIcon {
-            get {
-                object obj = ResourceManager.GetObject("FlatTrayIcon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
             }
         }
         
@@ -501,6 +541,56 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon Modern {
+            get {
+                object obj = ResourceManager.GetObject("Modern", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon ModernGreen {
+            get {
+                object obj = ResourceManager.GetObject("ModernGreen", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon ModernOrange {
+            get {
+                object obj = ResourceManager.GetObject("ModernOrange", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon ModernRed {
+            get {
+                object obj = ResourceManager.GetObject("ModernRed", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon ModernYellow {
+            get {
+                object obj = ResourceManager.GetObject("ModernYellow", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die New absence ähnelt.
         /// </summary>
         internal static string NewAbsence {
@@ -629,6 +719,15 @@ namespace ClockIn.Properties {
         internal static string TooltipTextAbsent {
             get {
                 return ResourceManager.GetString("TooltipTextAbsent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Closing time at {0} (latest!) ähnelt.
+        /// </summary>
+        internal static string TooltipTextOvertime {
+            get {
+                return ResourceManager.GetString("TooltipTextOvertime", resourceCulture);
             }
         }
         

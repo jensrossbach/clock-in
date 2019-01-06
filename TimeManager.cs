@@ -11,6 +11,62 @@ using Microsoft.Win32;
 
 namespace ClockIn
 {
+    /// <summary>
+    ///   Levels of work which can be reached during the day
+    /// </summary>
+    public enum WorkingLevel
+    {
+        RegularTime        = 0,  // Working within regular time
+        AheadOfClosingTime = 1,  // Ahead of closing time
+        OverTime           = 2,  // Working longer than regular time
+        ApproachingMaxTime = 3,  // Approaching maximum working time
+        MaxTimeViolation   = 4   // Exceeded maximum working time
+    }
+
+    /// <summary>
+    ///   Working state
+    /// </summary>
+    public enum WorkingState
+    {
+        Working = 0,  // Present and working
+        Absent  = 1   // Absent / not working
+    }
+
+
+    /// <summary>
+    ///   Arguments for working time alert events
+    /// </summary>
+    public class WorkingTimeAlertEventArgs : EventArgs
+    {
+        /// <summary>
+        ///   Working level
+        /// </summary>
+        public WorkingLevel WorkingLevel { get; set; }
+
+        /// <summary>
+        ///   Time in minutes ahead of the actual working time limit
+        ///   (only applicable to ahead levels)
+        /// </summary>
+        public int AheadTime { get; set; }
+
+        /// <summary>
+        ///   Default constructor of the class
+        /// </summary>
+        /// <param name="level">Working level</param>
+        /// <param name="aheadTime">Ahead time in minutes</param>
+        public WorkingTimeAlertEventArgs(WorkingLevel level, int aheadTime = 0)
+        {
+            WorkingLevel = level;
+            AheadTime = aheadTime;
+        }
+    }
+
+
+    /// <summary>
+    ///   Event handler for working time alerts
+    /// </summary>
+    public delegate void WorkingTimeAlertEventHandler(object sender, WorkingTimeAlertEventArgs e);
+
 
     /// <summary>
     ///   Calculates all time related values like elapsed and remaining working
@@ -18,57 +74,6 @@ namespace ClockIn
     /// </summary>
     class TimeManager
     {
-        /// <summary>
-        ///   Arguments for working time alert events
-        /// </summary>
-        public class WorkingTimeAlertEventArgs : EventArgs
-        {
-            /// <summary>
-            ///   Working level
-            /// </summary>
-            public WorkingLevel Level { get; set; }
-
-            /// <summary>
-            ///   Time in minutes ahead of the actual working time limit
-            ///   (only applicable to ahead levels)
-            /// </summary>
-            public int AheadTime { get; set; }
-
-            /// <summary>
-            ///   Default constructor of the class
-            /// </summary>
-            /// <param name="level">Working level</param>
-            /// <param name="aheadTime">Ahead time in minutes</param>
-            public WorkingTimeAlertEventArgs(WorkingLevel level, int aheadTime = 0)
-            {
-                Level = level;
-                AheadTime = aheadTime;
-            }
-        }
-
-        
-        /// <summary>
-        ///   Levels of work which can be reached during the day
-        /// </summary>
-        public enum WorkingLevel
-        {
-            RegularTime        = 0,  // Working within regular time
-            AheadOfClosingTime = 1,  // Ahead of closing time
-            OverTime           = 2,  // Working longer than regular time
-            ApproachingMaxTime = 3,  // Approaching maximum working time
-            MaxTimeViolation   = 4   // Exceeded maximum working time
-        }
-
-        /// <summary>
-        ///   Working state
-        /// </summary>
-        public enum WorkingState
-        {
-            Working = 0,  // Present and working
-            Absent  = 1   // Absent / not working
-        }
-
-
         private DateTime startTime;
 
         private Timer notifyTimer = new Timer();
@@ -78,14 +83,10 @@ namespace ClockIn
         private Properties.Settings settings = Properties.Settings.Default;
         private Session session = Session.Default;
 
+        private WorkingLevel level = WorkingLevel.RegularTime;
         private WorkingState state = WorkingState.Working;
         private TimePeriod currentAbsence = null;
 
-
-        /// <summary>
-        ///   Event handler for working time alerts
-        /// </summary>
-        public delegate void WorkingTimeAlertEventHandler(object sender, WorkingTimeAlertEventArgs e);
 
         /// <summary>
         ///   Event notifies when absence has been updated.
@@ -101,6 +102,11 @@ namespace ClockIn
         ///   Event notifies when leave time has been updated.
         /// </summary>
         public event EventHandler LeaveTimeUpdated;
+
+        /// <summary>
+        ///   Event notifies when working level has been updated.
+        /// </summary>
+        public event EventHandler WorkingLevelUpdated;
 
         /// <summary>
         ///   Event notifies when working state has been updated.
@@ -153,9 +159,25 @@ namespace ClockIn
         public DateTime ClockOutTime => (currentAbsence != null) ? currentAbsence.StartTime : DateTime.MinValue;
 
         /// <summary>
+        ///   Current working level
+        /// </summary>
+        public WorkingLevel WorkingLevel
+        {
+            get => level;
+            private set
+            {
+                if (level != value)
+                {
+                    level = value;
+                    WorkingLevelUpdated?.Invoke(this, new EventArgs());
+                }
+            }
+        }
+
+        /// <summary>
         ///   Current working state
         /// </summary>
-        public WorkingState State
+        public WorkingState WorkingState
         {
             get => state;
             set
@@ -226,7 +248,7 @@ namespace ClockIn
 
             if (settings.ClockInAtStart)
             {
-                State = WorkingState.Working;
+                WorkingState = WorkingState.Working;
             }
         }
 
@@ -256,9 +278,8 @@ namespace ClockIn
         /// <summary>
         ///   Returns the elapsed working time.
         /// </summary>
-        /// <param name="level">Working level which has been reached</param>
         /// <returns>Elapsed working time</returns>
-        public TimeSpan GetElapsedWorkingTime(out WorkingLevel level)
+        public TimeSpan GetElapsedWorkingTime()
         {
             DateTime cur = DateTime.Now;
             TimeSpan workingTime = cur - session.Arrival;
@@ -274,27 +295,27 @@ namespace ClockIn
 
             if (workingTime >= TimeSpan.FromHours((double)settings.MaximumWorkingTime))
             {
-                level = WorkingLevel.MaxTimeViolation;
+                WorkingLevel = WorkingLevel.MaxTimeViolation;
             }
             else if ((settings.NotifyAdvance > 0) &&
                      (workingTime >= (TimeSpan.FromHours((double)settings.MaximumWorkingTime) -
                                       TimeSpan.FromMinutes((double)settings.NotifyAdvance))))
             {
-                level = WorkingLevel.ApproachingMaxTime;
+                WorkingLevel = WorkingLevel.ApproachingMaxTime;
             }
             else if (workingTime >= TimeSpan.FromHours((double)settings.RegularWorkingTime))
             {
-                level = WorkingLevel.OverTime;
+                WorkingLevel = WorkingLevel.OverTime;
             }
             else if ((settings.NotifyRegAdvance > 0) &&
                      (workingTime >= (TimeSpan.FromHours((double)settings.RegularWorkingTime) -
                                       TimeSpan.FromMinutes((double)settings.NotifyRegAdvance))))
             {
-                level = WorkingLevel.AheadOfClosingTime;
+                WorkingLevel = WorkingLevel.AheadOfClosingTime;
             }
             else
             {
-                level = WorkingLevel.RegularTime;
+                WorkingLevel = WorkingLevel.RegularTime;
             }
 
             return workingTime;
@@ -322,7 +343,7 @@ namespace ClockIn
         /// <summary>
         ///   Retuens the leave time.
         /// </summary>
-        /// <param name="level">
+        /// <param name="overTime">
         ///     true if regular working time has been reached, false otherwise
         /// </param>
         /// <returns>Leave time</returns>
@@ -422,7 +443,7 @@ namespace ClockIn
         /// </summary>
         private void CheckExpiration()
         {
-            TimeSpan ts = GetElapsedWorkingTime(out WorkingLevel level);
+            TimeSpan ts = GetElapsedWorkingTime();
 
             if (session.NotifyLevel < (int)level)
             {
@@ -759,7 +780,7 @@ namespace ClockIn
                     {
                         if (settings.ClockInAtWakeup)
                         {
-                            State = WorkingState.Working;
+                            WorkingState = WorkingState.Working;
                         }
                     }
                     else
