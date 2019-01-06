@@ -271,6 +271,9 @@ namespace ClockIn
 
             session.Save();
 
+            WorkingLevel = WorkingLevel.RegularTime;
+            WorkingState = WorkingState.Working;
+
             Absence.Clear();
             UpdateTotalAbsence();
         }
