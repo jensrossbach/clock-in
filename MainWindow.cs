@@ -66,6 +66,9 @@ namespace ClockIn
             icnTrayIcon.Visible = true;
 
             settings.PropertyChanged += DefaultSettings_PropertyChanged;
+
+            RegisterHotkey("MainWindowHotkey", settings.MainWindowHotkey);
+            RegisterHotkey("ClockInOutHotkey", settings.ClockInOutHotkey);
         }
 
 
@@ -382,7 +385,7 @@ namespace ClockIn
         /// <summary>
         ///   Restores the main window from system tray.
         /// </summary>
-        private void RestoreMainWindow()
+        public void RestoreMainWindow()
         {
             Visible = true;
             WindowState = FormWindowState.Normal;
@@ -471,17 +474,6 @@ namespace ClockIn
         {
             hotkeyMgr.UnregisterHotkey(hkShowMainWin);
             hotkeyMgr.UnregisterHotkey(hkClockInOut);
-        }
-
-        /// <summary>
-        ///   Handles the event when the window is loaded.
-        /// </summary>
-        /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-            RegisterHotkey("MainWindowHotkey", settings.MainWindowHotkey);
-            RegisterHotkey("ClockInOutHotkey", settings.ClockInOutHotkey);
         }
 
         /// <summary>

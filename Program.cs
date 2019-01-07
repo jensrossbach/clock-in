@@ -65,8 +65,7 @@ namespace ClockIn
 
                 if (!settings.StartMinimized)
                 {
-                    mainWindow.WindowState = FormWindowState.Normal;
-                    mainWindow.Visible = true;
+                    mainWindow.RestoreMainWindow();
                 }
 
                 Debug.WriteLine("[Program] Entering main application loop...");
