@@ -376,20 +376,17 @@ namespace ClockIn
         /// <summary>
         ///   Minimizes the main window to the system tray.
         /// </summary>
-        private void MinimizeMainWindow()
+        private void Minimize()
         {
-            WindowState = FormWindowState.Minimized;
             Visible = false;
         }
 
         /// <summary>
         ///   Restores the main window from system tray.
         /// </summary>
-        public void RestoreMainWindow()
+        public void Restore()
         {
             Visible = true;
-            WindowState = FormWindowState.Normal;
-
             Activate();
         }
 
@@ -404,7 +401,7 @@ namespace ClockIn
             {
                 if (Visible && settings.MinimizeOnClockOut)
                 {
-                    MinimizeMainWindow();
+                    Minimize();
                 }
 
                 timeMgr.WorkingState = WorkingState.Absent;
@@ -517,7 +514,7 @@ namespace ClockIn
         {
             if (!exit)
             {
-                MinimizeMainWindow();
+                Minimize();
                 e.Cancel = true;
             }
         }
@@ -653,7 +650,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            MinimizeMainWindow();
+            Minimize();
         }
 
         /// <summary>
@@ -663,7 +660,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void IcnTray_DoubleClick(object sender, EventArgs e)
         {
-            RestoreMainWindow();
+            Restore();
         }
 
         /// <summary>
@@ -673,7 +670,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void ItmRestore_Click(object sender, EventArgs e)
         {
-            RestoreMainWindow();
+            Restore();
         }
 
         /// <summary>
@@ -913,7 +910,7 @@ namespace ClockIn
         {
             Debug.WriteLine("[MainWindow] Hotkey for showing main window pressed.");
 
-            RestoreMainWindow();
+            Restore();
             e.Handled = true;
         }
 

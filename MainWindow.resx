@@ -257,48 +257,6 @@
   <metadata name="ctxTrayMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>107, 17</value>
   </metadata>
-  <data name="itmRestore.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt, style=Bold</value>
-  </data>
-  <data name="itmRestore.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
-  </data>
-  <data name="itmRestore.Text" xml:space="preserve">
-    <value>Restore</value>
-  </data>
-  <data name="itmOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
-  </data>
-  <data name="itmOptions.Text" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="itmSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 6</value>
-  </data>
-  <data name="itmClockIn.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="itmClockIn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
-  </data>
-  <data name="itmClockIn.Text" xml:space="preserve">
-    <value>Clock in</value>
-  </data>
-  <data name="itmClockOut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
-  </data>
-  <data name="itmClockOut.Text" xml:space="preserve">
-    <value>Clock out</value>
-  </data>
-  <data name="itmSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 6</value>
-  </data>
-  <data name="itmExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
-  </data>
-  <data name="itmExit.Text" xml:space="preserve">
-    <value>Exit</value>
-  </data>
   <data name="ctxTrayMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 126</value>
   </data>
@@ -3013,6 +2971,48 @@
   <data name="icnTrayIcon.Text" xml:space="preserve">
     <value>ClockIn</value>
   </data>
+  <data name="itmRestore.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="itmRestore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 22</value>
+  </data>
+  <data name="itmRestore.Text" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="itmOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 22</value>
+  </data>
+  <data name="itmOptions.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="itmSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 6</value>
+  </data>
+  <data name="itmClockIn.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="itmClockIn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 22</value>
+  </data>
+  <data name="itmClockIn.Text" xml:space="preserve">
+    <value>Clock in</value>
+  </data>
+  <data name="itmClockOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 22</value>
+  </data>
+  <data name="itmClockOut.Text" xml:space="preserve">
+    <value>Clock out</value>
+  </data>
+  <data name="itmSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 6</value>
+  </data>
+  <data name="itmExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 22</value>
+  </data>
+  <data name="itmExit.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
   <data name="dtpArrival.CustomFormat" xml:space="preserve">
     <value>HH:mm</value>
   </data>
@@ -3212,6 +3212,9 @@
   <data name="&gt;&gt;cbxDisplayMaxTime.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="ttMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>229, 17</value>
+  </metadata>
   <data name="btnResetTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>163, 18</value>
   </data>
@@ -3221,9 +3224,6 @@
   <data name="btnResetTime.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <metadata name="ttMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>229, 17</value>
-  </metadata>
   <data name="btnResetTime.ToolTip" xml:space="preserve">
     <value>Reset start of work</value>
   </data>
@@ -3290,6 +3290,9 @@
   <data name="&gt;&gt;btnAbsence.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="ttMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>229, 17</value>
+  </metadata>
   <data name="btnClockInOut.Location" type="System.Drawing.Point, System.Drawing">
     <value>196, 122</value>
   </data>
@@ -6024,6 +6027,9 @@
         AAH///////////////AAAAAD///////////////8AAAAD////////////////gAAAB//////////////
         //+AAAB/////////////////4AAB////////////////////////////
 </value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>Manual</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>ClockIn</value>

@@ -65,7 +65,7 @@ namespace ClockIn
 
                 if (!settings.StartMinimized)
                 {
-                    mainWindow.RestoreMainWindow();
+                    mainWindow.Restore();
                 }
 
                 Debug.WriteLine("[Program] Entering main application loop...");
