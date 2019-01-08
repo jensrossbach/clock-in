@@ -113,5 +113,14 @@
     <Setting Name="SystemNotifications" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="SessionResetTimeOffset" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="ClockInTimeOffset" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="ClockOutTimeOffset" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -359,6 +359,15 @@
   <data name="tbpNotifications.Text" xml:space="preserve">
     <value>Benachrichtigungen</value>
   </data>
+  <data name="btnConfigureOffsets.Location" type="System.Drawing.Point, System.Drawing">
+    <value>222, 230</value>
+  </data>
+  <data name="btnConfigureOffsets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="btnConfigureOffsets.Text" xml:space="preserve">
+    <value>&amp;Konfigurieren...</value>
+  </data>
   <data name="cbxFlatIcon.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 17</value>
   </data>
@@ -371,26 +380,11 @@
   <data name="cbxMinimized.Text" xml:space="preserve">
     <value>&amp;Minimiert starten</value>
   </data>
-  <data name="lblOffsetMinutes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 234</value>
+  <data name="lblTimeOffsets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 13</value>
   </data>
-  <data name="lblOffsetMinutes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
-  </data>
-  <data name="lblOffsetMinutes.Text" xml:space="preserve">
-    <value>Minuten</value>
-  </data>
-  <data name="nmcArrivalTimeOffset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 232</value>
-  </data>
-  <data name="lblArrivalTimeOffset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 234</value>
-  </data>
-  <data name="lblArrivalTimeOffset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 13</value>
-  </data>
-  <data name="lblArrivalTimeOffset.Text" xml:space="preserve">
-    <value>Verschiebung der Ankunftszeit:</value>
+  <data name="lblTimeOffsets.Text" xml:space="preserve">
+    <value>Verschiebung der Zeiterfassung:</value>
   </data>
   <data name="cbxAutoLaunch.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 17</value>

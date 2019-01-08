@@ -184,7 +184,7 @@ namespace ClockIn
             {
                 if (state != value)
                 {
-                    SetWorkingState(value, DateTime.Now);
+                    SetWorkingState(value, DateTime.Now, true);
                 }
             }
         }
@@ -201,7 +201,7 @@ namespace ClockIn
             {
                 if (settings.NewSessionOnStartup)
                 {
-                    RestartSession(false);
+                    RestartSession(false, false);
                 }
                 else if (settings.AskSessionOnStartup)
                 {
@@ -212,7 +212,7 @@ namespace ClockIn
 
                     if (result == DialogResult.No)
                     {
-                        RestartSession(false);
+                        RestartSession(false, false);
                     }
                     else
                     {
@@ -226,7 +226,7 @@ namespace ClockIn
             }
             else
             {
-                RestartSession(false);
+                RestartSession(false, false);
             }
 
             SetupEoDTimer();
@@ -259,11 +259,30 @@ namespace ClockIn
         ///   true if session should be reset to current time, false if session
         ///   should be reset to time when application started
         /// </param>
-        public void RestartSession(bool toCurTime)
+        /// <param name="toCurTime">
+        ///   true if offset should be applied to reset time, false otherwise
+        ///   (only applicable if argument 'toCurTime' is true)
+        /// </param>
+        public void RestartSession(bool toCurTime, bool applyOffset)
         {
             Debug.WriteLine("[TimeManager] Restart session (" + (toCurTime ? "now" : "to start") + ").");
 
-            session.Arrival = toCurTime ? DateTime.Now.Truncate(TimeSpan.FromMinutes(1)) : startTime;
+            if (toCurTime)
+            {
+                DateTime curTime = DateTime.Now.Truncate(TimeSpan.FromMinutes(1));
+
+                if (applyOffset)
+                {
+                    curTime -= TimeSpan.FromMinutes((double)settings.SessionResetTimeOffset);
+                }
+
+                session.Arrival = curTime;
+            }
+            else
+            {
+                session.Arrival = startTime;
+            }
+
             session.NotifyLevel = 0;
             session.Absence = string.Empty;
             session.ClockedOut = false;
@@ -387,20 +406,35 @@ namespace ClockIn
         /// </summary>
         /// <param name="state">Target working state</param>
         /// <param name="time">Clock in/out time</param>
-        private void SetWorkingState(WorkingState state, DateTime time)
+        /// <param name="applyOffset">
+        ///   true if offset should be applied to time, false otherwise
+        /// </param>
+        private void SetWorkingState(WorkingState state, DateTime time, bool applyOffset = false)
         {
             Debug.WriteLine("[TimeManager] Changing working state to " + state);
 
             if (state == WorkingState.Absent)
             {
-                currentAbsence = new TimePeriod
+                if (applyOffset)
                 {
-                    StartTime = time
-                };
+                    currentAbsence = new TimePeriod(time + TimeSpan.FromMinutes((double)settings.ClockOutTimeOffset), DateTime.MaxValue);
+                }
+                else
+                {
+                    currentAbsence = new TimePeriod(time, DateTime.MaxValue);
+                }
             }
             else if (currentAbsence != null)
             {
-                currentAbsence.EndTime = time;
+                if (applyOffset)
+                {
+                    currentAbsence.EndTime = time - TimeSpan.FromMinutes((double)settings.ClockInTimeOffset);
+                }
+                else
+                {
+                    currentAbsence.EndTime = time;
+                }
+
                 if (currentAbsence.Duration != TimeSpan.Zero)
                 {
                     if (settings.ConfirmAbsenceOnClockIn)
@@ -842,7 +876,7 @@ namespace ClockIn
 
             if (result == DialogResult.Yes)
             {
-                RestartSession(true);
+                RestartSession(true, true);
             }
             else
             {

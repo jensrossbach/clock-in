@@ -28,6 +28,7 @@ namespace ClockIn
         /// <summary>
         ///   Default constructor of the class
         /// </summary>
+        /// <param name="mainWin">Reference to main window</param>
         public OptionsDialog(MainWindow mainWin)
         {
             mainWindow = mainWin;
@@ -592,13 +593,29 @@ namespace ClockIn
         }
 
         /// <summary>
+        ///   Handles a click on the offset configure button.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void BtnConfigureOffsets_Click(object sender, EventArgs e)
+        {
+            using (TimeOffsetsDialog dialog = new TimeOffsetsDialog())
+            {
+                dialog.ShowDialog(this);
+            }
+        }
+
+        /// <summary>
         ///   Handles a click on the hotkeys button.
         /// </summary>
         /// <param name="sender">Event origin</param>
         /// <param name="e">Event arguments</param>
         private void BtnHotkeys_Click(object sender, EventArgs e)
         {
-            new HotkeysDialog(mainWindow).ShowDialog(this);
+            using (HotkeysDialog dialog = new HotkeysDialog(mainWindow))
+            {
+                dialog.ShowDialog(this);
+            }
         }
 
         /// <summary>

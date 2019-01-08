@@ -466,5 +466,41 @@ namespace ClockIn.Properties {
                 this["SystemNotifications"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public decimal SessionResetTimeOffset {
+            get {
+                return ((decimal)(this["SessionResetTimeOffset"]));
+            }
+            set {
+                this["SessionResetTimeOffset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public decimal ClockInTimeOffset {
+            get {
+                return ((decimal)(this["ClockInTimeOffset"]));
+            }
+            set {
+                this["ClockInTimeOffset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public decimal ClockOutTimeOffset {
+            get {
+                return ((decimal)(this["ClockOutTimeOffset"]));
+            }
+            set {
+                this["ClockOutTimeOffset"] = value;
+            }
+        }
     }
 }

@@ -591,7 +591,7 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void BtnResetTime_Click(object sender, EventArgs e)
         {
-            timeMgr.RestartSession(true);
+            timeMgr.RestartSession(true, false);
         }
 
         /// <summary>
@@ -640,7 +640,10 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void BtnOptions_Click(object sender, EventArgs e)
         {
-            new OptionsDialog(this).ShowDialog();
+            using (OptionsDialog dialog = new OptionsDialog(this))
+            {
+                dialog.ShowDialog(this);
+            }
         }
 
         /// <summary>
@@ -680,7 +683,10 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void ItmOptions_Click(object sender, EventArgs e)
         {
-            new OptionsDialog(this).ShowDialog(this);
+            using (OptionsDialog dialog = new OptionsDialog(this))
+            {
+                dialog.ShowDialog(this);
+            }
         }
 
         /// <summary>
