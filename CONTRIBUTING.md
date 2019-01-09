@@ -79,6 +79,13 @@ Version <Major.Minor.Build.Patch> from <YYYY-MM-DD>
 - [changed] Changed functionality
 - [fixed] Solved defect
 ```
+Create a ZIP file containing the following files from the repository and the release build folder and add it as attachment to the release tag:
+- de\ClockIn.resources.dll
+- ClockIn.exe
+- README.md
+- History.txt
+- yazoo-icons-readme.txt
+
 Please also have a look to the former entries in the file History.txt and the former release tags in the repository.
 
 Finally the milestone has to be closed.

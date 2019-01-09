@@ -4,6 +4,18 @@ Copyright (C) 2012-2019 Jens Rossbach, All Rights Reserved
 Version History
 ===============
 
+v3.1.6948.33999 (2019-01-09)
+----------------------------
+
+Added:   System tray icon shows working state and level
+Added:   Possibility to specify time offsets for session reset, clock in and clock out
+Changed: Options and absence dialogs show up at OS default position
+Changed: Removed minimize/restore animation when closing/restoring main window
+Fixed:   When resetting session during being clocked out, working state is not reset
+Fixed:   Hotkey for restoring main window not working before opening the main window
+         for the first time
+
+
 v3.0.6940.24229 (2019-01-01)
 ----------------------------
 
