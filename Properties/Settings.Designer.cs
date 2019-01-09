@@ -193,18 +193,6 @@ namespace ClockIn.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("20, 20")]
-        public global::System.Drawing.Point OptionsDialogLocation {
-            get {
-                return ((global::System.Drawing.Point)(this["OptionsDialogLocation"]));
-            }
-            set {
-                this["OptionsDialogLocation"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string SoundFile {
             get {
@@ -272,18 +260,6 @@ namespace ClockIn.Properties {
             }
             set {
                 this["MainWindowHotkey"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("20, 20")]
-        public global::System.Drawing.Point AbsenceDialogLocation {
-            get {
-                return ((global::System.Drawing.Point)(this["AbsenceDialogLocation"]));
-            }
-            set {
-                this["AbsenceDialogLocation"] = value;
             }
         }
         

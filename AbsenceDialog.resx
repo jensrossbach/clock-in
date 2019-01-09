@@ -286,19 +286,19 @@
     <value>colBegin</value>
   </data>
   <data name="&gt;&gt;colBegin.Type" xml:space="preserve">
-    <value>ClockIn.DataGridViewTimeColumn, ClockIn, Version=2.5.6935.23406, Culture=neutral, PublicKeyToken=null</value>
+    <value>ClockIn.DataGridViewTimeColumn, ClockIn, Version=3.0.6947.35326, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colEnd.Name" xml:space="preserve">
     <value>colEnd</value>
   </data>
   <data name="&gt;&gt;colEnd.Type" xml:space="preserve">
-    <value>ClockIn.DataGridViewTimeColumn, ClockIn, Version=2.5.6935.23406, Culture=neutral, PublicKeyToken=null</value>
+    <value>ClockIn.DataGridViewTimeColumn, ClockIn, Version=3.0.6947.35326, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colDuration.Name" xml:space="preserve">
     <value>colDuration</value>
   </data>
   <data name="&gt;&gt;colDuration.Type" xml:space="preserve">
-    <value>ClockIn.DataGridViewTimeColumn, ClockIn, Version=2.5.6935.23406, Culture=neutral, PublicKeyToken=null</value>
+    <value>ClockIn.DataGridViewTimeColumn, ClockIn, Version=3.0.6947.35326, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;timePeriodBindingSource.Name" xml:space="preserve">
     <value>timePeriodBindingSource</value>

@@ -723,9 +723,7 @@
             this.Controls.Add(this.btnHotkeys);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.tbcOptions);
-            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::ClockIn.Properties.Settings.Default, "OptionsDialogLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Location = global::ClockIn.Properties.Settings.Default.OptionsDialogLocation;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OptionsDialog";

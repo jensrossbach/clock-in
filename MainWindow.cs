@@ -474,16 +474,13 @@ namespace ClockIn
         }
 
         /// <summary>
-        ///   Handles the event when the window has been moved.
+        ///   Handles the event when the window is loaded.
         /// </summary>
         /// <param name="sender">Event origin</param>
         /// <param name="e">Event arguments</param>
-        private void MainWindow_LocationChanged(object sender, EventArgs e)
+        private void MainWindow_Load(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
-            {
-                settings.MainWindowLocation = Location;
-            }
+            Location = settings.MainWindowLocation;
         }
 
         /// <summary>
@@ -516,6 +513,17 @@ namespace ClockIn
             {
                 Minimize();
                 e.Cancel = true;
+            }
+            else
+            {
+                if (WindowState == FormWindowState.Normal)
+                {
+                    settings.MainWindowLocation = Location;
+                }
+                else
+                {
+                    settings.MainWindowLocation = RestoreBounds.Location;
+                }
             }
         }
 

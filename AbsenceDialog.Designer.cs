@@ -153,9 +153,7 @@
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgvAbsence);
-            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::ClockIn.Properties.Settings.Default, "AbsenceDialogLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Location = global::ClockIn.Properties.Settings.Default.AbsenceDialogLocation;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AbsenceDialog";

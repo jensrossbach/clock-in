@@ -192,7 +192,6 @@
     <EmbeddedResource Include="TimeOffsetsDialog.resx">
       <DependentUpon>TimeOffsetsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
     <None Include="Properties\DataSources\TimePeriod.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
