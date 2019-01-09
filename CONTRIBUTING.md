@@ -83,6 +83,7 @@ Create a ZIP file containing the following files from the repository and the rel
 - de\ClockIn.resources.dll
 - ClockIn.exe
 - README.md
+- LICENSE
 - History.txt
 - yazoo-icons-readme.txt
 
