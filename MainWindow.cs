@@ -2,6 +2,7 @@
 // Copyright (C) 2012-2019 Jens Rossbach, All Rights Reserved.
 
 
+using Microsoft.Win32;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -51,6 +52,8 @@ namespace ClockIn
             settings = Properties.Settings.Default;
 
             wtTimer.Tick += new EventHandler(WtTimer_Tick);
+
+            SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
 
             timeMgr.AbsenceUpdated += TimeMgr_AbsenceUpdated;
             timeMgr.WorkingTimeUpdated += TimeMgr_WorkingTimeUpdated;
@@ -735,6 +738,27 @@ namespace ClockIn
         private void WtTimer_Tick(object sender, EventArgs e)
         {
             UpdateWorkingTime();
+        }
+
+        /// <summary>
+        ///   Handles session switch events.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
+        {
+            if ((e.Reason == SessionSwitchReason.SessionUnlock) && (timeMgr.WorkingState == WorkingState.Absent))
+            {
+                DialogResult result = MessageBox.Show(Properties.Resources.AskWorkingStateOnWinUnlock,
+                                                      Properties.Resources.WindowCaption,
+                                                      MessageBoxButtons.YesNo,
+                                                      MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    SwitchWorkingState(WorkingStateAction.ClockIn);
+                }
+            }
         }
 
         /// <summary>

@@ -350,4 +350,7 @@ http://icons.wbchug.net</value>
   <data name="ClassicSad" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Icons\ClassicSad.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AskWorkingStateOnWinUnlock" xml:space="preserve">
+    <value>You are currently clocked out. Do you want to clock in?</value>
+  </data>
 </root>

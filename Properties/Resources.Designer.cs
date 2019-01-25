@@ -128,6 +128,15 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die You are currently clocked out. Do you want to clock in? ähnelt.
+        /// </summary>
+        internal static string AskWorkingStateOnWinUnlock {
+            get {
+                return ResourceManager.GetString("AskWorkingStateOnWinUnlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap BigSmile {
