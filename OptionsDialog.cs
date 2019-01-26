@@ -34,25 +34,6 @@ namespace ClockIn
             mainWindow = mainWin;
             InitializeComponent();
 
-            erpValidation.SetIconAlignment(nmcRegularTime, ErrorIconAlignment.MiddleLeft);
-            erpValidation.SetIconPadding(nmcRegularTime, 2);
-            erpValidation.SetIconAlignment(nmcMaxTime, ErrorIconAlignment.MiddleLeft);
-            erpValidation.SetIconPadding(nmcMaxTime, 2);
-            erpValidation.SetIconAlignment(dtpBreaksBegin, ErrorIconAlignment.MiddleLeft);
-            erpValidation.SetIconPadding(dtpBreaksBegin, 2);
-            erpValidation.SetIconAlignment(dtpBreaksEnd, ErrorIconAlignment.MiddleLeft);
-            erpValidation.SetIconPadding(dtpBreaksEnd, 2);
-            erpValidation.SetIconAlignment(nmcBreak, ErrorIconAlignment.MiddleLeft);
-            erpValidation.SetIconPadding(nmcBreak, 2);
-            erpValidation.SetIconAlignment(nmcWorkspan1, ErrorIconAlignment.MiddleLeft);
-            erpValidation.SetIconPadding(nmcWorkspan1, 2);
-            erpValidation.SetIconAlignment(nmcWorkspan2, ErrorIconAlignment.MiddleLeft);
-            erpValidation.SetIconPadding(nmcWorkspan2, 2);
-            erpValidation.SetIconAlignment(nmcAdder1, ErrorIconAlignment.MiddleLeft);
-            erpValidation.SetIconPadding(nmcAdder1, 2);
-            erpValidation.SetIconAlignment(nmcAdder2, ErrorIconAlignment.MiddleLeft);
-            erpValidation.SetIconPadding(nmcAdder2, 2);
-
             Properties.Settings.Default.SettingChanging += Default_SettingChanging;
             Properties.Settings.Default.PropertyChanged += Default_PropertyChanged;
         }
@@ -589,19 +570,6 @@ namespace ClockIn
             {
                 Properties.Settings.Default.SoundFile = dlgSelectSound.FileName;
                 lblSoundFile.Text = Path.GetFileNameWithoutExtension(Properties.Settings.Default.SoundFile);
-            }
-        }
-
-        /// <summary>
-        ///   Handles a click on the offset configure button.
-        /// </summary>
-        /// <param name="sender">Event origin</param>
-        /// <param name="e">Event arguments</param>
-        private void BtnConfigureOffsets_Click(object sender, EventArgs e)
-        {
-            using (TimeOffsetsDialog dialog = new TimeOffsetsDialog())
-            {
-                dialog.ShowDialog(this);
             }
         }
 

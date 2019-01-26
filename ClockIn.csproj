@@ -128,12 +128,6 @@
     <Compile Include="Settings.cs" />
     <Compile Include="TimeGridView.cs" />
     <Compile Include="TimeManager.cs" />
-    <Compile Include="TimeOffsetsDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TimeOffsetsDialog.Designer.cs">
-      <DependentUpon>TimeOffsetsDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="TimePeriod.cs" />
     <EmbeddedResource Include="AbsenceDialog.de.resx">
       <DependentUpon>AbsenceDialog.cs</DependentUpon>
@@ -186,12 +180,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="TimeOffsetsDialog.de.resx">
-      <DependentUpon>TimeOffsetsDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TimeOffsetsDialog.resx">
-      <DependentUpon>TimeOffsetsDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\DataSources\TimePeriod.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

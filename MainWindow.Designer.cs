@@ -65,6 +65,7 @@
             // 
             resources.ApplyResources(this.lblBegin, "lblBegin");
             this.lblBegin.Name = "lblBegin";
+            this.lblBegin.DoubleClick += new System.EventHandler(this.LblBegin_DoubleClick);
             // 
             // lblAbsence
             // 

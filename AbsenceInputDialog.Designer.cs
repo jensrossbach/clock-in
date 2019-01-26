@@ -73,6 +73,8 @@
             // 
             // btnOK
             // 
+            this.erpValidation.SetIconAlignment(this.btnOK, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("btnOK.IconAlignment"))));
+            this.erpValidation.SetIconPadding(this.btnOK, ((int)(resources.GetObject("btnOK.IconPadding"))));
             resources.ApplyResources(this.btnOK, "btnOK");
             this.btnOK.Name = "btnOK";
             this.btnOK.UseVisualStyleBackColor = true;

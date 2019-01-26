@@ -25,85 +25,13 @@ namespace ClockIn.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8")]
-        public decimal RegularWorkingTime {
-            get {
-                return ((decimal)(this["RegularWorkingTime"]));
-            }
-            set {
-                this["RegularWorkingTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public decimal MaximumWorkingTime {
-            get {
-                return ((decimal)(this["MaximumWorkingTime"]));
-            }
-            set {
-                this["MaximumWorkingTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool NotifyOnRegularLimit {
-            get {
-                return ((bool)(this["NotifyOnRegularLimit"]));
-            }
-            set {
-                this["NotifyOnRegularLimit"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool NotifyOnMaximumLimit {
-            get {
-                return ((bool)(this["NotifyOnMaximumLimit"]));
-            }
-            set {
-                this["NotifyOnMaximumLimit"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public decimal NotifyAdvance {
-            get {
-                return ((decimal)(this["NotifyAdvance"]));
-            }
-            set {
-                this["NotifyAdvance"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool PlaySound {
+        public bool Upgraded {
             get {
-                return ((bool)(this["PlaySound"]));
+                return ((bool)(this["Upgraded"]));
             }
             set {
-                this["PlaySound"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("45")]
-        public decimal Break {
-            get {
-                return ((decimal)(this["Break"]));
-            }
-            set {
-                this["Break"] = value;
+                this["Upgraded"] = value;
             }
         }
         
@@ -146,12 +74,84 @@ namespace ClockIn.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool StartMinimized {
+            get {
+                return ((bool)(this["StartMinimized"]));
+            }
+            set {
+                this["StartMinimized"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool LowPowerIsStart {
             get {
                 return ((bool)(this["LowPowerIsStart"]));
             }
             set {
                 this["LowPowerIsStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ClockInAtStart {
+            get {
+                return ((bool)(this["ClockInAtStart"]));
+            }
+            set {
+                this["ClockInAtStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ClockInAtWakeup {
+            get {
+                return ((bool)(this["ClockInAtWakeup"]));
+            }
+            set {
+                this["ClockInAtWakeup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public decimal RegularWorkingTime {
+            get {
+                return ((decimal)(this["RegularWorkingTime"]));
+            }
+            set {
+                this["RegularWorkingTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public decimal MaximumWorkingTime {
+            get {
+                return ((decimal)(this["MaximumWorkingTime"]));
+            }
+            set {
+                this["MaximumWorkingTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("45")]
+        public decimal Break {
+            get {
+                return ((decimal)(this["Break"]));
+            }
+            set {
+                this["Break"] = value;
             }
         }
         
@@ -176,90 +176,6 @@ namespace ClockIn.Properties {
             }
             set {
                 this["BreaksEnd"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50, 50")]
-        public global::System.Drawing.Point MainWindowLocation {
-            get {
-                return ((global::System.Drawing.Point)(this["MainWindowLocation"]));
-            }
-            set {
-                this["MainWindowLocation"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string SoundFile {
-            get {
-                return ((string)(this["SoundFile"]));
-            }
-            set {
-                this["SoundFile"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ElapsedTime")]
-        public string WorkingTimeDisplay {
-            get {
-                return ((string)(this["WorkingTimeDisplay"]));
-            }
-            set {
-                this["WorkingTimeDisplay"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Upgraded {
-            get {
-                return ((bool)(this["Upgraded"]));
-            }
-            set {
-                this["Upgraded"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool NotificationAlwaysOnTop {
-            get {
-                return ((bool)(this["NotificationAlwaysOnTop"]));
-            }
-            set {
-                this["NotificationAlwaysOnTop"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool DisplayMaximumTime {
-            get {
-                return ((bool)(this["DisplayMaximumTime"]));
-            }
-            set {
-                this["DisplayMaximumTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("None")]
-        public global::System.Windows.Forms.Keys MainWindowHotkey {
-            get {
-                return ((global::System.Windows.Forms.Keys)(this["MainWindowHotkey"]));
-            }
-            set {
-                this["MainWindowHotkey"] = value;
             }
         }
         
@@ -325,126 +241,6 @@ namespace ClockIn.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool StartMinimized {
-            get {
-                return ((bool)(this["StartMinimized"]));
-            }
-            set {
-                this["StartMinimized"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public decimal NotifyRegAdvance {
-            get {
-                return ((decimal)(this["NotifyRegAdvance"]));
-            }
-            set {
-                this["NotifyRegAdvance"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool FlatIconOnNewWindows {
-            get {
-                return ((bool)(this["FlatIconOnNewWindows"]));
-            }
-            set {
-                this["FlatIconOnNewWindows"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ClockInAtStart {
-            get {
-                return ((bool)(this["ClockInAtStart"]));
-            }
-            set {
-                this["ClockInAtStart"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ClockInAtWakeup {
-            get {
-                return ((bool)(this["ClockInAtWakeup"]));
-            }
-            set {
-                this["ClockInAtWakeup"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool MinimizeOnClockOut {
-            get {
-                return ((bool)(this["MinimizeOnClockOut"]));
-            }
-            set {
-                this["MinimizeOnClockOut"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ConfirmAbsenceOnClockIn {
-            get {
-                return ((bool)(this["ConfirmAbsenceOnClockIn"]));
-            }
-            set {
-                this["ConfirmAbsenceOnClockIn"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("None")]
-        public global::System.Windows.Forms.Keys ClockInOutHotkey {
-            get {
-                return ((global::System.Windows.Forms.Keys)(this["ClockInOutHotkey"]));
-            }
-            set {
-                this["ClockInOutHotkey"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool NotifyOnClockInOut {
-            get {
-                return ((bool)(this["NotifyOnClockInOut"]));
-            }
-            set {
-                this["NotifyOnClockInOut"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool SystemNotifications {
-            get {
-                return ((bool)(this["SystemNotifications"]));
-            }
-            set {
-                this["SystemNotifications"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public decimal SessionResetTimeOffset {
             get {
@@ -476,6 +272,234 @@ namespace ClockIn.Properties {
             }
             set {
                 this["ClockOutTimeOffset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool NotifyOnRegularLimit {
+            get {
+                return ((bool)(this["NotifyOnRegularLimit"]));
+            }
+            set {
+                this["NotifyOnRegularLimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool NotifyOnMaximumLimit {
+            get {
+                return ((bool)(this["NotifyOnMaximumLimit"]));
+            }
+            set {
+                this["NotifyOnMaximumLimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool NotifyOnClockInOut {
+            get {
+                return ((bool)(this["NotifyOnClockInOut"]));
+            }
+            set {
+                this["NotifyOnClockInOut"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public decimal NotifyAdvance {
+            get {
+                return ((decimal)(this["NotifyAdvance"]));
+            }
+            set {
+                this["NotifyAdvance"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal NotifyRegAdvance {
+            get {
+                return ((decimal)(this["NotifyRegAdvance"]));
+            }
+            set {
+                this["NotifyRegAdvance"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool NotificationAlwaysOnTop {
+            get {
+                return ((bool)(this["NotificationAlwaysOnTop"]));
+            }
+            set {
+                this["NotificationAlwaysOnTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SystemNotifications {
+            get {
+                return ((bool)(this["SystemNotifications"]));
+            }
+            set {
+                this["SystemNotifications"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PlaySound {
+            get {
+                return ((bool)(this["PlaySound"]));
+            }
+            set {
+                this["PlaySound"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SoundFile {
+            get {
+                return ((string)(this["SoundFile"]));
+            }
+            set {
+                this["SoundFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50, 50")]
+        public global::System.Drawing.Point MainWindowLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["MainWindowLocation"]));
+            }
+            set {
+                this["MainWindowLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ElapsedTime")]
+        public string WorkingTimeDisplay {
+            get {
+                return ((string)(this["WorkingTimeDisplay"]));
+            }
+            set {
+                this["WorkingTimeDisplay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DisplayMaximumTime {
+            get {
+                return ((bool)(this["DisplayMaximumTime"]));
+            }
+            set {
+                this["DisplayMaximumTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FlatIconOnNewWindows {
+            get {
+                return ((bool)(this["FlatIconOnNewWindows"]));
+            }
+            set {
+                this["FlatIconOnNewWindows"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MinimizeOnClockOut {
+            get {
+                return ((bool)(this["MinimizeOnClockOut"]));
+            }
+            set {
+                this["MinimizeOnClockOut"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ConfirmAbsenceOnClockIn {
+            get {
+                return ((bool)(this["ConfirmAbsenceOnClockIn"]));
+            }
+            set {
+                this["ConfirmAbsenceOnClockIn"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        public global::System.Windows.Forms.Keys MainWindowHotkey {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["MainWindowHotkey"]));
+            }
+            set {
+                this["MainWindowHotkey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        public global::System.Windows.Forms.Keys ClockInOutHotkey {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["ClockInOutHotkey"]));
+            }
+            set {
+                this["ClockInOutHotkey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ClockInAtUnlock {
+            get {
+                return ((bool)(this["ClockInAtUnlock"]));
+            }
+            set {
+                this["ClockInAtUnlock"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AskClockInAtUnlock {
+            get {
+                return ((bool)(this["AskClockInAtUnlock"]));
+            }
+            set {
+                this["AskClockInAtUnlock"] = value;
             }
         }
     }

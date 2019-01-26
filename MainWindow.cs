@@ -553,6 +553,16 @@ namespace ClockIn
         }
 
         /// <summary>
+        ///   Handles a double click on the arrival time label.
+        /// </summary>
+        /// <param name="sender">Event origin</param>
+        /// <param name="e">Event arguments</param>
+        private void LblBegin_DoubleClick(object sender, EventArgs e)
+        {
+            timeMgr.RestartSession(true, false);
+        }
+
+        /// <summary>
         ///   Handles a click on the working time icon.
         /// </summary>
         /// <param name="sender">Event origin</param>
@@ -747,14 +757,23 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
         {
-            if ((e.Reason == SessionSwitchReason.SessionUnlock) && (timeMgr.WorkingState == WorkingState.Absent))
+            if ((e.Reason == SessionSwitchReason.SessionUnlock) &&
+                (timeMgr.WorkingState == WorkingState.Absent) &&
+                settings.ClockInAtUnlock)
             {
-                DialogResult result = MessageBox.Show(Properties.Resources.AskWorkingStateOnWinUnlock,
-                                                      Properties.Resources.WindowCaption,
-                                                      MessageBoxButtons.YesNo,
-                                                      MessageBoxIcon.Question);
+                if (settings.AskClockInAtUnlock)
+                {
+                    DialogResult result = MessageBox.Show(Properties.Resources.AskWorkingStateOnWinUnlock,
+                                                          Properties.Resources.WindowCaption,
+                                                          MessageBoxButtons.YesNo,
+                                                          MessageBoxIcon.Question);
 
-                if (result == DialogResult.Yes)
+                    if (result == DialogResult.Yes)
+                    {
+                        SwitchWorkingState(WorkingStateAction.ClockIn);
+                    }
+                }
+                else
                 {
                     SwitchWorkingState(WorkingStateAction.ClockIn);
                 }

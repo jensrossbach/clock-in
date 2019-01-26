@@ -160,13 +160,13 @@
     <value>200, 16</value>
   </data>
   <data name="lblRegularTimeH.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 13</value>
+    <value>39, 13</value>
   </data>
   <data name="lblRegularTimeH.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="lblRegularTimeH.Text" xml:space="preserve">
-    <value>h</value>
+    <value>hour(s)</value>
   </data>
   <data name="&gt;&gt;lblRegularTimeH.Name" xml:space="preserve">
     <value>lblRegularTimeH</value>
@@ -208,7 +208,7 @@
     <value>tbpTimePeriods</value>
   </data>
   <data name="&gt;&gt;lblMaxTime.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="lblMaxTimeH.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -220,13 +220,13 @@
     <value>200, 44</value>
   </data>
   <data name="lblMaxTimeH.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 13</value>
+    <value>39, 13</value>
   </data>
   <data name="lblMaxTimeH.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="lblMaxTimeH.Text" xml:space="preserve">
-    <value>h</value>
+    <value>hour(s)</value>
   </data>
   <data name="&gt;&gt;lblMaxTimeH.Name" xml:space="preserve">
     <value>lblMaxTimeH</value>
@@ -238,7 +238,7 @@
     <value>tbpTimePeriods</value>
   </data>
   <data name="&gt;&gt;lblMaxTimeH.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="lblMinBeforeMax.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -247,16 +247,16 @@
     <value>NoControl</value>
   </data>
   <data name="lblMinBeforeMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 99</value>
+    <value>83, 99</value>
   </data>
   <data name="lblMinBeforeMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 13</value>
+    <value>82, 13</value>
   </data>
   <data name="lblMinBeforeMax.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="lblMinBeforeMax.Text" xml:space="preserve">
-    <value>minutes before</value>
+    <value>minute(s) before</value>
   </data>
   <data name="&gt;&gt;lblMinBeforeMax.Name" xml:space="preserve">
     <value>lblMinBeforeMax</value>
@@ -274,7 +274,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 464</value>
+    <value>297, 464</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -295,7 +295,67 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;rbtQueryStartBehavior.Name" xml:space="preserve">
+    <value>rbtQueryStartBehavior</value>
+  </data>
+  <data name="&gt;&gt;rbtQueryStartBehavior.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbtQueryStartBehavior.Parent" xml:space="preserve">
+    <value>grpLastSession</value>
+  </data>
+  <data name="&gt;&gt;rbtQueryStartBehavior.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;rbtContinueSession.Name" xml:space="preserve">
+    <value>rbtContinueSession</value>
+  </data>
+  <data name="&gt;&gt;rbtContinueSession.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbtContinueSession.Parent" xml:space="preserve">
+    <value>grpLastSession</value>
+  </data>
+  <data name="&gt;&gt;rbtContinueSession.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;rbtNewSession.Name" xml:space="preserve">
+    <value>rbtNewSession</value>
+  </data>
+  <data name="&gt;&gt;rbtNewSession.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbtNewSession.Parent" xml:space="preserve">
+    <value>grpLastSession</value>
+  </data>
+  <data name="&gt;&gt;rbtNewSession.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grpLastSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 115</value>
+  </data>
+  <data name="grpLastSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 98</value>
+  </data>
+  <data name="grpLastSession.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="grpLastSession.Text" xml:space="preserve">
+    <value>Last session</value>
+  </data>
+  <data name="&gt;&gt;grpLastSession.Name" xml:space="preserve">
+    <value>grpLastSession</value>
+  </data>
+  <data name="&gt;&gt;grpLastSession.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpLastSession.Parent" xml:space="preserve">
+    <value>tbpMisc</value>
+  </data>
+  <data name="&gt;&gt;grpLastSession.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="rbtQueryStartBehavior.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -310,7 +370,7 @@
     <value>110, 17</value>
   </data>
   <data name="rbtQueryStartBehavior.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="rbtQueryStartBehavior.Text" xml:space="preserve">
     <value>&amp;Ask on every start</value>
@@ -340,7 +400,7 @@
     <value>141, 17</value>
   </data>
   <data name="rbtContinueSession.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="rbtContinueSession.Text" xml:space="preserve">
     <value>Continue &amp;today's session</value>
@@ -370,7 +430,7 @@
     <value>142, 17</value>
   </data>
   <data name="rbtNewSession.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="rbtNewSession.Text" xml:space="preserve">
     <value>Always start &amp;new session</value>
@@ -387,30 +447,6 @@
   <data name="&gt;&gt;rbtNewSession.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="grpLastSession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 16</value>
-  </data>
-  <data name="grpLastSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 98</value>
-  </data>
-  <data name="grpLastSession.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="grpLastSession.Text" xml:space="preserve">
-    <value>Last session</value>
-  </data>
-  <data name="&gt;&gt;grpLastSession.Name" xml:space="preserve">
-    <value>grpLastSession</value>
-  </data>
-  <data name="&gt;&gt;grpLastSession.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpLastSession.Parent" xml:space="preserve">
-    <value>tbpMisc</value>
-  </data>
-  <data name="&gt;&gt;grpLastSession.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="cbxAutoLaunch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -418,13 +454,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbxAutoLaunch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 130</value>
+    <value>12, 14</value>
   </data>
   <data name="cbxAutoLaunch.Size" type="System.Drawing.Size, System.Drawing">
     <value>213, 17</value>
   </data>
   <data name="cbxAutoLaunch.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="cbxAutoLaunch.Text" xml:space="preserve">
     <value>&amp;Launch application on Windows startup</value>
@@ -439,37 +475,7 @@
     <value>tbpMisc</value>
   </data>
   <data name="&gt;&gt;cbxAutoLaunch.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="cbxLowPowerIsStart.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbxLowPowerIsStart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbxLowPowerIsStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 176</value>
-  </data>
-  <data name="cbxLowPowerIsStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 17</value>
-  </data>
-  <data name="cbxLowPowerIsStart.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="cbxLowPowerIsStart.Text" xml:space="preserve">
-    <value>Wakeup from low &amp;power state means startup</value>
-  </data>
-  <data name="&gt;&gt;cbxLowPowerIsStart.Name" xml:space="preserve">
-    <value>cbxLowPowerIsStart</value>
-  </data>
-  <data name="&gt;&gt;cbxLowPowerIsStart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxLowPowerIsStart.Parent" xml:space="preserve">
-    <value>tbpMisc</value>
-  </data>
-  <data name="&gt;&gt;cbxLowPowerIsStart.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="dateTimePicker1.CustomFormat" xml:space="preserve">
     <value>HH:mm</value>
@@ -547,13 +553,13 @@
     <value>188, 87</value>
   </data>
   <data name="lblBreakMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 13</value>
+    <value>49, 13</value>
   </data>
   <data name="lblBreakMin.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="lblBreakMin.Text" xml:space="preserve">
-    <value>min.</value>
+    <value>minute(s)</value>
   </data>
   <data name="&gt;&gt;lblBreakMin.Name" xml:space="preserve">
     <value>lblBreakMin</value>
@@ -597,6 +603,1417 @@
   <data name="&gt;&gt;lblBreak.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="erpValidation.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>154, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>55</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>384, 499</value>
+  </data>
+  <data name="&gt;&gt;btnHotkeys.Name" xml:space="preserve">
+    <value>btnHotkeys</value>
+  </data>
+  <data name="&gt;&gt;btnHotkeys.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnHotkeys.Parent" xml:space="preserve">
+    <value>tbpMisc</value>
+  </data>
+  <data name="&gt;&gt;btnHotkeys.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblHotkeys.Name" xml:space="preserve">
+    <value>lblHotkeys</value>
+  </data>
+  <data name="&gt;&gt;lblHotkeys.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblHotkeys.Parent" xml:space="preserve">
+    <value>tbpMisc</value>
+  </data>
+  <data name="&gt;&gt;lblHotkeys.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;grpArrivalOffsets.Name" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;grpArrivalOffsets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpArrivalOffsets.Parent" xml:space="preserve">
+    <value>tbpMisc</value>
+  </data>
+  <data name="&gt;&gt;grpArrivalOffsets.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;cbxFlatIcon.Name" xml:space="preserve">
+    <value>cbxFlatIcon</value>
+  </data>
+  <data name="&gt;&gt;cbxFlatIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxFlatIcon.Parent" xml:space="preserve">
+    <value>tbpMisc</value>
+  </data>
+  <data name="&gt;&gt;cbxFlatIcon.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cbxMinimized.Name" xml:space="preserve">
+    <value>cbxMinimized</value>
+  </data>
+  <data name="&gt;&gt;cbxMinimized.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxMinimized.Parent" xml:space="preserve">
+    <value>tbpMisc</value>
+  </data>
+  <data name="&gt;&gt;cbxMinimized.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;cbxLowPowerIsStart.Name" xml:space="preserve">
+    <value>cbxLowPowerIsStart</value>
+  </data>
+  <data name="&gt;&gt;cbxLowPowerIsStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxLowPowerIsStart.Parent" xml:space="preserve">
+    <value>tbpMisc</value>
+  </data>
+  <data name="&gt;&gt;cbxLowPowerIsStart.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tbpMisc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tbpMisc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 408</value>
+  </data>
+  <data name="tbpMisc.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tbpMisc.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="&gt;&gt;tbpMisc.Name" xml:space="preserve">
+    <value>tbpMisc</value>
+  </data>
+  <data name="&gt;&gt;tbpMisc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpMisc.Parent" xml:space="preserve">
+    <value>tbcOptions</value>
+  </data>
+  <data name="&gt;&gt;tbpMisc.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblAdder2Min.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblAdder2Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblAdder2Min.Location" type="System.Drawing.Point, System.Drawing">
+    <value>188, 124</value>
+  </data>
+  <data name="lblAdder2Min.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 13</value>
+  </data>
+  <data name="lblAdder2Min.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblAdder2Min.Text" xml:space="preserve">
+    <value>minute(s) break</value>
+  </data>
+  <data name="&gt;&gt;lblAdder2Min.Name" xml:space="preserve">
+    <value>lblAdder2Min</value>
+  </data>
+  <data name="&gt;&gt;lblAdder2Min.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblAdder2Min.Parent" xml:space="preserve">
+    <value>grpOtherPeriod</value>
+  </data>
+  <data name="&gt;&gt;lblAdder2Min.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="nmcAdder1.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="nmcAdder1.IconPadding" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="nmcAdder1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 54</value>
+  </data>
+  <data name="nmcAdder1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="nmcAdder1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="nmcAdder1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;nmcAdder1.Name" xml:space="preserve">
+    <value>nmcAdder1</value>
+  </data>
+  <data name="&gt;&gt;nmcAdder1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcAdder1.Parent" xml:space="preserve">
+    <value>grpOtherPeriod</value>
+  </data>
+  <data name="&gt;&gt;nmcAdder1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblAdder1Min.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblAdder1Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblAdder1Min.Location" type="System.Drawing.Point, System.Drawing">
+    <value>188, 56</value>
+  </data>
+  <data name="lblAdder1Min.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 13</value>
+  </data>
+  <data name="lblAdder1Min.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblAdder1Min.Text" xml:space="preserve">
+    <value>minute(s) break</value>
+  </data>
+  <data name="&gt;&gt;lblAdder1Min.Name" xml:space="preserve">
+    <value>lblAdder1Min</value>
+  </data>
+  <data name="&gt;&gt;lblAdder1Min.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblAdder1Min.Parent" xml:space="preserve">
+    <value>grpOtherPeriod</value>
+  </data>
+  <data name="&gt;&gt;lblAdder1Min.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="nmcAdder2.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="nmcAdder2.IconPadding" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="nmcAdder2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 122</value>
+  </data>
+  <data name="nmcAdder2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="nmcAdder2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="nmcAdder2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;nmcAdder2.Name" xml:space="preserve">
+    <value>nmcAdder2</value>
+  </data>
+  <data name="&gt;&gt;nmcAdder2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcAdder2.Parent" xml:space="preserve">
+    <value>grpOtherPeriod</value>
+  </data>
+  <data name="&gt;&gt;nmcAdder2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblAdder2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblAdder2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblAdder2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 124</value>
+  </data>
+  <data name="lblAdder2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblAdder2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblAdder2.Text" xml:space="preserve">
+    <value>less:</value>
+  </data>
+  <data name="&gt;&gt;lblAdder2.Name" xml:space="preserve">
+    <value>lblAdder2</value>
+  </data>
+  <data name="&gt;&gt;lblAdder2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblAdder2.Parent" xml:space="preserve">
+    <value>grpOtherPeriod</value>
+  </data>
+  <data name="&gt;&gt;lblAdder2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblWorkSpan1H.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblWorkSpan1H.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblWorkSpan1H.Location" type="System.Drawing.Point, System.Drawing">
+    <value>188, 30</value>
+  </data>
+  <data name="lblWorkSpan1H.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
+  </data>
+  <data name="lblWorkSpan1H.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblWorkSpan1H.Text" xml:space="preserve">
+    <value>hour(s)</value>
+  </data>
+  <data name="&gt;&gt;lblWorkSpan1H.Name" xml:space="preserve">
+    <value>lblWorkSpan1H</value>
+  </data>
+  <data name="&gt;&gt;lblWorkSpan1H.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblWorkSpan1H.Parent" xml:space="preserve">
+    <value>grpOtherPeriod</value>
+  </data>
+  <data name="&gt;&gt;lblWorkSpan1H.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblWorkspan2H.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblWorkspan2H.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblWorkspan2H.Location" type="System.Drawing.Point, System.Drawing">
+    <value>188, 98</value>
+  </data>
+  <data name="lblWorkspan2H.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
+  </data>
+  <data name="lblWorkspan2H.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblWorkspan2H.Text" xml:space="preserve">
+    <value>hour(s)</value>
+  </data>
+  <data name="&gt;&gt;lblWorkspan2H.Name" xml:space="preserve">
+    <value>lblWorkspan2H</value>
+  </data>
+  <data name="&gt;&gt;lblWorkspan2H.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblWorkspan2H.Parent" xml:space="preserve">
+    <value>grpOtherPeriod</value>
+  </data>
+  <data name="&gt;&gt;lblWorkspan2H.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblWorkspan2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblWorkspan2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblWorkspan2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 98</value>
+  </data>
+  <data name="lblWorkspan2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lblWorkspan2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblWorkspan2.Text" xml:space="preserve">
+    <value>Working more than:</value>
+  </data>
+  <data name="&gt;&gt;lblWorkspan2.Name" xml:space="preserve">
+    <value>lblWorkspan2</value>
+  </data>
+  <data name="&gt;&gt;lblWorkspan2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblWorkspan2.Parent" xml:space="preserve">
+    <value>grpOtherPeriod</value>
+  </data>
+  <data name="&gt;&gt;lblWorkspan2.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="lblWorkspan1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblWorkspan1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblWorkspan1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 30</value>
+  </data>
+  <data name="lblWorkspan1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="lblWorkspan1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblWorkspan1.Text" xml:space="preserve">
+    <value>Working more than:</value>
+  </data>
+  <data name="&gt;&gt;lblWorkspan1.Name" xml:space="preserve">
+    <value>lblWorkspan1</value>
+  </data>
+  <data name="&gt;&gt;lblWorkspan1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblWorkspan1.Parent" xml:space="preserve">
+    <value>grpOtherPeriod</value>
+  </data>
+  <data name="&gt;&gt;lblWorkspan1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="nmcWorkspan1.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="nmcWorkspan1.IconPadding" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="nmcWorkspan1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 28</value>
+  </data>
+  <data name="nmcWorkspan1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="nmcWorkspan1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="nmcWorkspan1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;nmcWorkspan1.Name" xml:space="preserve">
+    <value>nmcWorkspan1</value>
+  </data>
+  <data name="&gt;&gt;nmcWorkspan1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcWorkspan1.Parent" xml:space="preserve">
+    <value>grpOtherPeriod</value>
+  </data>
+  <data name="&gt;&gt;nmcWorkspan1.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="nmcWorkspan2.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="nmcWorkspan2.IconPadding" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="nmcWorkspan2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 96</value>
+  </data>
+  <data name="nmcWorkspan2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="nmcWorkspan2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="nmcWorkspan2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;nmcWorkspan2.Name" xml:space="preserve">
+    <value>nmcWorkspan2</value>
+  </data>
+  <data name="&gt;&gt;nmcWorkspan2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcWorkspan2.Parent" xml:space="preserve">
+    <value>grpOtherPeriod</value>
+  </data>
+  <data name="&gt;&gt;nmcWorkspan2.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="lblAdder1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblAdder1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblAdder1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 56</value>
+  </data>
+  <data name="lblAdder1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="lblAdder1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblAdder1.Text" xml:space="preserve">
+    <value>less:</value>
+  </data>
+  <data name="&gt;&gt;lblAdder1.Name" xml:space="preserve">
+    <value>lblAdder1</value>
+  </data>
+  <data name="&gt;&gt;lblAdder1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblAdder1.Parent" xml:space="preserve">
+    <value>grpOtherPeriod</value>
+  </data>
+  <data name="&gt;&gt;lblAdder1.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="grpOtherPeriod.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 214</value>
+  </data>
+  <data name="grpOtherPeriod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 160</value>
+  </data>
+  <data name="grpOtherPeriod.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="grpOtherPeriod.Text" xml:space="preserve">
+    <value>Late shift</value>
+  </data>
+  <data name="&gt;&gt;grpOtherPeriod.Name" xml:space="preserve">
+    <value>grpOtherPeriod</value>
+  </data>
+  <data name="&gt;&gt;grpOtherPeriod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpOtherPeriod.Parent" xml:space="preserve">
+    <value>tbpTimePeriods</value>
+  </data>
+  <data name="&gt;&gt;grpOtherPeriod.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="nmcRegularTime.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="nmcRegularTime.IconPadding" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="nmcRegularTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>149, 14</value>
+  </data>
+  <data name="nmcRegularTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="nmcRegularTime.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="nmcRegularTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;nmcRegularTime.Name" xml:space="preserve">
+    <value>nmcRegularTime</value>
+  </data>
+  <data name="&gt;&gt;nmcRegularTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcRegularTime.Parent" xml:space="preserve">
+    <value>tbpTimePeriods</value>
+  </data>
+  <data name="&gt;&gt;nmcRegularTime.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="nmcMaxTime.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="nmcMaxTime.IconPadding" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="nmcMaxTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>149, 42</value>
+  </data>
+  <data name="nmcMaxTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="nmcMaxTime.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="nmcMaxTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;nmcMaxTime.Name" xml:space="preserve">
+    <value>nmcMaxTime</value>
+  </data>
+  <data name="&gt;&gt;nmcMaxTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcMaxTime.Parent" xml:space="preserve">
+    <value>tbpTimePeriods</value>
+  </data>
+  <data name="&gt;&gt;nmcMaxTime.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tbpTimePeriods.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tbpTimePeriods.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tbpTimePeriods.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 408</value>
+  </data>
+  <data name="tbpTimePeriods.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tbpTimePeriods.Text" xml:space="preserve">
+    <value>Time Periods</value>
+  </data>
+  <data name="&gt;&gt;tbpTimePeriods.Name" xml:space="preserve">
+    <value>tbpTimePeriods</value>
+  </data>
+  <data name="&gt;&gt;tbpTimePeriods.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpTimePeriods.Parent" xml:space="preserve">
+    <value>tbcOptions</value>
+  </data>
+  <data name="&gt;&gt;tbpTimePeriods.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbxNotifyRegularTime.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxNotifyRegularTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxNotifyRegularTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 25</value>
+  </data>
+  <data name="cbxNotifyRegularTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 17</value>
+  </data>
+  <data name="cbxNotifyRegularTime.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="cbxNotifyRegularTime.Text" xml:space="preserve">
+    <value>Notify upon reaching &amp;regular working time</value>
+  </data>
+  <data name="&gt;&gt;cbxNotifyRegularTime.Name" xml:space="preserve">
+    <value>cbxNotifyRegularTime</value>
+  </data>
+  <data name="&gt;&gt;cbxNotifyRegularTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxNotifyRegularTime.Parent" xml:space="preserve">
+    <value>grpWorkingTime</value>
+  </data>
+  <data name="&gt;&gt;cbxNotifyRegularTime.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbxSystemNotifications.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxSystemNotifications.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxSystemNotifications.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 220</value>
+  </data>
+  <data name="cbxSystemNotifications.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 17</value>
+  </data>
+  <data name="cbxSystemNotifications.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="cbxSystemNotifications.Text" xml:space="preserve">
+    <value>Use s&amp;ystem notifications</value>
+  </data>
+  <data name="&gt;&gt;cbxSystemNotifications.Name" xml:space="preserve">
+    <value>cbxSystemNotifications</value>
+  </data>
+  <data name="&gt;&gt;cbxSystemNotifications.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxSystemNotifications.Parent" xml:space="preserve">
+    <value>grpWorkingTime</value>
+  </data>
+  <data name="&gt;&gt;cbxSystemNotifications.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="nmcNotifyRegAdvance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 48</value>
+  </data>
+  <data name="nmcNotifyRegAdvance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="nmcNotifyRegAdvance.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;nmcNotifyRegAdvance.Name" xml:space="preserve">
+    <value>nmcNotifyRegAdvance</value>
+  </data>
+  <data name="&gt;&gt;nmcNotifyRegAdvance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcNotifyRegAdvance.Parent" xml:space="preserve">
+    <value>grpWorkingTime</value>
+  </data>
+  <data name="&gt;&gt;nmcNotifyRegAdvance.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblMinBeforeReg.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblMinBeforeReg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblMinBeforeReg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>83, 50</value>
+  </data>
+  <data name="lblMinBeforeReg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 13</value>
+  </data>
+  <data name="lblMinBeforeReg.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblMinBeforeReg.Text" xml:space="preserve">
+    <value>minute(s) before</value>
+  </data>
+  <data name="&gt;&gt;lblMinBeforeReg.Name" xml:space="preserve">
+    <value>lblMinBeforeReg</value>
+  </data>
+  <data name="&gt;&gt;lblMinBeforeReg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblMinBeforeReg.Parent" xml:space="preserve">
+    <value>grpWorkingTime</value>
+  </data>
+  <data name="&gt;&gt;lblMinBeforeReg.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbxNotificationAlwayOnTop.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxNotificationAlwayOnTop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxNotificationAlwayOnTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 197</value>
+  </data>
+  <data name="cbxNotificationAlwayOnTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 17</value>
+  </data>
+  <data name="cbxNotificationAlwayOnTop.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="cbxNotificationAlwayOnTop.Text" xml:space="preserve">
+    <value>Notification window always on t&amp;op</value>
+  </data>
+  <data name="&gt;&gt;cbxNotificationAlwayOnTop.Name" xml:space="preserve">
+    <value>cbxNotificationAlwayOnTop</value>
+  </data>
+  <data name="&gt;&gt;cbxNotificationAlwayOnTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxNotificationAlwayOnTop.Parent" xml:space="preserve">
+    <value>grpWorkingTime</value>
+  </data>
+  <data name="&gt;&gt;cbxNotificationAlwayOnTop.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="nmcNotifyMaxAdvance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 97</value>
+  </data>
+  <data name="nmcNotifyMaxAdvance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="nmcNotifyMaxAdvance.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;nmcNotifyMaxAdvance.Name" xml:space="preserve">
+    <value>nmcNotifyMaxAdvance</value>
+  </data>
+  <data name="&gt;&gt;nmcNotifyMaxAdvance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcNotifyMaxAdvance.Parent" xml:space="preserve">
+    <value>grpWorkingTime</value>
+  </data>
+  <data name="&gt;&gt;nmcNotifyMaxAdvance.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnSelectSound.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnSelectSound.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnSelectSound.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 157</value>
+  </data>
+  <data name="btnSelectSound.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnSelectSound.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnSelectSound.Text" xml:space="preserve">
+    <value>&amp;Choose...</value>
+  </data>
+  <data name="&gt;&gt;btnSelectSound.Name" xml:space="preserve">
+    <value>btnSelectSound</value>
+  </data>
+  <data name="&gt;&gt;btnSelectSound.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSelectSound.Parent" xml:space="preserve">
+    <value>grpWorkingTime</value>
+  </data>
+  <data name="&gt;&gt;btnSelectSound.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblSoundFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSoundFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 135</value>
+  </data>
+  <data name="lblSoundFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="lblSoundFile.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblSoundFile.Text" xml:space="preserve">
+    <value>(nothing chosen)</value>
+  </data>
+  <data name="&gt;&gt;lblSoundFile.Name" xml:space="preserve">
+    <value>lblSoundFile</value>
+  </data>
+  <data name="&gt;&gt;lblSoundFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSoundFile.Parent" xml:space="preserve">
+    <value>grpWorkingTime</value>
+  </data>
+  <data name="&gt;&gt;lblSoundFile.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cbxPlaySound.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxPlaySound.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxPlaySound.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 134</value>
+  </data>
+  <data name="cbxPlaySound.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 17</value>
+  </data>
+  <data name="cbxPlaySound.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="cbxPlaySound.Text" xml:space="preserve">
+    <value>Play &amp;sound:</value>
+  </data>
+  <data name="&gt;&gt;cbxPlaySound.Name" xml:space="preserve">
+    <value>cbxPlaySound</value>
+  </data>
+  <data name="&gt;&gt;cbxPlaySound.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxPlaySound.Parent" xml:space="preserve">
+    <value>grpWorkingTime</value>
+  </data>
+  <data name="&gt;&gt;cbxPlaySound.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="cbxNotifyMaxTime.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxNotifyMaxTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxNotifyMaxTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 74</value>
+  </data>
+  <data name="cbxNotifyMaxTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 17</value>
+  </data>
+  <data name="cbxNotifyMaxTime.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="cbxNotifyMaxTime.Text" xml:space="preserve">
+    <value>Notify upon reaching &amp;maximum working time</value>
+  </data>
+  <data name="&gt;&gt;cbxNotifyMaxTime.Name" xml:space="preserve">
+    <value>cbxNotifyMaxTime</value>
+  </data>
+  <data name="&gt;&gt;cbxNotifyMaxTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxNotifyMaxTime.Parent" xml:space="preserve">
+    <value>grpWorkingTime</value>
+  </data>
+  <data name="&gt;&gt;cbxNotifyMaxTime.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="grpWorkingTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 16</value>
+  </data>
+  <data name="grpWorkingTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 252</value>
+  </data>
+  <data name="grpWorkingTime.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="grpWorkingTime.Text" xml:space="preserve">
+    <value>Working Time</value>
+  </data>
+  <data name="&gt;&gt;grpWorkingTime.Name" xml:space="preserve">
+    <value>grpWorkingTime</value>
+  </data>
+  <data name="&gt;&gt;grpWorkingTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpWorkingTime.Parent" xml:space="preserve">
+    <value>tbpNotifications</value>
+  </data>
+  <data name="&gt;&gt;grpWorkingTime.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbxNotifyOnClockInOut.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxNotifyOnClockInOut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxNotifyOnClockInOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 284</value>
+  </data>
+  <data name="cbxNotifyOnClockInOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 17</value>
+  </data>
+  <data name="cbxNotifyOnClockInOut.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="cbxNotifyOnClockInOut.Text" xml:space="preserve">
+    <value>Notify when cloc&amp;king in/out</value>
+  </data>
+  <data name="&gt;&gt;cbxNotifyOnClockInOut.Name" xml:space="preserve">
+    <value>cbxNotifyOnClockInOut</value>
+  </data>
+  <data name="&gt;&gt;cbxNotifyOnClockInOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxNotifyOnClockInOut.Parent" xml:space="preserve">
+    <value>tbpNotifications</value>
+  </data>
+  <data name="&gt;&gt;cbxNotifyOnClockInOut.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tbpNotifications.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tbpNotifications.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tbpNotifications.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 408</value>
+  </data>
+  <data name="tbpNotifications.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tbpNotifications.Text" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="&gt;&gt;tbpNotifications.Name" xml:space="preserve">
+    <value>tbpNotifications</value>
+  </data>
+  <data name="&gt;&gt;tbpNotifications.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpNotifications.Parent" xml:space="preserve">
+    <value>tbcOptions</value>
+  </data>
+  <data name="&gt;&gt;tbpNotifications.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblAbsenceOffsets.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblAbsenceOffsets.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblAbsenceOffsets.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 20</value>
+  </data>
+  <data name="lblAbsenceOffsets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>311, 26</value>
+  </data>
+  <data name="lblAbsenceOffsets.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblAbsenceOffsets.Text" xml:space="preserve">
+    <value>The time offsets specify an amount of time which is added (clock
+out) or substracted (clock in) from the actually captured time.</value>
+  </data>
+  <data name="&gt;&gt;lblAbsenceOffsets.Name" xml:space="preserve">
+    <value>lblAbsenceOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblAbsenceOffsets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblAbsenceOffsets.Parent" xml:space="preserve">
+    <value>grpClockingOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblAbsenceOffsets.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblClockOutMin.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblClockOutMin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblClockOutMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 90</value>
+  </data>
+  <data name="lblClockOutMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="lblClockOutMin.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblClockOutMin.Text" xml:space="preserve">
+    <value>minute(s)</value>
+  </data>
+  <data name="&gt;&gt;lblClockOutMin.Name" xml:space="preserve">
+    <value>lblClockOutMin</value>
+  </data>
+  <data name="&gt;&gt;lblClockOutMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblClockOutMin.Parent" xml:space="preserve">
+    <value>grpClockingOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblClockOutMin.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblClockIn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblClockIn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblClockIn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 64</value>
+  </data>
+  <data name="lblClockIn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 13</value>
+  </data>
+  <data name="lblClockIn.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblClockIn.Text" xml:space="preserve">
+    <value>Clock in:</value>
+  </data>
+  <data name="&gt;&gt;lblClockIn.Name" xml:space="preserve">
+    <value>lblClockIn</value>
+  </data>
+  <data name="&gt;&gt;lblClockIn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblClockIn.Parent" xml:space="preserve">
+    <value>grpClockingOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblClockIn.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblClockInMin.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblClockInMin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblClockInMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 64</value>
+  </data>
+  <data name="lblClockInMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="lblClockInMin.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblClockInMin.Text" xml:space="preserve">
+    <value>minute(s)</value>
+  </data>
+  <data name="&gt;&gt;lblClockInMin.Name" xml:space="preserve">
+    <value>lblClockInMin</value>
+  </data>
+  <data name="&gt;&gt;lblClockInMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblClockInMin.Parent" xml:space="preserve">
+    <value>grpClockingOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblClockInMin.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="nmcClockIn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 62</value>
+  </data>
+  <data name="nmcClockIn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="nmcClockIn.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;nmcClockIn.Name" xml:space="preserve">
+    <value>nmcClockIn</value>
+  </data>
+  <data name="&gt;&gt;nmcClockIn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcClockIn.Parent" xml:space="preserve">
+    <value>grpClockingOffsets</value>
+  </data>
+  <data name="&gt;&gt;nmcClockIn.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="nmcClockOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 88</value>
+  </data>
+  <data name="nmcClockOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="nmcClockOut.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;nmcClockOut.Name" xml:space="preserve">
+    <value>nmcClockOut</value>
+  </data>
+  <data name="&gt;&gt;nmcClockOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcClockOut.Parent" xml:space="preserve">
+    <value>grpClockingOffsets</value>
+  </data>
+  <data name="&gt;&gt;nmcClockOut.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblClockOut.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblClockOut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblClockOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 90</value>
+  </data>
+  <data name="lblClockOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="lblClockOut.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblClockOut.Text" xml:space="preserve">
+    <value>Clock out:</value>
+  </data>
+  <data name="&gt;&gt;lblClockOut.Name" xml:space="preserve">
+    <value>lblClockOut</value>
+  </data>
+  <data name="&gt;&gt;lblClockOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblClockOut.Parent" xml:space="preserve">
+    <value>grpClockingOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblClockOut.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="grpClockingOffsets.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 165</value>
+  </data>
+  <data name="grpClockingOffsets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 122</value>
+  </data>
+  <data name="grpClockingOffsets.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="grpClockingOffsets.Text" xml:space="preserve">
+    <value>Time Offsets</value>
+  </data>
+  <data name="&gt;&gt;grpClockingOffsets.Name" xml:space="preserve">
+    <value>grpClockingOffsets</value>
+  </data>
+  <data name="&gt;&gt;grpClockingOffsets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpClockingOffsets.Parent" xml:space="preserve">
+    <value>tbpClocking</value>
+  </data>
+  <data name="&gt;&gt;grpClockingOffsets.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbxAskForClockIn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxAskForClockIn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxAskForClockIn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 131</value>
+  </data>
+  <data name="cbxAskForClockIn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 17</value>
+  </data>
+  <data name="cbxAskForClockIn.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="cbxAskForClockIn.Text" xml:space="preserve">
+    <value>&amp;Ask before clock in</value>
+  </data>
+  <data name="&gt;&gt;cbxAskForClockIn.Name" xml:space="preserve">
+    <value>cbxAskForClockIn</value>
+  </data>
+  <data name="&gt;&gt;cbxAskForClockIn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxAskForClockIn.Parent" xml:space="preserve">
+    <value>tbpClocking</value>
+  </data>
+  <data name="&gt;&gt;cbxAskForClockIn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbxClockInAtUnlock.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxClockInAtUnlock.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxClockInAtUnlock.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 107</value>
+  </data>
+  <data name="cbxClockInAtUnlock.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 17</value>
+  </data>
+  <data name="cbxClockInAtUnlock.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="cbxClockInAtUnlock.Text" xml:space="preserve">
+    <value>Clock in when Windows s&amp;ession is unlocked</value>
+  </data>
+  <data name="&gt;&gt;cbxClockInAtUnlock.Name" xml:space="preserve">
+    <value>cbxClockInAtUnlock</value>
+  </data>
+  <data name="&gt;&gt;cbxClockInAtUnlock.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxClockInAtUnlock.Parent" xml:space="preserve">
+    <value>tbpClocking</value>
+  </data>
+  <data name="&gt;&gt;cbxClockInAtUnlock.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cbxConfirmOnClockIn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxConfirmOnClockIn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxConfirmOnClockIn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 37</value>
+  </data>
+  <data name="cbxConfirmOnClockIn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 17</value>
+  </data>
+  <data name="cbxConfirmOnClockIn.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="cbxConfirmOnClockIn.Text" xml:space="preserve">
+    <value>C&amp;onfirm absence before logging</value>
+  </data>
+  <data name="&gt;&gt;cbxConfirmOnClockIn.Name" xml:space="preserve">
+    <value>cbxConfirmOnClockIn</value>
+  </data>
+  <data name="&gt;&gt;cbxConfirmOnClockIn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxConfirmOnClockIn.Parent" xml:space="preserve">
+    <value>tbpClocking</value>
+  </data>
+  <data name="&gt;&gt;cbxConfirmOnClockIn.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbxMinimizeOnClockOut.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxMinimizeOnClockOut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxMinimizeOnClockOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 14</value>
+  </data>
+  <data name="cbxMinimizeOnClockOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 17</value>
+  </data>
+  <data name="cbxMinimizeOnClockOut.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="cbxMinimizeOnClockOut.Text" xml:space="preserve">
+    <value>Minimi&amp;ze on clock out</value>
+  </data>
+  <data name="&gt;&gt;cbxMinimizeOnClockOut.Name" xml:space="preserve">
+    <value>cbxMinimizeOnClockOut</value>
+  </data>
+  <data name="&gt;&gt;cbxMinimizeOnClockOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxMinimizeOnClockOut.Parent" xml:space="preserve">
+    <value>tbpClocking</value>
+  </data>
+  <data name="&gt;&gt;cbxMinimizeOnClockOut.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cbxClockInAtStart.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxClockInAtStart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxClockInAtStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 60</value>
+  </data>
+  <data name="cbxClockInAtStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 17</value>
+  </data>
+  <data name="cbxClockInAtStart.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="cbxClockInAtStart.Text" xml:space="preserve">
+    <value>Clock in at application &amp;start</value>
+  </data>
+  <data name="&gt;&gt;cbxClockInAtStart.Name" xml:space="preserve">
+    <value>cbxClockInAtStart</value>
+  </data>
+  <data name="&gt;&gt;cbxClockInAtStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxClockInAtStart.Parent" xml:space="preserve">
+    <value>tbpClocking</value>
+  </data>
+  <data name="&gt;&gt;cbxClockInAtStart.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cbxClockInAtWakeup.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxClockInAtWakeup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxClockInAtWakeup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 83</value>
+  </data>
+  <data name="cbxClockInAtWakeup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 17</value>
+  </data>
+  <data name="cbxClockInAtWakeup.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="cbxClockInAtWakeup.Text" xml:space="preserve">
+    <value>Clock in at low power &amp;wakeup</value>
+  </data>
+  <data name="&gt;&gt;cbxClockInAtWakeup.Name" xml:space="preserve">
+    <value>cbxClockInAtWakeup</value>
+  </data>
+  <data name="&gt;&gt;cbxClockInAtWakeup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxClockInAtWakeup.Parent" xml:space="preserve">
+    <value>tbpClocking</value>
+  </data>
+  <data name="&gt;&gt;cbxClockInAtWakeup.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tbpClocking.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tbpClocking.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 408</value>
+  </data>
+  <data name="tbpClocking.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tbpClocking.Text" xml:space="preserve">
+    <value>Clocking</value>
+  </data>
+  <data name="&gt;&gt;tbpClocking.Name" xml:space="preserve">
+    <value>tbpClocking</value>
+  </data>
+  <data name="&gt;&gt;tbpClocking.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbpClocking.Parent" xml:space="preserve">
+    <value>tbcOptions</value>
+  </data>
+  <data name="&gt;&gt;tbpClocking.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tbcOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="tbcOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>364, 434</value>
+  </data>
+  <data name="tbcOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbcOptions.Name" xml:space="preserve">
+    <value>tbcOptions</value>
+  </data>
+  <data name="&gt;&gt;tbcOptions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbcOptions.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tbcOptions.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="&gt;&gt;dlgSelectSound.Name" xml:space="preserve">
+    <value>dlgSelectSound</value>
+  </data>
+  <data name="&gt;&gt;dlgSelectSound.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;erpValidation.Name" xml:space="preserve">
+    <value>erpValidation</value>
+  </data>
+  <data name="&gt;&gt;erpValidation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>OptionsDialog</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="nmcBreak.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="nmcBreak.IconPadding" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="nmcBreak.Location" type="System.Drawing.Point, System.Drawing">
     <value>137, 85</value>
   </data>
@@ -604,7 +2021,7 @@
     <value>45, 20</value>
   </data>
   <data name="nmcBreak.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>3</value>
   </data>
   <data name="nmcBreak.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
@@ -624,6 +2041,12 @@
   <data name="dtpBreaksEnd.CustomFormat" xml:space="preserve">
     <value>HH:mm</value>
   </data>
+  <data name="dtpBreaksEnd.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="dtpBreaksEnd.IconPadding" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="dtpBreaksEnd.Location" type="System.Drawing.Point, System.Drawing">
     <value>127, 48</value>
   </data>
@@ -631,7 +2054,7 @@
     <value>55, 20</value>
   </data>
   <data name="dtpBreaksEnd.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;dtpBreaksEnd.Name" xml:space="preserve">
     <value>dtpBreaksEnd</value>
@@ -708,6 +2131,12 @@
   <data name="dtpBreaksBegin.CustomFormat" xml:space="preserve">
     <value>HH:mm</value>
   </data>
+  <data name="dtpBreaksBegin.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="dtpBreaksBegin.IconPadding" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="dtpBreaksBegin.Location" type="System.Drawing.Point, System.Drawing">
     <value>127, 22</value>
   </data>
@@ -715,7 +2144,7 @@
     <value>55, 20</value>
   </data>
   <data name="dtpBreaksBegin.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;dtpBreaksBegin.Name" xml:space="preserve">
     <value>dtpBreaksBegin</value>
@@ -733,10 +2162,10 @@
     <value>12, 84</value>
   </data>
   <data name="grpBreaksPeriod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 122</value>
+    <value>332, 122</value>
   </data>
   <data name="grpBreaksPeriod.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>5</value>
   </data>
   <data name="grpBreaksPeriod.Text" xml:space="preserve">
     <value>Lunch break period</value>
@@ -753,530 +2182,459 @@
   <data name="&gt;&gt;grpBreaksPeriod.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblAdder2Min.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <metadata name="dlgSelectSound.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="dlgSelectSound.Filter" xml:space="preserve">
+    <value>Wave files|*.wav</value>
   </data>
-  <data name="lblAdder2Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnHotkeys.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblAdder2Min.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 124</value>
+  <data name="btnHotkeys.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 365</value>
   </data>
-  <data name="lblAdder2Min.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
-  </data>
-  <data name="lblAdder2Min.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblAdder2Min.Text" xml:space="preserve">
-    <value>min. break</value>
-  </data>
-  <data name="&gt;&gt;lblAdder2Min.Name" xml:space="preserve">
-    <value>lblAdder2Min</value>
-  </data>
-  <data name="&gt;&gt;lblAdder2Min.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblAdder2Min.Parent" xml:space="preserve">
-    <value>grpOtherPeriod</value>
-  </data>
-  <data name="&gt;&gt;lblAdder2Min.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="nmcAdder2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 122</value>
-  </data>
-  <data name="nmcAdder2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
-  </data>
-  <data name="nmcAdder2.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="nmcAdder2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;nmcAdder2.Name" xml:space="preserve">
-    <value>nmcAdder2</value>
-  </data>
-  <data name="&gt;&gt;nmcAdder2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nmcAdder2.Parent" xml:space="preserve">
-    <value>grpOtherPeriod</value>
-  </data>
-  <data name="&gt;&gt;nmcAdder2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="lblAdder1Min.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblAdder1Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblAdder1Min.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 56</value>
-  </data>
-  <data name="lblAdder1Min.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
-  </data>
-  <data name="lblAdder1Min.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblAdder1Min.Text" xml:space="preserve">
-    <value>min. break</value>
-  </data>
-  <data name="&gt;&gt;lblAdder1Min.Name" xml:space="preserve">
-    <value>lblAdder1Min</value>
-  </data>
-  <data name="&gt;&gt;lblAdder1Min.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblAdder1Min.Parent" xml:space="preserve">
-    <value>grpOtherPeriod</value>
-  </data>
-  <data name="&gt;&gt;lblAdder1Min.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblAdder2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblAdder2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblAdder2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 124</value>
-  </data>
-  <data name="lblAdder2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <data name="lblAdder2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblAdder2.Text" xml:space="preserve">
-    <value>less:</value>
-  </data>
-  <data name="&gt;&gt;lblAdder2.Name" xml:space="preserve">
-    <value>lblAdder2</value>
-  </data>
-  <data name="&gt;&gt;lblAdder2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblAdder2.Parent" xml:space="preserve">
-    <value>grpOtherPeriod</value>
-  </data>
-  <data name="&gt;&gt;lblAdder2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="nmcWorkspan2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 96</value>
-  </data>
-  <data name="nmcWorkspan2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
-  </data>
-  <data name="nmcWorkspan2.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="nmcWorkspan2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;nmcWorkspan2.Name" xml:space="preserve">
-    <value>nmcWorkspan2</value>
-  </data>
-  <data name="&gt;&gt;nmcWorkspan2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nmcWorkspan2.Parent" xml:space="preserve">
-    <value>grpOtherPeriod</value>
-  </data>
-  <data name="&gt;&gt;nmcWorkspan2.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="lblWorkspan2H.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblWorkspan2H.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblWorkspan2H.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 98</value>
-  </data>
-  <data name="lblWorkspan2H.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 13</value>
-  </data>
-  <data name="lblWorkspan2H.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblWorkspan2H.Text" xml:space="preserve">
-    <value>h</value>
-  </data>
-  <data name="&gt;&gt;lblWorkspan2H.Name" xml:space="preserve">
-    <value>lblWorkspan2H</value>
-  </data>
-  <data name="&gt;&gt;lblWorkspan2H.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblWorkspan2H.Parent" xml:space="preserve">
-    <value>grpOtherPeriod</value>
-  </data>
-  <data name="&gt;&gt;lblWorkspan2H.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="lblWorkspan2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblWorkspan2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblWorkspan2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 98</value>
-  </data>
-  <data name="lblWorkspan2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 13</value>
-  </data>
-  <data name="lblWorkspan2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblWorkspan2.Text" xml:space="preserve">
-    <value>Working more than:</value>
-  </data>
-  <data name="&gt;&gt;lblWorkspan2.Name" xml:space="preserve">
-    <value>lblWorkspan2</value>
-  </data>
-  <data name="&gt;&gt;lblWorkspan2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblWorkspan2.Parent" xml:space="preserve">
-    <value>grpOtherPeriod</value>
-  </data>
-  <data name="&gt;&gt;lblWorkspan2.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="lblWorkSpan1H.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblWorkSpan1H.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblWorkSpan1H.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 30</value>
-  </data>
-  <data name="lblWorkSpan1H.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 13</value>
-  </data>
-  <data name="lblWorkSpan1H.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblWorkSpan1H.Text" xml:space="preserve">
-    <value>h</value>
-  </data>
-  <data name="&gt;&gt;lblWorkSpan1H.Name" xml:space="preserve">
-    <value>lblWorkSpan1H</value>
-  </data>
-  <data name="&gt;&gt;lblWorkSpan1H.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblWorkSpan1H.Parent" xml:space="preserve">
-    <value>grpOtherPeriod</value>
-  </data>
-  <data name="&gt;&gt;lblWorkSpan1H.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="lblAdder1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblAdder1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblAdder1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 56</value>
-  </data>
-  <data name="lblAdder1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <data name="lblAdder1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblAdder1.Text" xml:space="preserve">
-    <value>less:</value>
-  </data>
-  <data name="&gt;&gt;lblAdder1.Name" xml:space="preserve">
-    <value>lblAdder1</value>
-  </data>
-  <data name="&gt;&gt;lblAdder1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblAdder1.Parent" xml:space="preserve">
-    <value>grpOtherPeriod</value>
-  </data>
-  <data name="&gt;&gt;lblAdder1.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="nmcAdder1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 54</value>
-  </data>
-  <data name="nmcAdder1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
-  </data>
-  <data name="nmcAdder1.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="nmcAdder1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;nmcAdder1.Name" xml:space="preserve">
-    <value>nmcAdder1</value>
-  </data>
-  <data name="&gt;&gt;nmcAdder1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nmcAdder1.Parent" xml:space="preserve">
-    <value>grpOtherPeriod</value>
-  </data>
-  <data name="&gt;&gt;nmcAdder1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="nmcWorkspan1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 28</value>
-  </data>
-  <data name="nmcWorkspan1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
-  </data>
-  <data name="nmcWorkspan1.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="nmcWorkspan1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;nmcWorkspan1.Name" xml:space="preserve">
-    <value>nmcWorkspan1</value>
-  </data>
-  <data name="&gt;&gt;nmcWorkspan1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nmcWorkspan1.Parent" xml:space="preserve">
-    <value>grpOtherPeriod</value>
-  </data>
-  <data name="&gt;&gt;nmcWorkspan1.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="lblWorkspan1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblWorkspan1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblWorkspan1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 30</value>
-  </data>
-  <data name="lblWorkspan1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 13</value>
-  </data>
-  <data name="lblWorkspan1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblWorkspan1.Text" xml:space="preserve">
-    <value>Working more than:</value>
-  </data>
-  <data name="&gt;&gt;lblWorkspan1.Name" xml:space="preserve">
-    <value>lblWorkspan1</value>
-  </data>
-  <data name="&gt;&gt;lblWorkspan1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblWorkspan1.Parent" xml:space="preserve">
-    <value>grpOtherPeriod</value>
-  </data>
-  <data name="&gt;&gt;lblWorkspan1.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="btnSelectSound.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnSelectSound.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnSelectSound.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 157</value>
-  </data>
-  <data name="btnSelectSound.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnHotkeys.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="btnSelectSound.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="btnSelectSound.Text" xml:space="preserve">
-    <value>&amp;Choose...</value>
-  </data>
-  <data name="&gt;&gt;btnSelectSound.Name" xml:space="preserve">
-    <value>btnSelectSound</value>
-  </data>
-  <data name="&gt;&gt;btnSelectSound.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnSelectSound.Parent" xml:space="preserve">
-    <value>grpWorkingTime</value>
-  </data>
-  <data name="&gt;&gt;btnSelectSound.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="cbxPlaySound.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbxPlaySound.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbxPlaySound.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 134</value>
-  </data>
-  <data name="cbxPlaySound.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 17</value>
-  </data>
-  <data name="cbxPlaySound.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="cbxPlaySound.Text" xml:space="preserve">
-    <value>Play &amp;sound:</value>
-  </data>
-  <data name="&gt;&gt;cbxPlaySound.Name" xml:space="preserve">
-    <value>cbxPlaySound</value>
-  </data>
-  <data name="&gt;&gt;cbxPlaySound.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxPlaySound.Parent" xml:space="preserve">
-    <value>grpWorkingTime</value>
-  </data>
-  <data name="&gt;&gt;cbxPlaySound.ZOrder" xml:space="preserve">
+  <data name="btnHotkeys.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="nmcNotifyMaxAdvance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 97</value>
+  <data name="btnHotkeys.Text" xml:space="preserve">
+    <value>C&amp;onfigure...</value>
   </data>
-  <data name="nmcNotifyMaxAdvance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
+  <data name="&gt;&gt;btnHotkeys.Name" xml:space="preserve">
+    <value>btnHotkeys</value>
   </data>
-  <data name="nmcNotifyMaxAdvance.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="&gt;&gt;btnHotkeys.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;nmcNotifyMaxAdvance.Name" xml:space="preserve">
-    <value>nmcNotifyMaxAdvance</value>
+  <data name="&gt;&gt;btnHotkeys.Parent" xml:space="preserve">
+    <value>tbpMisc</value>
   </data>
-  <data name="&gt;&gt;nmcNotifyMaxAdvance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nmcNotifyMaxAdvance.Parent" xml:space="preserve">
-    <value>grpWorkingTime</value>
-  </data>
-  <data name="&gt;&gt;nmcNotifyMaxAdvance.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="cbxNotifyMaxTime.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbxNotifyMaxTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbxNotifyMaxTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 74</value>
-  </data>
-  <data name="cbxNotifyMaxTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 17</value>
-  </data>
-  <data name="cbxNotifyMaxTime.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="cbxNotifyMaxTime.Text" xml:space="preserve">
-    <value>Notify upon reaching &amp;maximum working time</value>
-  </data>
-  <data name="&gt;&gt;cbxNotifyMaxTime.Name" xml:space="preserve">
-    <value>cbxNotifyMaxTime</value>
-  </data>
-  <data name="&gt;&gt;cbxNotifyMaxTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxNotifyMaxTime.Parent" xml:space="preserve">
-    <value>grpWorkingTime</value>
-  </data>
-  <data name="&gt;&gt;cbxNotifyMaxTime.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="cbxNotifyRegularTime.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbxNotifyRegularTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbxNotifyRegularTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 25</value>
-  </data>
-  <data name="cbxNotifyRegularTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 17</value>
-  </data>
-  <data name="cbxNotifyRegularTime.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="cbxNotifyRegularTime.Text" xml:space="preserve">
-    <value>Notify upon reaching &amp;regular working time</value>
-  </data>
-  <data name="&gt;&gt;cbxNotifyRegularTime.Name" xml:space="preserve">
-    <value>cbxNotifyRegularTime</value>
-  </data>
-  <data name="&gt;&gt;cbxNotifyRegularTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxNotifyRegularTime.Parent" xml:space="preserve">
-    <value>grpWorkingTime</value>
-  </data>
-  <data name="&gt;&gt;cbxNotifyRegularTime.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnHotkeys.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="nmcMaxTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 42</value>
+  <data name="lblHotkeys.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="nmcMaxTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
+  <data name="lblHotkeys.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="nmcMaxTime.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblHotkeys.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 370</value>
+  </data>
+  <data name="lblHotkeys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="lblHotkeys.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblHotkeys.Text" xml:space="preserve">
+    <value>Hotkeys:</value>
+  </data>
+  <data name="&gt;&gt;lblHotkeys.Name" xml:space="preserve">
+    <value>lblHotkeys</value>
+  </data>
+  <data name="&gt;&gt;lblHotkeys.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblHotkeys.Parent" xml:space="preserve">
+    <value>tbpMisc</value>
+  </data>
+  <data name="&gt;&gt;lblHotkeys.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lblSessionResetMin.Name" xml:space="preserve">
+    <value>lblSessionResetMin</value>
+  </data>
+  <data name="&gt;&gt;lblSessionResetMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSessionResetMin.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblSessionResetMin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalMin.Name" xml:space="preserve">
+    <value>lblArrivalMin</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalMin.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalMin.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;nmcSessionReset.Name" xml:space="preserve">
+    <value>nmcSessionReset</value>
+  </data>
+  <data name="&gt;&gt;nmcSessionReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcSessionReset.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;nmcSessionReset.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lblSessionReset.Name" xml:space="preserve">
+    <value>lblSessionReset</value>
+  </data>
+  <data name="&gt;&gt;lblSessionReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSessionReset.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblSessionReset.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;nmcArrival.Name" xml:space="preserve">
+    <value>nmcArrival</value>
+  </data>
+  <data name="&gt;&gt;nmcArrival.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcArrival.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;nmcArrival.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="nmcMaxTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
+  <data name="&gt;&gt;lblArrival.Name" xml:space="preserve">
+    <value>lblArrival</value>
   </data>
-  <data name="&gt;&gt;nmcMaxTime.Name" xml:space="preserve">
-    <value>nmcMaxTime</value>
+  <data name="&gt;&gt;lblArrival.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;nmcMaxTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lblArrival.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
   </data>
-  <data name="&gt;&gt;nmcMaxTime.Parent" xml:space="preserve">
-    <value>tbpTimePeriods</value>
-  </data>
-  <data name="&gt;&gt;nmcMaxTime.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblArrival.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="nmcRegularTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 14</value>
+  <data name="&gt;&gt;lblArrivalOffsets.Name" xml:space="preserve">
+    <value>lblArrivalOffsets</value>
   </data>
-  <data name="nmcRegularTime.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="&gt;&gt;lblArrivalOffsets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalOffsets.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalOffsets.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="grpArrivalOffsets.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 230</value>
+  </data>
+  <data name="grpArrivalOffsets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 122</value>
+  </data>
+  <data name="grpArrivalOffsets.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="grpArrivalOffsets.Text" xml:space="preserve">
+    <value>Arrival Time Offsets</value>
+  </data>
+  <data name="&gt;&gt;grpArrivalOffsets.Name" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;grpArrivalOffsets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpArrivalOffsets.Parent" xml:space="preserve">
+    <value>tbpMisc</value>
+  </data>
+  <data name="&gt;&gt;grpArrivalOffsets.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblSessionResetMin.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblSessionResetMin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSessionResetMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>149, 90</value>
+  </data>
+  <data name="lblSessionResetMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="lblSessionResetMin.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblSessionResetMin.Text" xml:space="preserve">
+    <value>minute(s)</value>
+  </data>
+  <data name="&gt;&gt;lblSessionResetMin.Name" xml:space="preserve">
+    <value>lblSessionResetMin</value>
+  </data>
+  <data name="&gt;&gt;lblSessionResetMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSessionResetMin.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblSessionResetMin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblArrivalMin.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblArrivalMin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblArrivalMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>149, 64</value>
+  </data>
+  <data name="lblArrivalMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="lblArrivalMin.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblArrivalMin.Text" xml:space="preserve">
+    <value>minute(s)</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalMin.Name" xml:space="preserve">
+    <value>lblArrivalMin</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalMin.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalMin.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="nmcSessionReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>98, 88</value>
+  </data>
+  <data name="nmcSessionReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
   </data>
-  <data name="nmcRegularTime.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="nmcSessionReset.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="nmcRegularTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
+  <data name="&gt;&gt;nmcSessionReset.Name" xml:space="preserve">
+    <value>nmcSessionReset</value>
   </data>
-  <data name="&gt;&gt;nmcRegularTime.Name" xml:space="preserve">
-    <value>nmcRegularTime</value>
-  </data>
-  <data name="&gt;&gt;nmcRegularTime.Type" xml:space="preserve">
+  <data name="&gt;&gt;nmcSessionReset.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;nmcRegularTime.Parent" xml:space="preserve">
-    <value>tbpTimePeriods</value>
+  <data name="&gt;&gt;nmcSessionReset.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
   </data>
-  <data name="&gt;&gt;nmcRegularTime.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;nmcSessionReset.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblSessionReset.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblSessionReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSessionReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 90</value>
+  </data>
+  <data name="lblSessionReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="lblSessionReset.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblSessionReset.Text" xml:space="preserve">
+    <value>Session reset:</value>
+  </data>
+  <data name="&gt;&gt;lblSessionReset.Name" xml:space="preserve">
+    <value>lblSessionReset</value>
+  </data>
+  <data name="&gt;&gt;lblSessionReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSessionReset.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblSessionReset.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="nmcArrival.Location" type="System.Drawing.Point, System.Drawing">
+    <value>98, 62</value>
+  </data>
+  <data name="nmcArrival.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="nmcArrival.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;nmcArrival.Name" xml:space="preserve">
+    <value>nmcArrival</value>
+  </data>
+  <data name="&gt;&gt;nmcArrival.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmcArrival.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;nmcArrival.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblArrival.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblArrival.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblArrival.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 66</value>
+  </data>
+  <data name="lblArrival.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 13</value>
+  </data>
+  <data name="lblArrival.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblArrival.Text" xml:space="preserve">
+    <value>Application start:</value>
+  </data>
+  <data name="&gt;&gt;lblArrival.Name" xml:space="preserve">
+    <value>lblArrival</value>
+  </data>
+  <data name="&gt;&gt;lblArrival.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblArrival.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblArrival.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblArrivalOffsets.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblArrivalOffsets.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblArrivalOffsets.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 20</value>
+  </data>
+  <data name="lblArrivalOffsets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>309, 26</value>
+  </data>
+  <data name="lblArrivalOffsets.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblArrivalOffsets.Text" xml:space="preserve">
+    <value>The time offsets specify an amount of time which is added to the
+actually captured arrival time.</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalOffsets.Name" xml:space="preserve">
+    <value>lblArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalOffsets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalOffsets.Parent" xml:space="preserve">
+    <value>grpArrivalOffsets</value>
+  </data>
+  <data name="&gt;&gt;lblArrivalOffsets.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="cbxFlatIcon.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxFlatIcon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxFlatIcon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 83</value>
+  </data>
+  <data name="cbxFlatIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 17</value>
+  </data>
+  <data name="cbxFlatIcon.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="cbxFlatIcon.Text" xml:space="preserve">
+    <value>Use &amp;flat icon on Windows 8 and newer</value>
+  </data>
+  <data name="&gt;&gt;cbxFlatIcon.Name" xml:space="preserve">
+    <value>cbxFlatIcon</value>
+  </data>
+  <data name="&gt;&gt;cbxFlatIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxFlatIcon.Parent" xml:space="preserve">
+    <value>tbpMisc</value>
+  </data>
+  <data name="&gt;&gt;cbxFlatIcon.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbxMinimized.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxMinimized.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxMinimized.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 37</value>
+  </data>
+  <data name="cbxMinimized.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 17</value>
+  </data>
+  <data name="cbxMinimized.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="cbxMinimized.Text" xml:space="preserve">
+    <value>Start &amp;minimized</value>
+  </data>
+  <data name="&gt;&gt;cbxMinimized.Name" xml:space="preserve">
+    <value>cbxMinimized</value>
+  </data>
+  <data name="&gt;&gt;cbxMinimized.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxMinimized.Parent" xml:space="preserve">
+    <value>tbpMisc</value>
+  </data>
+  <data name="&gt;&gt;cbxMinimized.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cbxLowPowerIsStart.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbxLowPowerIsStart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbxLowPowerIsStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 60</value>
+  </data>
+  <data name="cbxLowPowerIsStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 17</value>
+  </data>
+  <data name="cbxLowPowerIsStart.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="cbxLowPowerIsStart.Text" xml:space="preserve">
+    <value>Wakeup from low &amp;power state means startup</value>
+  </data>
+  <data name="&gt;&gt;cbxLowPowerIsStart.Name" xml:space="preserve">
+    <value>cbxLowPowerIsStart</value>
+  </data>
+  <data name="&gt;&gt;cbxLowPowerIsStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxLowPowerIsStart.Parent" xml:space="preserve">
+    <value>tbpMisc</value>
+  </data>
+  <data name="&gt;&gt;cbxLowPowerIsStart.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="nmcBreaksDuration.Location" type="System.Drawing.Point, System.Drawing">
     <value>134, 59</value>
@@ -1295,632 +2653,5 @@
   </data>
   <data name="&gt;&gt;nmcBreaksDuration.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <metadata name="dlgSelectSound.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="dlgSelectSound.Filter" xml:space="preserve">
-    <value>Wave files|*.wav</value>
-  </data>
-  <data name="lblSoundFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblSoundFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 135</value>
-  </data>
-  <data name="lblSoundFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 13</value>
-  </data>
-  <data name="lblSoundFile.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblSoundFile.Text" xml:space="preserve">
-    <value>(nothing chosen)</value>
-  </data>
-  <data name="&gt;&gt;lblSoundFile.Name" xml:space="preserve">
-    <value>lblSoundFile</value>
-  </data>
-  <data name="&gt;&gt;lblSoundFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblSoundFile.Parent" xml:space="preserve">
-    <value>grpWorkingTime</value>
-  </data>
-  <data name="&gt;&gt;lblSoundFile.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="cbxNotificationAlwayOnTop.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbxNotificationAlwayOnTop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbxNotificationAlwayOnTop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 197</value>
-  </data>
-  <data name="cbxNotificationAlwayOnTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 17</value>
-  </data>
-  <data name="cbxNotificationAlwayOnTop.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="cbxNotificationAlwayOnTop.Text" xml:space="preserve">
-    <value>Notification window always on t&amp;op</value>
-  </data>
-  <data name="&gt;&gt;cbxNotificationAlwayOnTop.Name" xml:space="preserve">
-    <value>cbxNotificationAlwayOnTop</value>
-  </data>
-  <data name="&gt;&gt;cbxNotificationAlwayOnTop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxNotificationAlwayOnTop.Parent" xml:space="preserve">
-    <value>grpWorkingTime</value>
-  </data>
-  <data name="&gt;&gt;cbxNotificationAlwayOnTop.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="grpOtherPeriod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 214</value>
-  </data>
-  <data name="grpOtherPeriod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 160</value>
-  </data>
-  <data name="grpOtherPeriod.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="grpOtherPeriod.Text" xml:space="preserve">
-    <value>Late shift</value>
-  </data>
-  <data name="&gt;&gt;grpOtherPeriod.Name" xml:space="preserve">
-    <value>grpOtherPeriod</value>
-  </data>
-  <data name="&gt;&gt;grpOtherPeriod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpOtherPeriod.Parent" xml:space="preserve">
-    <value>tbpTimePeriods</value>
-  </data>
-  <data name="&gt;&gt;grpOtherPeriod.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="tbpTimePeriods.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tbpTimePeriods.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tbpTimePeriods.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 408</value>
-  </data>
-  <data name="tbpTimePeriods.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tbpTimePeriods.Text" xml:space="preserve">
-    <value>Time Periods</value>
-  </data>
-  <data name="&gt;&gt;tbpTimePeriods.Name" xml:space="preserve">
-    <value>tbpTimePeriods</value>
-  </data>
-  <data name="&gt;&gt;tbpTimePeriods.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbpTimePeriods.Parent" xml:space="preserve">
-    <value>tbcOptions</value>
-  </data>
-  <data name="&gt;&gt;tbpTimePeriods.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cbxSystemNotifications.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbxSystemNotifications.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 220</value>
-  </data>
-  <data name="cbxSystemNotifications.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 17</value>
-  </data>
-  <data name="cbxSystemNotifications.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="cbxSystemNotifications.Text" xml:space="preserve">
-    <value>Use s&amp;ystem notifications</value>
-  </data>
-  <data name="&gt;&gt;cbxSystemNotifications.Name" xml:space="preserve">
-    <value>cbxSystemNotifications</value>
-  </data>
-  <data name="&gt;&gt;cbxSystemNotifications.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxSystemNotifications.Parent" xml:space="preserve">
-    <value>grpWorkingTime</value>
-  </data>
-  <data name="&gt;&gt;cbxSystemNotifications.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="nmcNotifyRegAdvance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 48</value>
-  </data>
-  <data name="nmcNotifyRegAdvance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
-  </data>
-  <data name="nmcNotifyRegAdvance.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;nmcNotifyRegAdvance.Name" xml:space="preserve">
-    <value>nmcNotifyRegAdvance</value>
-  </data>
-  <data name="&gt;&gt;nmcNotifyRegAdvance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nmcNotifyRegAdvance.Parent" xml:space="preserve">
-    <value>grpWorkingTime</value>
-  </data>
-  <data name="&gt;&gt;nmcNotifyRegAdvance.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblMinBeforeReg.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblMinBeforeReg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblMinBeforeReg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 50</value>
-  </data>
-  <data name="lblMinBeforeReg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 13</value>
-  </data>
-  <data name="lblMinBeforeReg.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblMinBeforeReg.Text" xml:space="preserve">
-    <value>minutes before</value>
-  </data>
-  <data name="&gt;&gt;lblMinBeforeReg.Name" xml:space="preserve">
-    <value>lblMinBeforeReg</value>
-  </data>
-  <data name="&gt;&gt;lblMinBeforeReg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblMinBeforeReg.Parent" xml:space="preserve">
-    <value>grpWorkingTime</value>
-  </data>
-  <data name="&gt;&gt;lblMinBeforeReg.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="grpWorkingTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 16</value>
-  </data>
-  <data name="grpWorkingTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 252</value>
-  </data>
-  <data name="grpWorkingTime.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="grpWorkingTime.Text" xml:space="preserve">
-    <value>Working Time</value>
-  </data>
-  <data name="&gt;&gt;grpWorkingTime.Name" xml:space="preserve">
-    <value>grpWorkingTime</value>
-  </data>
-  <data name="&gt;&gt;grpWorkingTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpWorkingTime.Parent" xml:space="preserve">
-    <value>tbpNotifications</value>
-  </data>
-  <data name="&gt;&gt;grpWorkingTime.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cbxNotifyOnClockInOut.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbxNotifyOnClockInOut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 284</value>
-  </data>
-  <data name="cbxNotifyOnClockInOut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 17</value>
-  </data>
-  <data name="cbxNotifyOnClockInOut.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="cbxNotifyOnClockInOut.Text" xml:space="preserve">
-    <value>Notify when cloc&amp;king in/out</value>
-  </data>
-  <data name="&gt;&gt;cbxNotifyOnClockInOut.Name" xml:space="preserve">
-    <value>cbxNotifyOnClockInOut</value>
-  </data>
-  <data name="&gt;&gt;cbxNotifyOnClockInOut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxNotifyOnClockInOut.Parent" xml:space="preserve">
-    <value>tbpNotifications</value>
-  </data>
-  <data name="&gt;&gt;cbxNotifyOnClockInOut.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tbpNotifications.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tbpNotifications.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tbpNotifications.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 408</value>
-  </data>
-  <data name="tbpNotifications.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tbpNotifications.Text" xml:space="preserve">
-    <value>Notifications</value>
-  </data>
-  <data name="&gt;&gt;tbpNotifications.Name" xml:space="preserve">
-    <value>tbpNotifications</value>
-  </data>
-  <data name="&gt;&gt;tbpNotifications.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbpNotifications.Parent" xml:space="preserve">
-    <value>tbcOptions</value>
-  </data>
-  <data name="&gt;&gt;tbpNotifications.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnConfigureOffsets.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 230</value>
-  </data>
-  <data name="btnConfigureOffsets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 23</value>
-  </data>
-  <data name="btnConfigureOffsets.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="btnConfigureOffsets.Text" xml:space="preserve">
-    <value>Config&amp;ure...</value>
-  </data>
-  <data name="&gt;&gt;btnConfigureOffsets.Name" xml:space="preserve">
-    <value>btnConfigureOffsets</value>
-  </data>
-  <data name="&gt;&gt;btnConfigureOffsets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnConfigureOffsets.Parent" xml:space="preserve">
-    <value>tbpMisc</value>
-  </data>
-  <data name="&gt;&gt;btnConfigureOffsets.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cbxFlatIcon.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbxFlatIcon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbxFlatIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 199</value>
-  </data>
-  <data name="cbxFlatIcon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 17</value>
-  </data>
-  <data name="cbxFlatIcon.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="cbxFlatIcon.Text" xml:space="preserve">
-    <value>Use &amp;flat icon on Windows 8 and newer</value>
-  </data>
-  <data name="&gt;&gt;cbxFlatIcon.Name" xml:space="preserve">
-    <value>cbxFlatIcon</value>
-  </data>
-  <data name="&gt;&gt;cbxFlatIcon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxFlatIcon.Parent" xml:space="preserve">
-    <value>tbpMisc</value>
-  </data>
-  <data name="&gt;&gt;cbxFlatIcon.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cbxMinimized.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbxMinimized.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbxMinimized.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 153</value>
-  </data>
-  <data name="cbxMinimized.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 17</value>
-  </data>
-  <data name="cbxMinimized.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="cbxMinimized.Text" xml:space="preserve">
-    <value>Start &amp;minimized</value>
-  </data>
-  <data name="&gt;&gt;cbxMinimized.Name" xml:space="preserve">
-    <value>cbxMinimized</value>
-  </data>
-  <data name="&gt;&gt;cbxMinimized.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxMinimized.Parent" xml:space="preserve">
-    <value>tbpMisc</value>
-  </data>
-  <data name="&gt;&gt;cbxMinimized.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblTimeOffsets.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblTimeOffsets.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblTimeOffsets.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 235</value>
-  </data>
-  <data name="lblTimeOffsets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 13</value>
-  </data>
-  <data name="lblTimeOffsets.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblTimeOffsets.Text" xml:space="preserve">
-    <value>Offsets for time snap-shots:</value>
-  </data>
-  <data name="&gt;&gt;lblTimeOffsets.Name" xml:space="preserve">
-    <value>lblTimeOffsets</value>
-  </data>
-  <data name="&gt;&gt;lblTimeOffsets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblTimeOffsets.Parent" xml:space="preserve">
-    <value>tbpMisc</value>
-  </data>
-  <data name="&gt;&gt;lblTimeOffsets.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cbxConfirmOnClockIn.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbxConfirmOnClockIn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 96</value>
-  </data>
-  <data name="cbxConfirmOnClockIn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 17</value>
-  </data>
-  <data name="cbxConfirmOnClockIn.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="cbxConfirmOnClockIn.Text" xml:space="preserve">
-    <value>C&amp;onfirm absence on clock in</value>
-  </data>
-  <data name="&gt;&gt;cbxConfirmOnClockIn.Name" xml:space="preserve">
-    <value>cbxConfirmOnClockIn</value>
-  </data>
-  <data name="&gt;&gt;cbxConfirmOnClockIn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxConfirmOnClockIn.Parent" xml:space="preserve">
-    <value>grpAbsence</value>
-  </data>
-  <data name="&gt;&gt;cbxConfirmOnClockIn.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cbxMinimizeOnClockOut.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbxMinimizeOnClockOut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 72</value>
-  </data>
-  <data name="cbxMinimizeOnClockOut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 17</value>
-  </data>
-  <data name="cbxMinimizeOnClockOut.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="cbxMinimizeOnClockOut.Text" xml:space="preserve">
-    <value>Minimi&amp;ze on clock out</value>
-  </data>
-  <data name="&gt;&gt;cbxMinimizeOnClockOut.Name" xml:space="preserve">
-    <value>cbxMinimizeOnClockOut</value>
-  </data>
-  <data name="&gt;&gt;cbxMinimizeOnClockOut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxMinimizeOnClockOut.Parent" xml:space="preserve">
-    <value>grpAbsence</value>
-  </data>
-  <data name="&gt;&gt;cbxMinimizeOnClockOut.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cbxClockInAtWakeup.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbxClockInAtWakeup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbxClockInAtWakeup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 48</value>
-  </data>
-  <data name="cbxClockInAtWakeup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 17</value>
-  </data>
-  <data name="cbxClockInAtWakeup.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="cbxClockInAtWakeup.Text" xml:space="preserve">
-    <value>Clock in at low power &amp;wakeup</value>
-  </data>
-  <data name="&gt;&gt;cbxClockInAtWakeup.Name" xml:space="preserve">
-    <value>cbxClockInAtWakeup</value>
-  </data>
-  <data name="&gt;&gt;cbxClockInAtWakeup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxClockInAtWakeup.Parent" xml:space="preserve">
-    <value>grpAbsence</value>
-  </data>
-  <data name="&gt;&gt;cbxClockInAtWakeup.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="cbxClockInAtStart.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbxClockInAtStart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbxClockInAtStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 25</value>
-  </data>
-  <data name="cbxClockInAtStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 17</value>
-  </data>
-  <data name="cbxClockInAtStart.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="cbxClockInAtStart.Text" xml:space="preserve">
-    <value>Clock in at application &amp;start</value>
-  </data>
-  <data name="&gt;&gt;cbxClockInAtStart.Name" xml:space="preserve">
-    <value>cbxClockInAtStart</value>
-  </data>
-  <data name="&gt;&gt;cbxClockInAtStart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbxClockInAtStart.Parent" xml:space="preserve">
-    <value>grpAbsence</value>
-  </data>
-  <data name="&gt;&gt;cbxClockInAtStart.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="grpAbsence.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 270</value>
-  </data>
-  <data name="grpAbsence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 124</value>
-  </data>
-  <data name="grpAbsence.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="grpAbsence.Text" xml:space="preserve">
-    <value>During absence</value>
-  </data>
-  <data name="&gt;&gt;grpAbsence.Name" xml:space="preserve">
-    <value>grpAbsence</value>
-  </data>
-  <data name="&gt;&gt;grpAbsence.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpAbsence.Parent" xml:space="preserve">
-    <value>tbpMisc</value>
-  </data>
-  <data name="&gt;&gt;grpAbsence.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="tbpMisc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tbpMisc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 408</value>
-  </data>
-  <data name="tbpMisc.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tbpMisc.Text" xml:space="preserve">
-    <value>Miscellaneous</value>
-  </data>
-  <data name="&gt;&gt;tbpMisc.Name" xml:space="preserve">
-    <value>tbpMisc</value>
-  </data>
-  <data name="&gt;&gt;tbpMisc.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbpMisc.Parent" xml:space="preserve">
-    <value>tbcOptions</value>
-  </data>
-  <data name="&gt;&gt;tbpMisc.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tbcOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="tbcOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 434</value>
-  </data>
-  <data name="tbcOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tbcOptions.Name" xml:space="preserve">
-    <value>tbcOptions</value>
-  </data>
-  <data name="&gt;&gt;tbcOptions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbcOptions.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tbcOptions.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="btnHotkeys.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 464</value>
-  </data>
-  <data name="btnHotkeys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnHotkeys.TabIndex" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="btnHotkeys.Text" xml:space="preserve">
-    <value>&amp;Hotkeys...</value>
-  </data>
-  <data name="&gt;&gt;btnHotkeys.Name" xml:space="preserve">
-    <value>btnHotkeys</value>
-  </data>
-  <data name="&gt;&gt;btnHotkeys.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnHotkeys.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnHotkeys.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="erpValidation.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>154, 17</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>55</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>310, 499</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="&gt;&gt;dlgSelectSound.Name" xml:space="preserve">
-    <value>dlgSelectSound</value>
-  </data>
-  <data name="&gt;&gt;dlgSelectSound.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;erpValidation.Name" xml:space="preserve">
-    <value>erpValidation</value>
-  </data>
-  <data name="&gt;&gt;erpValidation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>OptionsDialog</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

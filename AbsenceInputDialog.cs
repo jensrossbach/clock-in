@@ -29,9 +29,6 @@ namespace ClockIn
             InitializeComponent();
             Text = title;
 
-            erpValidation.SetIconAlignment(btnOK, ErrorIconAlignment.MiddleLeft);
-            erpValidation.SetIconPadding(btnOK, 2);
-
             dtpBeginTime.DataBindings.Add("Value", tempTimePeriod, "StartTime");
             dtpEndTime.DataBindings.Add("Value", tempTimePeriod, "EndTime");
         }
