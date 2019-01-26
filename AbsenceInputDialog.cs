@@ -40,26 +40,6 @@ namespace ClockIn
         /// <returns>true if time period is valid, false otherwise</returns>
         private bool ValidTimePeriod => tempTimePeriod.StartTime < tempTimePeriod.EndTime;
 
-        /// <summary>
-        ///   Status if entered time period is overlapping with other time periods
-        /// </summary>
-        /// <returns>true if time period is overlapping, false otherwise</returns>
-        private bool Overlapping
-        {
-            get
-            {
-                foreach (TimePeriod tp in Program.TimeMgr.Absence)
-                {
-                    if ((tp != timePeriod) && tp.Intersecting(tempTimePeriod))
-                    {
-                        return true;
-                    }
-                }
-
-                return false;
-            }
-        }
-
 
         /// <summary>
         ///   Applies the entered input to the passed time period.
@@ -82,7 +62,7 @@ namespace ClockIn
             {
                 erpValidation.SetError(btnOK, Properties.Resources.InvalidAbsencePeriod);
             }
-            else if (Overlapping)
+            else if (Program.TimeMgr.IsOverlapping(tempTimePeriod, timePeriod))
             {
                 erpValidation.SetError(btnOK, Properties.Resources.OverlappingAbsence);
             }

@@ -408,21 +408,11 @@ namespace ClockIn
                 }
 
                 timeMgr.WorkingState = WorkingState.Absent;
-
-                if (settings.NotifyOnClockInOut)
-                {
-                    icnTrayIcon.ShowBalloonTip(5000, "ClockIn", Properties.Resources.ClockOutNotification, ToolTipIcon.None);
-                }
             }
             else if ((action == WorkingStateAction.ClockIn) ||
                      ((action == WorkingStateAction.Toggle) && (timeMgr.WorkingState == WorkingState.Absent)))
             {
                 timeMgr.WorkingState = WorkingState.Working;
-
-                if (settings.NotifyOnClockInOut)
-                {
-                    icnTrayIcon.ShowBalloonTip(5000, "ClockIn", Properties.Resources.ClockInNotification, ToolTipIcon.None);
-                }
             }
         }
 
@@ -842,8 +832,35 @@ namespace ClockIn
         /// </summary>
         /// <param name="sender">Event origin</param>
         /// <param name="e">Event arguments</param>
-        private void TimeMgr_WorkingStateUpdated(object sender, EventArgs e)
+        private void TimeMgr_WorkingStateUpdated(object sender, WorkingStateUpdatedEventArgs e)
         {
+            switch (e.WorkingStateUpdate)
+            {
+                case WorkingStateUpdate.ClockIn:
+                {
+                    if (settings.NotifyOnClockInOut)
+                    {
+                        icnTrayIcon.ShowBalloonTip(5000, "ClockIn", Properties.Resources.ClockInNotification, ToolTipIcon.None);
+                    }
+
+                    break;
+                }
+                case WorkingStateUpdate.ClockOut:
+                {
+                    if (settings.NotifyOnClockInOut)
+                    {
+                        icnTrayIcon.ShowBalloonTip(5000, "ClockIn", Properties.Resources.ClockOutNotification, ToolTipIcon.None);
+                    }
+
+                    break;
+                }
+                case WorkingStateUpdate.Error:
+                {
+                    icnTrayIcon.ShowBalloonTip(5000, "ClockIn", Properties.Resources.OverlappingAbsencePeriod, ToolTipIcon.Error);
+                    break;
+                }
+            }
+
             if (timeMgr.WorkingState == WorkingState.Working)
             {
                 Text = Properties.Resources.WindowCaption;

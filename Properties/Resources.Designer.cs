@@ -646,6 +646,15 @@ namespace ClockIn.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Absence has not been logged due to overlapping with existing absence time periods! ähnelt.
+        /// </summary>
+        internal static string OverlappingAbsencePeriod {
+            get {
+                return ResourceManager.GetString("OverlappingAbsencePeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Power {

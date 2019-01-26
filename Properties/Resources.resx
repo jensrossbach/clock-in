@@ -353,4 +353,7 @@ http://icons.wbchug.net</value>
   <data name="AskWorkingStateOnWinUnlock" xml:space="preserve">
     <value>You are currently clocked out. Do you want to clock in?</value>
   </data>
+  <data name="OverlappingAbsencePeriod" xml:space="preserve">
+    <value>Absence has not been logged due to overlapping with existing absence time periods!</value>
+  </data>
 </root>

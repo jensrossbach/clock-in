@@ -314,4 +314,7 @@ http://icons.wbchug.net</value>
   <data name="AskWorkingStateOnWinUnlock" xml:space="preserve">
     <value>Sie sind momentan ausgestempelt. Möchten Sie einstempeln?</value>
   </data>
+  <data name="OverlappingAbsencePeriod" xml:space="preserve">
+    <value>Abwesenheit wurde nicht eingetragen aufgrund von Überlappung mit vorhandenen Abwesenheitszeiträumen!</value>
+  </data>
 </root>

@@ -32,6 +32,36 @@ namespace ClockIn
         Absent  = 1   // Absent / not working
     }
 
+    /// <summary>
+    ///   Working state update
+    /// </summary>
+    public enum WorkingStateUpdate
+    {
+        ClockIn  = 0,  // User has clocked in
+        ClockOut = 1,  // User has clocked out
+        Error    = 2   // Absence time period error
+    }
+
+
+    /// <summary>
+    ///   Arguments for working state update events
+    /// </summary>
+    public class WorkingStateUpdatedEventArgs : EventArgs
+    {
+        /// <summary>
+        ///   Working state update
+        /// </summary>
+        public WorkingStateUpdate WorkingStateUpdate { get; set; }
+
+        /// <summary>
+        ///   Default constructor of the class
+        /// </summary>
+        /// <param name="update">Working state update</param>
+        public WorkingStateUpdatedEventArgs(WorkingStateUpdate update)
+        {
+            WorkingStateUpdate = update;
+        }
+    }
 
     /// <summary>
     ///   Arguments for working time alert events
@@ -63,9 +93,18 @@ namespace ClockIn
 
 
     /// <summary>
+    ///   Event handler for working state update events
+    /// </summary>
+    /// <param name="sender">Event origin</param>
+    /// <param name="args">Event arguments</param>
+    public delegate void WorkingStateUpdatedEventHandler(object sender, WorkingStateUpdatedEventArgs args);
+
+    /// <summary>
     ///   Event handler for working time alerts
     /// </summary>
-    public delegate void WorkingTimeAlertEventHandler(object sender, WorkingTimeAlertEventArgs e);
+    /// <param name="sender">Event origin</param>
+    /// <param name="args">Event arguments</param>
+    public delegate void WorkingTimeAlertEventHandler(object sender, WorkingTimeAlertEventArgs args);
 
 
     /// <summary>
@@ -111,7 +150,7 @@ namespace ClockIn
         /// <summary>
         ///   Event notifies when working state has been updated.
         /// </summary>
-        public event EventHandler WorkingStateUpdated;
+        public event WorkingStateUpdatedEventHandler WorkingStateUpdated;
 
         /// <summary>
         ///   Event notifies when a working time alert occurs.
@@ -298,6 +337,25 @@ namespace ClockIn
         }
 
         /// <summary>
+        ///   Checks if entered time period is overlapping with other time periods.
+        /// </summary>
+        /// <param name="checkTP">Time period to be checked</param>
+        /// <param name="excludeTP">Time period to be excluded</param>
+        /// <returns>true if time period is overlapping, false otherwise</returns>
+        public bool IsOverlapping(TimePeriod checkTP, TimePeriod excludeTP = null)
+        {
+            foreach (TimePeriod tp in Absence)
+            {
+                if ((tp != excludeTP) && tp.Intersecting(checkTP))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
         ///   Returns the elapsed working time.
         /// </summary>
         /// <returns>Elapsed working time</returns>
@@ -412,6 +470,7 @@ namespace ClockIn
         private void SetWorkingState(WorkingState state, DateTime time, bool applyOffset = false)
         {
             Debug.WriteLine("[TimeManager] Changing working state to " + state);
+            WorkingStateUpdate update = WorkingStateUpdate.Error;
 
             if (state == WorkingState.Absent)
             {
@@ -423,6 +482,8 @@ namespace ClockIn
                 {
                     currentAbsence = new TimePeriod(time, DateTime.MaxValue);
                 }
+
+                update = WorkingStateUpdate.ClockOut;
             }
             else if (currentAbsence != null)
             {
@@ -445,22 +506,29 @@ namespace ClockIn
                         {
                             Absence.Add(currentAbsence);
                         }
+
+                        update = WorkingStateUpdate.ClockIn;
                     }
                     else
                     {
-                        Absence.Add(currentAbsence);
+                        if (!IsOverlapping(currentAbsence))
+                        {
+                            Absence.Add(currentAbsence);
+                            update = WorkingStateUpdate.ClockIn;
+                        }
                     }
                 }
                 else
                 {
                     UpdateTotalAbsence();
+                    update = WorkingStateUpdate.ClockIn;
                 }
 
                 currentAbsence = null;
             }
 
             this.state = state;
-            WorkingStateUpdated?.Invoke(this, new EventArgs());
+            WorkingStateUpdated?.Invoke(this, new WorkingStateUpdatedEventArgs(update));
         }
 
         /// <summary>
