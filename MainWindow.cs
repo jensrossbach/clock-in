@@ -41,6 +41,8 @@ namespace ClockIn
         private HotkeyManager hotkeyMgr = null;
         private Properties.Settings settings = null;
 
+        private int lastOptionsTabPage = 0;
+
 
         /// <summary>
         ///   Default constructor of the class
@@ -648,9 +650,10 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void BtnOptions_Click(object sender, EventArgs e)
         {
-            using (OptionsDialog dialog = new OptionsDialog(this))
+            using (OptionsDialog dialog = new OptionsDialog(this, lastOptionsTabPage))
             {
                 dialog.ShowDialog(this);
+                lastOptionsTabPage = dialog.SelectedTab;
             }
         }
 
@@ -691,9 +694,10 @@ namespace ClockIn
         /// <param name="e">Event arguments</param>
         private void ItmOptions_Click(object sender, EventArgs e)
         {
-            using (OptionsDialog dialog = new OptionsDialog(this))
+            using (OptionsDialog dialog = new OptionsDialog(this, lastOptionsTabPage))
             {
                 dialog.ShowDialog(this);
+                lastOptionsTabPage = dialog.SelectedTab;
             }
         }
 

@@ -426,7 +426,7 @@ hinten korrigiert.</value>
     <value>126, 135</value>
   </data>
   <data name="lblSoundFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 13</value>
+    <value>190, 13</value>
   </data>
   <data name="lblSoundFile.Text" xml:space="preserve">
     <value>(nichts gewählt)</value>

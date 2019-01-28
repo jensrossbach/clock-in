@@ -29,15 +29,27 @@ namespace ClockIn
         ///   Default constructor of the class
         /// </summary>
         /// <param name="mainWin">Reference to main window</param>
-        public OptionsDialog(MainWindow mainWin)
+        public OptionsDialog(MainWindow mainWin, int selectedTab)
         {
             mainWindow = mainWin;
             InitializeComponent();
+            tbcOptions.SelectedIndex = selectedTab;
 
             Properties.Settings.Default.SettingChanging += Default_SettingChanging;
             Properties.Settings.Default.PropertyChanged += Default_PropertyChanged;
         }
 
+
+        /// <summary>
+        ///   Currently selected tab page
+        /// </summary>
+        public int SelectedTab
+        {
+            get
+            {
+                return tbcOptions.SelectedIndex;
+            }
+        }
 
         /// <summary>
         ///   Validates the value for regular working time.
