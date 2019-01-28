@@ -4,6 +4,16 @@ Copyright (C) 2012-2019 Jens Rossbach, All Rights Reserved
 Version History
 ===============
 
+v3.2.6967.34578 (2019-01-28)
+----------------------------
+
+Added:   Automatic clocking in (configurable) when unlocking Windows session
+Changed: Redesigned options dialog with various layout optimizations
+Changed: Last tab page in options dialog is now remembered
+Changed: Changed green variant of modern icon to a lighter green
+Fixed:   No overlapping for absence time period check when clocking in
+
+
 v3.1.6948.33999 (2019-01-09)
 ----------------------------
 
